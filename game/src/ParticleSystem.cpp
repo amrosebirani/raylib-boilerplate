@@ -650,6 +650,12 @@ void ParticleSystem::emit(uint32 num) {
     while (num--) addParticle(1.0f);
 }
 
+void ParticleSystem::justEmit(uint32 num) {
+
+    num = std::min(num, maxParticles - activeParticles);
+    while (num--) addParticle(0.0f);
+}
+
 bool ParticleSystem::isActive() const {
     return active;
 }
@@ -767,7 +773,7 @@ void ParticleSystem::update(float dt) {
 
     prevPosition = position;
     // print active particles
-    std::cout << "Active particles: " << activeParticles << std::endl;
+    // std::cout << "Active particles: " << activeParticles << std::endl;
 }
 
 void ParticleSystem::draw() {
@@ -782,8 +788,8 @@ void ParticleSystem::draw() {
     while (p) {
 
         float rotation = p->angle * RAD2DEG;
-        Vector2 origin = {offset.x, offset.y};
         Vector2 scale = {p->size, p->size};
+        Vector2 origin = {offset.x * scale.x, offset.y * scale.y};
 
         if (useQuads) {
             Quad *q = quads[p->quadIndex].get();

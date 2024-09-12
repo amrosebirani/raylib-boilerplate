@@ -124,6 +124,7 @@ class ParticleSystem {
         void reset();
 
         void emit(uint32 count);
+        void justEmit(uint32 count);
 
         bool isActive() const;
 
