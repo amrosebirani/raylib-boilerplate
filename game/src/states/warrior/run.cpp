@@ -11,6 +11,10 @@ RunningWarrior::~RunningWarrior() {
         delete animation;
         animation = nullptr;
     }
+    if (warriorParams != nullptr) {
+        delete warriorParams;
+        warriorParams = nullptr;
+    }
 }
 
 void RunningWarrior::draw() {
@@ -41,5 +45,9 @@ void RunningWarrior::Exit() {
     if (animation != nullptr) {
         delete animation;
         animation = nullptr;
+    }
+    if (warriorParams != nullptr) {
+        delete warriorParams;
+        warriorParams = nullptr;
     }
 }

@@ -7,7 +7,8 @@
 
 class Archer : public GameObject {
     public:
-        Archer(float rx, float ry, std::shared_ptr<GameObject> tower);
+        Archer(float rx, float ry, std::shared_ptr<GameObject> tower,
+               bool operational = false);
         ~Archer();
 
         void draw() override;
@@ -29,6 +30,8 @@ class Archer : public GameObject {
         float damage = 75.0f;
         std::shared_ptr<GameObject> tower;
         float getAttackRange();
+        unsigned char alpha;
+        bool isOperational = false;
 
     private:
         StateMachine *stateMachine;

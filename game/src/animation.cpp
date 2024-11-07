@@ -6,7 +6,16 @@ Animation::Animation(std::vector<int> frames, bool loop, float spf) {
     this->spf = spf;
 }
 
+void Animation::setFrames(std::vector<int> frames) {
+    this->frames = frames;
+}
+
 Animation::~Animation() {
+}
+
+void Animation::reset() {
+    index = 0;
+    timer = 0;
 }
 
 void Animation::update(float dt) {

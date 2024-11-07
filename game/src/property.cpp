@@ -1,152 +1,148 @@
 #include "property.hpp"
+#include "archery.hpp"
+#include "attack_tower.hpp"
+#include "barrack.hpp"
 #include "constants.h"
+#include "house_block.hpp"
+#include "lightning_tower.hpp"
 #include "raylib.h"
-#include "region.hpp"
-#include "chance_list.hpp"
-
-#include <unordered_map>
+#include "temp_chance_list.hpp"
+#include "utils.h"
+#include <cmath>
 #include <vector>
-#include <string>
+#include "globals.h"
+#include "wizardry.hpp"
 
-std::unordered_map<std::string, PropertyType> propertyTypeMap = {
-    {"GOLD_MINE", PropertyType::GOLD_MINE},
-    {"FOREST", PropertyType::FOREST},
-    {"STONE_QUARRY", PropertyType::STONE_QUARRY},
-    {"FARM", PropertyType::FARM},
-    {"PASTURE", PropertyType::PASTURE},
-    {"RESIDENTIAL", PropertyType::RESIDENTIAL},
-    {"MILITARY", PropertyType::MILITARY},
-    {"BARREN", PropertyType::BARREN}};
+std::vector<TempChanceList<PropertyType> *> propertyRingChanceList = {
+    new TempChanceList<PropertyType>({{PropertyType::HOUSE, 2},
+                                      {PropertyType::BARRACKS, 1},
+                                      {PropertyType::ARCHERY, 1}}),
+    new TempChanceList<PropertyType>({{PropertyType::HOUSE, 3},
+                                      {PropertyType::BARRACKS, 2},
+                                      {PropertyType::WIZARDRY, 1},
+                                      {PropertyType::ARCHERY, 2}}),
+    new TempChanceList<PropertyType>({{PropertyType::LIGHTNING_TOWER, 6}}),
+};
 
-ChanceList *propertyChances = new ChanceList({{"GOLD_MINE", 1},
-                                              {"FOREST", 2},
-                                              {"STONE_QUARRY", 1},
-                                              {"FARM", 3},
-                                              {"RESIDENTIAL", 1},
-                                              {"BARREN", 6}});
-
-std::vector<Property *> getPropertiesForRing(int ring_no, float x, float y,
-                                             PropertyRing *ring) {
-    float diagonal_offset = CASTLE_WIDTH / 2.0f + (ring_no + 1) * ROAD_WIDTH +
-                            (ring_no + 1) * PROPERTY_HEIGHT -
-                            PROPERTY_HEIGHT / 2.0f;
-    std::vector<Property *> properties;
+std::vector<PropertySlot *> getPropertiesForRing(int ring_no, float x, float y,
+                                                 PropertyRing *ring) {
+    float diagonal_offset = CASTLE_WIDTH / 2.0f + (ring_no + 1) * CASTLE_WIDTH -
+                            CASTLE_WIDTH / 2.0f;
+    std::vector<PropertySlot *> properties;
     float y_offset = y - diagonal_offset;
     float x_offset = x - diagonal_offset;
-    for (int i = 0; i < (ring_no + 1) * 2 + 2; i++) {
-        PropertyType type = propertyTypeMap[propertyChances->next()];
-        properties.push_back(
-            new Property(x_offset + i * (PROPERTY_WIDTH + ROAD_WIDTH), y_offset,
-                         PROPERTY_WIDTH, PROPERTY_HEIGHT, type, ring));
+    for (int i = 0; i < (ring_no + 1) * 2 + 1; i++) {
+        PropertyType type;
+        if (i % 2 == 1) {
+            type = PropertyType::DEFENSE_TOWER;
+        } else {
+            type = propertyRingChanceList[ring_no]->next();
+        }
+        properties.push_back(new PropertySlot(x_offset + i * CASTLE_WIDTH,
+                                              y_offset, CASTLE_WIDTH,
+                                              CASTLE_WIDTH, type, ring));
     }
     x_offset = x + diagonal_offset;
-    y_offset = y - diagonal_offset + PROPERTY_HEIGHT + ROAD_WIDTH;
-    for (int i = 0; i < (ring_no + 1) * 2; i++) {
-        PropertyType type = propertyTypeMap[propertyChances->next()];
-        properties.push_back(new Property(
-            x_offset, y_offset + i * (PROPERTY_HEIGHT + ROAD_WIDTH),
-            PROPERTY_WIDTH, PROPERTY_HEIGHT, type, ring));
+    y_offset = y - diagonal_offset;
+    for (int i = 1; i < (ring_no + 1) * 2; i++) {
+        PropertyType type;
+        if (i % 2 == 1) {
+            type = PropertyType::DEFENSE_TOWER;
+        } else {
+            type = propertyRingChanceList[ring_no]->next();
+        }
+        properties.push_back(
+            new PropertySlot(x_offset, y_offset + i * CASTLE_WIDTH,
+                             CASTLE_WIDTH, CASTLE_WIDTH, type, ring));
     }
     x_offset = x + diagonal_offset;
     y_offset = y + diagonal_offset;
-    for (int i = 0; i < (ring_no + 1) * 2 + 2; i++) {
-        PropertyType type = propertyTypeMap[propertyChances->next()];
-        properties.push_back(
-            new Property(x_offset - i * (PROPERTY_WIDTH + ROAD_WIDTH), y_offset,
-                         PROPERTY_WIDTH, PROPERTY_HEIGHT, type, ring));
+    for (int i = 0; i < (ring_no + 1) * 2 + 1; i++) {
+        PropertyType type;
+        if (i % 2 == 1) {
+            type = PropertyType::DEFENSE_TOWER;
+        } else {
+            type = propertyRingChanceList[ring_no]->next();
+        }
+        properties.push_back(new PropertySlot(x_offset - i * CASTLE_WIDTH,
+                                              y_offset, CASTLE_WIDTH,
+                                              CASTLE_WIDTH, type, ring));
     }
     x_offset = x - diagonal_offset;
-    y_offset = y + diagonal_offset - PROPERTY_HEIGHT - ROAD_WIDTH;
-    for (int i = 0; i < (ring_no + 1) * 2; i++) {
-        PropertyType type = propertyTypeMap[propertyChances->next()];
-        properties.push_back(new Property(
-            x_offset, y_offset - i * (PROPERTY_HEIGHT + ROAD_WIDTH),
-            PROPERTY_WIDTH, PROPERTY_HEIGHT, type, ring));
+    y_offset = y + diagonal_offset;
+    for (int i = 1; i < (ring_no + 1) * 2; i++) {
+        PropertyType type;
+        if (i % 2 == 1) {
+            type = PropertyType::DEFENSE_TOWER;
+        } else {
+            type = propertyRingChanceList[ring_no]->next();
+        }
+        properties.push_back(
+            new PropertySlot(x_offset, y_offset - i * CASTLE_WIDTH,
+                             CASTLE_WIDTH, CASTLE_WIDTH, type, ring));
     }
     return properties;
 }
 
-void Property::update(float dt) {
+void PropertySlot::update(float dt) {
     // will add functionality later for updating according to type
     timer.update(dt);
+    // if (building != nullptr) {
+    // building->update(dt);
+    // }
 }
 
-Property::Property(float x, float y, float width, float height,
-                   PropertyType type, PropertyRing *ring)
+PropertySlot::PropertySlot(float x, float y, float width, float height,
+                           PropertyType type, PropertyRing *ring)
     : x(x), y(y), width(width), height(height), type(type), ring(ring) {
-    switch (type) {
-    case PropertyType::GOLD_MINE:
-        timer.every(
-            BASE_GOLD_PRODUCTION_CYCLE,
-            [this](float dt) {
-                // add gold to region
-                Region *region = dynamic_cast<Region *>(this->ring->region);
-                region->addGold(BASE_GOLD_PRODUCTION);
-            },
-            0, []() {}, "");
-        break;
-    case PropertyType::FOREST:
-        timer.every(
-            BASE_WOOD_PRODUCTION_CYCLE,
-            [this](float dt) {
-                // add wood to region
-                Region *region = dynamic_cast<Region *>(this->ring->region);
-                region->addWood(BASE_WOOD_PRODUCTION);
-            },
-            0, []() {}, "");
-    case PropertyType::STONE_QUARRY:
-        timer.every(
-            BASE_STONE_PRODUCTION_CYCLE,
-            [this](float dt) {
-                // add stone to region
-                Region *region = dynamic_cast<Region *>(this->ring->region);
-                region->addStone(BASE_STONE_PRODUCTION);
-            },
-            0, []() {}, "");
-    case PropertyType::FARM:
-        timer.every(
-            BASE_FOOD_PRODUCTION_CYCLE,
-            [this](float dt) {
-                // add food to region
-                Region *region = dynamic_cast<Region *>(this->ring->region);
-                region->addFood(BASE_FOOD_PRODUCTION);
-            },
-            0, []() {}, "");
-    default:
-        break;
+    Vector2 ss = getWorldIsometricCoordinated(Vector2{x, y});
+    if (type == PropertyType::HOUSE) {
+        building = std::make_shared<HouseBlock>(ss.x, ss.y, 0);
+        building->init();
+        getContainer()->addGameObject(building);
+    } else if (type == PropertyType::BARRACKS) {
+        building = std::make_shared<Barrack>(ss.x, ss.y, 0);
+        building->init();
+        getContainer()->addGameObject(building);
+    } else if (type == PropertyType::ARCHERY) {
+        building = std::make_shared<Archery>(ss.x, ss.y, 0);
+        building->init();
+        getContainer()->addGameObject(building);
+    } else if (type == PropertyType::DEFENSE_TOWER) {
+        building = std::make_shared<AttackTower>(ss.x, ss.y, 0);
+        building->init();
+        getContainer()->addGameObject(building);
+    } else if (type == PropertyType::WIZARDRY) {
+        building = std::make_shared<Wizardry>(ss.x, ss.y, 0);
+        building->init();
+        getContainer()->addGameObject(building);
+    } else if (type == PropertyType::LIGHTNING_TOWER) {
+        building = std::make_shared<LightningTower>(ss.x, ss.y, 0);
+        building->init();
+        getContainer()->addGameObject(building);
     }
 }
 
-void Property::draw() {
+void PropertySlot::draw() {
     // this is purely for debug purposes as of now
-    Color color;
-    switch (type) {
-    case PropertyType::GOLD_MINE:
-        color = GOLD;
-        break;
-    case PropertyType::FOREST:
-        color = GREEN;
-        break;
-    case PropertyType::STONE_QUARRY:
-        color = GRAY;
-        break;
-    case PropertyType::FARM:
-        color = YELLOW;
-        break;
-    case PropertyType::PASTURE:
-        color = BROWN;
-        break;
-    case PropertyType::RESIDENTIAL:
-        color = BLUE;
-        break;
-    case PropertyType::MILITARY:
-        color = RED;
-        break;
-    case PropertyType::BARREN:
-        color = DARKGRAY;
-        break;
-    }
-    DrawRectangle(x - width / 2, y - height / 2, width, height, color);
+    // need to draw the isometric polygon over here
+    // std::vector<Vector2> points;
+    // points.push_back(
+    //     getWorldIsometricCoordinated(Vector2{x + width / 2, y + height /
+    //     2}));
+    // points.push_back(
+    //     getWorldIsometricCoordinated(Vector2{x + width / 2, y - height /
+    //     2}));
+    // points.push_back(
+    //     getWorldIsometricCoordinated(Vector2{x - width / 2, y - height /
+    //     2}));
+    // points.push_back(
+    //     getWorldIsometricCoordinated(Vector2{x - width / 2, y + height /
+    //     2}));
+    // DrawConvexPolygon(points, DrawMode::LINE, WHITE);
+    // if (building != nullptr) {
+    // building->draw();
+    // }
 }
 
 void PropertyRing::update(float dt) {

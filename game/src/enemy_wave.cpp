@@ -1,11 +1,29 @@
 #include "enemy_wave.hpp"
 #include "globals.h"
+#include "lightning_line.hpp"
 #include "utils.h"
-#include "enemy_shield_bearer.hpp"
+#include "parameterized_enemy.hpp"
 
 EnemyWave::EnemyWave(float time, int count, std::shared_ptr<GameObject> castle)
     : time(time), count(count), castle(castle) {
     timer = Timer();
+    enemy_chance_list =
+        new TempChanceList<EnemyType>({{EnemyType::ENEMY_TYPE_SHIELD_BEARER, 4},
+                                       {EnemyType::ZOMBIE1, 4},
+                                       {EnemyType::ZOMBIE2, 4},
+                                       {EnemyType::ZOMBIE3, 4},
+                                       {EnemyType::ZOMBIE4, 4},
+                                       {EnemyType::ZOMBIE5, 4},
+                                       {EnemyType::ZOMBIE6, 4},
+                                       {EnemyType::SKELETON, 4},
+                                       {EnemyType::GHOUL, 4},
+                                       {EnemyType::RAT, 4},
+                                       {EnemyType::BUCK, 4},
+                                       {EnemyType::SPIDER, 4},
+                                       {EnemyType::NECROMANCER, 4},
+                                       {EnemyType::SKELETON_PRINCE, 4},
+                                       {EnemyType::ZOMBIE_GIANT, 4},
+                                       {EnemyType::WOLF, 4}});
     int first_s = count / 5;
     int second_s = count / 5;
     int third_s = 3 * count / 5;
@@ -46,7 +64,21 @@ void EnemyWave::update(float dt) {
     timer.update(dt);
 }
 
+EnemyWave::~EnemyWave() {
+    delete enemy_chance_list;
+}
+
+void EnemyWave::createEnemy(float xd, float yd) {
+    EnemyType et = enemy_chance_list->next();
+    std::shared_ptr<ParameterizedEnemy> pe =
+        std::make_shared<ParameterizedEnemy>(this->castle->x + xd,
+                                             this->castle->y + yd, et);
+    pe->init();
+    getContainer()->addGameObject(pe);
+}
+
 void EnemyWave::spawnEnemy() {
+    // return;
 
     float xd = randomFloatInRange(VIRTUAL_WIDTH / 3.0f, VIRTUAL_WIDTH / 2.0f);
     float yd = randomFloatInRange(VIRTUAL_HEIGHT / 3.0f, VIRTUAL_HEIGHT / 2.0f);
@@ -54,11 +86,14 @@ void EnemyWave::spawnEnemy() {
     int ym = getRandomValue(-1, 1);
     xd *= xm;
     yd *= ym;
-    std::shared_ptr<EnemyShieldBearer> esb =
-        std::make_shared<EnemyShieldBearer>(this->castle->x + xd,
-                                            this->castle->y + yd);
-    esb->init();
-    getContainer()->addGameObject(esb);
+    // this is where we need to add a lightning and then spawn the
+    // enemy_shield_bearer
+    std::shared_ptr<LightningLine> ll = std::make_shared<LightningLine>(
+        this->castle->x + xd, this->castle->y + yd - 60, this->castle->x + xd,
+        this->castle->y + yd);
+    getContainer()->addGameObject(ll);
+    timer.after(
+        0.20, [this, xd, yd](float dt) { this->createEnemy(xd, yd); }, "");
 }
 
 bool EnemyWave::isFinishedWave() {

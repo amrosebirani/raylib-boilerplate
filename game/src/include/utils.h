@@ -2,7 +2,9 @@
 
 #include "ParticleSystem.h"
 #include "box2d/b2_body.h"
+#include "building_data.hpp"
 #include "enemy_types.h"
+#include "property_type.hpp"
 #include "warrior_types.h"
 #include <unordered_map>
 #include <vector>
@@ -34,13 +36,18 @@ template <typename T> T getRandomElement(const std::vector<T> &vec) {
 }
 
 std::shared_ptr<b2Body> getWarriorCollider(WarriorType wtype, float x, float y,
-                                           ColliderUserData *data);
+                                           ColliderUserData *data,
+                                           bool inFormation = true);
+std::shared_ptr<b2Body> getWarriorSensor(WarriorType wtype, float x, float y,
+                                         ColliderUserData *data);
 
 std::shared_ptr<b2Body> getEnemyCollider(EnemyType wtype, float x, float y,
                                          ColliderUserData *data);
 
 float getMaxCastleHealthByLevel(int level);
 float getCastleAttackTimer(int level);
+
+float getMaxHealthByLevel(int level, PropertyType type);
 
 b2FixtureDef *getFormationFixtureDef(float radius, float offset_x,
                                      float offset_y);
@@ -51,3 +58,31 @@ Direction get_direction(Vector2 dir);
 
 std::shared_ptr<ParticleSystem> getParticleSystem(Texture2D *texture,
                                                   std::vector<Color> colors);
+
+BuildingData *getBuildingData(std::string building_id);
+void setBuildingData();
+
+Vector2 getWorldIsometricCoordinated(Vector2 position);
+
+std::vector<Vector2> getBuildingColliderPolygon(BuildingData *buildingData,
+                                                float x, float y,
+                                                float perc_cover,
+                                                bool isSensor = false);
+Vector2 getBuildingUpgradePoint(BuildingData *buildingData, float x, float y,
+                                float perc_cover);
+Vector2 getReverseWorldIsometricCoordinated(Vector2 position);
+
+int getMaxLevel(PropertyType type);
+float getBuildingProduceTime(PropertyType type, int level);
+Vector2 getBuildingSummonDim(PropertyType type, int level);
+std::vector<WarriorType> getSummonChoices(PropertyType type, int level);
+
+int getUpgradeCoins(PropertyType type, int level);
+std::string getBuildingId(PropertyType type, int level);
+void initLevelUpgradeData();
+float getPercentCover(PropertyType type, int level);
+Rectangle getBuildingTransparencyRect(BuildingData *buildingData, float x,
+                                      float y, float perc_cover);
+std::vector<Vector2> getAttackTowerArcherPos(int level);
+Vector2 translateBuildingPoint(BuildingData *buildingData, float x, float y,
+                               float perc_cover, Vector2 pp);

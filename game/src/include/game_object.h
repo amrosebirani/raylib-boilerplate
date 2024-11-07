@@ -2,6 +2,7 @@
 #include "timer.h"
 #include <time.h>
 #include <unordered_map>
+#include "raylib.h"
 
 class GameObject : public std::enable_shared_from_this<GameObject> {
     public:
@@ -11,6 +12,9 @@ class GameObject : public std::enable_shared_from_this<GameObject> {
         virtual void die() = 0;
         virtual void init() = 0;
         virtual void cleanupData() = 0;
+        virtual Color getColor() {
+            return {0, 0, 0, 0};
+        }
 
         float x;
         float y;

@@ -2,9 +2,9 @@
 #include "constants.h"
 #include "warrior_types.h"
 #include "utils.h"
-#include "enemy.hpp"
 #include "globals.h"
 #include "warrior_state_params.hpp"
+#include <iostream>
 
 void Swordsman::draw() {
     stateMachine->draw();
@@ -27,13 +27,7 @@ void Swordsman::update(float dt) {
     if (hp <= 0) {
         die();
     }
-    if (!canAttack) {
-        attackCooldownTracker += dt;
-        if (attackCooldownTracker >= attackCooldown) {
-            canAttack = true;
-        }
-    }
-    stateUpdate(WarriorType::WARRIOR_TYPE_SWORDSMAN);
+    stateUpdate(WarriorType::WARRIOR_TYPE_SWORDSMAN, dt);
 }
 
 bool Swordsman::isAlive() {
@@ -50,7 +44,8 @@ void Swordsman::attack() {
 }
 
 Swordsman::Swordsman(float rx, float ry)
-    : Warrior(get_warrior_size(WarriorType::WARRIOR_TYPE_SWORDSMAN), rx, ry) {
+    : Warrior(get_warrior_size(WarriorType::WARRIOR_TYPE_SWORDSMAN), rx, ry,
+              true) {
 }
 
 void Swordsman::init() {
@@ -62,7 +57,9 @@ void Swordsman::init() {
         getFormationFixtureDef(get_warrior_size(type), rel_x, rel_y));
     initStates(type);
     stateMachine->changeState("Idle", new WarriorStateParams(this, type));
-    damage = 100;
+    damage = get_warrior_damage(type);
+    hp = get_warrior_hp(type);
+    attackCooldown = get_warrior_attack_time(type);
 }
 
 Swordsman::~Swordsman() {
@@ -72,23 +69,7 @@ Swordsman::~Swordsman() {
 
 void Swordsman::takeAttack(float damage) {
     hp -= damage;
+    std::cout << "Swordsman takes attack" << std::endl;
+    std::cout << "Swordsman hp: " << hp << std::endl;
     throwBlood();
-}
-
-void Swordsman::tryAttack(std::shared_ptr<GameObject> target) {
-    if (canAttack) {
-        isAttacking = true;
-        std::shared_ptr<Enemy> enemy = std::dynamic_pointer_cast<Enemy>(target);
-        timer.after(
-            0.3f,
-            [this, enemy](float dt) {
-                if (!enemy->isAlive()) {
-                    return;
-                }
-                enemy->takeAttack(this->damage);
-                this->canAttack = false;
-                this->attackCooldownTracker = 0;
-            },
-            "");
-    }
 }

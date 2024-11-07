@@ -13,6 +13,6 @@ class RunningWarrior : public State {
         void Exit() override;
 
     private:
-        Animation *animation;
-        WarriorStateParams *warriorParams;
+        Animation *animation = nullptr;
+        WarriorStateParams *warriorParams = nullptr;
 };

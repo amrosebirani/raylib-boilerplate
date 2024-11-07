@@ -209,6 +209,11 @@ void CameraEnhanced::update(float dt) {
         return;
     }
 
+    if (!target->isAlive()) {
+        target = nullptr;
+        return;
+    }
+
     if (followStyle == FollowStyle::LOCKON) {
         float ww = w / 16;
         float hh = h / 16;
@@ -322,6 +327,10 @@ void CameraEnhanced::update(float dt) {
     }
 }
 
+std::shared_ptr<GameObject> CameraEnhanced::getTarget() {
+    return target;
+}
+
 void CameraEnhanced::drawWorldLine(float x1, float y1, float x2, float y2,
                                    Color color) {
     Vector2 wc1 = toWorldCoords(x1, y1);
@@ -364,7 +373,7 @@ void CameraEnhanced::draw() {
     // DrawText("Camera", x, y, 8, BLUE);
 }
 
-void CameraEnhanced::follow(GameObject *target) {
+void CameraEnhanced::follow(std::shared_ptr<GameObject> target) {
     this->target = target;
 }
 

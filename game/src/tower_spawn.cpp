@@ -7,7 +7,7 @@
 
 bool TowerSpawnRing::hasEmpty() {
     for (auto &location : locations) {
-        if (!location.occupied) {
+        if (!location->occupied && location->addTower == nullptr) {
             return true;
         }
     }
@@ -16,15 +16,15 @@ bool TowerSpawnRing::hasEmpty() {
 
 void TowerSpawnRing::update(float dt) {
     for (auto &location : locations) {
-        if (location.addTower != nullptr) {
-            if (!location.addTower->isAlive()) {
-                location.addTower = nullptr;
+        if (location->addTower != nullptr) {
+            if (!location->addTower->isAlive()) {
+                location->addTower = nullptr;
             }
         }
-        if (location.tower != nullptr) {
-            if (!location.tower->isAlive()) {
-                location.tower = nullptr;
-                location.occupied = false;
+        if (location->tower != nullptr) {
+            if (!location->tower->isAlive()) {
+                location->tower = nullptr;
+                location->occupied = false;
             }
         }
     }
@@ -32,11 +32,11 @@ void TowerSpawnRing::update(float dt) {
 
 void TowerSpawnRing::assignTower(std::shared_ptr<GameObject> tower) {
     for (auto &location : locations) {
-        if ((VIRTUAL_WIDTH / 2.0f + location.x) == tower->x &&
-            (VIRTUAL_HEIGHT / 2.0f + location.y) == tower->y) {
+        if ((VIRTUAL_WIDTH / 2.0f + location->x) == tower->x &&
+            (VIRTUAL_HEIGHT / 2.0f + location->y) == tower->y) {
             std::cout << "tower assighed\n";
-            location.tower = tower;
-            location.occupied = true;
+            location->tower = tower;
+            location->occupied = true;
         }
     }
 }
@@ -45,15 +45,16 @@ void TowerSpawnRing::spawnAddTower() {
     bool spawned = false;
     int index = 0;
     while (!spawned) {
-        TowerSpawnLocation &location = locations[index];
-        if (!location.occupied && location.addTower == nullptr) {
+        TowerSpawnLocation *location = locations[index];
+        if (!location->occupied && location->addTower == nullptr &&
+            location->tower == nullptr) {
             int xx = getRandomIntInRange(1, 20);
             if (xx < 6) {
                 std::shared_ptr<AddTower> at = std::make_shared<AddTower>(
-                    VIRTUAL_WIDTH / 2.0f + location.x,
-                    VIRTUAL_HEIGHT / 2.0f + location.y, this);
+                    VIRTUAL_WIDTH / 2.0f + location->x,
+                    VIRTUAL_HEIGHT / 2.0f + location->y, location);
                 at->init();
-                location.addTower = at;
+                location->addTower = at;
                 getContainer()->addGameObject(at);
                 spawned = true;
             }
@@ -64,9 +65,20 @@ void TowerSpawnRing::spawnAddTower() {
 
 TowerSpawnRing::TowerSpawnRing(std::vector<Vector2> locations) {
     for (auto &location : locations) {
-        TowerSpawnLocation tsl(location.x, location.y);
+        TowerSpawnLocation *tsl =
+            new TowerSpawnLocation(location.x, location.y);
         this->locations.push_back(tsl);
     }
+}
+
+void TowerSpawnRing::draw() {
+    // for (auto &location : locations) {
+    // draw a solid circle at the location
+    // if (!location->occupied) {
+    //     DrawCircle(VIRTUAL_WIDTH / 2.0f + location->x,
+    //                VIRTUAL_HEIGHT / 2.0f + location->y, 10, RED);
+    // }
+    // }
 }
 
 TowerSpawn::TowerSpawn() {
@@ -119,5 +131,20 @@ void TowerSpawn::update(float dt) {
     timer.update(dt);
     for (auto &ring : rings) {
         ring->update(dt);
+    }
+}
+
+void TowerSpawn::draw() {
+    for (auto &ring : rings) {
+        ring->draw();
+    }
+}
+
+TowerSpawn::~TowerSpawn() {
+}
+
+TowerSpawnRing::~TowerSpawnRing() {
+    for (auto &location : locations) {
+        delete location;
     }
 }

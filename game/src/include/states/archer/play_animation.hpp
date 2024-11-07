@@ -15,6 +15,6 @@ class PlayAnimation : public State {
         void Exit() override;
 
     private:
-        Animation *animation;
+        Animation *animation = nullptr;
         ArcherStateParams *archerParams;
 };

@@ -2,8 +2,6 @@ build/
 build_release/
 build_web/
 build_web_release/
-box2d/
-raylib-master/
 .DS_Store
 .cache/
 emsdk/

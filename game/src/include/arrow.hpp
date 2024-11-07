@@ -28,7 +28,7 @@ class Arrow : public GameObject {
         float height = 2.0f;
         float width = DEFENSE_TOWER_RADIUS * 1.2f;
         ColliderUserData *data;
-        float ttl = 1.0f;
+        float ttl = 1.5f;
         float tt = 0.0f;
         bool alive = true;
         float rotation = 0.0f;

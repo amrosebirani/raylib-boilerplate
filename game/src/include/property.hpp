@@ -1,26 +1,17 @@
 #pragma once
 #include <vector>
+#include "property_type.hpp"
+#include "building.hpp"
 #include "raylib.h"
 #include "game_object.h"
 #include "timer.h"
 
-enum PropertyType {
-    GOLD_MINE,
-    FOREST,
-    STONE_QUARRY,
-    FARM,
-    PASTURE,
-    RESIDENTIAL,
-    MILITARY,
-    BARREN
-};
-
 class PropertyRing;
 
-class Property {
+class PropertySlot {
     public:
-        Property(float x, float y, float width, float height, PropertyType type,
-                 PropertyRing *ring);
+        PropertySlot(float x, float y, float width, float height,
+                     PropertyType type, PropertyRing *ring);
         PropertyType type;
         void update(float dt);
         void draw();
@@ -32,6 +23,7 @@ class Property {
         float width;
         float height;
         Timer timer;
+        std::shared_ptr<Building> building;
 };
 
 class PropertyRing {
@@ -45,9 +37,9 @@ class PropertyRing {
 
     private:
         int ring_no;
-        std::vector<Property *> properties;
+        std::vector<PropertySlot *> properties;
         bool operational = true;
 };
 
-std::vector<Property *> getPropertiesForRing(int ring_no, float x, float y,
-                                             PropertyRing *ring);
+std::vector<PropertySlot *> getPropertiesForRing(int ring_no, float x, float y,
+                                                 PropertyRing *ring);

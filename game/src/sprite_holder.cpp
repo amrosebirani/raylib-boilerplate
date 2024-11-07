@@ -1,4 +1,7 @@
 #include "sprite_holder.hpp"
+#include "building_data.hpp"
+#include "constants.h"
+#include <cmath>
 
 SpriteHolder::SpriteHolder() {
 }
@@ -61,6 +64,25 @@ void SpriteHolder::drawSpriteWithColor(std::string sprite_id, int sprite_no,
     Rectangle source_rec = {x * width, y * height, width, height};
     DrawTexturePro(spriteConfig->texture, source_rec, dest_rec, origin,
                    rotation, sprite_color);
+}
+
+void SpriteHolder::drawSprite(BuildingData *building, float x, float y,
+                              float perc_cover, unsigned char alpha) {
+    SpriteConfig *spriteConfig = sprites[building->building_id];
+    float required_length = std::sqrt(1.25) * CASTLE_WIDTH * perc_cover;
+    float scale = required_length / building->aligned_l;
+    float tw = spriteConfig->texture.width * 1.0f;
+    float th = spriteConfig->texture.height * 1.0f;
+    Rectangle source_rec = {0, 0, tw, th};
+    Rectangle dest_rec = {
+        x,
+        y,
+        tw * scale,
+        th * scale,
+    };
+    Vector2 origin = {building->o_x * scale, building->o_y * scale};
+    DrawTexturePro(spriteConfig->texture, source_rec, dest_rec, origin, 0,
+                   {WHITE.r, WHITE.g, WHITE.b, alpha});
 }
 
 void SpriteHolder::drawSprite(std::string sprite_id, Rectangle dest_rec,

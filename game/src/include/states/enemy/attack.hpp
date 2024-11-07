@@ -15,7 +15,7 @@ class AttackingEnemy : public State {
         void Exit() override;
 
     private:
-        Animation *animation;
+        Animation *animation = nullptr;
         EnemyStateParams *enemyParams;
         bool canAttack = true;
         float attackCooldown = 1.0f;

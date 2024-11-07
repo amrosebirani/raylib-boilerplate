@@ -48,17 +48,10 @@ void PlayAnimation::Exit() {
     // here also need to create the arrow projectile
     // and add it to the container
     std::shared_ptr<Arrow> arrow = nullptr;
-    if (archerParams->enemy->isAlive()) {
-        arrow = std::make_shared<Arrow>(
-            archerParams->archer->x, archerParams->archer->y,
-            Vector2{archerParams->enemy->x - archerParams->archer->x,
-                    archerParams->enemy->y - archerParams->archer->y});
-    } else {
-        arrow = std::make_shared<Arrow>(
-            archerParams->archer->x, archerParams->archer->y,
-            Vector2{archerParams->enemy_x - archerParams->archer->x,
-                    archerParams->enemy_y - archerParams->archer->y});
-    }
+    arrow = std::make_shared<Arrow>(
+        archerParams->archer->x, archerParams->archer->y,
+        Vector2{archerParams->enemy_x - archerParams->archer->x,
+                archerParams->enemy_y - archerParams->archer->y});
     archerParams->enemy = nullptr;
     arrow->init();
     getContainer()->addGameObject(arrow);

@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include "castle.hpp"
 #include "game_object.h"
 #include "property.hpp"
 
@@ -12,11 +13,12 @@ class Region : public GameObject {
     public:
         Region(float x, float y, float width, float height, float gold,
                float wood, float stone, float food);
-
+        ~Region();
         void draw() override;
         void update(float dt) override;
         bool isAlive() override;
         void die() override;
+        Vector2 getCenterCoordinates();
 
         void init() override;
         void cleanupData() override;
@@ -38,6 +40,10 @@ class Region : public GameObject {
         float getWidth();
         float getHeight();
         void setCurrentHeightAndWidth(float percentHealth);
+        void addPropertyRing(int ring_no);
+        std::shared_ptr<Castle> castle;
+        std::vector<Vector2> getRegionPoints();
+        std::vector<Vector2> getRegionPoints(float random_angle);
 
     private:
         float width;
@@ -50,4 +56,6 @@ class Region : public GameObject {
         float current_width;
         float current_height;
         std::vector<PropertyRing *> propertyRings;
+        int level = 1;
+        float health = 0;
 };

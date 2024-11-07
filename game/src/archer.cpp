@@ -4,8 +4,9 @@
 #include "states/archer/idle.hpp"
 #include "states/archer/play_animation.hpp"
 
-Archer::Archer(float rx, float ry, std::shared_ptr<GameObject> tower)
-    : GameObject(rx, ry), tower(tower) {
+Archer::Archer(float rx, float ry, std::shared_ptr<GameObject> tower,
+               bool operational)
+    : GameObject(rx, ry), tower(tower), isOperational(operational) {
     graphics_types.push_back("high_ground");
     raised = true;
     stateMachine = new StateMachine(

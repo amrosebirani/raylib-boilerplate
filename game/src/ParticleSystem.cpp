@@ -7,8 +7,6 @@
 #include <exception>
 #include "raylib.h"
 #include "raymath.h"
-#include "transformation_stack.h"
-#include <iostream>
 
 RandomGenerator rng;
 

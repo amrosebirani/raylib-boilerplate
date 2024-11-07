@@ -1,0 +1,64 @@
+#include "raylib.h"
+#include "level_config.h"
+#include "formation.h"
+
+bool SearchAndSetResourceDir(const char *folderName) {
+    if (DirectoryExists(folderName)) {
+        ChangeDirectory(TextFormat("%s/%s", GetWorkingDirectory(), folderName));
+        return true;
+    }
+
+    const char *appDir = GetApplicationDirectory();
+
+    const char *dir = TextFormat("%s%s", appDir, folderName);
+    if (DirectoryExists(dir)) {
+        ChangeDirectory(dir);
+        return true;
+    }
+
+    dir = TextFormat("%s../%s", appDir, folderName);
+    if (DirectoryExists(dir)) {
+        ChangeDirectory(dir);
+        return true;
+    }
+
+    dir = TextFormat("%s../../%s", appDir, folderName);
+    if (DirectoryExists(dir)) {
+        ChangeDirectory(dir);
+        return true;
+    }
+
+    dir = TextFormat("%s../../../%s", appDir, folderName);
+    if (DirectoryExists(dir)) {
+        ChangeDirectory(dir);
+        return true;
+    }
+
+    return false;
+}
+
+int main() {
+    InitWindow(0, 0, "Avalon");
+    initLevels();
+    SetWindowSize(GetScreenWidth(), GetScreenHeight());
+    SetWindowState(FLAG_WINDOW_MAXIMIZED);
+    SetTargetFPS(60);
+    SearchAndSetResourceDir("resources");
+
+    // initialize formation here
+    // then call update and draw on formation in the game loop
+    Formation *form =
+        new Formation(1, GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f);
+
+    while (!WindowShouldClose()) {
+        form->update(GetFrameTime());
+        BeginDrawing();
+
+        ClearBackground(BLACK);
+        form->draw();
+        DrawFPS(10, 10);
+        EndDrawing();
+    }
+    CloseWindow();
+    return 0;
+}

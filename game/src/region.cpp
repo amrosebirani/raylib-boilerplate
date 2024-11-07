@@ -2,6 +2,7 @@
 #include "constants.h"
 #include "raylib.h"
 
+#include "utils.h"
 void Region::draw() {
     // draw the Region
     for (auto &propertyRing : propertyRings) {
@@ -9,8 +10,6 @@ void Region::draw() {
     }
 
     // region highlight
-    DrawRectangle(x - current_width / 2, y - current_height / 2, current_width,
-                  current_height, {BLUE.r, BLUE.g, BLUE.b, 40});
     // above rectangle is just for debug purposes
 }
 
@@ -19,6 +18,13 @@ void Region::update(float dt) {
     for (auto &propertyRing : propertyRings) {
         propertyRing->update(dt);
     }
+}
+
+Region::~Region() {
+    for (auto &propertyRing : propertyRings) {
+        delete propertyRing;
+    }
+    castle = nullptr;
 }
 
 bool Region::isAlive() {
@@ -30,6 +36,54 @@ void Region::die() {
 }
 
 void Region::init() {
+    health = getMaxCastleHealthByLevel(level);
+
+    Vector2 ss = getWorldIsometricCoordinated(Vector2{x, y});
+    castle = std::make_shared<Castle>(ss.x, ss.y, health, level);
+    castle->init();
+}
+
+std::vector<Vector2> Region::getRegionPoints() {
+    std::vector<Vector2> retv;
+    Vector2 ss = getWorldIsometricCoordinated(Vector2{x, y});
+    retv.push_back(ss);
+    float random_angle = randomFloatInRange(0, 2 * M_PI);
+    float dd1 = (propertyRings.size() + 1) * CASTLE_WIDTH;
+    Vector2 pp1 = {x + dd1 * std::cos(random_angle),
+                   y + dd1 * std::sin(random_angle)};
+    retv.push_back(getWorldIsometricCoordinated(pp1));
+    float dd2 = (propertyRings.size() + 2.5) * CASTLE_WIDTH;
+    Vector2 pp2 = {x + dd2 * std::cos(random_angle),
+                   y + dd2 * std::sin(random_angle)};
+    retv.push_back(getWorldIsometricCoordinated(pp2));
+    float dd3 = (propertyRings.size() + 5.0) * CASTLE_WIDTH;
+    Vector2 pp3 = {x + dd3 * std::cos(random_angle),
+                   y + dd3 * std::sin(random_angle)};
+    retv.push_back(getWorldIsometricCoordinated(pp3));
+    return retv;
+}
+
+std::vector<Vector2> Region::getRegionPoints(float random_angle) {
+    std::vector<Vector2> retv;
+    Vector2 ss = getWorldIsometricCoordinated(Vector2{x, y});
+    retv.push_back(ss);
+    float dd1 = (propertyRings.size() + 1) * CASTLE_WIDTH;
+    Vector2 pp1 = {x + dd1 * std::cos(random_angle),
+                   y + dd1 * std::sin(random_angle)};
+    retv.push_back(getWorldIsometricCoordinated(pp1));
+    float dd2 = (propertyRings.size() + 2.5) * CASTLE_WIDTH;
+    Vector2 pp2 = {x + dd2 * std::cos(random_angle),
+                   y + dd2 * std::sin(random_angle)};
+    retv.push_back(getWorldIsometricCoordinated(pp2));
+    float dd3 = (propertyRings.size() + 5.0) * CASTLE_WIDTH;
+    Vector2 pp3 = {x + dd3 * std::cos(random_angle),
+                   y + dd3 * std::sin(random_angle)};
+    retv.push_back(getWorldIsometricCoordinated(pp3));
+    return retv;
+}
+
+Vector2 Region::getCenterCoordinates() {
+    return getWorldIsometricCoordinated(Vector2{x, y});
 }
 
 void Region::cleanupData() {
@@ -99,11 +153,13 @@ Region::Region(float x, float y, float width, float height, float gold,
     current_height = height;
     // to start with create just 2 property rings, that's the base castle
     // post that on upgrade more rings can be added
-    for (int i = 0; i < DEFAULT_PROPERTY_RINGS; i++) {
-        propertyRings.push_back(new PropertyRing(i, {x, y}, this));
-    }
+    propertyRings.push_back(new PropertyRing(0, {x, y}, this));
 } // create the property rings
 //
+//
+void Region::addPropertyRing(int ring_no) {
+    propertyRings.push_back(new PropertyRing(ring_no, {x, y}, this));
+}
 
 void Region::setCurrentHeightAndWidth(float percentHealth) {
     current_width = width * percentHealth;

@@ -15,6 +15,6 @@ class AttackingWarrior : public State {
         void Exit() override;
 
     private:
-        Animation *animation;
+        Animation *animation = nullptr;
         WarriorStateParams *warriorParams;
 };

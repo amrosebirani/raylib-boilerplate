@@ -10,6 +10,9 @@ struct BodyDeleter {
                     return;
                 }
 
+                body->GetUserData().pointer =
+                    reinterpret_cast<uintptr_t>(nullptr);
+
                 w->DestroyBody(body);
             }
         }

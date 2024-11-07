@@ -23,7 +23,7 @@ float csnap(float v, float x);
 class CameraEnhanced {
     public:
         CameraEnhanced(float x, float y, float w, float h, float scale,
-                       float rotation, GameObject *target)
+                       float rotation, std::shared_ptr<GameObject> target)
             : x(x), y(y), mx(x), my(y), screen_x(x), screen_y(y), w(w), h(h),
               scale(scale), rotation(rotation), target(target) {
             camera = std::make_shared<Camera2D>();
@@ -43,7 +43,7 @@ class CameraEnhanced {
         void editScale(float change);
         float getScale();
         void tweenZoom(float change);
-        void follow(GameObject *target);
+        void follow(std::shared_ptr<GameObject> target);
         void setDeadzone(float x, float y, float w, float h);
         void setBounds(float x, float y, float w, float h);
         void setFollowStyle(FollowStyle followStyle);
@@ -51,10 +51,11 @@ class CameraEnhanced {
         void setFollowLead(float x, float y);
         void flash(float duration, Color color);
         void fade(float duration, Color color, std::function<void()> action);
+        std::shared_ptr<GameObject> getTarget();
         void attach(float vw, float vh);
         void detach();
         void drawWorldLine(float x1, float y1, float x2, float y2, Color color);
-        bool adjustScreenScale = true;
+        bool adjustScreenScale = false;
         float x, y; // camera target or camera position
 
     private:
@@ -68,7 +69,7 @@ class CameraEnhanced {
         float ox, oy;             // offset x and offset y
 
         std::vector<std::shared_ptr<Shake>> horizontal_shakes, vertical_shakes;
-        GameObject *target;
+        std::shared_ptr<GameObject> target = nullptr;
         std::shared_ptr<Vector2> last_target;
         float scroll_x = 0, scroll_y = 0;
         float follow_lerp_x = 1, follow_lerp_y = 1;

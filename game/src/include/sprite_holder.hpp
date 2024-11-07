@@ -1,4 +1,5 @@
 #pragma once
+#include "building_data.hpp"
 #include "raylib.h"
 #include <unordered_map>
 #include <string>
@@ -36,6 +37,8 @@ class SpriteHolder {
         void drawSprite(std::string sprite_id, Rectangle dest_rec,
                         Vector2 origin = {0, 0}, float rotation = 0);
         Vector2 getSpriteSize(std::string sprite_id);
+        void drawSprite(BuildingData *building, float x, float y,
+                        float perc_cover, unsigned char alpha = 255);
 
     private:
         std::unordered_map<std::string, SpriteConfig *> sprites;

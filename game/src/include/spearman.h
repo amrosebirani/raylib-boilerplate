@@ -18,7 +18,6 @@ class Spearman : public Warrior {
         void cleanupData() override;
 
         void attack() override;
-        void tryAttack(std::shared_ptr<GameObject> target) override;
         void takeAttack(float damage) override;
 
     private:

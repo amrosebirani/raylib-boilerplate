@@ -12,6 +12,10 @@ RunningEnemy::~RunningEnemy() {
         delete animation;
         animation = nullptr;
     }
+    if (enemyParams != nullptr) {
+        delete enemyParams;
+        enemyParams = nullptr;
+    }
 }
 
 void RunningEnemy::draw() {
@@ -30,6 +34,7 @@ void RunningEnemy::update(float dt) {
 }
 
 void RunningEnemy::Enter(StateParams *params) {
+    enemyParams->enemy->mvspd = 25;
     enemyParams = (EnemyStateParams *)params;
     Direction d = enemyParams->enemy->directionFacing;
     int dd = get_direction_rows()[d];
@@ -39,8 +44,13 @@ void RunningEnemy::Enter(StateParams *params) {
 }
 
 void RunningEnemy::Exit() {
+    enemyParams->enemy->mvspd = 0;
     if (animation != nullptr) {
         delete animation;
         animation = nullptr;
+    }
+    if (enemyParams != nullptr) {
+        delete enemyParams;
+        enemyParams = nullptr;
     }
 }

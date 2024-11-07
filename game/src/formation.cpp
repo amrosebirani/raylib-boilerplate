@@ -19,7 +19,7 @@ Formation::Formation(int level, float x, float y, float starter_radius,
     collider_data->type = ColliderUserData::Type::Formation;
     collider = ColliderFactory::newCircleCollider(
         collider_data, x, y, get_warrior_size(config->key_warrior),
-        b2_dynamicBody, CATEGORY_FORMATION, CATEGORY_CASTLE,
+        b2_dynamicBody, CATEGORY_FORMATION, CATEGORY_BUILDING,
         getContainer()->getWorld());
     collider->SetFixedRotation(true);
     // create the collider here
@@ -29,8 +29,9 @@ Formation::Formation(int level, float x, float y, float starter_radius,
 
 void Formation::initOrbits() {
     LevelConfig *config = get_level_config(level);
-    keyWarrior = WarriorFactory::createWarrior(config->key_warrior, 0, 0);
+    keyWarrior = WarriorFactory::createWarrior(config->key_warrior, 0, 0, true);
     keyWarrior->init();
+    collider_data->obj = keyWarrior->get_shared_ptr();
     float sr = get_warrior_size(config->key_warrior);
     sr += orbit_margin;
     for (OrbitConfig *orbitConfig : config->orbits) {
@@ -46,6 +47,7 @@ Formation::~Formation() {
     for (FormationOrbit *&orbit : orbits) {
         delete orbit;
     }
+    collider_data->obj = nullptr;
     delete collider_data;
 }
 
@@ -70,8 +72,8 @@ void Formation::appendWarriors(int count) {
     for (FormationOrbit *&orbit : orbits) {
         for (FormationOrbit::WarriorSlot &slot : orbit->slots) {
             if (slot.warrior == nullptr) {
-                slot.warrior =
-                    WarriorFactory::createWarrior(orbit->type, slot.x, slot.y);
+                slot.warrior = WarriorFactory::createWarrior(
+                    orbit->type, slot.x, slot.y, true);
                 slot.warrior->init();
                 totalToAdd--;
             }
@@ -199,7 +201,7 @@ Formation::FormationOrbit::FormationOrbit(float starter_radius,
         float rel_x = dist_origin * cos(angle);
         float rel_y = dist_origin * sin(angle);
         std::shared_ptr<Warrior> warrior =
-            WarriorFactory::createWarrior(type, rel_x, rel_y);
+            WarriorFactory::createWarrior(type, rel_x, rel_y, true);
         warrior->init();
         WarriorSlot slot(rel_x, rel_y, warrior);
         slots.push_back(slot);
@@ -221,7 +223,7 @@ Formation::FormationOrbit::FormationOrbit(float starter_radius,
         std::shared_ptr<Warrior> warrior = nullptr;
         if (activatedSlots > 0) {
             activatedSlots--;
-            warrior = WarriorFactory::createWarrior(type, rel_x, rel_y);
+            warrior = WarriorFactory::createWarrior(type, rel_x, rel_y, true);
             warrior->init();
         }
         WarriorSlot slot(rel_x, rel_y, warrior);

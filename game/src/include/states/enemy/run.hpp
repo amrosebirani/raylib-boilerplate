@@ -15,6 +15,6 @@ class RunningEnemy : public State {
         void Exit() override;
 
     private:
-        Animation *animation;
-        EnemyStateParams *enemyParams;
+        Animation *animation = nullptr;
+        EnemyStateParams *enemyParams = nullptr;
 };

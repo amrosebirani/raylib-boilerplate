@@ -6,7 +6,6 @@
 #include "warrior_types.h"
 #include "utils.h"
 #include "warrior_state_params.hpp"
-#include "enemy.hpp"
 
 void ShieldBearer::draw() {
     // DrawCircle(x, y,
@@ -31,13 +30,7 @@ void ShieldBearer::update(float dt) {
     if (hp <= 0) {
         die();
     }
-    if (!canAttack) {
-        attackCooldownTracker += dt;
-        if (attackCooldownTracker >= attackCooldown) {
-            canAttack = true;
-        }
-    }
-    stateUpdate(WarriorType::WARRIOR_TYPE_SHIELD_BEARER);
+    stateUpdate(WarriorType::WARRIOR_TYPE_SHIELD_BEARER, dt);
 }
 
 bool ShieldBearer::isAlive() {
@@ -55,8 +48,8 @@ void ShieldBearer::attack() {
 }
 
 ShieldBearer::ShieldBearer(float rx, float ry)
-    : Warrior(get_warrior_size(WarriorType::WARRIOR_TYPE_SHIELD_BEARER), rx,
-              ry) {};
+    : Warrior(get_warrior_size(WarriorType::WARRIOR_TYPE_SHIELD_BEARER), rx, ry,
+              true) {};
 
 void ShieldBearer::init() {
 
@@ -71,7 +64,9 @@ void ShieldBearer::init() {
     stateMachine->changeState(
         "Idle",
         new WarriorStateParams(this, WarriorType::WARRIOR_TYPE_SHIELD_BEARER));
-    damage = 60;
+    damage = get_warrior_damage(type);
+    hp = get_warrior_hp(type);
+    attackCooldown = get_warrior_attack_time(type);
 }
 
 ShieldBearer::~ShieldBearer() {
@@ -81,24 +76,6 @@ ShieldBearer::~ShieldBearer() {
 }
 
 void ShieldBearer::takeAttack(float damage) {
-    hp -= damage;
+    hp -= damage / 2;
     throwBlood();
-}
-
-void ShieldBearer::tryAttack(std::shared_ptr<GameObject> target) {
-    if (canAttack) {
-        isAttacking = true;
-        std::shared_ptr<Enemy> enemy = std::dynamic_pointer_cast<Enemy>(target);
-        timer.after(
-            0.3f,
-            [this, enemy](float dt) {
-                if (!enemy->isAlive()) {
-                    return;
-                }
-                enemy->takeAttack(this->damage);
-                this->canAttack = false;
-                this->attackCooldownTracker = 0;
-            },
-            "");
-    }
 }

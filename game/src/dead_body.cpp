@@ -1,4 +1,5 @@
 #include "dead_body.h"
+#include "gems.hpp"
 #include "globals.h"
 #include "utils.h"
 #include "warrior_types.h"
@@ -30,6 +31,12 @@ bool DeadBody::isAlive() {
 
 void DeadBody::die() {
     alive = false;
+    if (!isWarrior) {
+        std::shared_ptr<Gem> gem =
+            std::make_shared<Gem>(x, y, getWorldState()->getNextGemType());
+        gem->init();
+        getContainer()->addGameObject(gem);
+    }
 }
 
 void DeadBody::init() {
@@ -46,7 +53,7 @@ void DeadBody::init() {
         }
         sprite_id = get_warrior_sprite_ids(warriorType)[2];
     } else {
-        frame_no = getRandomIntInRange(0, 2);
+        frame_no = getRandomIntInRange(0, 1);
         sprite_id = get_enemy_sprite_ids(enemyType)[1];
     }
     timer.after(2.0f, [this](float dt) { die(); }, "");

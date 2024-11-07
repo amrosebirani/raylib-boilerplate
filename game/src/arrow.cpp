@@ -4,6 +4,7 @@
 #include "container.h"
 #include "globals.h"
 #include "raymath.h"
+#include "warrior_types.h"
 
 Arrow::Arrow(float x, float y, Vector2 direction)
     : GameObject(x, y), direction(direction) {
@@ -29,6 +30,7 @@ void Arrow::init() {
     collider->SetLinearVelocity(linearVelocity);
     // rotate the collider
     collider->SetTransform(collider->GetPosition(), rotation * DEG2RAD);
+    damage = get_warrior_damage(WarriorType::WARRIOR_TYPE_ARCHER);
 }
 
 Arrow::~Arrow() {

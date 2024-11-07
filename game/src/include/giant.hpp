@@ -4,8 +4,8 @@
 class Giant : public Warrior {
     public:
         Giant(float rx, float ry)
-            : Warrior(get_warrior_size(WarriorType::WARRIOR_TYPE_GIANT), rx,
-                      ry) {
+            : Warrior(get_warrior_size(WarriorType::WARRIOR_TYPE_GIANT), rx, ry,
+                      true) {
             graphics_types.push_back("warrior");
         };
 

@@ -7,7 +7,7 @@
 class AddTower : public Collectible {
     public:
         AddTower(float x, float y);
-        AddTower(float x, float y, TowerSpawnRing *ring);
+        AddTower(float x, float y, TowerSpawnLocation *location);
         ~AddTower();
         void draw() override;
         void update(float dt) override;
@@ -23,5 +23,5 @@ class AddTower : public Collectible {
         float circle_radius;
         ColliderUserData *data;
         std::shared_ptr<b2Body> collider;
-        TowerSpawnRing *ring;
+        TowerSpawnLocation *location;
 };

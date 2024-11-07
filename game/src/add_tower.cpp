@@ -13,8 +13,8 @@ AddTower::AddTower(float x, float y) : Collectible(x, y) {
         randomFloatInRange(3.0f, 5.0f), [this](float dt) { this->die(); }, "");
 }
 
-AddTower::AddTower(float x, float y, TowerSpawnRing *ring)
-    : Collectible(x, y), ring(ring) {
+AddTower::AddTower(float x, float y, TowerSpawnLocation *location)
+    : Collectible(x, y), location(location) {
     archers = 1;
     timer.after(
         randomFloatInRange(3.0f, 5.0f), [this](float dt) { this->die(); }, "");
@@ -64,7 +64,7 @@ void AddTower::draw() {
 void AddTower::collect() {
     die();
     // call the container to add a tower at this position
-    getContainer()->initTower(x, y, archers, ring);
+    // getContainer()->initTower(x, y, archers, location);
 }
 
 AddTower::~AddTower() {

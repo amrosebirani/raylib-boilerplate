@@ -14,7 +14,7 @@ class IdleArcher : public State {
         void Exit() override;
 
     private:
-        Animation *animation;
+        Animation *animation = nullptr;
         ArcherStateParams *archerParams;
         bool canAttack = true;
         float attackCooldown = 1.0f;

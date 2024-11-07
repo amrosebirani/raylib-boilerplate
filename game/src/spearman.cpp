@@ -1,10 +1,8 @@
 #include "spearman.h"
-#include "ParticleSystem.h"
 #include "collider_user_data.h"
 #include "constants.h"
 #include "warrior_types.h"
 #include "utils.h"
-#include "enemy.hpp"
 #include "globals.h"
 #include "warrior_state_params.hpp"
 
@@ -29,13 +27,7 @@ void Spearman::update(float dt) {
     if (hp <= 0) {
         die();
     }
-    if (!canAttack) {
-        attackCooldownTracker += dt;
-        if (attackCooldownTracker >= attackCooldown) {
-            canAttack = true;
-        }
-    }
-    stateUpdate(WarriorType::WARRIOR_TYPE_SPEARMAN);
+    stateUpdate(WarriorType::WARRIOR_TYPE_SPEARMAN, dt);
 }
 
 bool Spearman::isAlive() {
@@ -52,7 +44,8 @@ void Spearman::attack() {
 }
 
 Spearman::Spearman(float rx, float ry)
-    : Warrior(get_warrior_size(WarriorType::WARRIOR_TYPE_SPEARMAN), rx, ry) {
+    : Warrior(get_warrior_size(WarriorType::WARRIOR_TYPE_SPEARMAN), rx, ry,
+              true) {
 }
 
 void Spearman::init() {
@@ -64,7 +57,9 @@ void Spearman::init() {
         getFormationFixtureDef(get_warrior_size(type), rel_x, rel_y));
     initStates(type);
     stateMachine->changeState("Idle", new WarriorStateParams(this, type));
-    damage = 60;
+    damage = get_warrior_damage(type);
+    hp = get_warrior_hp(type);
+    attackCooldown = get_warrior_attack_time(type);
 }
 
 Spearman::~Spearman() {
@@ -75,22 +70,4 @@ Spearman::~Spearman() {
 void Spearman::takeAttack(float damage) {
     hp -= damage;
     throwBlood();
-}
-
-void Spearman::tryAttack(std::shared_ptr<GameObject> target) {
-    if (canAttack) {
-        isAttacking = true;
-        std::shared_ptr<Enemy> enemy = std::dynamic_pointer_cast<Enemy>(target);
-        timer.after(
-            0.3f,
-            [this, enemy](float dt) {
-                if (!enemy->isAlive()) {
-                    return;
-                }
-                enemy->takeAttack(this->damage);
-                this->canAttack = false;
-                this->attackCooldownTracker = 0;
-            },
-            "");
-    }
 }

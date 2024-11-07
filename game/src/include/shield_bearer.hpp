@@ -19,8 +19,6 @@ class ShieldBearer : public Warrior {
 
         void attack() override;
 
-        void tryAttack(std::shared_ptr<GameObject> target) override;
-
         void takeAttack(float damage) override;
 
     private:

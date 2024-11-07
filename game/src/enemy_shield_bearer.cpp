@@ -1,4 +1,5 @@
 #include "enemy_shield_bearer.hpp"
+#include "building.hpp"
 #include "collider_user_data.h"
 #include "constants.h"
 #include "defense_tower.hpp"
@@ -113,13 +114,13 @@ void EnemyShieldBearer::tryAttack(std::shared_ptr<GameObject> target) {
     }
 }
 
-void EnemyShieldBearer::castleAttack(std::shared_ptr<Castle> castle) {
+void EnemyShieldBearer::buildingAttack(std::shared_ptr<Building> building) {
     if (canAttack) {
         isAttacking = true;
         timer.after(
             0.3f,
-            [this, castle](float dt) {
-                castle->hit(this->damage);
+            [this, building](float dt) {
+                building->takeDamage(this->damage);
                 this->canAttack = false;
                 this->attackCooldownTracker = 0.0f;
             },

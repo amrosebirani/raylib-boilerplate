@@ -1,18 +1,17 @@
 #include "container.h"
-#include "add_tower.hpp"
+#include "cinematographer.hpp"
 #include "collider_user_data.h"
 #include "constants.h"
-#include "defense_tower.hpp"
 #include "game_object.h"
 #include "box2d/b2_draw.h"
 #include "debug_draw.hpp"
+#include "globals.h"
+#include "horde_manager.hpp"
 #include "raylib.h"
-#include "tower_spawn.hpp"
 #include "utils.h"
 #include "add_warriors.hpp"
 #include "raymath.h"
-#include "enemy_wave_config.hpp"
-#include "enemy_wave.hpp"
+#include <memory>
 
 Container::Container() {
     b2Vec2 gravity(0.0f, 0.0f);
@@ -25,8 +24,8 @@ Container::Container() {
     RaylibDebugDraw *debugDraw = new RaylibDebugDraw();
     debugDraw->SetFlags(b2Draw::e_shapeBit | b2Draw::e_jointBit);
     world->SetDebugDraw(debugDraw);
-    health = getMaxCastleHealthByLevel(level);
-    initTimers();
+    summon_manager = std::make_shared<SummonManager>();
+    // initTimers();
 }
 
 float Container::getFormMvSpd() {
@@ -42,25 +41,61 @@ void Container::removeFormFixture(b2Fixture *fixture) {
 }
 
 void Container::init() {
-    castle = std::make_shared<Castle>(VIRTUAL_WIDTH / 2.0f,
-                                      VIRTUAL_HEIGHT / 2.0f, health, level);
-    castle->init();
-    gameObjects.push_back(castle);
-    attackUnits.push_back(castle);
+    float region_dimension = CASTLE_WIDTH + CASTLE_WIDTH * 2;
+    region = std::make_shared<Region>(VIRTUAL_WIDTH / 2.0f,
+                                      VIRTUAL_HEIGHT / 2.0f, region_dimension,
+                                      region_dimension, 9999, 0, 0, 0);
+    region->init();
+    gameObjects.push_back(region->castle);
+    attackUnits.push_back(region->castle);
     initFormation();
-    std::shared_ptr<EnemyWaveConfig> waveConfig =
-        getEnemyWaveConfig(wave_count);
-    wave = std::make_shared<EnemyWave>(waveConfig->time, waveConfig->count,
-                                       castle);
-    towerSpawn = std::make_shared<TowerSpawn>();
+    // std::shared_ptr<EnemyWaveConfig> waveConfig =
+    // getEnemyWaveConfig(wave_count);
+    // wave = std::make_shared<EnemyWave>(waveConfig->time, waveConfig->count,
+    // region->castle);
+    // towerSpawn = std::make_shared<TowerSpawn>();
+    std::shared_ptr<TreePatch> tp1 = std::make_shared<TreePatch>(
+        VIRTUAL_WIDTH / 2.0f,
+        VIRTUAL_HEIGHT / 2.0f - region->castle->getDimensions().y / 2 - 200,
+        500, 300);
+    tp1->initialize(120);
+    tree_patches.push_back(tp1);
+    std::shared_ptr<TreePatch> tp2 = std::make_shared<TreePatch>(
+        VIRTUAL_WIDTH / 2.0f + region->castle->getDimensions().x / 2 + 240,
+        VIRTUAL_HEIGHT / 2.0f, 300, 500);
+    tp2->initialize(100);
+    tree_patches.push_back(tp2);
+    cinematographer = std::make_shared<Cinematographer>();
+    setMiniMapDetails();
+    // timer.after(
+    //     5,
+    //     [](float dt) {
+    //         HordeConfig *hc = new HordeConfig(5, 8, EnemyType::ZOMBIE1,
+    //                                           EnemyType::ZOMBIE_GIANT, 1);
+    //         EnemyHorde *eh = new EnemyHorde(hc);
+    //         delete eh;
+    //     },
+    //     "");
+    // timer.every(
+    //     45,
+    //     [](float dt) {
+    //         HordeConfig *hc = new HordeConfig(5, 8, EnemyType::ZOMBIE1,
+    //                                           EnemyType::ZOMBIE_GIANT, 1);
+    //         EnemyHorde *eh = new EnemyHorde(hc);
+    //         delete eh;
+    //     },
+    // 0, []() {}, "");
+    // rp1 = region->getRegionPoints();
+    // rp2 = region->getRegionPoints();
+    hmm = std::make_shared<HordeManager>();
 }
 
 void Container::initFormation() {
     form = std::make_shared<Formation>(
-        1, VIRTUAL_WIDTH / 2.0f + castle->getDimensions().x / 2 + 40,
+        1, VIRTUAL_WIDTH / 2.0f + region->castle->getDimensions().x / 2 + 40,
         VIRTUAL_HEIGHT / 2.0f, 10, 2);
     form->initOrbits();
-    attackUnits.push_back(form->getKeyWarrior());
+    // attackUnits.push_back(form->getKeyWarrior());
 }
 
 void Container::appendToFormation(int count) {
@@ -69,11 +104,11 @@ void Container::appendToFormation(int count) {
 
 std::shared_ptr<GameObject> Container::getClosestAttackUnit(Vector2 pos) {
     std::shared_ptr<GameObject> closest = nullptr;
-    float minDistance = 1000000.0f;
+    float minDistance = 100000000.0f;
     float min = 1000;
     for (auto &go : attackUnits) {
-        float distance = Vector2Distance(pos, {go->x, go->y});
-        if (distance < min) {
+        float distance = Vector2DistanceSqr(pos, {go->x, go->y});
+        if (distance < minDistance) {
             closest = go;
         }
     }
@@ -85,10 +120,11 @@ void Container::initAppend(int count) {
     appendCount = count;
 }
 
-void Container::initTower(float x, float y, int archers, TowerSpawnRing *ring) {
-    towerRequests.push(new DefenseTowerRequests(x, y, archers, ring));
-    // addGameObject(std::make_shared<DefenseTower>(x, y, archers));
-}
+// void Container::initTower(float x, float y, int archers,
+//                           TowerSpawnLocation *location) {
+//     towerRequests.push(new DefenseTowerRequests(x, y, archers, location));
+//     // addGameObject(std::make_shared<DefenseTower>(x, y, archers));
+// }
 
 Container::~Container() {
     delete contactListener;
@@ -102,7 +138,7 @@ void Container::initTimers() {
     timer.every(
         randomFloatInRange(5.0f, 8.0f),
         [this](float dt) {
-            Vector2 dd = this->castle->getDimensions();
+            Vector2 dd = this->region->castle->getDimensions();
             int xr = getRandomValue(0, 1);
             int yr = getRandomValue(0, 1);
             float xd;
@@ -116,7 +152,7 @@ void Container::initTimers() {
             else
                 yd = randomFloatInRange(dd.y / 2.0f, VIRTUAL_HEIGHT / 3.0f);
             std::shared_ptr<AddWarriors> aw = std::make_shared<AddWarriors>(
-                this->castle->x + xd, this->castle->y + yd);
+                this->region->castle->x + xd, this->region->castle->y + yd);
             aw->init();
             this->addGameObject(aw);
         },
@@ -147,12 +183,16 @@ void Container::initTimers() {
 }
 
 void Container::draw() {
+    drawGround();
     if (gameover) {
         const char *t = "Game Over";
         float sz = MeasureText(t, 20);
         DrawText(t, form->x - sz / 2, form->y, 20, WHITE);
         return;
     }
+    if (region == nullptr) return;
+    region->draw();
+    // towerSpawn->draw();
     for (auto &go : scumObjects) {
         go->draw();
     }
@@ -181,13 +221,57 @@ void Container::draw() {
     for (auto &go : gameObjectsRaised) {
         go->draw();
     }
+    // for (std::shared_ptr<TreePatch> tp : tree_patches) {
+    //     tp->draw();
+    // }
     // form->draw();
     if (colliderDebugDraw) world->DebugDraw();
+    // for (auto &pp : rp1) {
+    //     DrawCircle(pp.x, pp.y, 10, BLACK);
+    // }
+    // for (auto &pp : rp2) {
+    //     DrawCircle(pp.x, pp.y, 10, ORANGE);
+    // }
+    getViewCamera()->detach();
+
+    DrawRectangleRounded(miniMap, .5, 50, {BLACK.r, BLACK.g, BLACK.b, 150});
+    DrawRectangleRoundedLinesEx(miniMap, .5, 50, 1,
+                                {WHITE.r, WHITE.g, WHITE.b, 150});
+    for (auto &go : gameObjectsMerged) {
+        if (!go->raised) drawMiniMap(go);
+    }
+
+    getViewCamera()->attach(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+}
+
+void Container::drawMiniMap(std::shared_ptr<GameObject> go) {
+    float xx = (go->x - center.x) * miniMapS + miniMapO.x;
+    float yy = (go->y - center.y) * miniMapS + miniMapO.y;
+    Color col = go->getColor();
+    float size = 4;
+    if (col.a > 155) {
+        size = 16;
+    }
+    if (CheckCollisionPointRec({xx, yy}, miniMap)) {
+        DrawRectangle(xx, yy, size, size, col);
+    }
+}
+
+void Container::setMiniMapDetails() {
+    float sw = GetScreenWidth();
+    float sh = GetScreenHeight();
+    miniMapH = sh / 3;
+    miniMapW = sw / 4;
+    float distToCover = 4.5 * CASTLE_WIDTH;
+    miniMapS = (miniMapH / 2) / distToCover;
+    miniMap = {sw - miniMapW - 20, sh - miniMapH - 20, miniMapW, miniMapH};
+    miniMapO = {miniMap.x + miniMapW / 2, miniMap.y + miniMapH / 2};
+    center = region->getCenterCoordinates();
 }
 
 void Container::update(float dt) {
     if (gameover) {
-        castle = nullptr;
+        region = nullptr;
         if (gameObjects.size() > 0) {
             gameObjects.clear();
         }
@@ -195,11 +279,14 @@ void Container::update(float dt) {
     }
     timer.update(dt);
     world->Step(dt, 8, 3);
-    castle->update(dt);
+    region->update(dt);
+    cinematographer->update(dt);
+    hmm->update(dt);
+    summon_manager->update(dt);
     std::vector<size_t> unitIndicesToRemove;
     for (size_t i = 0; i < attackUnits.size(); i++) {
-        std::shared_ptr<GameObject> go = attackUnits[i];
-        if (!go->isAlive()) {
+        std::shared_ptr<Building> go = attackUnits[i];
+        if (go->level == 0) {
             unitIndicesToRemove.push_back(i);
         }
     }
@@ -240,52 +327,56 @@ void Container::update(float dt) {
         toAppend = false;
         appendCount = 0;
     }
-    if (!towerRequests.empty()) {
-        while (!towerRequests.empty()) {
-            DefenseTowerRequests *req = towerRequests.top();
-            std::shared_ptr<DefenseTower> tower =
-                std::make_shared<DefenseTower>(req->x, req->y, req->archers);
-            tower->init();
-            addGameObject(tower);
-            addAttackUnit(tower);
-            if (req->ring != nullptr) {
-                req->ring->assignTower(tower);
-            }
-            // Vector2 ss = getSpriteHolder()->getSpriteSize(TOWER_SPRITE_ID);
-            // float kr = 2.0f * DEFENSE_TOWER_RADIUS / ss.x;
-            // addGameObject(
-            // std::make_shared<Archer>(req->x, req->y - 260 * kr, tower));
-            towerRequests.pop();
-        }
-    }
+    // if (!towerRequests.empty()) {
+    //     while (!towerRequests.empty()) {
+    //         DefenseTowerRequests *req = towerRequests.top();
+    //         std::shared_ptr<DefenseTower> tower =
+    //             std::make_shared<DefenseTower>(req->x, req->y, req->archers);
+    //         tower->init();
+    //         addGameObject(tower);
+    //         addAttackUnit(tower);
+    //         if (req->location != nullptr) {
+    //             req->location->assignTower(tower);
+    //         }
+    //         // Vector2 ss =
+    //         getSpriteHolder()->getSpriteSize(TOWER_SPRITE_ID);
+    //         // float kr = 2.0f * DEFENSE_TOWER_RADIUS / ss.x;
+    //         // addGameObject(
+    //         // std::make_shared<Archer>(req->x, req->y - 260 * kr, tower));
+    //         towerRequests.pop();
+    //     }
+    // }
     form->update(dt);
-    towerSpawn->update(dt);
-    if (wave != nullptr) {
-        wave->update(dt);
-        if (wave->isFinishedWave()) {
-            std::shared_ptr<EnemyWaveConfig> waveConfig =
-                getEnemyWaveConfig(wave_count);
-            wave_delay = waveConfig->delayAfterWave;
-            wave_count++;
-            wave = nullptr;
-        }
-    }
-    if (wave_delay > 0) {
-        wave_delay_timer += dt;
-        if (wave_delay_timer >= wave_delay) {
-            wave_delay_timer = 0;
-            wave_delay = 0;
-            std::shared_ptr<EnemyWaveConfig> waveConfig =
-                getEnemyWaveConfig(wave_count);
-            wave = std::make_shared<EnemyWave>(waveConfig->time,
-                                               waveConfig->count, castle);
-        }
-    }
+    // towerSpawn->update(dt);
+    // if (wave != nullptr) {
+    //     wave->update(dt);
+    //     if (wave->isFinishedWave()) {
+    //         std::shared_ptr<EnemyWaveConfig> waveConfig =
+    //             getEnemyWaveConfig(wave_count);
+    //         wave_delay = waveConfig->delayAfterWave;
+    //         wave_count++;
+    //         wave = nullptr;
+    //     }
+    // }
+    // if (wave_delay > 0) {
+    //     wave_delay_timer += dt;
+    //     if (wave_delay_timer >= wave_delay) {
+    //         wave_delay_timer = 0;
+    //         wave_delay = 0;
+    //         std::shared_ptr<EnemyWaveConfig> waveConfig =
+    //             getEnemyWaveConfig(wave_count);
+    //         wave = std::make_shared<EnemyWave>(
+    //             waveConfig->time, waveConfig->count, region->castle);
+    //     }
+    // }
+    // for (std::shared_ptr<TreePatch> tp : tree_patches) {
+    //     tp->update();
+    // }
     if (IsKeyPressed(KEY_F1)) {
         colliderDebugDraw = !colliderDebugDraw;
     }
     if (!form->isKeyWarriorAlive()) gameover = true;
-    if (!castle->isAlive()) gameover = true;
+    if (!region->castle->isAlive()) gameover = true;
 }
 
 void Container::addGameObject(std::shared_ptr<GameObject> obj) {
@@ -296,8 +387,127 @@ void Container::addScumObject(std::shared_ptr<GameObject> obj) {
     scumObjects.push_back(obj);
 }
 
-void Container::addAttackUnit(std::shared_ptr<GameObject> obj) {
+void Container::addAttackUnit(std::shared_ptr<Building> obj) {
     attackUnits.push_back(obj);
+}
+
+void Container::drawGround() {
+    Vector2 dim = getSpriteHolder()->getSpriteSize(TERRAIN_OP_SPRITE_ID);
+    float th = VIRTUAL_HEIGHT;
+    float tw = VIRTUAL_HEIGHT * dim.x / dim.y;
+    float sx = VIRTUAL_WIDTH / 2.0f - tw / 2;
+    // middle row
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx, 0, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx + tw, 0, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx - tw, 0, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + 2 * tw, 0, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - 2 * tw, 0, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + 3 * tw, 0, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - 3 * tw, 0, tw, th});
+    // row + 1
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + tw / 2, th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - tw / 2, th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + 3 * tw / 2, th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - 3 * tw / 2, th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + 5 * tw / 2, th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - 5 * tw / 2, th / 2, tw, th});
+    // row - 1
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + tw / 2, -th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - tw / 2, -th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + 3 * tw / 2, -th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - 3 * tw / 2, -th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + 5 * tw / 2, -th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - 5 * tw / 2, -th / 2, tw, th});
+    // row + 2
+
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx, th, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx + tw, th, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx - tw, th, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + 2 * tw, th, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - 2 * tw, th, tw, th});
+
+    // row - 2
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx, -th, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx + tw, -th, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx - tw, -th, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + 2 * tw, -th, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - 2 * tw, -th, tw, th});
+
+    // row + 3
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + tw / 2, 3 * th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - tw / 2, 3 * th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + 3 * tw / 2, 3 * th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - 3 * tw / 2, 3 * th / 2, tw, th});
+
+    // row - 3
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + tw / 2, -3 * th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - tw / 2, -3 * th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + 3 * tw / 2, -3 * th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - 3 * tw / 2, -3 * th / 2, tw, th});
+
+    // row + 4
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx, 2 * th, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + tw, 2 * th, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - tw, 2 * th, tw, th});
+
+    // row - 4
+    //
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx, -2 * th, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + tw, -2 * th, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - tw, -2 * th, tw, th});
+
+    // row + 5
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + tw / 2, 5 * th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - tw / 2, 5 * th / 2, tw, th});
+
+    // row - 5
+
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx + tw / 2, -5 * th / 2, tw, th});
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID,
+                                  {sx - tw / 2, -5 * th / 2, tw, th});
+
+    // row + 6
+    //
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx, 3 * th, tw, th});
+
+    // row - 6
+    //
+    getSpriteHolder()->drawSprite(TERRAIN_OP_SPRITE_ID, {sx, -3 * th, tw, th});
 }
 
 std::shared_ptr<GameObject> Container::getFollowObject() {
