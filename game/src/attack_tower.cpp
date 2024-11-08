@@ -17,8 +17,6 @@ AttackTower::AttackTower(float x, float y, int level)
 
 void AttackTower::init() {
     initiate();
-    timer.every(
-        1, [this](float dt) { this->tributeGenerated += .1; }, 0, []() {}, "");
     alive = false;
     initAuraPoints();
     setUpgradeInfo();

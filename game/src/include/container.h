@@ -1,12 +1,12 @@
 #pragma once
 
+#include "room.hpp"
 #include "box2d/b2_world.h"
 #include "cinematographer.hpp"
 #include "collider_user_data.h"
 #include "formation.h"
 #include "horde_manager.hpp"
 #include "region.hpp"
-#include "summon_manager.hpp"
 #include "timer.h"
 // #include "enemy_wave.hpp"
 // #include "tower_spawn.hpp"
@@ -25,7 +25,7 @@
 //             : x(x), y(y), archers(archers), location(location) {};
 // };
 
-class Container {
+class Container : public Room {
     public:
         Container();
         ~Container();
@@ -38,8 +38,9 @@ class Container {
         // TowerSpawnLocation *location = nullptr);
         void drawGround();
 
-        void draw();
-        void update(float dt);
+        void draw() override;
+        bool isFinished() override;
+        bool update(float dt) override;
         void cleanup();
         void addGameObject(std::shared_ptr<GameObject> obj);
         void addScumObject(std::shared_ptr<GameObject> obj);
@@ -53,7 +54,6 @@ class Container {
         std::shared_ptr<Region> region;
         std::shared_ptr<Cinematographer> cinematographer;
         std::shared_ptr<HordeManager> hmm;
-        std::shared_ptr<SummonManager> summon_manager;
 
     private:
         std::shared_ptr<b2World> world;

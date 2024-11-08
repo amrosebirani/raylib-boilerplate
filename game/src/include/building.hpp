@@ -21,7 +21,7 @@ class Building : public GameObject {
         int maxHealth;
         int health;
         int level = 0;
-        int tributeGenerated = 0;
+        float tributeGenerated = 0;
         BuildingData *buildingData;
         bool alive = true;
         float perc_cover;

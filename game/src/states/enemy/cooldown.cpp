@@ -1,13 +1,14 @@
-#include "states/enemy/run.hpp"
-#include "globals.h"
+#include "states/enemy/cooldown.hpp"
 #include "enemy_types.h"
-#include <string>
+#include "globals.h"
+#include "state_params.hpp"
 #include "utils.h"
 
-RunningEnemy::RunningEnemy() {
+CooldownEnemy::CooldownEnemy() {
 }
 
-RunningEnemy::~RunningEnemy() {
+CooldownEnemy::~CooldownEnemy() {
+
     if (animation != nullptr) {
         delete animation;
         animation = nullptr;
@@ -18,37 +19,34 @@ RunningEnemy::~RunningEnemy() {
     }
 }
 
-void RunningEnemy::draw() {
+void CooldownEnemy::draw() {
     int frame = animation->getCurrentFrame();
     Enemy *enemy = enemyParams->enemy;
-    std::string sprite_id = get_enemy_sprite_ids(enemyParams->type)[2];
-    // draw sprite
+    std::string sprite_id = get_enemy_sprite_ids(enemyParams->type)[3];
     float size = 2 * get_enemy_size(enemyParams->type);
     getSpriteHolder()->drawSprite(
         sprite_id, frame,
         {enemy->x - size, enemy->y - size, 2 * size, 2 * size});
 }
 
-void RunningEnemy::update(float dt) {
+void CooldownEnemy::update(float dt) {
     animation->update(dt);
 }
 
-void RunningEnemy::Enter(StateParams *params) {
+void CooldownEnemy::Enter(StateParams *params) {
+
     enemyParams = (EnemyStateParams *)params;
+    enemyParams->enemy->mvspd = 0;
     enemyParams->enemy->mvspd = 25;
     Direction d = enemyParams->enemy->directionFacing;
     int dd = get_direction_rows()[d];
-    int sf = dd * 8;
-    animation = new Animation(
-        {sf, sf + 1, sf + 2, sf + 3, sf + 4, sf + 5, sf + 6, sf + 7}, true);
+    int sf = dd * 3;
+    if (animation == nullptr)
+        animation = new Animation({sf, sf + 1, sf + 2}, true);
 }
 
-void RunningEnemy::Exit() {
-    enemyParams->enemy->mvspd = 0;
-    if (animation != nullptr) {
-        delete animation;
-        animation = nullptr;
-    }
+void CooldownEnemy::Exit() {
+    enemyParams->enemy->mvspd = 25;
     if (enemyParams != nullptr) {
         delete enemyParams;
         enemyParams = nullptr;

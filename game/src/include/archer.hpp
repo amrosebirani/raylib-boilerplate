@@ -1,9 +1,11 @@
 #pragma once
+#include "collider_user_data.h"
 #include "state_machine.hpp"
 #include "game_object.h"
 #include "state_params.hpp"
 #include <memory>
 #include "direction.hpp"
+#include "box2d/b2_body.h"
 
 class Archer : public GameObject {
     public:
@@ -32,9 +34,17 @@ class Archer : public GameObject {
         float getAttackRange();
         unsigned char alpha;
         bool isOperational = false;
+        void addEnemy(std::shared_ptr<GameObject> enemy);
+        std::vector<std::shared_ptr<GameObject>> enemies;
+        bool hasTower = false;
+        std::shared_ptr<b2Body> collider;
+        ColliderUserData *collider_data;
 
     private:
         StateMachine *stateMachine;
         bool alive = true;
         float attackRange = 80.0f;
+        float hp = 0;
+        std::shared_ptr<b2Body> enemySensor;
+        ColliderUserData *sdata;
 };

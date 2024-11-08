@@ -40,33 +40,53 @@ void IdleArcher::update(float dt) {
             canAttack = true;
         }
     }
-    std::shared_ptr<AttackTower> tower =
-        std::dynamic_pointer_cast<AttackTower>(archerParams->archer->tower);
-    if (tower->enemies.size() > 0 && canAttack) {
-        while (tower->enemies.size() > 0) {
-            // pick out enemy randomly from the list
-            auto enemy = tower->enemies[getRandomIntInRange(
-                0, tower->enemies.size() - 1)];
-            // changing logic
-            // if the enemy is in the range of tower, it's in the range of the
-            // archer check if the enemy is in range Vector2 ss =
-            // getSpriteHolder()->getSpriteSize(TOWER_SPRITE_ID); float kr
-            // = 2.0f * DEFENSE_TOWER_RADIUS / ss.x; float distance =
-            // Vector2Distance( {archerParams->archer->x,
-            // archerParams->archer->y + 260 * kr}, {enemy->x, enemy->y});
-            // if (distance >= archerParams->archer->getAttackRange()) {
-            // tower->enemies.pop();
-            // continue;
-            // }
-            // change state here and break out of the loop
-            std::cout << "Archer attacks!" << std::endl;
-            archerParams->enemy_x = enemy->x;
-            archerParams->enemy_y = enemy->y;
-            archerParams->enemy = enemy;
-            archerParams->archer->changeState("PlayAnimation", archerParams);
-            // canAttack = false;
-            // attackCooldownTracker = 0.0f;
-            break;
+    if (archerParams->archer->hasTower) {
+        std::shared_ptr<AttackTower> tower =
+            std::dynamic_pointer_cast<AttackTower>(archerParams->archer->tower);
+        if (tower->enemies.size() > 0 && canAttack) {
+            while (tower->enemies.size() > 0) {
+                // pick out enemy randomly from the list
+                auto enemy = tower->enemies[getRandomIntInRange(
+                    0, tower->enemies.size() - 1)];
+                // changing logic
+                // if the enemy is in the range of tower, it's in the range of
+                // the archer check if the enemy is in range Vector2 ss =
+                // getSpriteHolder()->getSpriteSize(TOWER_SPRITE_ID); float kr
+                // = 2.0f * DEFENSE_TOWER_RADIUS / ss.x; float distance =
+                // Vector2Distance( {archerParams->archer->x,
+                // archerParams->archer->y + 260 * kr}, {enemy->x, enemy->y});
+                // if (distance >= archerParams->archer->getAttackRange()) {
+                // tower->enemies.pop();
+                // continue;
+                // }
+                // change state here and break out of the loop
+                std::cout << "Archer attacks!" << std::endl;
+                archerParams->enemy_x = enemy->x;
+                archerParams->enemy_y = enemy->y;
+                archerParams->enemy = enemy;
+                archerParams->archer->changeState("PlayAnimation",
+                                                  archerParams);
+                // canAttack = false;
+                // attackCooldownTracker = 0.0f;
+                break;
+            }
+        }
+    } else {
+        Archer *aa = archerParams->archer;
+        if (aa->enemies.size() > 0 && canAttack) {
+            while (aa->enemies.size() > 0) {
+
+                auto enemy =
+                    aa->enemies[getRandomIntInRange(0, aa->enemies.size() - 1)];
+                archerParams->enemy_x = enemy->x;
+                archerParams->enemy_y = enemy->y;
+                archerParams->enemy = enemy;
+                archerParams->archer->changeState("PlayAnimation",
+                                                  archerParams);
+                // canAttack = false;
+                // attackCooldownTracker = 0.0f;
+                break;
+            }
         }
     }
 }

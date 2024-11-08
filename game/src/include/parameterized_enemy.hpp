@@ -1,5 +1,6 @@
 #pragma once
 
+#include "archer.hpp"
 #include "defense_tower.hpp"
 #include "enemy.hpp"
 #include "raylib.h"
@@ -24,6 +25,7 @@ class ParameterizedEnemy : public Enemy {
         void tryAttack(std::shared_ptr<GameObject> target) override;
         void buildingAttack(std::shared_ptr<Building> building) override;
         void towerAttack(std::shared_ptr<DefenseTower> tower) override;
+        void archerAttack(std::shared_ptr<Archer> archer) override;
         void setDirectionOfMovement();
         void setMarching(Vector2 breakOffPoint);
         void setTargetObj(std::shared_ptr<GameObject> target);
@@ -46,7 +48,6 @@ class ParameterizedEnemy : public Enemy {
 
     private:
         bool alive = true;
-        float mvspd = 25.0f;
         float hp = 60.0f;
         EnemyType type;
         Vector2 dirToMove;

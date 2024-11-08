@@ -6,8 +6,8 @@
 std::unordered_map<HordeType, HordeConfig *> base_horde_configs;
 std::unordered_map<int, std::vector<HordeType>> horde_types_for_level;
 std::vector<EnemyType> allZombieTypes = {
-    EnemyType::ZOMBIE1, EnemyType::ZOMBIE2, EnemyType::ZOMBIE3,
-    EnemyType::ZOMBIE4, EnemyType::ZOMBIE5, EnemyType::ZOMBIE6,
+    EnemyType::ZOMBIE2, EnemyType::ZOMBIE3, EnemyType::ZOMBIE4,
+    EnemyType::ZOMBIE5, EnemyType::ZOMBIE6,
 };
 
 void initHordeConfigs() {
@@ -20,8 +20,7 @@ void initHordeConfigs() {
     base_horde_configs[HordeType::SKELETON] = new HordeConfig(
         0, 0, EnemyType::SKELETON, EnemyType::SKELETON_PRINCE, 4);
     base_horde_configs[HordeType::SHIELD_BEARER] =
-        new HordeConfig(0, 0, EnemyType::ENEMY_TYPE_SHIELD_BEARER,
-                        EnemyType::ENEMY_TYPE_SHIELD_BEARER, 0);
+        new HordeConfig(0, 0, EnemyType::ZOMBIE1, EnemyType::ZOMBIE1, 0);
     base_horde_configs[HordeType::GHOULD_AND_NECROMANCER] =
         new HordeConfig(0, 0, EnemyType::GHOUL, EnemyType::NECROMANCER, 2);
 

@@ -4,6 +4,8 @@
 #include "raylib.h"
 #include "globals.h"
 
+using std::string;
+
 WorldState::WorldState() {
     gem_chance_list = new TempChanceList<GemType>(
         {{GemType::Coin, 7}, {GemType::Diamond, 3}});
@@ -17,6 +19,7 @@ WorldState::WorldState() {
     }
     gem_progress_bar =
         new ProgressBar(0, 40, GetScreenWidth(), 40, 1, 0, {54, 137, 179, 255});
+    summon_manager = std::make_shared<SummonManager>();
 }
 
 void WorldState::draw() {
@@ -34,6 +37,7 @@ void WorldState::draw() {
     int ttm = MeasureText(tt, 20);
     DrawText(tt, GetScreenWidth() - 40.0f - ttm - 5, 10, 20, WHITE);
     gem_progress_bar->draw();
+    summon_manager->draw();
 }
 
 WorldState::~WorldState() {
@@ -76,4 +80,13 @@ GemType WorldState::getNextGemType() {
 
 float WorldState::getCurrentGemPercent() {
     return (float)gems / gems_for_next_upgrade[gem_round];
+}
+
+bool WorldState::update(float dt) {
+    summon_manager->update(dt);
+    return true;
+}
+
+bool WorldState::isFinished() {
+    return false;
 }

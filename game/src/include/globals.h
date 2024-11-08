@@ -4,9 +4,11 @@
 #include "container.h"
 #include "sprite_holder.hpp"
 #include "world_state.hpp"
+#include "state_stack.hpp"
 #include <memory>
 
 std::shared_ptr<Container> getContainer();
+std::shared_ptr<StateStack> getStateStack();
 std::shared_ptr<SpriteHolder> getSpriteHolder();
 std::shared_ptr<ParticleSystem> getBloodSplatter();
 std::shared_ptr<ParticleSystem> getEnemyBloodSplatter();

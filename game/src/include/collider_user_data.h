@@ -6,6 +6,7 @@
 struct ColliderUserData {
         enum Type {
             Warrior,
+            Archer,
             WarriorSensor,
             Enemy,
             Collectable,
@@ -18,6 +19,7 @@ struct ColliderUserData {
             BuildingSensor,
             AttackTowerSensor,
             LightningTowerSensor,
+            ArcherSensor,
         };
         Type type;
         std::string sub_type;

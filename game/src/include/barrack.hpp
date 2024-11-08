@@ -27,6 +27,6 @@ class Barrack : public Building {
         std::vector<WarriorType> summonTypes;
         std::queue<std::shared_ptr<SummonCard>> producedSummonCards;
         float summonCardY = 0;
-        float summonExchT = 0.3f;
+        float summonExchT = 1.1f;
         float summonExchTimer = 0;
 };

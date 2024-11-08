@@ -1,3 +1,4 @@
+#include "archer.hpp"
 #include "attack_tower.hpp"
 #include "box2d/b2_contact.h"
 #include "box2d/b2_fixture.h"
@@ -8,7 +9,7 @@
 #include "enemy.hpp"
 #include "defense_tower.hpp"
 #include "arrow.hpp"
-#include <iostream>
+// #include <iostream>
 
 void MyContactListener::BeginContact(b2Contact *contact) {
     b2Fixture *fixtureA = contact->GetFixtureA();
@@ -65,6 +66,27 @@ void MyContactListener::BeginContact(b2Contact *contact) {
             return;
         }
 
+        bool eaCondition1 = typeA == ColliderUserData::Type::Archer &&
+                            typeB == ColliderUserData::Type::Enemy;
+        bool eaCondition2 = typeA == ColliderUserData::Type::Enemy &&
+                            typeB == ColliderUserData::Type::Archer;
+
+        if (eaCondition1 || eaCondition2) {
+            std::shared_ptr<Archer> archer;
+            std::shared_ptr<Enemy> enemy;
+            if (eaCondition1) {
+                archer = std::dynamic_pointer_cast<Archer>(dataA->obj);
+                enemy = std::dynamic_pointer_cast<Enemy>(dataB->obj);
+            } else {
+                archer = std::dynamic_pointer_cast<Archer>(dataB->obj);
+                enemy = std::dynamic_pointer_cast<Enemy>(dataA->obj);
+            }
+            // warrior->addContactAttack(enemy);
+            // enemy->tryAttack(warrior);
+            enemy->addContactAttack(archer);
+            return;
+        }
+
         bool buildingAttackCondition1 =
             typeA == ColliderUserData::Type::Enemy &&
             typeB == ColliderUserData::Type::Building;
@@ -80,7 +102,7 @@ void MyContactListener::BeginContact(b2Contact *contact) {
                 enemy = std::dynamic_pointer_cast<Enemy>(dataB->obj);
                 building = std::dynamic_pointer_cast<Building>(dataA->obj);
             }
-            std::cout << "enemy building collision" << std::endl;
+            // std::cout << "enemy building collision" << std::endl;
             // enemy->buildingAttack(building);
             enemy->addContactAttack(building);
             return;
@@ -128,6 +150,25 @@ void MyContactListener::BeginContact(b2Contact *contact) {
                 enemy = std::dynamic_pointer_cast<Enemy>(dataA->obj);
             }
             atower->addEnemy(enemy);
+            return;
+        }
+
+        bool acSensorCondition1 =
+            typeA == ColliderUserData::Type::ArcherSensor &&
+            typeB == ColliderUserData::Type::Enemy;
+        bool acSensorCondition2 = typeA == ColliderUserData::Type::Enemy &&
+                                  typeB == ColliderUserData::Type::ArcherSensor;
+        if (acSensorCondition2 || acSensorCondition1) {
+            std::shared_ptr<Archer> archer;
+            std::shared_ptr<Enemy> enemy;
+            if (acSensorCondition1) {
+                archer = std::dynamic_pointer_cast<Archer>(dataA->obj);
+                enemy = std::dynamic_pointer_cast<Enemy>(dataB->obj);
+            } else {
+                archer = std::dynamic_pointer_cast<Archer>(dataB->obj);
+                enemy = std::dynamic_pointer_cast<Enemy>(dataA->obj);
+            }
+            archer->addEnemy(enemy);
             return;
         }
 
@@ -203,7 +244,7 @@ void MyContactListener::BeginContact(b2Contact *contact) {
                 building = std::dynamic_pointer_cast<Building>(dataB->obj);
             }
             building->startContact();
-            std::cout << "Building in contact" << std::endl;
+            // std::cout << "Building in contact" << std::endl;
         }
     }
 }
@@ -238,7 +279,7 @@ void MyContactListener::EndContact(b2Contact *contact) {
                 building = std::dynamic_pointer_cast<Building>(dataB->obj);
             }
             building->endContact();
-            std::cout << "Building not in contact" << std::endl;
+            // std::cout << "Building not in contact" << std::endl;
             return;
         }
 
@@ -257,7 +298,7 @@ void MyContactListener::EndContact(b2Contact *contact) {
                 enemy = std::dynamic_pointer_cast<Enemy>(dataB->obj);
                 building = std::dynamic_pointer_cast<Building>(dataA->obj);
             }
-            std::cout << "enemy building collision" << std::endl;
+            // std::cout << "enemy building collision" << std::endl;
             // enemy->buildingAttack(building);
             enemy->removeContactAttack(building);
             return;
@@ -281,6 +322,27 @@ void MyContactListener::EndContact(b2Contact *contact) {
             warrior->removeContactAttack(enemy);
             // enemy->tryAttack(warrior);
             enemy->removeContactAttack(warrior);
+            return;
+        }
+
+        bool eaCondition1 = typeA == ColliderUserData::Type::Archer &&
+                            typeB == ColliderUserData::Type::Enemy;
+        bool eaCondition2 = typeA == ColliderUserData::Type::Enemy &&
+                            typeB == ColliderUserData::Type::Archer;
+
+        if (eaCondition1 || eaCondition2) {
+            std::shared_ptr<Archer> archer;
+            std::shared_ptr<Enemy> enemy;
+            if (eaCondition1) {
+                archer = std::dynamic_pointer_cast<Archer>(dataA->obj);
+                enemy = std::dynamic_pointer_cast<Enemy>(dataB->obj);
+            } else {
+                archer = std::dynamic_pointer_cast<Archer>(dataB->obj);
+                enemy = std::dynamic_pointer_cast<Enemy>(dataA->obj);
+            }
+            // archer->removeContactAttack(enemy);
+            // enemy->tryAttack(warrior);
+            enemy->removeContactAttack(archer);
             return;
         }
 

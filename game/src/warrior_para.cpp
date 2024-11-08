@@ -4,6 +4,7 @@
 #include "utils.h"
 #include "globals.h"
 #include "warrior_state_params.hpp"
+#include <iostream>
 
 void WarriorPara::draw() {
     stateMachine->draw();
@@ -97,5 +98,6 @@ WarriorPara::~WarriorPara() {
 
 void WarriorPara::takeAttack(float damage) {
     hp -= damage * in_damage_mult;
+    std::cout << "warrior health: " << hp << std::endl;
     throwBlood();
 }

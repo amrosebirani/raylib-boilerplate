@@ -1,6 +1,8 @@
 #pragma once
 
 #include "building.hpp"
+#include "summon_card.hpp"
+#include <queue>
 
 class Archery : public Building {
     public:
@@ -14,6 +16,16 @@ class Archery : public Building {
         void cleanupData() override;
         bool isAlive() override;
         void die() override;
+        bool hasSummonCards();
+        std::shared_ptr<SummonCard> getCard();
 
     private:
+        float summonTime;
+        float summonTimeCounter;
+        Vector2 summonDim;
+        std::vector<WarriorType> summonTypes;
+        std::queue<std::shared_ptr<SummonCard>> producedSummonCards;
+        float summonCardY = 0;
+        float summonExchT = 1.1f;
+        float summonExchTimer = 0;
 };

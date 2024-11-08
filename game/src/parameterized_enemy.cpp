@@ -1,4 +1,5 @@
 #include "parameterized_enemy.hpp"
+#include "archer.hpp"
 #include "building.hpp"
 #include "enemy_types.h"
 #include "constants.h"
@@ -8,6 +9,7 @@
 #include "utils.h"
 #include "raymath.h"
 #include "enemy_state_params.hpp"
+#include <memory>
 
 void ParameterizedEnemy::setMarching(Vector2 breakoffPoint) {
     isMarching = true;
@@ -183,10 +185,16 @@ void ParameterizedEnemy::update(float dt) {
         if (bb) {
             buildingAttack(bb);
         } else {
-            std::shared_ptr<Warrior> ww =
-                std::dynamic_pointer_cast<Warrior>(cont);
-            if (ww) {
-                tryAttack(ww);
+            std::shared_ptr<Archer> aa =
+                std::dynamic_pointer_cast<Archer>(cont);
+            if (aa) {
+                archerAttack(aa);
+            } else {
+                std::shared_ptr<Warrior> ww =
+                    std::dynamic_pointer_cast<Warrior>(cont);
+                if (ww) {
+                    tryAttack(ww);
+                }
             }
         }
     }
@@ -203,10 +211,11 @@ bool ParameterizedEnemy::isAlive() {
 void ParameterizedEnemy::tryAttack(std::shared_ptr<GameObject> target) {
     if (canAttack == 1) {
         isAttacking = true;
+        canAttack = -1;
         std::shared_ptr<Warrior> warrior =
             std::dynamic_pointer_cast<Warrior>(target);
         timer.after(
-            0.3f,
+            0.2f,
             [this, warrior](float dt) {
                 warrior->takeAttack(this->damage);
                 this->canAttack = 0;
@@ -231,6 +240,21 @@ void ParameterizedEnemy::buildingAttack(std::shared_ptr<Building> building) {
     }
 }
 
+void ParameterizedEnemy::archerAttack(std::shared_ptr<Archer> archer) {
+    if (canAttack == 1) {
+        isAttacking = true;
+        canAttack = -1;
+        timer.after(
+            0.2f,
+            [this, archer](float dt) {
+                archer->takeAttack(this->damage);
+                this->canAttack = 0;
+                this->attackCooldownTracker = 0.0f;
+            },
+            "");
+    }
+}
+
 void ParameterizedEnemy::towerAttack(std::shared_ptr<DefenseTower> tower) {
     if (canAttack) {
         isAttacking = true;
@@ -239,7 +263,7 @@ void ParameterizedEnemy::towerAttack(std::shared_ptr<DefenseTower> tower) {
             0.2f,
             [this, tower](float dt) {
                 tower->hit(this->damage);
-                this->canAttack = false;
+                this->canAttack = 0;
                 this->attackCooldownTracker = 0.0f;
             },
             "");

@@ -13,8 +13,6 @@ HouseBlock::HouseBlock(float x, float y, int level)
 
 void HouseBlock::init() {
     initiate();
-    timer.every(
-        1, [this](float dt) { this->tributeGenerated += .1; }, 0, []() {}, "");
     alive = false;
     initAuraPoints();
     setUpgradeInfo();

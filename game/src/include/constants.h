@@ -54,6 +54,12 @@ const std::string ARCHER_IDLE_BOW_SPRITE_ID = "archer_idle_bow";
 const std::string ARCHER_IDLE_SPRITE_ID = "archer_idle";
 const std::string ARROW_SPRITE_ID = "arrow";
 const std::string CASTLE_SPRITE_ID = "castle";
+
+const std::string INFANTRY_ICON = "infantry_icon";
+const std::string ARCHERY_ICON = "archery_icon";
+const std::string WIZARDRY_ICON = "wizardry_icon";
+
+const std::string UI_ICONS = "ui_icons";
 // for footman
 const std::string FOOTMAN_ATTACKS_SPRITE_ID = "footman_attack";
 const std::string FOOTMAN_BUST_SPRITE_ID = "footman_bust";
@@ -90,6 +96,7 @@ const std::string ENEMY1_PAPERDOLL_SPRITE_ID = "enemy1_paperdoll";
 const std::string ENEMY1_RUN_SPRITE_ID = "enemy1_run";
 const std::string ENEMY1_DEAD_SPRITE_ID = "enemy1_dead";
 const std::string ENEMY1_KO_SPRITE_ID = "enemy1_ko";
+const std::string ENEMY1_IDLE_SPRITE_ID = "enemy1_idle";
 
 // for ghoul
 const std::string GHOUL_ATTACKS_SPRITE_ID = "ghoul_attack";

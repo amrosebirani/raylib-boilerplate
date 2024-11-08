@@ -1,6 +1,7 @@
 #include "enemy.hpp"
 #include "states/enemy/run.hpp"
 #include "states/enemy/attack.hpp"
+#include "states/enemy/cooldown.hpp"
 #include "enemy_state_params.hpp"
 #include "dead_body.h"
 #include "globals.h"
@@ -10,6 +11,7 @@ void Enemy::initStates(EnemyType type) {
     stateMachine = new StateMachine({
         {"Running", new RunningEnemy()},
         {"Attacking", new AttackingEnemy()},
+        {"Cooldown", new CooldownEnemy()},
     });
 }
 
@@ -23,10 +25,17 @@ void Enemy::stateUpdate(EnemyType type) {
         }
 
     } else {
-        if (stateMachine->getCurrentStateName() != "Running" ||
-            previousDirectionFacing != directionFacing) {
-            stateMachine->changeState("Running",
-                                      new EnemyStateParams(this, type));
+        if (contactAttackUnits.size() > 0) {
+            if (stateMachine->getCurrentStateName() != "Cooldown") {
+                stateMachine->changeState("Cooldown",
+                                          new EnemyStateParams(this, type));
+            }
+        } else {
+            if (stateMachine->getCurrentStateName() != "Running" ||
+                previousDirectionFacing != directionFacing) {
+                stateMachine->changeState("Running",
+                                          new EnemyStateParams(this, type));
+            }
         }
     }
     previousDirectionFacing = directionFacing;

@@ -53,7 +53,7 @@ void initWarriorSizes() {
     warrior_in_damage_mult[WarriorType::WARRIOR_TYPE_SWORDSMAN] = 1.0;
     warrior_in_damage_mult[WarriorType::WARRIOR_TYPE_SPEARMAN] = 1.0;
     warrior_in_damage_mult[WarriorType::WARRIOR_TYPE_ARCHER] = 1.0;
-    warrior_in_damage_mult[WarriorType::WARRIOR_TYPE_SHIELD_BEARER] = .5;
+    warrior_in_damage_mult[WarriorType::WARRIOR_TYPE_SHIELD_BEARER] = .9;
     warrior_in_damage_mult[WarriorType::WARRIOR_TYPE_BERSERKER] = 1.1;
     warrior_in_damage_mult[WarriorType::WARRIOR_TYPE_JAVELINER] = 1.1;
     warrior_in_damage_mult[WarriorType::WARRIOR_TYPE_GIANT] = 1.0;

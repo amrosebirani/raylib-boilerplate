@@ -1,8 +1,10 @@
 #include "barrack.hpp"
+#include "constants.h"
 #include "globals.h"
 #include "property_type.hpp"
 #include "raylib.h"
 #include "utils.h"
+#include "summon_gain.hpp"
 
 Barrack::Barrack(float x, float y, int level)
     : Building(x, y, PropertyType::BARRACKS, level) {
@@ -25,8 +27,6 @@ std::shared_ptr<SummonCard> Barrack::getCard() {
 
 void Barrack::init() {
     initiate();
-    timer.every(
-        1, [this](float dt) { this->tributeGenerated += .1; }, 0, []() {}, "");
     alive = false;
     initAuraPoints();
     setUpgradeInfo();
@@ -53,13 +53,29 @@ void Barrack::draw() {
 
     if (producedSummonCards.size() > 0) {
 
-        DrawRectangleRounded(
-            {upgradePoint.x - ucr / 2, summonCardY + 2.5f, ucr, 2 * ucr}, .5,
-            50, PURPLE);
-        const char *tt = TextFormat("%d", producedSummonCards.size());
-        float ttm = MeasureText(tt, 10);
-        DrawText(tt, upgradePoint.x - ttm / 2, summonCardY + 2.5f + ucr - 5, 10,
-                 WHITE);
+        int to_draw = 3;
+        if (producedSummonCards.size() < 3) {
+            to_draw = producedSummonCards.size();
+        }
+
+        for (int i = 0; i < to_draw; i++) {
+            DrawRectangleRounded({upgradePoint.x - ucr / 2 + i * 3,
+                                  summonCardY + 2.5f, ucr, 2 * ucr},
+                                 .5, 50, PURPLE);
+            DrawRectangleRoundedLinesEx({upgradePoint.x - ucr / 2 + i * 3,
+                                         summonCardY + 2.5f, ucr, 2 * ucr},
+                                        .5, 50, 2, BLACK);
+            // draw infantry icon here
+            getSpriteHolder()->drawSprite(INFANTRY_ICON,
+                                          {upgradePoint.x - ucr / 2 + i * 3,
+                                           summonCardY + 2.5f, ucr, 2 * ucr},
+                                          {0, 0}, 0);
+        }
+        // const char *tt = TextFormat("%d", producedSummonCards.size());
+
+        // float ttm = MeasureText(tt, 10);
+        // DrawText(tt, upgradePoint.x - ttm / 2, summonCardY + 2.5f + ucr - 5,
+        // 10, WHITE);
     }
 }
 
@@ -74,7 +90,14 @@ void Barrack::update(float dt) {
         if (inContact) {
             summonExchTimer += dt;
             if (summonExchTimer > summonExchT) {
-                getContainer()->summon_manager->addSummonCard(getCard());
+                int cc = producedSummonCards.size();
+                if (cc > 3) cc = 3;
+                cc -= 1;
+                std::shared_ptr<SummonGain> sg = std::make_shared<SummonGain>(
+                    Vector2{upgradePoint.x - ucr / 2 + cc * 3,
+                            summonCardY + 2.5f},
+                    Vector2{ucr, 2 * ucr}, getCard());
+                getStateStack()->push(sg);
                 summonExchTimer = 0;
             }
         }

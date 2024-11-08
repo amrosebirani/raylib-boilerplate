@@ -79,7 +79,8 @@ void Warrior::stateUpdate(WarriorType type, float dt) {
             }
 
         } else {
-            if (inRangeEnemyUnits.size() > 0) {
+            if (inRangeEnemyUnits.size() > 0 &&
+                contactAttackUnits.size() == 0) {
                 if (stateMachine->getCurrentStateName() != "Seeking") {
                     stateMachine->changeState(
                         "Seeking", new WarriorStateParams(this, type));
@@ -96,22 +97,20 @@ void Warrior::stateUpdate(WarriorType type, float dt) {
 }
 
 void Warrior::tryAttack(std::shared_ptr<GameObject> target) {
-    if (canAttack == 1) {
-        isAttacking = true;
-        canAttack = -1;
-        std::shared_ptr<Enemy> enemy = std::dynamic_pointer_cast<Enemy>(target);
-        timer.after(
-            0.3f,
-            [this, enemy](float dt) {
-                if (!enemy->isAlive()) {
-                    return;
-                }
-                enemy->takeAttack(this->damage);
-                this->canAttack = 0;
-                this->attackCooldownTracker = 0;
-            },
-            "");
-    }
+    isAttacking = true;
+    canAttack = -1;
+    std::shared_ptr<Enemy> enemy = std::dynamic_pointer_cast<Enemy>(target);
+    timer.after(
+        0.3f,
+        [this, enemy](float dt) {
+            this->canAttack = 0;
+            this->attackCooldownTracker = 0;
+            if (!enemy->isAlive()) {
+                return;
+            }
+            enemy->takeAttack(this->damage);
+        },
+        "");
 }
 
 void Warrior::afterDie(WarriorType type) {

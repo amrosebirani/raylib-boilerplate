@@ -9,6 +9,7 @@ class ProgressBar {
         void setCurrent(float current);
         void reset(float max, float current);
         void setY(float y);
+        void setX(float x);
 
     private:
         float x;

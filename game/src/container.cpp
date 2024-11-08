@@ -24,12 +24,15 @@ Container::Container() {
     RaylibDebugDraw *debugDraw = new RaylibDebugDraw();
     debugDraw->SetFlags(b2Draw::e_shapeBit | b2Draw::e_jointBit);
     world->SetDebugDraw(debugDraw);
-    summon_manager = std::make_shared<SummonManager>();
     // initTimers();
 }
 
 float Container::getFormMvSpd() {
     return form->getMvSpd();
+}
+
+bool Container::isFinished() {
+    return false;
 }
 
 b2Fixture *Container::addFormFixture(b2FixtureDef *fixtureDef) {
@@ -104,8 +107,7 @@ void Container::appendToFormation(int count) {
 
 std::shared_ptr<GameObject> Container::getClosestAttackUnit(Vector2 pos) {
     std::shared_ptr<GameObject> closest = nullptr;
-    float minDistance = 100000000.0f;
-    float min = 1000;
+    float minDistance = 100000.0f;
     for (auto &go : attackUnits) {
         float distance = Vector2DistanceSqr(pos, {go->x, go->y});
         if (distance < minDistance) {
@@ -183,6 +185,7 @@ void Container::initTimers() {
 }
 
 void Container::draw() {
+    getViewCamera()->attach(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
     drawGround();
     if (gameover) {
         const char *t = "Game Over";
@@ -241,7 +244,7 @@ void Container::draw() {
         if (!go->raised) drawMiniMap(go);
     }
 
-    getViewCamera()->attach(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+    // getViewCamera()->attach(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
 }
 
 void Container::drawMiniMap(std::shared_ptr<GameObject> go) {
@@ -269,20 +272,19 @@ void Container::setMiniMapDetails() {
     center = region->getCenterCoordinates();
 }
 
-void Container::update(float dt) {
+bool Container::update(float dt) {
     if (gameover) {
         region = nullptr;
         if (gameObjects.size() > 0) {
             gameObjects.clear();
         }
-        return;
+        return false;
     }
     timer.update(dt);
     world->Step(dt, 8, 3);
     region->update(dt);
     cinematographer->update(dt);
-    hmm->update(dt);
-    summon_manager->update(dt);
+    // hmm->update(dt);
     std::vector<size_t> unitIndicesToRemove;
     for (size_t i = 0; i < attackUnits.size(); i++) {
         std::shared_ptr<Building> go = attackUnits[i];
@@ -327,56 +329,13 @@ void Container::update(float dt) {
         toAppend = false;
         appendCount = 0;
     }
-    // if (!towerRequests.empty()) {
-    //     while (!towerRequests.empty()) {
-    //         DefenseTowerRequests *req = towerRequests.top();
-    //         std::shared_ptr<DefenseTower> tower =
-    //             std::make_shared<DefenseTower>(req->x, req->y, req->archers);
-    //         tower->init();
-    //         addGameObject(tower);
-    //         addAttackUnit(tower);
-    //         if (req->location != nullptr) {
-    //             req->location->assignTower(tower);
-    //         }
-    //         // Vector2 ss =
-    //         getSpriteHolder()->getSpriteSize(TOWER_SPRITE_ID);
-    //         // float kr = 2.0f * DEFENSE_TOWER_RADIUS / ss.x;
-    //         // addGameObject(
-    //         // std::make_shared<Archer>(req->x, req->y - 260 * kr, tower));
-    //         towerRequests.pop();
-    //     }
-    // }
     form->update(dt);
-    // towerSpawn->update(dt);
-    // if (wave != nullptr) {
-    //     wave->update(dt);
-    //     if (wave->isFinishedWave()) {
-    //         std::shared_ptr<EnemyWaveConfig> waveConfig =
-    //             getEnemyWaveConfig(wave_count);
-    //         wave_delay = waveConfig->delayAfterWave;
-    //         wave_count++;
-    //         wave = nullptr;
-    //     }
-    // }
-    // if (wave_delay > 0) {
-    //     wave_delay_timer += dt;
-    //     if (wave_delay_timer >= wave_delay) {
-    //         wave_delay_timer = 0;
-    //         wave_delay = 0;
-    //         std::shared_ptr<EnemyWaveConfig> waveConfig =
-    //             getEnemyWaveConfig(wave_count);
-    //         wave = std::make_shared<EnemyWave>(
-    //             waveConfig->time, waveConfig->count, region->castle);
-    //     }
-    // }
-    // for (std::shared_ptr<TreePatch> tp : tree_patches) {
-    //     tp->update();
-    // }
     if (IsKeyPressed(KEY_F1)) {
         colliderDebugDraw = !colliderDebugDraw;
     }
     if (!form->isKeyWarriorAlive()) gameover = true;
     if (!region->castle->isAlive()) gameover = true;
+    return false;
 }
 
 void Container::addGameObject(std::shared_ptr<GameObject> obj) {

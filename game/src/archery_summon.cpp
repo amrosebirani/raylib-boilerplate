@@ -1,12 +1,13 @@
-#include "infantry_summon.hpp"
+#include "archery_summon.hpp"
+#include "archer.hpp"
 #include "globals.h"
-#include "utils.h"
-#include "warrior_types.h"
 #include "raymath.h"
-#include "warrior_factory.h"
+#include "utils.h"
+#include <memory>
 
-InfantrySummon::InfantrySummon(Vector2 position,
-                               std::shared_ptr<SummonCard> card) {
+ArcherySummon::ArcherySummon(Vector2 position,
+                             std::shared_ptr<SummonCard> card) {
+
     Vector2 cc = getContainer()->region->getCenterCoordinates();
     Vector2 dirDepth = Vector2Subtract(position, cc);
     dirDepth = Vector2Normalize(dirDepth);
@@ -25,10 +26,10 @@ InfantrySummon::InfantrySummon(Vector2 position,
         float spawn_y = ssy;
         for (int j = 0; j < card->d; j++) {
             // spawning enemy unit here and adding to game objects
-            std::shared_ptr<Warrior> pe =
-                WarriorFactory::createWarrior(wtype, spawn_x, spawn_y, 0);
-            pe->init();
-            getContainer()->addGameObject(pe);
+            std::shared_ptr<Archer> aa =
+                std::make_shared<Archer>(spawn_x, spawn_y, nullptr, true);
+            aa->init();
+            getContainer()->addGameObject(aa);
             spawn_x += dirDepth.x * uss;
             spawn_y += dirDepth.y * uss;
         }
@@ -36,7 +37,4 @@ InfantrySummon::InfantrySummon(Vector2 position,
         ssx += dp2.x * uss;
         ssy += dp2.y * uss;
     }
-}
-
-InfantrySummon::~InfantrySummon() {
 }

@@ -111,8 +111,14 @@ void Building::initiate() {
     timer.every(
         3,
         [this](float dt) {
-            int tt = floor(tributeGenerated);
-            tributeGenerated -= tt;
+            if (this->type == PropertyType::CASTLE) {
+                return;
+            }
+            // std::cout << "Tribute generated: " << this->tributeGenerated
+            // << std::endl;
+            int tt = floor(this->tributeGenerated);
+            this->tributeGenerated -= tt;
+            // std::cout << "Tribute generated: " << tt << std::endl;
             getWorldState()->addCoins(tt);
         },
         0, []() {}, "");
@@ -244,6 +250,7 @@ void Building::doUpgrade() {
     setUpgradeInfo();
     setColliders();
     healthBar->setY(upgradePoint.y - ucr - 35);
+    healthBar->setX(upgradePoint.x - 15);
     onUpgrade(level);
 }
 

@@ -26,3 +26,7 @@ void ProgressBar::reset(float max, float current) {
 void ProgressBar::setY(float y) {
     this->y = y;
 }
+
+void ProgressBar::setX(float x) {
+    this->x = x;
+}

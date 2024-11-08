@@ -98,68 +98,69 @@ std::vector<std::string> get_enemy_sprite_ids(EnemyType type) {
     switch (type) {
     case EnemyType::ENEMY_TYPE_SHIELD_BEARER:
         sprite_ids = {ENEMY1_ATTACKS_SPRITE_ID, ENEMY1_DEAD_SPRITE_ID,
-                      ENEMY1_RUN_SPRITE_ID};
+                      ENEMY1_RUN_SPRITE_ID, ENEMY1_IDLE_SPRITE_ID};
         break;
     case EnemyType::GHOUL:
         sprite_ids = {GHOUL_ATTACKS_SPRITE_ID, GHOUL_DEAD_SPRITE_ID,
-                      GHOUL_RUN_SPRITE_ID};
+                      GHOUL_RUN_SPRITE_ID, GHOUL_IDLE_SPRITE_ID};
         break;
     case EnemyType::NECROMANCER:
         sprite_ids = {NECROMANCER_ATTACKS_SPRITE_ID, NECROMANCER_DEAD_SPRITE_ID,
-                      NECROMANCER_RUN_SPRITE_ID};
+                      NECROMANCER_RUN_SPRITE_ID, NECROMANCER_IDLE_SPRITE_ID};
         break;
     case EnemyType::RAT:
         sprite_ids = {RAT_ATTACKS_SPRITE_ID, RAT_DEAD_SPRITE_ID,
-                      RAT_RUN_SPRITE_ID};
+                      RAT_RUN_SPRITE_ID, RAT_IDLE_SPRITE_ID};
         break;
     case EnemyType::SPIDER:
         sprite_ids = {SPIDER_ATTACKS_SPRITE_ID, SPIDER_DEAD_SPRITE_ID,
-                      SPIDER_RUN_SPRITE_ID};
+                      SPIDER_RUN_SPRITE_ID, SPIDER_IDLE_SPRITE_ID};
         break;
     case EnemyType::SKELETON:
         sprite_ids = {SKELETON_ATTACKS_SPRITE_ID, SKELETON_DEAD_SPRITE_ID,
-                      SKELETON_RUN_SPRITE_ID};
+                      SKELETON_RUN_SPRITE_ID, SKELETON_IDLE_SPRITE_ID};
         break;
     case EnemyType::SKELETON_PRINCE:
-        sprite_ids = {SKELETON_PRINCE_ATTACKS_SPRITE_ID,
-                      SKELETON_PRINCE_DEAD_SPRITE_ID,
-                      SKELETON_PRINCE_RUN_SPRITE_ID};
+        sprite_ids = {
+            SKELETON_PRINCE_ATTACKS_SPRITE_ID, SKELETON_PRINCE_DEAD_SPRITE_ID,
+            SKELETON_PRINCE_RUN_SPRITE_ID, SKELETON_PRINCE_IDLE_SPRITE_ID};
         break;
     case EnemyType::BUCK:
         sprite_ids = {BUCK_ATTACKS_SPRITE_ID, BUCK_DEAD_SPRITE_ID,
-                      BUCK_RUN_SPRITE_ID};
+                      BUCK_RUN_SPRITE_ID, BUCK_IDLE_SPRITE_ID};
         break;
     case EnemyType::WOLF:
         sprite_ids = {WOLF_ATTACKS_SPRITE_ID, WOLF_DEAD_SPRITE_ID,
-                      WOLF_RUN_SPRITE_ID};
+                      WOLF_RUN_SPRITE_ID, WOLF_IDLE_SPRITE_ID};
         break;
     case EnemyType::ZOMBIE1:
         sprite_ids = {ZOMBIE1_ATTACKS_SPRITE_ID, ZOMBIE1_DEAD_SPRITE_ID,
-                      ZOMBIE1_RUN_SPRITE_ID};
+                      ZOMBIE1_RUN_SPRITE_ID, ZOMBIE1_IDLE_SPRITE_ID};
         break;
     case EnemyType::ZOMBIE2:
         sprite_ids = {ZOMBIE2_ATTACKS_SPRITE_ID, ZOMBIE2_DEAD_SPRITE_ID,
-                      ZOMBIE2_RUN_SPRITE_ID};
+                      ZOMBIE2_RUN_SPRITE_ID, ZOMBIE2_IDLE_SPRITE_ID};
         break;
     case EnemyType::ZOMBIE3:
         sprite_ids = {ZOMBIE3_ATTACKS_SPRITE_ID, ZOMBIE3_DEAD_SPRITE_ID,
-                      ZOMBIE3_RUN_SPRITE_ID};
+                      ZOMBIE3_RUN_SPRITE_ID, ZOMBIE3_IDLE_SPRITE_ID};
         break;
     case EnemyType::ZOMBIE4:
         sprite_ids = {ZOMBIE4_ATTACKS_SPRITE_ID, ZOMBIE4_DEAD_SPRITE_ID,
-                      ZOMBIE4_RUN_SPRITE_ID};
+                      ZOMBIE4_RUN_SPRITE_ID, ZOMBIE4_IDLE_SPRITE_ID};
         break;
     case EnemyType::ZOMBIE5:
         sprite_ids = {ZOMBIE5_ATTACKS_SPRITE_ID, ZOMBIE5_DEAD_SPRITE_ID,
-                      ZOMBIE5_RUN_SPRITE_ID};
+                      ZOMBIE5_RUN_SPRITE_ID, ZOMBIE5_IDLE_SPRITE_ID};
         break;
     case EnemyType::ZOMBIE6:
         sprite_ids = {ZOMBIE6_ATTACKS_SPRITE_ID, ZOMBIE6_DEAD_SPRITE_ID,
-                      ZOMBIE6_RUN_SPRITE_ID};
+                      ZOMBIE6_RUN_SPRITE_ID, ZOMBIE6_IDLE_SPRITE_ID};
         break;
     case EnemyType::ZOMBIE_GIANT:
         sprite_ids = {ZOMBIE_GIANT_ATTACKS_SPRITE_ID,
-                      ZOMBIE_GIANT_DEAD_SPRITE_ID, ZOMBIE_GIANT_RUN_SPRITE_ID};
+                      ZOMBIE_GIANT_DEAD_SPRITE_ID, ZOMBIE_GIANT_RUN_SPRITE_ID,
+                      ZOMBIE_GIANT_IDLE_SPRITE_ID};
         break;
     }
     return sprite_ids;

@@ -7,6 +7,7 @@
 #include "camera.h"
 #include "constants.h"
 #include "sprite_holder.hpp"
+#include "state_stack.hpp"
 #include "warrior_types.h"
 #include "enemy_types.h"
 #include "container.h"
@@ -67,11 +68,16 @@ void handler(int sig) {
 
 std::shared_ptr<CameraEnhanced> viewCam;
 std::shared_ptr<WorldState> worldState;
+std::shared_ptr<StateStack> mStateStack;
 std::shared_ptr<Container> container;
 std::shared_ptr<SpriteHolder> spriteHolder;
 
 std::shared_ptr<Container> getContainer() {
     return container;
+}
+
+std::shared_ptr<StateStack> getStateStack() {
+    return mStateStack;
 }
 
 std::shared_ptr<CameraEnhanced> getViewCamera() {
@@ -376,6 +382,14 @@ void initSprites() {
                          0),
         new SpriteConfig(COINS_AND_GEMS,
                          getAssetPath("textures/combined_gems.png"), 16, 16),
+        new SpriteConfig(INFANTRY_ICON,
+                         getAssetPath("textures/icons/infantry.png"), 0, 0),
+        new SpriteConfig(ARCHERY_ICON,
+                         getAssetPath("textures/icons/archers.png"), 0, 0),
+        new SpriteConfig(WIZARDRY_ICON,
+                         getAssetPath("textures/icons/magic.png"), 0, 0),
+        new SpriteConfig(UI_ICONS, getAssetPath("textures/ui-icons.png"), 48,
+                         48),
     });
     initTreeSprites();
     initWarriorSprites();
@@ -430,8 +444,11 @@ int main() {
 
     container = std::make_shared<Container>();
     container->init();
+    mStateStack = std::make_shared<StateStack>();
+    mStateStack->push(container);
     // overtime we will check for world state in saved game implementation
     worldState = std::make_shared<WorldState>();
+    mStateStack->push(worldState);
     Texture2D texturePP = LoadTexture(getAssetPath("textures/soft_sphere.png"));
     bloodSplatter = getParticleSystem(&texturePP, bloodColors);
     enemyBloodSplatter = getParticleSystem(&texturePP, enemyBloodColors);
@@ -454,20 +471,21 @@ int main() {
             dt = 1 / 60.0f;
         }
         viewCam->update(dt);
-        container->update(dt);
+        mStateStack->update(dt);
         bloodSplatter->update(dt);
         enemyBloodSplatter->update(dt);
         BeginDrawing();
 
         ClearBackground(GRAY);
+        mStateStack->draw();
+        // container->draw();
         viewCam->attach(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
-        container->draw();
         bloodSplatter->draw();
         enemyBloodSplatter->draw();
         // DrawCircleV(viewCam->getMousePosition(), 5, RED);
         viewCam->detach();
         // DrawFPS(10, 10);
-        worldState->draw();
+        // worldState->draw();
 
         EndDrawing();
     }

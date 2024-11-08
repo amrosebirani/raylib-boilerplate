@@ -1,5 +1,6 @@
 #pragma once
 
+#include "archer.hpp"
 #include "building.hpp"
 #include "defense_tower.hpp"
 #include "game_object.h"
@@ -20,6 +21,7 @@ class Enemy : public GameObject {
         ColliderUserData *collider_data;
         virtual void takeAttack(float damage) = 0;
         virtual void buildingAttack(std::shared_ptr<Building> building) = 0;
+        virtual void archerAttack(std::shared_ptr<Archer> archer) = 0;
         virtual void towerAttack(std::shared_ptr<DefenseTower> tower) = 0;
         void initStates(EnemyType type);
         void stateUpdate(EnemyType type);
