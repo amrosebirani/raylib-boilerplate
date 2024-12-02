@@ -21,7 +21,7 @@ class Arrow : public GameObject {
 
     private:
         std::shared_ptr<b2Body> collider;
-        float mvspd = 120.0f;
+        float mvspd = ARROW_BASE_MVSPD;
         float damage = 75.0f;
         Vector2 direction;
         float radius = DEFENSE_TOWER_RADIUS * 0.6f;

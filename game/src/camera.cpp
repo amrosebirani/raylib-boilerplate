@@ -62,6 +62,12 @@ void CameraEnhanced::move(float dx, float dy) {
     y += dy;
 }
 
+void CameraEnhanced::editPosition(Vector2 delta) {
+    target = nullptr;
+    x -= delta.x;
+    y -= delta.y;
+}
+
 void CameraEnhanced::moveTo(float x, float y) {
     this->x = x;
     this->y = y;

@@ -11,6 +11,10 @@ IdleWarrior::~IdleWarrior() {
         delete animation;
         animation = nullptr;
     }
+    if (warriorParams != nullptr) {
+        delete warriorParams;
+        warriorParams = nullptr;
+    }
 }
 
 void IdleWarrior::draw() {
@@ -40,5 +44,9 @@ void IdleWarrior::Exit() {
     if (animation != nullptr) {
         delete animation;
         animation = nullptr;
+    }
+    if (warriorParams != nullptr) {
+        delete warriorParams;
+        warriorParams = nullptr;
     }
 }

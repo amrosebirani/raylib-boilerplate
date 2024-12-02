@@ -20,7 +20,7 @@ class GameObject : public std::enable_shared_from_this<GameObject> {
         float y;
 
         GameObject(float x, float y) : x(x), y(y) {
-            timer = Timer();
+            timer = std::make_shared<Timer>();
             creation_time = time(NULL);
         };
 
@@ -34,6 +34,6 @@ class GameObject : public std::enable_shared_from_this<GameObject> {
         bool raised = false;
 
     protected:
-        Timer timer;
+        std::shared_ptr<Timer> timer;
         std::shared_ptr<std::unordered_map<std::string, float>> params;
 };

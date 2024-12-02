@@ -50,7 +50,7 @@ bool LightningTower::isAlive() {
 }
 
 void LightningTower::update(float dt) {
-    timer.update(dt);
+    timer->update(dt);
     awakenColliders(dt);
     enemySensor->SetAwake(true);
     std::vector<size_t> enemyIndicesToRemove;
@@ -88,6 +88,7 @@ void LightningTower::cleanupData() {
 void LightningTower::die() {
     alive = false;
     tributeGenerated = 0;
+    enemies.clear();
 }
 
 LightningTower::~LightningTower() {
@@ -96,6 +97,7 @@ LightningTower::~LightningTower() {
 }
 
 void LightningTower::addEnemy(std::shared_ptr<GameObject> enemy) {
+    if (!enemy->isAlive()) return;
     enemies.push_back(enemy);
 }
 

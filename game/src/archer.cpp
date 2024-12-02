@@ -17,11 +17,17 @@ Archer::Archer(float rx, float ry, std::shared_ptr<GameObject> tower,
     if (tower != nullptr) {
         hasTower = true;
         raised = true;
+    } else {
+        raised = false;
     }
     hp = get_warrior_hp(WarriorType::WARRIOR_TYPE_ARCHER);
     stateMachine = new StateMachine(
         {{"Idle", new IdleArcher()}, {"PlayAnimation", new PlayAnimation()}});
-    stateMachine->changeState("Idle", new ArcherStateParams(this));
+    archer_params = new ArcherStateParams(this);
+    stateMachine->changeState("Idle", archer_params);
+}
+
+void Archer::init() {
     if (!hasTower) {
         sdata = new ColliderUserData();
         sdata->obj = get_shared_ptr();
@@ -32,18 +38,14 @@ Archer::Archer(float rx, float ry, std::shared_ptr<GameObject> tower,
             getContainer()->getWorld());
         collider_data = new ColliderUserData();
         collider_data->obj = get_shared_ptr();
-        collider = getWarriorCollider(WarriorType::WARRIOR_TYPE_ARCHER, x, y,
-                                      collider_data, false);
-        collider_data->type = ColliderUserData::Archer;
+        collider = getArcherCollider(WarriorType::WARRIOR_TYPE_ARCHER, x, y,
+                                     collider_data, false);
     }
-}
-
-void Archer::init() {
 }
 
 Archer::~Archer() {
     delete stateMachine;
-    if (hasTower) {
+    if (!hasTower) {
         delete sdata;
         enemySensor = nullptr;
         delete collider_data;
@@ -52,16 +54,28 @@ Archer::~Archer() {
 }
 
 void Archer::draw() {
+    if (!alive) {
+        return;
+    }
     stateMachine->draw();
 }
 
 void Archer::addEnemy(std::shared_ptr<GameObject> enemy) {
+    if (!enemy->isAlive()) {
+        return;
+    }
+    if (!alive) {
+        return;
+    }
     enemies.push_back(enemy);
 }
 
 void Archer::update(float dt) {
     if (!alive) {
-        collider_data->obj = nullptr;
+        if (!hasTower) {
+            collider_data->obj = nullptr;
+            sdata->obj = nullptr;
+        }
         return;
     }
     if (hasTower) {
@@ -73,6 +87,7 @@ void Archer::update(float dt) {
     }
     if (!hasTower) {
         enemySensor->SetAwake(true);
+        collider->SetAwake(true);
         std::vector<size_t> enemyIndicesToRemove;
 
         for (size_t i = 0; i < enemies.size(); i++) {
@@ -87,6 +102,9 @@ void Archer::update(float dt) {
         }
         x = collider->GetPosition().x * PIXEL_TO_METER_SCALE;
         y = collider->GetPosition().y * PIXEL_TO_METER_SCALE;
+        enemySensor->SetTransform(
+            b2Vec2(x / PIXEL_TO_METER_SCALE, y / PIXEL_TO_METER_SCALE), 0);
+        collider->SetLinearVelocity({0, 0});
     }
     if (hp <= 0) {
         die();
@@ -101,10 +119,14 @@ bool Archer::isAlive() {
 
 void Archer::die() {
     alive = false;
+    enemies.clear();
+    timer->clearAll();
+    ArcherStateParams *ap = static_cast<ArcherStateParams *>(archer_params);
+    if (ap != nullptr) delete ap;
 }
 
 void Archer::cleanupData() {
-    if (hasTower) {
+    if (!hasTower) {
         sdata->obj = nullptr;
         collider_data->obj = nullptr;
     }

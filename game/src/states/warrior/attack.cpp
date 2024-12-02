@@ -10,6 +10,10 @@ AttackingWarrior::~AttackingWarrior() {
         delete animation;
         animation = nullptr;
     }
+    if (warriorParams != nullptr) {
+        delete warriorParams;
+        warriorParams = nullptr;
+    }
 }
 
 void AttackingWarrior::draw() {
@@ -55,5 +59,9 @@ void AttackingWarrior::Exit() {
     if (animation != nullptr) {
         delete animation;
         animation = nullptr;
+    }
+    if (warriorParams != nullptr) {
+        delete warriorParams;
+        warriorParams = nullptr;
     }
 }

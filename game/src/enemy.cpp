@@ -46,9 +46,18 @@ void Enemy::afterDie(EnemyType type) {
         x, y, false, type, WarriorType::WARRIOR_TYPE_SPEARMAN);
     getContainer()->addScumObject(db);
     getContainer()->hmm->decreaseCount();
+    contactAttackUnits.clear();
+    timer->clearAll();
+    mvspd = 0;
 }
 
 void Enemy::addContactAttack(std::shared_ptr<GameObject> cont) {
+    if (!cont->isAlive()) {
+        return;
+    }
+    if (!isAlive()) {
+        return;
+    }
     contactAttackUnits.push_back(cont);
 }
 

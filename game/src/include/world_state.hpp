@@ -21,6 +21,7 @@ class WorldState : public Room {
         GemType getNextGemType();
         float getCurrentGemPercent();
         std::shared_ptr<SummonManager> summon_manager;
+        void finalize();
 
     private:
         int coins = 100;
@@ -29,4 +30,5 @@ class WorldState : public Room {
         int gem_round = 0;
         std::vector<int> gems_for_next_upgrade;
         ProgressBar *gem_progress_bar;
+        bool finished = false;
 };

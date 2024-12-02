@@ -4,7 +4,7 @@
 #include "utils.h"
 
 void LightningLine::update(float dt) {
-    timer.update(dt);
+    timer->update(dt);
 }
 
 void LightningLine::draw() {
@@ -54,8 +54,8 @@ LightningLine::LightningLine(float x1, float y1, float x2, float y2, Color c1,
     generateLightning();
     params = std::make_shared<std::unordered_map<std::string, float>>();
     (*params)["alpha"] = 205;
-    timer.tween(1.05, params, {{"alpha", 0}}, "in-out-cubic",
-                [this]() { this->die(); }, "", {});
+    timer->tween(1.05, params, {{"alpha", 0}}, "in-out-cubic",
+                 [this]() { this->die(); }, "", {});
 }
 
 void LightningLine::init() {

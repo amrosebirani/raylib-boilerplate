@@ -16,5 +16,5 @@ class PlayAnimation : public State {
 
     private:
         Animation *animation = nullptr;
-        ArcherStateParams *archerParams;
+        ArcherStateParams *archerParams = nullptr;
 };

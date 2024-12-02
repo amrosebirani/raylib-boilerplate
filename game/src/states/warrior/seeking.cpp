@@ -1,4 +1,5 @@
 #include "states/warrior/seeking.hpp"
+#include "constants.h"
 #include "direction.hpp"
 #include "globals.h"
 #include "raymath.h"
@@ -56,7 +57,7 @@ void SeekingWarrior::update(float dt) {
 
 void SeekingWarrior::Enter(StateParams *params) {
     warriorParams = (WarriorStateParams *)params;
-    warriorParams->warrior->mvspd = 70;
+    warriorParams->warrior->mvspd = WARRIOR_BASE_MVSPD;
     Direction d = warriorParams->warrior->directionFacing;
     int dd = get_direction_rows(warriorParams->type)[d];
     int sf = dd * 8;

@@ -19,7 +19,7 @@ void Spearman::update(float dt) {
         collider_data->obj = nullptr;
         return;
     }
-    timer.update(dt);
+    timer->update(dt);
     stateMachine->update(dt);
     collider->SetTransform(
         b2Vec2(x / PIXEL_TO_METER_SCALE, y / PIXEL_TO_METER_SCALE), 0);

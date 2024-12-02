@@ -3,8 +3,12 @@
 #include "gem_type.hpp"
 #include "raylib.h"
 #include "globals.h"
+#include "raymath.h"
 
 using std::string;
+float lastDistance = 0.0f;
+bool isDragging = false;
+Vector2 previousDragPosition;
 
 WorldState::WorldState() {
     gem_chance_list = new TempChanceList<GemType>(
@@ -18,26 +22,35 @@ WorldState::WorldState() {
         gems_for_next_upgrade.push_back(gems_for_next_upgrade[i + 2]);
     }
     gem_progress_bar =
-        new ProgressBar(0, 40, GetScreenWidth(), 40, 1, 0, {54, 137, 179, 255});
+        new ProgressBar(0, 60, GetScreenWidth(), 60, 1, 0, {54, 137, 179, 255});
     summon_manager = std::make_shared<SummonManager>();
 }
 
 void WorldState::draw() {
-    DrawRectangle(0, 0, GetScreenWidth(), 80, {0, 0, 0, 125});
+    DrawRectangle(0, 0, GetScreenWidth(), 120, {0, 0, 0, 125});
     const char *tg = TextFormat("%d", gems_for_next_upgrade[gem_round] - gems);
-    int tgm = MeasureText(tg, 20);
-    DrawText(tg, 95 - tgm, 10, 20, WHITE);
-    getSpriteHolder()->drawSprite(COINS_AND_GEMS, 5, {100, 10, 20, 20});
+    int tgm = MeasureText(tg, 30);
+    DrawText(tg, 45 - tgm, 15, 30, WHITE);
+    getSpriteHolder()->drawSprite(COINS_AND_GEMS, 5, {50, 15, 30, 30});
 
-    DrawText("to next upgrade", 125, 10, 20, WHITE);
+    DrawText("to next upgrade", 85, 15, 30, WHITE);
 
     getSpriteHolder()->drawSprite(COINS_AND_GEMS, 1,
-                                  {GetScreenWidth() - 40.0f, 10, 20, 20});
+                                  {GetScreenWidth() - 60.0f, 15, 30, 30});
     const char *tt = TextFormat("%d", coins);
-    int ttm = MeasureText(tt, 20);
-    DrawText(tt, GetScreenWidth() - 40.0f - ttm - 5, 10, 20, WHITE);
+    int ttm = MeasureText(tt, 30);
+    DrawText(tt, GetScreenWidth() - 60.0f - ttm - 5, 15, 30, WHITE);
     gem_progress_bar->draw();
     summon_manager->draw();
+    if (isPlatformAndroid()) {
+        getJoystick()->draw();
+    }
+    DrawRectangle(0, GetScreenHeight() - 60, GetScreenWidth(), 60,
+                  {0, 0, 0, 125});
+    std::string waveText = getContainer()->hmm->getWaveText();
+    float waveTextWidth = MeasureText(waveText.c_str(), 30);
+    DrawText(waveText.c_str(), GetScreenWidth() * 1.0f / 2 - waveTextWidth / 2,
+             GetScreenHeight() - 45, 30, WHITE);
 }
 
 WorldState::~WorldState() {
@@ -82,11 +95,80 @@ float WorldState::getCurrentGemPercent() {
     return (float)gems / gems_for_next_upgrade[gem_round];
 }
 
+float GetGesturePinchDistance() {
+    if (GetTouchPointCount() >= 2) {
+        Vector2 touch1 = GetTouchPosition(0);
+        Vector2 touch2 = GetTouchPosition(1);
+
+        // Calculate the distance between the two touch points
+        float dx = touch2.x - touch1.x;
+        float dy = touch2.y - touch1.y;
+        return sqrtf(dx * dx + dy * dy);
+    }
+
+    return 0.0f; // Return 0 if fewer than two touches are detected
+}
+
+void setPinchZoom() {
+    if (IsGestureDetected(GESTURE_PINCH_IN) ||
+        IsGestureDetected(GESTURE_PINCH_OUT)) {
+        // Pinch zoom detected
+        float currentDistance = GetGesturePinchDistance();
+
+        if (lastDistance != 0.0f) {
+            // Change zoom level based on the difference in distance
+            float zoom = (currentDistance - lastDistance) *
+                         0.001f; // Adjust scale factor as needed
+            getViewCamera()->editScale(zoom);
+        }
+        lastDistance = currentDistance;
+    } else {
+        lastDistance = 0.0f; // Reset distance when pinch is not detected
+    }
+}
+
+bool checkDragPosition(Vector2 dragPosition) {
+    // should not be within joystick area
+    Rectangle joyRect = getJoystickRect();
+    if (CheckCollisionPointRec(dragPosition, joyRect)) {
+        return false;
+    }
+    return true;
+}
+
+void dragAndMoveAround() {
+    if (IsGestureDetected(GESTURE_DRAG)) {
+        Vector2 dragPosition = GetTouchPosition(0);
+        if (!checkDragPosition(dragPosition)) {
+            return;
+        }
+        if (!isDragging) {
+            isDragging = true;
+            previousDragPosition = dragPosition;
+        } else {
+            Vector2 delta = Vector2Subtract(dragPosition, previousDragPosition);
+            getViewCamera()->editPosition(delta);
+            previousDragPosition = dragPosition;
+        }
+    } else {
+        isDragging = false;
+    }
+}
+
 bool WorldState::update(float dt) {
     summon_manager->update(dt);
+    if (isPlatformAndroid()) {
+        getJoystick()->update(dt);
+        setPinchZoom();
+        dragAndMoveAround();
+    }
     return true;
 }
 
 bool WorldState::isFinished() {
-    return false;
+    return finished;
+}
+
+void WorldState::finalize() {
+    finished = true;
 }

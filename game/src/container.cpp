@@ -2,6 +2,7 @@
 #include "cinematographer.hpp"
 #include "collider_user_data.h"
 #include "constants.h"
+#include "game.h"
 #include "game_object.h"
 #include "box2d/b2_draw.h"
 #include "debug_draw.hpp"
@@ -16,9 +17,9 @@
 Container::Container() {
     b2Vec2 gravity(0.0f, 0.0f);
     world = std::make_shared<b2World>(gravity);
-    b2BodyDef groundBodyDef;
-    groundBodyDef.position.Set(0.0f, 0.0f);
-    groundBody = world->CreateBody(&groundBodyDef);
+    // b2BodyDef groundBodyDef;
+    // groundBodyDef.position.Set(0.0f, 0.0f);
+    // groundBody = world->CreateBody(&groundBodyDef);
     contactListener = new MyContactListener();
     world->SetContactListener(contactListener);
     RaylibDebugDraw *debugDraw = new RaylibDebugDraw();
@@ -27,12 +28,16 @@ Container::Container() {
     // initTimers();
 }
 
+float Container::getCastleHealth() {
+    return region->castle->health * 1.0f / region->castle->maxHealth;
+}
+
 float Container::getFormMvSpd() {
     return form->getMvSpd();
 }
 
 bool Container::isFinished() {
-    return false;
+    return gameover || victory;
 }
 
 b2Fixture *Container::addFormFixture(b2FixtureDef *fixtureDef) {
@@ -91,6 +96,7 @@ void Container::init() {
     // rp1 = region->getRegionPoints();
     // rp2 = region->getRegionPoints();
     hmm = std::make_shared<HordeManager>();
+    getViewCamera()->follow(getFollowObject());
 }
 
 void Container::initFormation() {
@@ -129,6 +135,7 @@ void Container::initAppend(int count) {
 // }
 
 Container::~Container() {
+    world = nullptr;
     delete contactListener;
 }
 
@@ -185,14 +192,17 @@ void Container::initTimers() {
 }
 
 void Container::draw() {
-    getViewCamera()->attach(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
-    drawGround();
-    if (gameover) {
-        const char *t = "Game Over";
-        float sz = MeasureText(t, 20);
-        DrawText(t, form->x - sz / 2, form->y, 20, WHITE);
+    if (gameover || victory) {
         return;
     }
+    getViewCamera()->attach(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+    drawGround();
+    // if (gameover) {
+    //     const char *t = "Game Over";
+    //     float sz = MeasureText(t, 20);
+    //     DrawText(t, form->x - sz / 2, form->y, 20, WHITE);
+    //     return;
+    // }
     if (region == nullptr) return;
     region->draw();
     // towerSpawn->draw();
@@ -244,16 +254,20 @@ void Container::draw() {
         if (!go->raised) drawMiniMap(go);
     }
 
-    // getViewCamera()->attach(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+    getViewCamera()->attach(VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+
+    getBloodSplatter()->draw();
+    getEnemyBloodSplatter()->draw();
+    getViewCamera()->detach();
 }
 
 void Container::drawMiniMap(std::shared_ptr<GameObject> go) {
     float xx = (go->x - center.x) * miniMapS + miniMapO.x;
     float yy = (go->y - center.y) * miniMapS + miniMapO.y;
     Color col = go->getColor();
-    float size = 4;
+    float size = 10;
     if (col.a > 155) {
-        size = 16;
+        size = 24;
     }
     if (CheckCollisionPointRec({xx, yy}, miniMap)) {
         DrawRectangle(xx, yy, size, size, col);
@@ -263,28 +277,41 @@ void Container::drawMiniMap(std::shared_ptr<GameObject> go) {
 void Container::setMiniMapDetails() {
     float sw = GetScreenWidth();
     float sh = GetScreenHeight();
-    miniMapH = sh / 3;
-    miniMapW = sw / 4;
     float distToCover = 4.5 * CASTLE_WIDTH;
-    miniMapS = (miniMapH / 2) / distToCover;
-    miniMap = {sw - miniMapW - 20, sh - miniMapH - 20, miniMapW, miniMapH};
-    miniMapO = {miniMap.x + miniMapW / 2, miniMap.y + miniMapH / 2};
+    if (sw > sh) {
+        miniMapH = sh / 3;
+        miniMapW = sw / 4;
+        miniMapS = (miniMapH / 2) / distToCover;
+        miniMap = {5.0f / 6 * sw - miniMapW / 2, 140, miniMapW, miniMapH};
+        miniMapO = {miniMap.x + miniMapW / 2, miniMap.y + miniMapH / 2};
+    } else {
+        miniMapH = sh / 5;
+        miniMapW = sw / 2;
+        miniMapS = (miniMapH / 2) / distToCover;
+        miniMap = {1.0f / 2 * sw - miniMapW / 2, 140, miniMapW, miniMapH};
+        miniMapO = {miniMap.x + miniMapW / 2, miniMap.y + miniMapH / 2};
+    }
     center = region->getCenterCoordinates();
 }
 
 bool Container::update(float dt) {
-    if (gameover) {
-        region = nullptr;
+    if (gameover || victory) {
+        // region = nullptr;
         if (gameObjects.size() > 0) {
             gameObjects.clear();
         }
-        return false;
+        return true;
     }
     timer.update(dt);
-    world->Step(dt, 8, 3);
+    physicsAccumulator += dt;
+    while (physicsAccumulator >= physicsTimeStep) {
+        world->Step(physicsTimeStep, 8, 3);
+        physicsAccumulator -= physicsTimeStep;
+    }
+    // world->Step(dt, 8, 3);
     region->update(dt);
     cinematographer->update(dt);
-    // hmm->update(dt);
+    hmm->update(dt);
     std::vector<size_t> unitIndicesToRemove;
     for (size_t i = 0; i < attackUnits.size(); i++) {
         std::shared_ptr<Building> go = attackUnits[i];
@@ -330,12 +357,66 @@ bool Container::update(float dt) {
         appendCount = 0;
     }
     form->update(dt);
+    getBloodSplatter()->update(dt);
+    getEnemyBloodSplatter()->update(dt);
     if (IsKeyPressed(KEY_F1)) {
         colliderDebugDraw = !colliderDebugDraw;
     }
-    if (!form->isKeyWarriorAlive()) gameover = true;
-    if (!region->castle->isAlive()) gameover = true;
-    return false;
+    if (isPlatformAndroid()) {
+        // check for long press
+        if (isShakeDetected()) {
+            resetShakeDetected();
+            colliderDebugDraw = !colliderDebugDraw;
+        }
+    }
+    // if (!form->isKeyWarriorAlive()) gameover = true;
+    if (!region->castle->isAlive()) {
+        endGame();
+        gameOverSet();
+    }
+    if (hmm->isVictory()) {
+        endGame();
+        victorySet();
+    }
+    return true;
+}
+
+void Container::gameOverSet() {
+    gameover = true;
+    getWorldState()->finalize();
+    getGameOver()->reset();
+    getStateStack()->push(getGameOver());
+}
+
+void Container::victorySet() {
+    victory = true;
+    getWorldState()->finalize();
+    getVictory()->reset();
+    getStateStack()->push(getVictory());
+}
+
+void Container::endGame() {
+
+    getViewCamera()->follow(nullptr);
+    getAudioManager()->switchBGM("sad");
+    cleanup();
+}
+
+void Container::cleanup() {
+    attackUnits.clear();
+    tree_patches.clear();
+    for (auto &go : gameObjects) {
+        go->cleanupData();
+        go->die();
+    }
+    gameObjects.clear();
+    for (auto &go : scumObjects) {
+        go->cleanupData();
+        go->die();
+    }
+    scumObjects.clear();
+    region = nullptr;
+    form = nullptr;
 }
 
 void Container::addGameObject(std::shared_ptr<GameObject> obj) {

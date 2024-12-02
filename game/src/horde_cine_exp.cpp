@@ -32,16 +32,16 @@ void HordeCineExperience::startExp() {
     (*params)["y"] = formPos.y;
     (*params)["sc"] = 0;
 
-    timer.tween(1.5, params,
+    timer.tween(.85, params,
                 {{"x", hordeLead->x}, {"y", hordeLead->y}, {"sc", 2}},
                 "in-out-cubic", []() {}, "", {});
 
     timer.after(
-        1.52, [this](float dt) { getViewCamera()->follow(this->hordeLead); },
+        .89, [this](float dt) { getViewCamera()->follow(this->hordeLead); },
         "");
 
     timer.after(
-        4.5,
+        2.5,
         [this](float dt) {
             getViewCamera()->follow(nullptr);
             Vector2 fp = getContainer()->getFormPos();
@@ -49,14 +49,14 @@ void HordeCineExperience::startExp() {
             (*this->params)["y"] = this->hordeLead->y;
             (*this->params)["sc"] = 2;
 
-            this->timer.tween(1.5, this->params,
+            this->timer.tween(.75, this->params,
                               {{"x", fp.x}, {"y", fp.y}, {"sc", 0}},
                               "in-out-cubic", []() {}, "", {});
         },
         "");
 
     timer.after(
-        6.6,
+        3.6,
         [this](float dt) {
             this->active = false;
             getViewCamera()->follow(getContainer()->getFollowObject());

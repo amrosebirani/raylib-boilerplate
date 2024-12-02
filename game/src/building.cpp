@@ -46,7 +46,7 @@ void Building::setUpgradeInfo() {
     if (type == PropertyType::DEFENSE_TOWER) {
         upgradePoint.y -= ucr * 1.7;
     }
-    timer.after(4, [this](float dt) { this->inUpgrade = true; }, "");
+    timer->after(4, [this](float dt) { this->inUpgrade = true; }, "");
 }
 
 void Building::drawLevelText() {
@@ -108,7 +108,7 @@ void Building::initiate() {
                                               maxHealth, health);
     baseTributeRate = getTributeRate(type);
     tributeRate = level * baseTributeRate;
-    timer.every(
+    timer->every(
         3,
         [this](float dt) {
             if (this->type == PropertyType::CASTLE) {
@@ -139,7 +139,7 @@ void Building::setColliders() {
     collider = ColliderFactory::newPolygonCollider(
         cdata, x, y, cpoints, b2_staticBody, CATEGORY_BUILDING,
         CATEGORY_ENEMY | CATEGORY_ENEMY_PROJECTILE | CATEGORY_FORMATION |
-            CATEGORY_WARRIOR_OF,
+            CATEGORY_WARRIOR_OF | CATEGORY_COLLECTIBLE,
         getContainer()->getWorld());
     if (level == 0) {
         collider = nullptr;
@@ -210,6 +210,12 @@ void Building::awakenColliders(float dt) {
     }
 
     if (inContact) {
+        if (underAttack) {
+            return;
+        }
+        if (hasCards) {
+            return;
+        }
         if (getWorldState()->getCoins() == 0) {
             inContactTimer = 0;
             coinExchangeTimer = 0;
@@ -221,6 +227,7 @@ void Building::awakenColliders(float dt) {
             if (coinExchangeTimer > .3) {
                 coinsObtained += 1;
                 getWorldState()->removeCoins(1);
+                getAudioManager()->playSound("coin_dropped");
                 coinExchangeTimer -= 0.3;
             }
         }
@@ -237,6 +244,9 @@ void Building::doUpgrade() {
     if (level == 1) {
         getContainer()->addAttackUnit(
             std::dynamic_pointer_cast<Building>(get_shared_ptr()));
+        getAudioManager()->playSound("building_created");
+    } else {
+        getAudioManager()->playSound("building_upgraded");
     }
     if (type == PropertyType::CASTLE) {
         // add a ring
@@ -263,17 +273,18 @@ void Building::downgrade() {
     // initAuraPoints();
     setUpgradeInfo();
     setColliders();
+    getAudioManager()->playSound("building_destruction");
 }
 
 void Building::startContact() {
     inContact = true;
-    timer.tween(1, this->params, {{"as", 1}}, "linear", []() {}, "aura_tween",
-                {});
+    timer->tween(1, this->params, {{"as", 1}}, "linear", []() {}, "aura_tween",
+                 {});
 }
 
 void Building::endContact() {
     inContact = false;
-    timer.cancel("aura_tween");
+    timer->cancel("aura_tween");
     (*params)["as"] = 0;
 }
 
@@ -299,7 +310,7 @@ void Building::setBasics() {
 
 Building::~Building() {
     delete data;
-    delete buildingData;
+    // delete buildingData;
     upgrade_sensor = nullptr;
     collider = nullptr;
 }
@@ -308,6 +319,7 @@ void Building::takeDamage(float damage) {
     underAttack = true;
     attackCounter = 0;
     health -= damage;
+    getAudioManager()->playBuildingHitSound();
     if (health <= 0) {
         downgrade();
     }

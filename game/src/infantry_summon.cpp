@@ -7,6 +7,7 @@
 
 InfantrySummon::InfantrySummon(Vector2 position,
                                std::shared_ptr<SummonCard> card) {
+    getAudioManager()->playSound("summon_infantry");
     Vector2 cc = getContainer()->region->getCenterCoordinates();
     Vector2 dirDepth = Vector2Subtract(position, cc);
     dirDepth = Vector2Normalize(dirDepth);

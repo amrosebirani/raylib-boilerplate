@@ -84,9 +84,10 @@ bool Barrack::isAlive() {
 }
 
 void Barrack::update(float dt) {
-    timer.update(dt);
+    timer->update(dt);
     awakenColliders(dt);
     if (hasSummonCards()) {
+        hasCards = true;
         if (inContact) {
             summonExchTimer += dt;
             if (summonExchTimer > summonExchT) {
@@ -101,6 +102,8 @@ void Barrack::update(float dt) {
                 summonExchTimer = 0;
             }
         }
+    } else {
+        hasCards = false;
     }
     if (level > 0) {
         summonTimeCounter += dt;

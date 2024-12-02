@@ -22,6 +22,7 @@ Formation::Formation(int level, float x, float y, float starter_radius,
         b2_dynamicBody, CATEGORY_FORMATION, CATEGORY_BUILDING,
         getContainer()->getWorld());
     collider->SetFixedRotation(true);
+    collider->SetBullet(true);
     // create the collider here
     // collider will need to be updated every time a warrior is dead or a new
     // warrior is added
@@ -45,10 +46,21 @@ void Formation::initOrbits() {
 
 Formation::~Formation() {
     for (FormationOrbit *&orbit : orbits) {
+        for (FormationOrbit::WarriorSlot &slot : orbit->slots) {
+            if (slot.warrior != nullptr) {
+                slot.warrior->cleanupData();
+                slot.warrior = nullptr;
+            }
+        }
         delete orbit;
+    }
+    if (keyWarrior != nullptr) {
+        keyWarrior->cleanupData();
+        keyWarrior = nullptr;
     }
     collider_data->obj = nullptr;
     delete collider_data;
+    collider = nullptr;
 }
 
 b2Fixture *Formation::addFormationFixture(b2FixtureDef *fixtureDef) {
@@ -107,9 +119,8 @@ void Formation::appendWarriors(int count) {
     }
 }
 
-void Formation::update(float dt) {
-    x = collider->GetPosition().x * PIXEL_TO_METER_SCALE;
-    y = collider->GetPosition().y * PIXEL_TO_METER_SCALE;
+void Formation::keyBoardMove() {
+
     float x_move = 0;
     float y_move = 0;
     if (IsKeyDown(KEY_W)) {
@@ -124,7 +135,7 @@ void Formation::update(float dt) {
     if (IsKeyDown(KEY_D)) {
         x_move += 1;
     }
-    Vector2 dir_to_move = {x_move, y_move};
+    dir_to_move = {x_move, y_move};
     if (x_move == 0 && y_move == 0) {
         isIdle = true;
     } else {
@@ -154,6 +165,33 @@ void Formation::update(float dt) {
         }
     }
     dir_to_move = Vector2Normalize(dir_to_move);
+}
+
+void Formation::joyStickMove() {
+    Vector2 dir = getJoystick()->getDirection();
+    if (dir.x == 0 && dir.y == 0) {
+        isIdle = true;
+    } else {
+        isIdle = false;
+    }
+
+    directionFacing = get_direction(dir);
+    dir_to_move = dir;
+}
+
+void Formation::update(float dt) {
+    x = collider->GetPosition().x * PIXEL_TO_METER_SCALE;
+    y = collider->GetPosition().y * PIXEL_TO_METER_SCALE;
+    if (isPlatformAndroid()) {
+        joyStickMove();
+    } else {
+        keyBoardMove();
+    }
+    if (!isIdle) {
+        getAudioManager()->playSound("troop_walking");
+    } else {
+        getAudioManager()->stopSound("troop_walking");
+    }
     b2Vec2 linear_velocity = {dir_to_move.x * mvspd / PIXEL_TO_METER_SCALE,
                               dir_to_move.y * mvspd / PIXEL_TO_METER_SCALE};
     collider->SetLinearVelocity(linear_velocity);
@@ -231,17 +269,25 @@ Formation::FormationOrbit::FormationOrbit(float starter_radius,
     }
 }
 
+void Formation::FormationOrbit::WarriorSlot::respawnWarrior(WarriorType type) {
+    respawntype = type;
+    respawn = true;
+    respawnTime = WARRIOR_RESPAWN_TIME;
+    respawnTracker = 0;
+}
+
 void Formation::FormationOrbit::update(float dt, Vector2 origin, bool isIdle,
                                        Direction directionFacing) {
     for (WarriorSlot &slot : slots) {
+        slot.update(dt, origin, isIdle, directionFacing);
         if (slot.warrior == nullptr) {
             continue;
         }
         if (!slot.warrior->isAlive()) {
             slot.warrior->cleanupData();
             slot.warrior = nullptr;
+            slot.respawnWarrior(type);
         }
-        slot.update(dt, origin, isIdle, directionFacing);
     }
 }
 
@@ -254,6 +300,14 @@ void Formation::FormationOrbit::draw() {
 void Formation::FormationOrbit::WarriorSlot::update(float dt, Vector2 origin,
                                                     bool isIdle,
                                                     Direction directionFacing) {
+    if (respawn) {
+        respawnTracker += dt;
+        if (respawnTracker >= respawnTime) {
+            warrior = WarriorFactory::createWarrior(respawntype, x, y, true);
+            warrior->init();
+            respawn = false;
+        }
+    }
     if (warrior == nullptr) {
         return;
     }

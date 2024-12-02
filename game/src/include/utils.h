@@ -38,6 +38,9 @@ template <typename T> T getRandomElement(const std::vector<T> &vec) {
 std::shared_ptr<b2Body> getWarriorCollider(WarriorType wtype, float x, float y,
                                            ColliderUserData *data,
                                            bool inFormation = true);
+std::shared_ptr<b2Body> getArcherCollider(WarriorType wtype, float x, float y,
+                                          ColliderUserData *data,
+                                          bool inFormation = false);
 std::shared_ptr<b2Body> getWarriorSensor(WarriorType wtype, float x, float y,
                                          ColliderUserData *data);
 
@@ -86,3 +89,5 @@ Rectangle getBuildingTransparencyRect(BuildingData *buildingData, float x,
 std::vector<Vector2> getAttackTowerArcherPos(int level);
 Vector2 translateBuildingPoint(BuildingData *buildingData, float x, float y,
                                float perc_cover, Vector2 pp);
+
+void drawFullScreenTextureWithAspect(Texture2D texture);

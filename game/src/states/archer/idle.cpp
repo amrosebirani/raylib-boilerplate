@@ -5,7 +5,6 @@
 #include "animation.hpp"
 #include "utils.h"
 #include "warrior_types.h"
-#include <iostream>
 
 IdleArcher::IdleArcher() {
     attackCooldown = get_warrior_attack_time(WarriorType::WARRIOR_TYPE_ARCHER);
@@ -19,6 +18,9 @@ IdleArcher::~IdleArcher() {
 }
 
 void IdleArcher::draw() {
+    if (!archerParams->archer->hasTower) {
+        archerParams->archer->hasTower = false;
+    }
     int frame = animation->getCurrentFrame();
     Archer *archer = archerParams->archer;
     float cr = 1.3 * DEFENSE_TOWER_RADIUS;
@@ -60,7 +62,7 @@ void IdleArcher::update(float dt) {
                 // continue;
                 // }
                 // change state here and break out of the loop
-                std::cout << "Archer attacks!" << std::endl;
+                // std::cout << "Archer attacks!" << std::endl;
                 archerParams->enemy_x = enemy->x;
                 archerParams->enemy_y = enemy->y;
                 archerParams->enemy = enemy;
@@ -93,6 +95,7 @@ void IdleArcher::update(float dt) {
 
 void IdleArcher::Enter(StateParams *params) {
     archerParams = (ArcherStateParams *)params;
+    archerParams->enemy = nullptr;
     Direction d = archerParams->archer->directionAttacking;
     int dd = get_direction_rows()[d];
     int sf = dd * 3;

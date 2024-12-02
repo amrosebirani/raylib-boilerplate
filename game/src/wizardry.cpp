@@ -36,7 +36,7 @@ bool Wizardry::isAlive() {
 }
 
 void Wizardry::update(float dt) {
-    timer.update(dt);
+    timer->update(dt);
     awakenColliders(dt);
 }
 

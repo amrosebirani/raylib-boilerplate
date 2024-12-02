@@ -4,22 +4,30 @@
 #include "utils.h"
 #include "globals.h"
 #include "warrior_state_params.hpp"
-#include <iostream>
 
 void WarriorPara::draw() {
+    if (!alive) {
+        return;
+    }
     stateMachine->draw();
 }
 
 void WarriorPara::cleanupData() {
     collider_data->obj = nullptr;
+    if (!inFormation) {
+        sensorData->obj = nullptr;
+    }
 }
 
 void WarriorPara::update(float dt) {
     if (!alive) {
         collider_data->obj = nullptr;
+        if (!inFormation) {
+            sensorData->obj = nullptr;
+        }
         return;
     }
-    timer.update(dt);
+    timer->update(dt);
     stateMachine->update(dt);
     if (inFormation) {
 
@@ -33,10 +41,13 @@ void WarriorPara::update(float dt) {
                                  dirToMove.y * mvspd / PIXEL_TO_METER_SCALE};
 
         collider->SetLinearVelocity(linearVelocity);
+        sensor->SetTransform(
+            b2Vec2(x / PIXEL_TO_METER_SCALE, y / PIXEL_TO_METER_SCALE), 0);
     }
     collider->SetAwake(true);
     if (hp <= 0) {
         die();
+        return;
     }
     stateUpdate(type, dt);
 }
@@ -47,7 +58,8 @@ bool WarriorPara::isAlive() {
 
 void WarriorPara::die() {
     if (inFormation) {
-        getContainer()->removeFormFixture(fixture);
+        std::shared_ptr<Container> cc = getContainer();
+        if (cc != nullptr) getContainer()->removeFormFixture(fixture);
     }
     alive = false;
     afterDie(type);
@@ -98,6 +110,5 @@ WarriorPara::~WarriorPara() {
 
 void WarriorPara::takeAttack(float damage) {
     hp -= damage * in_damage_mult;
-    std::cout << "warrior health: " << hp << std::endl;
     throwBlood();
 }

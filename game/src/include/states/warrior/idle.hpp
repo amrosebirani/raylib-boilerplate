@@ -16,5 +16,5 @@ class IdleWarrior : public State {
 
     private:
         Animation *animation = nullptr;
-        WarriorStateParams *warriorParams;
+        WarriorStateParams *warriorParams = nullptr;
 };

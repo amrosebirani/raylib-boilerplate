@@ -21,7 +21,7 @@ void Arrow::init() {
     points.push_back(
         {Vector2{-width / 2, -height / 2}, Vector2{-width / 2, height / 2},
          Vector2{width / 2, height / 2}, Vector2{width / 2, -height / 2}});
-    collider = ColliderFactory::newPolygonCollider(
+    collider = ColliderFactory::newPolygonSensor(
         data, x, y, points, b2_dynamicBody, CATEGORY_PROJECTILE, CATEGORY_ENEMY,
         world);
     Vector2 dirToMove = Vector2Normalize(direction);
@@ -31,6 +31,7 @@ void Arrow::init() {
     // rotate the collider
     collider->SetTransform(collider->GetPosition(), rotation * DEG2RAD);
     damage = get_warrior_damage(WarriorType::WARRIOR_TYPE_ARCHER);
+    getAudioManager()->playRandomSwishSound();
 }
 
 Arrow::~Arrow() {
@@ -64,6 +65,7 @@ void Arrow::die() {
 }
 
 void Arrow::draw() {
+    if (!alive) return;
     Vector2 ss = getSpriteHolder()->getSpriteSize(ARROW_SPRITE_ID);
     getSpriteHolder()->drawSprite(
         ARROW_SPRITE_ID, {x - radius, y - radius, 2 * radius, 2 * radius},

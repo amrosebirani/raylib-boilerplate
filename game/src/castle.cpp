@@ -7,7 +7,7 @@
 Castle::Castle(float x, float y, float health, int level)
     : Building(x, y, PropertyType::CASTLE, level, health), level(level) {
     graphics_types.push_back("castle");
-    maxHealth = getMaxCastleHealthByLevel(level);
+    maxHealth = getMaxHealthByLevel(level, PropertyType::CASTLE);
     changeAttackTimeout = getCastleAttackTimer(level);
 }
 
@@ -54,19 +54,27 @@ void Castle::update(float dt) {
         changeAttackCounter = 0;
         isAttacked = false;
     }
-    timer.update(dt);
+    timer->update(dt);
     awakenColliders(dt);
 }
 
 void Castle::hit(float damage) {
     isAttacked = true;
     takeDamage(damage);
+    if (health * 1.0f / maxHealth < 0.5) {
+        getAudioManager()->switchBGM("under_attack_fucked");
+    }
 }
 
 void Castle::repair(float repairAmount) {
+    float prevHealth = health;
     health += repairAmount;
     if (health > maxHealth) {
         health = maxHealth;
+    }
+    if (prevHealth * 1.0f / maxHealth < 0.5 &&
+        health * 1.0f / maxHealth >= 0.5) {
+        getAudioManager()->switchBGM("under_attack_in_control");
     }
 }
 
@@ -111,4 +119,11 @@ Castle::CastleState Castle::getState() {
 }
 
 void Castle::onUpgrade(int level) {
+    if (level > 0) {
+        if (getContainer()->hmm->isWaveActive()) {
+            getAudioManager()->switchBGM("under_attack_in_control");
+        } else {
+            getAudioManager()->switchBGM("normal");
+        }
+    }
 }

@@ -36,7 +36,7 @@ void Region::die() {
 }
 
 void Region::init() {
-    health = getMaxCastleHealthByLevel(level);
+    health = getMaxHealthByLevel(level, PropertyType::CASTLE);
 
     Vector2 ss = getWorldIsometricCoordinated(Vector2{x, y});
     castle = std::make_shared<Castle>(ss.x, ss.y, health, level);

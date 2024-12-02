@@ -9,14 +9,14 @@
 
 AddTower::AddTower(float x, float y) : Collectible(x, y) {
     archers = 1;
-    timer.after(
+    timer->after(
         randomFloatInRange(3.0f, 5.0f), [this](float dt) { this->die(); }, "");
 }
 
 AddTower::AddTower(float x, float y, TowerSpawnLocation *location)
     : Collectible(x, y), location(location) {
     archers = 1;
-    timer.after(
+    timer->after(
         randomFloatInRange(3.0f, 5.0f), [this](float dt) { this->die(); }, "");
 }
 
@@ -41,7 +41,7 @@ void AddTower::update(float dt) {
         data->obj = nullptr;
         return;
     }
-    timer.update(dt);
+    timer->update(dt);
     collider->SetAwake(true);
 }
 

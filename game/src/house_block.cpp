@@ -48,7 +48,7 @@ bool HouseBlock::isAlive() {
 }
 
 void HouseBlock::update(float dt) {
-    timer.update(dt);
+    timer->update(dt);
     awakenColliders(dt);
 }
 

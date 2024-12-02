@@ -1,4 +1,5 @@
 #include "warrior.hpp"
+#include "container.h"
 #include "dead_body.h"
 #include "enemy.hpp"
 #include "enemy_types.h"
@@ -17,6 +18,14 @@ Warrior::Warrior(float radius, float x, float y, int i)
     Vector2 dirDepth = Vector2Subtract({x, y}, cc);
     dirDepth = Vector2Normalize(dirDepth);
     directionFacing = get_direction(dirDepth);
+}
+
+Warrior::~Warrior() {
+
+    contactAttackUnits.clear();
+    inRangeEnemyUnits.clear();
+    timer->clearAll();
+    delete stateMachine;
 }
 
 void Warrior::initStates(WarriorType type) {
@@ -100,7 +109,8 @@ void Warrior::tryAttack(std::shared_ptr<GameObject> target) {
     isAttacking = true;
     canAttack = -1;
     std::shared_ptr<Enemy> enemy = std::dynamic_pointer_cast<Enemy>(target);
-    timer.after(
+    getAudioManager()->playRandomCombatSound();
+    timer->after(
         0.3f,
         [this, enemy](float dt) {
             this->canAttack = 0;
@@ -114,9 +124,17 @@ void Warrior::tryAttack(std::shared_ptr<GameObject> target) {
 }
 
 void Warrior::afterDie(WarriorType type) {
-    std::shared_ptr<DeadBody> db = std::make_shared<DeadBody>(
-        x, y, true, EnemyType::ENEMY_TYPE_SHIELD_BEARER, type);
-    getContainer()->addScumObject(db);
+    std::shared_ptr<Container> cc = getContainer();
+    if (cc != nullptr) {
+
+        std::shared_ptr<DeadBody> db = std::make_shared<DeadBody>(
+            x, y, true, EnemyType::ENEMY_TYPE_SHIELD_BEARER, type);
+        getContainer()->addScumObject(db);
+    }
+    getAudioManager()->playSound("death_unit");
+    contactAttackUnits.clear();
+    inRangeEnemyUnits.clear();
+    timer->clearAll();
 }
 
 void Warrior::throwBlood() {
@@ -128,6 +146,12 @@ void Warrior::throwBlood() {
 }
 
 void Warrior::addContactAttack(std::shared_ptr<GameObject> cont) {
+    if (!cont->isAlive()) {
+        return;
+    }
+    if (!isAlive()) {
+        return;
+    }
     contactAttackUnits.push_back(cont);
 }
 
@@ -140,6 +164,12 @@ void Warrior::removeContactAttack(std::shared_ptr<GameObject> cont) {
 }
 
 void Warrior::addInRangeEnemyUnit(std::shared_ptr<GameObject> enemyUnit) {
+    if (!enemyUnit->isAlive()) {
+        return;
+    }
+    if (!isAlive()) {
+        return;
+    }
     inRangeEnemyUnits.push_back(enemyUnit);
 }
 

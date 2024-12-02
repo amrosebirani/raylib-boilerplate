@@ -18,6 +18,7 @@ class Warrior : public GameObject {
         virtual void attack() = 0;
         void tryAttack(std::shared_ptr<GameObject> enemy);
         virtual void takeAttack(float damage) = 0;
+        virtual ~Warrior();
         void initStates(WarriorType type);
         void stateUpdate(WarriorType type, float dt);
         void afterDie(WarriorType type);
@@ -39,6 +40,9 @@ class Warrior : public GameObject {
         float in_damage_mult = 1.0f;
         void throwBlood();
         Color getColor() override {
+            if (inFormation) {
+                return {ORANGE.r, ORANGE.g, ORANGE.b, 159};
+            }
             return {DARKBLUE.r, DARKBLUE.g, DARKBLUE.b, 150};
         };
         void addContactAttack(std::shared_ptr<GameObject> cont);

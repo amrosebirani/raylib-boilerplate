@@ -18,6 +18,9 @@ class Archer : public GameObject {
         void update(float dt) override;
 
         bool isAlive() override;
+        Color getColor() override {
+            return {DARKBLUE.r, DARKBLUE.g, DARKBLUE.b, 150};
+        };
 
         void die() override;
         void init() override;
@@ -32,7 +35,7 @@ class Archer : public GameObject {
         float damage = 75.0f;
         std::shared_ptr<GameObject> tower;
         float getAttackRange();
-        unsigned char alpha;
+        unsigned char alpha = 255;
         bool isOperational = false;
         void addEnemy(std::shared_ptr<GameObject> enemy);
         std::vector<std::shared_ptr<GameObject>> enemies;
@@ -47,4 +50,5 @@ class Archer : public GameObject {
         float hp = 0;
         std::shared_ptr<b2Body> enemySensor;
         ColliderUserData *sdata;
+        StateParams *archer_params;
 };

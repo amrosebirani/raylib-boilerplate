@@ -16,7 +16,7 @@ class AttackingEnemy : public State {
 
     private:
         Animation *animation = nullptr;
-        EnemyStateParams *enemyParams;
+        EnemyStateParams *enemyParams = nullptr;
         bool canAttack = true;
         float attackCooldown = 1.0f;
         float attackCooldownTracker = 0.0f;

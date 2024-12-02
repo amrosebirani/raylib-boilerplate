@@ -1,5 +1,6 @@
 #include "utils.h"
 #include "box2d/b2_circle_shape.h"
+#include "box2d/b2_types.h"
 #include "building_data.hpp"
 #include "collider_user_data.h"
 #include "collider_factory.hpp"
@@ -58,6 +59,27 @@ float randomFloatInRange(float min, float max) {
     return min + scale * (max - min);       /* [min, max] */
 }
 
+std::shared_ptr<b2Body> getArcherCollider(WarriorType wtype, float x, float y,
+                                          ColliderUserData *data,
+                                          bool inFormation) {
+
+    data->type = ColliderUserData::Archer;
+    std::shared_ptr<Container> cont = getContainer();
+    std::shared_ptr<b2World> world = cont->getWorld();
+    uint16 categoryBits = inFormation ? CATEGORY_WARRIOR : CATEGORY_WARRIOR_OF;
+    uint16 maskBits =
+        CATEGORY_ENEMY_PROJECTILE | CATEGORY_ENEMY | CATEGORY_BUILDING;
+    if (inFormation) {
+        maskBits = maskBits | CATEGORY_COLLECTIBLE | CATEGORY_WARRIOR;
+    } else {
+        maskBits = maskBits | CATEGORY_WARRIOR_OF;
+    }
+    std::shared_ptr<b2Body> collider = ColliderFactory::newCircleCollider(
+        data, x, y, get_warrior_size(wtype), b2_dynamicBody, categoryBits,
+        maskBits, world);
+    return collider;
+}
+
 std::shared_ptr<b2Body> getWarriorCollider(WarriorType wtype, float x, float y,
                                            ColliderUserData *data,
                                            bool inFormation) {
@@ -65,13 +87,17 @@ std::shared_ptr<b2Body> getWarriorCollider(WarriorType wtype, float x, float y,
     data->type = ColliderUserData::Warrior;
     std::shared_ptr<Container> cont = getContainer();
     std::shared_ptr<b2World> world = cont->getWorld();
+    uint16 categoryBits = inFormation ? CATEGORY_WARRIOR : CATEGORY_WARRIOR_OF;
+    uint16 maskBits =
+        CATEGORY_ENEMY_PROJECTILE | CATEGORY_ENEMY | CATEGORY_BUILDING;
+    if (inFormation) {
+        maskBits = maskBits | CATEGORY_COLLECTIBLE | CATEGORY_WARRIOR;
+    } else {
+        maskBits = maskBits | CATEGORY_WARRIOR_OF;
+    }
     std::shared_ptr<b2Body> collider = ColliderFactory::newCircleCollider(
-        data, x, y, get_warrior_size(wtype), b2_dynamicBody,
-        inFormation ? CATEGORY_WARRIOR : CATEGORY_WARRIOR_OF,
-        CATEGORY_COLLECTIBLE | CATEGORY_ENEMY | CATEGORY_ENEMY_PROJECTILE |
-            CATEGORY_BUILDING |
-            (inFormation ? CATEGORY_WARRIOR : CATEGORY_WARRIOR_OF),
-        world);
+        data, x, y, get_warrior_size(wtype), b2_dynamicBody, categoryBits,
+        maskBits, world);
     return collider;
 }
 
@@ -82,7 +108,7 @@ std::shared_ptr<b2Body> getWarriorSensor(WarriorType wtype, float x, float y,
     std::shared_ptr<Container> cont = getContainer();
     std::shared_ptr<b2World> world = cont->getWorld();
     std::shared_ptr<b2Body> sensor = ColliderFactory::newCircleSensor(
-        data, x, y, get_warrior_size(wtype) * 5, b2_dynamicBody,
+        data, x, y, get_warrior_size(wtype) * 15, b2_dynamicBody,
         CATEGORY_WARRIOR_SENSOR, CATEGORY_ENEMY, world);
     return sensor;
 }
@@ -134,8 +160,8 @@ b2FixtureDef *getFormationFixtureDef(float radius, float offset_x,
 
     fixtureDef->shape = circle;
     fixtureDef->density = 1.0f;
-    fixtureDef->friction = 1.0f;
-    fixtureDef->restitution = 1.0f;
+    fixtureDef->friction = 0.5f;
+    fixtureDef->restitution = 0.0f;
     fixtureDef->filter.maskBits =
         CATEGORY_BUILDING | CATEGORY_DEFENSE_TOWER | CATEGORY_BUILDING_SENSOR;
     fixtureDef->filter.categoryBits = CATEGORY_FORMATION;
@@ -421,9 +447,9 @@ void initLevelUpgradeData() {
     maxHealthByLevel[PropertyType::LIGHTNING_TOWER] = {2000};
 
     percentCover[PropertyType::ARCHERY] = {0.5, 0.5, 0.5};
-    percentCover[PropertyType::BARRACKS] = {0.5, 0.5, 0.6, 0.6};
-    percentCover[PropertyType::CASTLE] = {0.5, 0.5, 0.6, 0.6};
-    percentCover[PropertyType::HOUSE] = {0.4, 0.4, 0.5, 0.6};
+    percentCover[PropertyType::BARRACKS] = {0.5, 0.5, 0.4, 0.5};
+    percentCover[PropertyType::CASTLE] = {0.5, 0.5, 0.5, 0.5};
+    percentCover[PropertyType::HOUSE] = {0.4, 0.4, 0.5, 0.5};
     percentCover[PropertyType::WIZARDRY] = {0.3, 0.5, 0.5};
     percentCover[PropertyType::DEFENSE_TOWER] = {0.2, 0.3};
     percentCover[PropertyType::LIGHTNING_TOWER] = {0.10};
@@ -530,5 +556,26 @@ std::vector<Vector2> getAttackTowerArcherPos(int level) {
     default: {
         return {Vector2{0, 0}};
     }
+    }
+}
+
+void drawFullScreenTextureWithAspect(Texture2D texture) {
+    float sh = GetScreenHeight();
+    float sw = GetScreenWidth();
+
+    float ratio = (float)texture.width / texture.height;
+    float ratioB = (float)sw / sh;
+    if (ratio > ratioB) {
+        float targetw = sw;
+        float targeth = sw / ratio;
+        DrawTexturePro(
+            texture, {0, 0, (float)texture.width, (float)texture.height},
+            {0, sh / 2 - targeth / 2, targetw, targeth}, {0, 0}, 0, WHITE);
+    } else {
+        float targeth = sh;
+        float targetw = sh * ratio;
+        DrawTexturePro(
+            texture, {0, 0, (float)texture.width, (float)texture.height},
+            {sw / 2 - targetw / 2, 0, targetw, targeth}, {0, 0}, 0, WHITE);
     }
 }

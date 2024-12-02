@@ -64,7 +64,7 @@ void EnemyShieldBearer::update(float dt) {
         collider_data->obj = nullptr;
         return;
     }
-    timer.update(dt);
+    timer->update(dt);
     stateMachine->update(dt);
     x = collider->GetPosition().x * PIXEL_TO_METER_SCALE;
     y = collider->GetPosition().y * PIXEL_TO_METER_SCALE;
@@ -103,7 +103,7 @@ void EnemyShieldBearer::tryAttack(std::shared_ptr<GameObject> target) {
         isAttacking = true;
         std::shared_ptr<Warrior> warrior =
             std::dynamic_pointer_cast<Warrior>(target);
-        timer.after(
+        timer->after(
             0.3f,
             [this, warrior](float dt) {
                 warrior->takeAttack(this->damage);
@@ -117,7 +117,7 @@ void EnemyShieldBearer::tryAttack(std::shared_ptr<GameObject> target) {
 void EnemyShieldBearer::buildingAttack(std::shared_ptr<Building> building) {
     if (canAttack) {
         isAttacking = true;
-        timer.after(
+        timer->after(
             0.3f,
             [this, building](float dt) {
                 building->takeDamage(this->damage);
@@ -135,7 +135,7 @@ void EnemyShieldBearer::cleanupData() {
 void EnemyShieldBearer::towerAttack(std::shared_ptr<DefenseTower> tower) {
     if (canAttack) {
         isAttacking = true;
-        timer.after(
+        timer->after(
             0.3f,
             [this, tower](float dt) {
                 tower->hit(this->damage);

@@ -11,10 +11,8 @@ class Building : public GameObject {
     public:
         Building(float x, float y, PropertyType type, int level,
                  float health = 0)
-            : GameObject(x, y), type(type), level(level), health(health) {
-            timer = Timer();
-        };
-        ~Building();
+            : GameObject(x, y), type(type), level(level), health(health) {};
+        virtual ~Building();
         void takeDamage(float damage);
         virtual void repair(float repairAmount) = 0;
         virtual void onUpgrade(int level) = 0;
@@ -57,9 +55,11 @@ class Building : public GameObject {
             if (level == 0) {
                 return {0, 0, 0, 0};
             }
-            return {DARKGREEN.r, DARKGREEN.g, DARKGREEN.b, 150};
+            return {BEIGE.r, BEIGE.g, BEIGE.b, 159};
         };
         float ucr; // upgrade circle radius
+
+        bool hasCards = false;
 
     private:
         PropertyType type;

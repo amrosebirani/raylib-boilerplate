@@ -12,7 +12,7 @@ class ColliderFactory {
         newCircleCollider(ColliderUserData *ud, float x, float y, float radius,
                           b2BodyType type, uint16 categoryBits, uint16 maskBits,
                           std::shared_ptr<b2World> world, float density = 1.0f,
-                          float friction = 1.0f, float restitution = 0.0f);
+                          float friction = 0.6f, float restitution = 0.0f);
         static std::shared_ptr<b2Body>
         newCircleSensor(ColliderUserData *ud, float x, float y, float radius,
                         b2BodyType type, uint16 categoryBits, uint16 maskBits,
@@ -22,7 +22,7 @@ class ColliderFactory {
                            std::vector<std::vector<Vector2>> points,
                            b2BodyType type, uint16 categoryBits,
                            uint16 maskBits, std::shared_ptr<b2World> world,
-                           float density = 1.0f, float friction = 1.0f,
+                           float density = 1.0f, float friction = 0.6f,
                            float restitution = 0.0f);
         static std::shared_ptr<b2Body>
         newPolygonSensor(ColliderUserData *ud, float x, float y,

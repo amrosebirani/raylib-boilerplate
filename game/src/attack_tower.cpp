@@ -7,7 +7,6 @@
 #include "globals.h"
 #include "property_type.hpp"
 #include "utils.h"
-#include <iostream>
 
 AttackTower::AttackTower(float x, float y, int level)
     : Building(x, y, PropertyType::DEFENSE_TOWER, level) {
@@ -63,22 +62,9 @@ bool AttackTower::isAlive() {
 }
 
 void AttackTower::update(float dt) {
-    timer.update(dt);
+    timer->update(dt);
     awakenColliders(dt);
     enemySensor->SetAwake(true);
-    // if mouse is clicked print the location relative to this object
-    // if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-    //     Vector2 mousePos = getViewCamera()->getMousePosition();
-    //     if (CheckCollisionPointRec(mousePos,
-    //                                {transRect.x, transRect.y - 20,
-    //                                 transRect.width, transRect.height + 20}))
-    //                                 {
-    //         Vector2 pos = {x, y};
-    // Vector2 diff = Vector2Subtract(mousePos, pos);
-    // std::cout << "diff: " << diff.x << " " << diff.y << std::endl;
-    // }
-    // }
-    // remove all the non alive enemies from enemies vector
     std::vector<size_t> enemyIndicesToRemove;
 
     for (size_t i = 0; i < enemies.size(); i++) {
@@ -104,7 +90,7 @@ void AttackTower::update(float dt) {
             std::shared_ptr<Archer> archerObj =
                 std::dynamic_pointer_cast<Archer>(archer);
             archerObj->isOperational = true;
-            std::cout << "Archer operational" << std::endl;
+            // std::cout << "Archer operational" << std::endl;
         }
     }
     if (previous_level == 1 && level == 2) {
@@ -142,6 +128,7 @@ void AttackTower::cleanupData() {
 
 void AttackTower::die() {
     alive = false;
+    enemies.clear();
     tributeGenerated = 0;
 }
 
@@ -151,8 +138,17 @@ AttackTower::~AttackTower() {
 }
 
 void AttackTower::addEnemy(std::shared_ptr<GameObject> enemy) {
+    if (level == 0) {
+        return;
+    }
+    if (!enemy->isAlive()) {
+        return;
+    }
     enemies.push_back(enemy);
 }
 
 void AttackTower::onUpgrade(int level) {
+    if (level == 0) {
+        enemies.clear();
+    }
 }

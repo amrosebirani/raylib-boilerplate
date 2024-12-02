@@ -9,7 +9,7 @@
 
 AddWarriors::AddWarriors(float x, float y) : Collectible(x, y) {
     warriorCount = getRandomIntInRange(1, 4);
-    timer.after(
+    timer->after(
         randomFloatInRange(1.5f, 2.8f), [this](float dt) { this->die(); }, "");
 }
 
@@ -32,7 +32,7 @@ void AddWarriors::update(float dt) {
         data->obj = nullptr;
         return;
     }
-    timer.update(dt);
+    timer->update(dt);
     collider->SetAwake(true);
 }
 

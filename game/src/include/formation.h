@@ -1,4 +1,5 @@
 #pragma once
+#include "constants.h"
 #include "warrior.hpp"
 #include "warrior_types.h"
 #include <vector>
@@ -33,6 +34,13 @@ class Formation {
                         std::shared_ptr<Warrior> warrior;
                         float x;
                         float y;
+                        void respawnWarrior(WarriorType type);
+
+                    private:
+                        bool respawn = false;
+                        float respawnTime = 0;
+                        float respawnTracker = 0;
+                        WarriorType respawntype;
                 };
                 std::vector<WarriorSlot> slots;
                 WarriorType type;
@@ -65,8 +73,11 @@ class Formation {
         int level;
         float starter_radius = 0;
         float orbit_margin = 2;
-        float mvspd = 90;
+        float mvspd = FORMATION_BASE_MVSPD;
         std::shared_ptr<Warrior> keyWarrior;
         std::shared_ptr<b2Body> collider;
         ColliderUserData *collider_data;
+        void keyBoardMove();
+        void joyStickMove();
+        Vector2 dir_to_move;
 };

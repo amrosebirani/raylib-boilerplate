@@ -19,7 +19,7 @@ void Gem::init() {
     std::shared_ptr<b2World> world = cont->getWorld();
     collider = ColliderFactory::newCircleCollider(
         data, x, y, 5.0f, b2_dynamicBody, CATEGORY_COLLECTIBLE,
-        CATEGORY_WARRIOR, world);
+        CATEGORY_WARRIOR | CATEGORY_BUILDING, world);
 }
 
 void Gem::update(float dt) {
@@ -59,8 +59,10 @@ void Gem::collect() {
     // getContainer()->initAppend(1);
     if (type == GemType::Coin) {
         getWorldState()->addCoins(1);
+        getAudioManager()->playSound("coin_collected");
     } else {
         getWorldState()->addGems(1);
+        getAudioManager()->playSound("gem_collected");
     }
     die();
 }

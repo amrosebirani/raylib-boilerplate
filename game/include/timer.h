@@ -41,6 +41,7 @@ class Timer {
               std::unordered_map<std::string, float> args);
         void cancel(const std::string &tag);
         void update(float dt);
+        void clearAll();
 
     private:
         struct TimerTask {

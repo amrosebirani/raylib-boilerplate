@@ -54,12 +54,16 @@ class Container : public Room {
         std::shared_ptr<Region> region;
         std::shared_ptr<Cinematographer> cinematographer;
         std::shared_ptr<HordeManager> hmm;
+        float getCastleHealth();
+        void endGame();
+        void gameOverSet();
+        void victorySet();
 
     private:
         std::shared_ptr<b2World> world;
         std::shared_ptr<Formation> form;
         // std::shared_ptr<Castle> castle;
-        b2Body *groundBody;
+        // b2Body *groundBody;
         MyContactListener *contactListener;
         std::vector<std::shared_ptr<GameObject>> gameObjects;
         // scum objects contain
@@ -71,6 +75,7 @@ class Container : public Room {
         bool toAppend = false;
         int appendCount = 0;
         bool gameover = false;
+        bool victory = false;
         // std::stack<DefenseTowerRequests *> towerRequests;
         // std::shared_ptr<EnemyWave> wave = nullptr;
         // std::shared_ptr<TowerSpawn> towerSpawn = nullptr;
@@ -86,4 +91,6 @@ class Container : public Room {
         Rectangle miniMap;
         Vector2 miniMapO;
         Vector2 center;
+        float physicsTimeStep = 1.0f / 60.0f;
+        float physicsAccumulator = 0;
 };

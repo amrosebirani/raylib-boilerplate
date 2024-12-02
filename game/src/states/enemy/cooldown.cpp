@@ -1,4 +1,5 @@
 #include "states/enemy/cooldown.hpp"
+#include "constants.h"
 #include "enemy_types.h"
 #include "globals.h"
 #include "state_params.hpp"
@@ -37,7 +38,6 @@ void CooldownEnemy::Enter(StateParams *params) {
 
     enemyParams = (EnemyStateParams *)params;
     enemyParams->enemy->mvspd = 0;
-    enemyParams->enemy->mvspd = 25;
     Direction d = enemyParams->enemy->directionFacing;
     int dd = get_direction_rows()[d];
     int sf = dd * 3;
@@ -46,7 +46,7 @@ void CooldownEnemy::Enter(StateParams *params) {
 }
 
 void CooldownEnemy::Exit() {
-    enemyParams->enemy->mvspd = 25;
+    enemyParams->enemy->mvspd = ENEMY_BASE_MVSPD;
     if (enemyParams != nullptr) {
         delete enemyParams;
         enemyParams = nullptr;

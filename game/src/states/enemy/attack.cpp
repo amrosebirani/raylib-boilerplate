@@ -12,6 +12,10 @@ AttackingEnemy::~AttackingEnemy() {
         delete animation;
         animation = nullptr;
     }
+    if (enemyParams != nullptr) {
+        delete enemyParams;
+        enemyParams = nullptr;
+    }
 }
 
 void AttackingEnemy::draw() {
@@ -51,5 +55,9 @@ void AttackingEnemy::Exit() {
     if (animation != nullptr) {
         delete animation;
         animation = nullptr;
+    }
+    if (enemyParams != nullptr) {
+        delete enemyParams;
+        enemyParams = nullptr;
     }
 }

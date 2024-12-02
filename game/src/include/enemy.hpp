@@ -2,6 +2,7 @@
 
 #include "archer.hpp"
 #include "building.hpp"
+#include "constants.h"
 #include "defense_tower.hpp"
 #include "game_object.h"
 #include <memory>
@@ -43,7 +44,7 @@ class Enemy : public GameObject {
         void removeContactAttack(std::shared_ptr<GameObject> cont);
         std::vector<std::shared_ptr<GameObject>> contactAttackUnits;
         void manageContactAttackUnits();
-        float mvspd = 25.0f;
+        float mvspd = ENEMY_BASE_MVSPD;
 
     private:
         float radius;

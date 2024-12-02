@@ -1,4 +1,5 @@
 #pragma once
+#include "box2d/b2_math.h"
 #include "box2d/b2_types.h"
 #include <string>
 #include <vector>
@@ -260,3 +261,13 @@ constexpr Color default_color = {222, 222, 222, 255};
 constexpr Color background_color = {16, 16, 16, 255};
 constexpr Color ammo_color = {123, 200, 164, 255};
 constexpr Color boost_color = {76, 195, 217, 255};
+
+constexpr float JOYSTICK_RADIUS = 1 / 11.0f;
+constexpr float JOYSTICK_BASE_RADIUS = 1 / 8.0f;
+
+constexpr float ENEMY_BASE_MVSPD = 55.0f;
+constexpr float FORMATION_BASE_MVSPD = 150.0f;
+constexpr float WARRIOR_BASE_MVSPD = 80.0f;
+constexpr float ARROW_BASE_MVSPD = 220.0f;
+
+constexpr int WARRIOR_RESPAWN_TIME = 30;

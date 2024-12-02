@@ -22,7 +22,7 @@ void DeadBody::draw() {
 void DeadBody::update(float dt) {
     total_time += dt;
     drawColor.a = 255 - (total_time / 2.0f) * 255;
-    timer.update(dt);
+    timer->update(dt);
 }
 
 bool DeadBody::isAlive() {
@@ -56,7 +56,7 @@ void DeadBody::init() {
         frame_no = getRandomIntInRange(0, 1);
         sprite_id = get_enemy_sprite_ids(enemyType)[1];
     }
-    timer.after(2.0f, [this](float dt) { die(); }, "");
+    timer->after(2.0f, [this](float dt) { die(); }, "");
 }
 
 void DeadBody::cleanupData() {

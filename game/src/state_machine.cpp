@@ -9,6 +9,7 @@ StateMachine::~StateMachine() {
     for (auto &state : this->states) {
         delete state.second;
     }
+    states.clear();
 }
 
 void StateMachine::changeState(std::string stateName, StateParams *params) {

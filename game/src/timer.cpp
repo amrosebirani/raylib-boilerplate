@@ -15,7 +15,11 @@ Timer::~Timer() {
     timers.clear();
 }
 
-Timer::TimerTask::TimerTask(){};
+void Timer::clearAll() {
+    timers.clear();
+}
+
+Timer::TimerTask::TimerTask() {};
 
 void Timer::check_print() {
     // std::cout << "Total Timers: " << timers.size() << std::endl;
@@ -67,6 +71,7 @@ std::string Timer::during(float delay, std::function<void(float dt)> action,
     thisTask->delay = delay;
     thisTask->action = action;
     thisTask->afterAction = afterAction;
+    thisTask->type = TimerTaskType::DURING;
 
     timers.emplace(tag, thisTask);
 

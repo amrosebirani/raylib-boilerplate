@@ -31,7 +31,7 @@ SummonManager::~SummonManager() {
 }
 
 void SummonManager::initiliazeClickSlots() {
-    float start_x = 20;
+    float start_x = summon_width / 2 + 20;
     for (int i = 0; i < 4; i++) {
         Rectangle rec = {start_x, summon_box_y, summon_width, summon_box_h};
         ClickSlot *cs =

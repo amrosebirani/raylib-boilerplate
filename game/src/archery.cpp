@@ -4,6 +4,7 @@
 #include "globals.h"
 #include "property_type.hpp"
 #include "raylib.h"
+#include "summon_card.hpp"
 #include "summon_gain.hpp"
 #include "utils.h"
 
@@ -85,7 +86,7 @@ bool Archery::isAlive() {
 }
 
 void Archery::update(float dt) {
-    timer.update(dt);
+    timer->update(dt);
     awakenColliders(dt);
     if (hasSummonCards()) {
         if (inContact) {
@@ -108,7 +109,7 @@ void Archery::update(float dt) {
         if (summonTimeCounter > summonTime) {
             summonTimeCounter -= summonTime;
             std::shared_ptr<SummonCard> sc = std::make_shared<SummonCard>(
-                summonDim.x, summonDim.y, summonTypes);
+                summonDim.x, summonDim.y, summonTypes, SummonCardType::ARCHERY);
             producedSummonCards.push(sc);
         }
     }
@@ -133,8 +134,8 @@ void Archery::onUpgrade(int level) {
     summonCardY = upgradePoint.y - ucr - 40 - 2 * ucr;
     if (summonTimeCounter > summonTime) {
         summonTimeCounter = 0;
-        std::shared_ptr<SummonCard> sc =
-            std::make_shared<SummonCard>(summonDim.x, summonDim.y, summonTypes);
+        std::shared_ptr<SummonCard> sc = std::make_shared<SummonCard>(
+            summonDim.x, summonDim.y, summonTypes, SummonCardType::ARCHERY);
         producedSummonCards.push(sc);
     }
 }

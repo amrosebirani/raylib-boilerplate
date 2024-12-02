@@ -31,6 +31,7 @@ class CameraEnhanced {
         };
 
         void move(float dx, float dy);
+        void editPosition(Vector2 delta);
         void moveTo(float x, float y);
         Vector2 toWorldCoords(float x, float y);
         Vector2 toCameraCoords(float x, float y);

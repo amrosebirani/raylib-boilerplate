@@ -1,4 +1,5 @@
 #include "states/enemy/run.hpp"
+#include "constants.h"
 #include "globals.h"
 #include "enemy_types.h"
 #include <string>
@@ -35,7 +36,7 @@ void RunningEnemy::update(float dt) {
 
 void RunningEnemy::Enter(StateParams *params) {
     enemyParams = (EnemyStateParams *)params;
-    enemyParams->enemy->mvspd = 25;
+    enemyParams->enemy->mvspd = ENEMY_BASE_MVSPD;
     Direction d = enemyParams->enemy->directionFacing;
     int dd = get_direction_rows()[d];
     int sf = dd * 8;

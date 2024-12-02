@@ -17,6 +17,9 @@ void ParameterizedEnemy::setMarching(Vector2 breakoffPoint) {
 }
 
 void ParameterizedEnemy::draw() {
+    if (!alive) {
+        return;
+    }
     stateMachine->draw();
 }
 
@@ -110,6 +113,7 @@ void ParameterizedEnemy::init() {
 ParameterizedEnemy::~ParameterizedEnemy() {
     delete collider_data;
     collider = nullptr;
+    delete stateMachine;
 }
 
 void ParameterizedEnemy::hasCrossedMarchingPoint() {
@@ -150,7 +154,7 @@ void ParameterizedEnemy::update(float dt) {
     if (updateCounter == 1) {
         hasCrossedCameraTriggerPoint();
     }
-    timer.update(dt);
+    timer->update(dt);
     stateMachine->update(dt);
     x = collider->GetPosition().x * PIXEL_TO_METER_SCALE;
     y = collider->GetPosition().y * PIXEL_TO_METER_SCALE;
@@ -176,6 +180,7 @@ void ParameterizedEnemy::update(float dt) {
 
     if (hp <= 0) {
         die();
+        return;
     }
     stateUpdate(type);
     if (canAttack == 1 && contactAttackUnits.size() > 0) {
@@ -214,7 +219,8 @@ void ParameterizedEnemy::tryAttack(std::shared_ptr<GameObject> target) {
         canAttack = -1;
         std::shared_ptr<Warrior> warrior =
             std::dynamic_pointer_cast<Warrior>(target);
-        timer.after(
+        getAudioManager()->playRandomCombatSound();
+        timer->after(
             0.2f,
             [this, warrior](float dt) {
                 warrior->takeAttack(this->damage);
@@ -229,7 +235,7 @@ void ParameterizedEnemy::buildingAttack(std::shared_ptr<Building> building) {
     if (canAttack == 1) {
         isAttacking = true;
         canAttack = -1;
-        timer.after(
+        timer->after(
             0.2f,
             [this, building](float dt) {
                 building->takeDamage(this->damage);
@@ -244,7 +250,7 @@ void ParameterizedEnemy::archerAttack(std::shared_ptr<Archer> archer) {
     if (canAttack == 1) {
         isAttacking = true;
         canAttack = -1;
-        timer.after(
+        timer->after(
             0.2f,
             [this, archer](float dt) {
                 archer->takeAttack(this->damage);
@@ -259,7 +265,7 @@ void ParameterizedEnemy::towerAttack(std::shared_ptr<DefenseTower> tower) {
     if (canAttack) {
         isAttacking = true;
         canAttack = -1;
-        timer.after(
+        timer->after(
             0.2f,
             [this, tower](float dt) {
                 tower->hit(this->damage);
