@@ -2,7 +2,7 @@
 
 #include "room.hpp"
 #include "box2d/b2_world.h"
-#include "cinematographer.hpp"
+// #include "cinematographer.hpp"
 #include "collider_user_data.h"
 #include "formation.h"
 #include "horde_manager.hpp"
@@ -52,7 +52,7 @@ class Container : public Room {
         b2Fixture *addFormFixture(b2FixtureDef *fixtureDef);
         void removeFormFixture(b2Fixture *fixture);
         std::shared_ptr<Region> region;
-        std::shared_ptr<Cinematographer> cinematographer;
+        // std::shared_ptr<Cinematographer> cinematographer;
         std::shared_ptr<HordeManager> hmm;
         float getCastleHealth();
         void endGame();

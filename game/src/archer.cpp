@@ -108,6 +108,7 @@ void Archer::update(float dt) {
     }
     if (hp <= 0) {
         die();
+        return;
     }
     // here we will check the queue from tower and attack a particuler enemy
     stateMachine->update(dt);

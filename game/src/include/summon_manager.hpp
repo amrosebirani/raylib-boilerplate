@@ -23,6 +23,7 @@ class SummonManager {
         void update(float dt);
         void draw();
         void addSummonCard(std::shared_ptr<SummonCard> card);
+        bool enabled = true;
 
     private:
         // bool summonActivated = true;

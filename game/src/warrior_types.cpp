@@ -27,9 +27,11 @@ void initWarriorSizes() {
     // warrior_sizes[WarriorType::WARRIOR_TYPE_LIGHT_CAVALRY] = 20;
 
     warrior_hp[WarriorType::WARRIOR_TYPE_SWORDSMAN] = 1000;
+    // warrior_hp[WarriorType::WARRIOR_TYPE_SWORDSMAN] = 60;
     warrior_hp[WarriorType::WARRIOR_TYPE_SPEARMAN] = 100;
     warrior_hp[WarriorType::WARRIOR_TYPE_ARCHER] = 70;
     warrior_hp[WarriorType::WARRIOR_TYPE_SHIELD_BEARER] = 150;
+    // warrior_hp[WarriorType::WARRIOR_TYPE_SHIELD_BEARER] = 15;
     warrior_hp[WarriorType::WARRIOR_TYPE_BERSERKER] = 70;
     warrior_hp[WarriorType::WARRIOR_TYPE_JAVELINER] = 80;
     warrior_hp[WarriorType::WARRIOR_TYPE_GIANT] = 2000;

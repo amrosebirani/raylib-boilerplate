@@ -1,6 +1,7 @@
 #include "states/warrior/seeking.hpp"
 #include "constants.h"
 #include "direction.hpp"
+#include "game_object.h"
 #include "globals.h"
 #include "raymath.h"
 #include "utils.h"
@@ -21,7 +22,6 @@ SeekingWarrior::~SeekingWarrior() {
 
 void SeekingWarrior::draw() {
     int frame = animation->getCurrentFrame();
-    Warrior *warrior = warriorParams->warrior;
     std::string sprite_id = get_warrior_sprite_ids(warriorParams->type)[3];
     // draw sprite
     float size = 2 * get_warrior_size(warriorParams->type);
@@ -33,7 +33,7 @@ void SeekingWarrior::draw() {
 void SeekingWarrior::update(float dt) {
     if (target == nullptr || !target->isAlive()) {
         std::vector<std::shared_ptr<GameObject>> targets =
-            warriorParams->warrior->inRangeEnemyUnits;
+            warrior->inRangeEnemyUnits;
         if (targets.empty()) {
             return;
         }
@@ -42,10 +42,10 @@ void SeekingWarrior::update(float dt) {
     Vector2 dirToMove = {target->x - warriorParams->warrior->x,
                          target->y - warriorParams->warrior->y};
     dirToMove = Vector2Normalize(dirToMove);
-    warriorParams->warrior->dirToMove = dirToMove;
+    warrior->dirToMove = dirToMove;
     Direction newDir = get_direction(dirToMove);
-    if (newDir != warriorParams->warrior->directionFacing) {
-        warriorParams->warrior->directionFacing = newDir;
+    if (newDir != warrior->directionFacing) {
+        warrior->directionFacing = newDir;
         int dd = get_direction_rows(warriorParams->type)[newDir];
         int sf = dd * 8;
         animation->reset();
@@ -57,8 +57,10 @@ void SeekingWarrior::update(float dt) {
 
 void SeekingWarrior::Enter(StateParams *params) {
     warriorParams = (WarriorStateParams *)params;
-    warriorParams->warrior->mvspd = WARRIOR_BASE_MVSPD;
-    Direction d = warriorParams->warrior->directionFacing;
+    GameObject *go = warriorParams->warrior;
+    warrior = dynamic_cast<Warrior *>(go);
+    warrior->mvspd = WARRIOR_BASE_MVSPD;
+    Direction d = warrior->directionFacing;
     int dd = get_direction_rows(warriorParams->type)[d];
     int sf = dd * 8;
     animation = new Animation(
@@ -66,7 +68,7 @@ void SeekingWarrior::Enter(StateParams *params) {
 }
 
 void SeekingWarrior::Exit() {
-    warriorParams->warrior->mvspd = 0;
+    warrior->mvspd = 0;
     if (animation != nullptr) {
         delete animation;
         animation = nullptr;

@@ -51,6 +51,28 @@ void WorldState::draw() {
     float waveTextWidth = MeasureText(waveText.c_str(), 30);
     DrawText(waveText.c_str(), GetScreenWidth() * 1.0f / 2 - waveTextWidth / 2,
              GetScreenHeight() - 45, 30, WHITE);
+    if (is_formation_respawning) {
+        // need text in format "Respawn in 3.00"
+        std::string formText = "Respawn in ";
+        formText += TextFormat("%.1f", formation_respawn_time);
+        formText += "s";
+        DrawText(formText.c_str(), startX, GetScreenHeight() * 1.0f / 3, 40,
+                 WHITE);
+    }
+}
+
+void WorldState::setSummonEnabled(bool enabled) {
+    summon_manager->enabled = enabled;
+}
+
+void WorldState::setStartX(float ct) {
+    startX = ct;
+
+    std::string formText = "Respawn in ";
+    formText += TextFormat("%.1f", ct);
+    formText += "s";
+    float formTextWidth = MeasureText(formText.c_str(), 40);
+    startX = GetScreenWidth() * 1.0f / 2 - formTextWidth / 2;
 }
 
 WorldState::~WorldState() {
@@ -136,6 +158,14 @@ bool checkDragPosition(Vector2 dragPosition) {
     return true;
 }
 
+void WorldState::setRespawning(bool respawning) {
+    is_formation_respawning = respawning;
+}
+
+void WorldState::setFormationRespawnTime(float time) {
+    formation_respawn_time = time;
+}
+
 void dragAndMoveAround() {
     if (IsGestureDetected(GESTURE_DRAG)) {
         Vector2 dragPosition = GetTouchPosition(0);
@@ -160,7 +190,7 @@ bool WorldState::update(float dt) {
     if (isPlatformAndroid()) {
         getJoystick()->update(dt);
         setPinchZoom();
-        dragAndMoveAround();
+        // dragAndMoveAround();
     }
     return true;
 }

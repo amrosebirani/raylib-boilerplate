@@ -136,8 +136,8 @@ void ParameterizedEnemy::hasCrossedCameraTriggerPoint() {
     double curDist = Vector2DistanceSqr(center, {x, y});
     if (curDist < cameraTriggerDist) {
         isLead = false;
-        getContainer()->cinematographer->addExperience(
-            std::make_shared<HordeCineExperience>(get_shared_ptr()));
+        // getContainer()->cinematographer->addExperience(
+        // std::make_shared<HordeCineExperience>(get_shared_ptr()));
     }
 }
 

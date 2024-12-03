@@ -271,3 +271,4 @@ constexpr float WARRIOR_BASE_MVSPD = 80.0f;
 constexpr float ARROW_BASE_MVSPD = 220.0f;
 
 constexpr int WARRIOR_RESPAWN_TIME = 30;
+constexpr int FORMATION_RESPAWN_TIME = 20;

@@ -1,6 +1,7 @@
 #pragma once
 #include "constants.h"
 #include "warrior.hpp"
+#include "warrior_dummy.hpp"
 #include "warrior_types.h"
 #include <vector>
 #include <memory>
@@ -31,6 +32,10 @@ class Formation {
                         void update(float dt, Vector2 origin, bool isIdle,
                                     Direction directionFacing);
                         void draw();
+                        void eliminate();
+                        void bringToLife(float x, float y, bool isIdle,
+                                         Direction directionFacing,
+                                         WarriorType type);
                         std::shared_ptr<Warrior> warrior;
                         float x;
                         float y;
@@ -67,6 +72,7 @@ class Formation {
         void initOrbits();
         Direction directionFacing = Direction::SOUTH;
         bool isIdle = true;
+        std::shared_ptr<WarriorDummy> dummyWarrior;
 
     private:
         std::vector<FormationOrbit *> orbits;
@@ -77,7 +83,13 @@ class Formation {
         std::shared_ptr<Warrior> keyWarrior;
         std::shared_ptr<b2Body> collider;
         ColliderUserData *collider_data;
+        bool respawning = false;
+        float respawnCT = FORMATION_RESPAWN_TIME;
+        float respawnTracker = 0;
         void keyBoardMove();
         void joyStickMove();
+        void setRespawning();
         Vector2 dir_to_move;
+        void clearOtherUnits();
+        void respawnFormation();
 };

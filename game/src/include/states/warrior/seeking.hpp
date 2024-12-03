@@ -2,6 +2,7 @@
 
 #include "state.hpp"
 #include "animation.hpp"
+#include "warrior.hpp"
 #include "warrior_state_params.hpp"
 
 class SeekingWarrior : public State {
@@ -18,4 +19,5 @@ class SeekingWarrior : public State {
         Animation *animation = nullptr;
         WarriorStateParams *warriorParams = nullptr;
         std::shared_ptr<GameObject> target = nullptr;
+        Warrior *warrior;
 };

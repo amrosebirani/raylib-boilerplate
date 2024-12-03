@@ -32,6 +32,9 @@ void Formation::initOrbits() {
     LevelConfig *config = get_level_config(level);
     keyWarrior = WarriorFactory::createWarrior(config->key_warrior, 0, 0, true);
     keyWarrior->init();
+    dummyWarrior = std::make_shared<WarriorDummy>(
+        get_warrior_size(config->key_warrior), 0, 0, config->key_warrior);
+    dummyWarrior->init();
     collider_data->obj = keyWarrior->get_shared_ptr();
     float sr = get_warrior_size(config->key_warrior);
     sr += orbit_margin;
@@ -198,11 +201,35 @@ void Formation::update(float dt) {
     for (FormationOrbit *&orbit : orbits) {
         orbit->update(dt, {x, y}, isIdle, directionFacing);
     }
-    keyWarrior->x = x;
-    keyWarrior->y = y;
-    keyWarrior->isIdle = isIdle;
-    keyWarrior->directionFacing = directionFacing;
-    keyWarrior->update(dt);
+    if (isKeyWarriorAlive()) {
+
+        keyWarrior->x = x;
+        keyWarrior->y = y;
+        keyWarrior->isIdle = isIdle;
+        keyWarrior->directionFacing = directionFacing;
+        keyWarrior->update(dt);
+    }
+    dummyWarrior->x = x;
+    dummyWarrior->y = y;
+    dummyWarrior->isIdle = isIdle;
+    dummyWarrior->directionFacing = directionFacing;
+    dummyWarrior->update(dt);
+    if (!respawning && !isKeyWarriorAlive()) {
+        setRespawning();
+    }
+    if (respawning) {
+        respawnTracker += dt;
+        getWorldState()->setFormationRespawnTime(respawnCT - respawnTracker);
+        if (respawnTracker >= respawnCT) {
+            respawning = false;
+            getWorldState()->setRespawning(false);
+            getWorldState()->setFormationRespawnTime(0);
+            getWorldState()->setSummonEnabled(true);
+            respawnFormation();
+            getViewCamera()->follow(keyWarrior);
+            respawnTracker = 0;
+        }
+    }
 }
 
 float Formation::getMvSpd() {
@@ -210,15 +237,52 @@ float Formation::getMvSpd() {
 }
 
 void Formation::draw() {
-    keyWarrior->draw();
+    if (!isKeyWarriorAlive()) {
+        dummyWarrior->draw();
+    } else {
+
+        keyWarrior->draw();
+    }
     for (FormationOrbit *&orbit : orbits) {
         orbit->draw();
     }
 }
 
+void Formation::clearOtherUnits() {
+    for (FormationOrbit *&orbit : orbits) {
+        for (FormationOrbit::WarriorSlot &slot : orbit->slots) {
+            if (slot.warrior != nullptr) {
+                slot.eliminate();
+            }
+        }
+    }
+}
+
+void Formation::respawnFormation() {
+    keyWarrior->cleanupData();
+    keyWarrior = nullptr;
+
+    LevelConfig *config = get_level_config(level);
+    keyWarrior = WarriorFactory::createWarrior(config->key_warrior, 0, 0, true);
+    keyWarrior->init();
+    keyWarrior->x = x;
+    keyWarrior->y = y;
+    keyWarrior->isIdle = isIdle;
+    keyWarrior->directionFacing = directionFacing;
+    for (FormationOrbit *&orbit : orbits) {
+        for (FormationOrbit::WarriorSlot &slot : orbit->slots) {
+            slot.bringToLife(x, y, isIdle, directionFacing, orbit->type);
+        }
+    }
+}
+
 void Formation::getGameObjects(
     std::vector<std::shared_ptr<GameObject>> &gameObjects) {
-    gameObjects.push_back(keyWarrior);
+    if (!isKeyWarriorAlive()) {
+        gameObjects.push_back(dummyWarrior);
+    } else {
+        gameObjects.push_back(keyWarrior);
+    }
     for (FormationOrbit *&orbit : orbits) {
         for (FormationOrbit::WarriorSlot &slot : orbit->slots) {
             if (slot.warrior != nullptr) {
@@ -297,6 +361,26 @@ void Formation::FormationOrbit::draw() {
     }
 }
 
+void Formation::setRespawning() {
+    respawning = true;
+    getViewCamera()->follow(dummyWarrior);
+    clearOtherUnits();
+    getWorldState()->setRespawning(true);
+    getWorldState()->setFormationRespawnTime(respawnCT);
+    getWorldState()->setStartX(respawnCT);
+    getWorldState()->setSummonEnabled(false);
+}
+
+void Formation::FormationOrbit::WarriorSlot::eliminate() {
+    if (warrior != nullptr) {
+        warrior->die();
+        warrior->cleanupData();
+        warrior = nullptr;
+    }
+    respawn = false;
+    respawnTracker = 0;
+}
+
 void Formation::FormationOrbit::WarriorSlot::update(float dt, Vector2 origin,
                                                     bool isIdle,
                                                     Direction directionFacing) {
@@ -316,6 +400,17 @@ void Formation::FormationOrbit::WarriorSlot::update(float dt, Vector2 origin,
     warrior->isIdle = isIdle;
     warrior->directionFacing = directionFacing;
     warrior->update(dt);
+}
+
+void Formation::FormationOrbit::WarriorSlot::bringToLife(
+    float xx, float yy, bool isIdle, Direction directionFacing,
+    WarriorType type) {
+    warrior = WarriorFactory::createWarrior(type, x, y, true);
+    warrior->init();
+    warrior->x = xx + x;
+    warrior->y = yy + y;
+    warrior->isIdle = isIdle;
+    warrior->directionFacing = directionFacing;
 }
 
 void Formation::FormationOrbit::WarriorSlot::draw() {

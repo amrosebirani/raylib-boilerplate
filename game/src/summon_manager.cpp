@@ -48,6 +48,11 @@ void SummonManager::resetClickSlots() {
 }
 
 void SummonManager::update(float dt) {
+    if (!enabled) {
+        summonChooserOpen = false;
+        troopTypeChooserOpen = false;
+        return;
+    }
     // if (!summonActivated) {
     //     summonTimer += dt;
     //     if (summonTimer >= summonRT) {
@@ -56,6 +61,7 @@ void SummonManager::update(float dt) {
     //     }
     // }
     //
+
     totalCards = summonCardsInfantry.size() + summonCardsArchery.size() +
                  summonCardsWizardry.size();
 

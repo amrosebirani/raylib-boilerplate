@@ -1,5 +1,5 @@
 #include "container.h"
-#include "cinematographer.hpp"
+// #include "cinematographer.hpp"
 #include "collider_user_data.h"
 #include "constants.h"
 #include "game.h"
@@ -73,7 +73,7 @@ void Container::init() {
         VIRTUAL_HEIGHT / 2.0f, 300, 500);
     tp2->initialize(100);
     tree_patches.push_back(tp2);
-    cinematographer = std::make_shared<Cinematographer>();
+    // cinematographer = std::make_shared<Cinematographer>();
     setMiniMapDetails();
     // timer.after(
     //     5,
@@ -310,7 +310,7 @@ bool Container::update(float dt) {
     }
     // world->Step(dt, 8, 3);
     region->update(dt);
-    cinematographer->update(dt);
+    // cinematographer->update(dt);
     hmm->update(dt);
     std::vector<size_t> unitIndicesToRemove;
     for (size_t i = 0; i < attackUnits.size(); i++) {
@@ -553,7 +553,9 @@ void Container::drawGround() {
 std::shared_ptr<GameObject> Container::getFollowObject() {
     // int x = getRandomValue(0, 1);
     // if (x == 0)
-    return form->getKeyWarrior();
+    if (form->isKeyWarriorAlive()) return form->getKeyWarrior();
+
+    return form->dummyWarrior;
     // else
     // return castle;
 }

@@ -20,15 +20,24 @@ Joystick::Joystick(Vector2 pos) : position(pos) {
 void Joystick::update(float dt) {
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) ||
         IsGestureDetected(GESTURE_TAP)) {
+        if (IsGestureDetected(GESTURE_PINCH_IN) ||
+            IsGestureDetected(GESTURE_PINCH_OUT)) {
+            active = false;
+            return;
+        }
         Vector2 touchPos = GetMousePosition();
         // std::cout << "touch Pos" << touchPos.x << " " << touchPos.y
         // << std::endl;
 
         if (!active) {
-            float distToBase = Vector2Distance(touchPos, position);
-            if (distToBase <= jbr) {
-                active = true;
-            }
+            // float distToBase = Vector2Distance(touchPos, position);
+            // if (distToBase <= jbr) {
+            // active = true;
+            // }
+            // TODO: check for position not in control regions
+            active = true;
+            stickPosition = touchPos;
+            position = touchPos;
         }
 
         if (active) {
@@ -55,6 +64,7 @@ void Joystick::update(float dt) {
 }
 
 void Joystick::draw() {
+    if (!active) return;
     DraftCircle(position.x, position.y, jr, 100, DrawMode::LINE,
                 Fade(WHITE, 0.6f), 6.0f);
     // DrawCircleLinesV(position, jr, Fade(DARKGRAY, 0.3f));

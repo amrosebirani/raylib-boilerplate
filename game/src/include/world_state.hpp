@@ -22,6 +22,10 @@ class WorldState : public Room {
         float getCurrentGemPercent();
         std::shared_ptr<SummonManager> summon_manager;
         void finalize();
+        void setFormationRespawnTime(float time);
+        void setRespawning(bool respawning);
+        void setStartX(float ct);
+        void setSummonEnabled(bool enabled);
 
     private:
         int coins = 100;
@@ -31,4 +35,7 @@ class WorldState : public Room {
         std::vector<int> gems_for_next_upgrade;
         ProgressBar *gem_progress_bar;
         bool finished = false;
+        float formation_respawn_time = 0;
+        bool is_formation_respawning = false;
+        float startX;
 };

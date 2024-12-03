@@ -1,4 +1,5 @@
 #include "states/warrior/attack.hpp"
+#include "game_object.h"
 #include "warrior_types.h"
 #include "globals.h"
 
@@ -18,7 +19,8 @@ AttackingWarrior::~AttackingWarrior() {
 
 void AttackingWarrior::draw() {
     int frame = animation->getCurrentFrame();
-    Warrior *warrior = warriorParams->warrior;
+    GameObject *go = warriorParams->warrior;
+    Warrior *warrior = dynamic_cast<Warrior *>(go);
     std::string sprite_id = get_warrior_sprite_ids(warriorParams->type)[1];
     float size = 2 * get_warrior_size(warriorParams->type);
     bool flipped = false;
@@ -38,13 +40,14 @@ void AttackingWarrior::draw() {
 void AttackingWarrior::update(float dt) {
     animation->update(dt);
     if (animation->isFinished()) {
-        warriorParams->warrior->isAttacking = false;
+        dynamic_cast<Warrior *>(warriorParams->warrior)->isAttacking = false;
     }
 }
 
 void AttackingWarrior::Enter(StateParams *params) {
     warriorParams = (WarriorStateParams *)params;
-    Direction d = warriorParams->warrior->directionFacing;
+    Direction d =
+        dynamic_cast<Warrior *>(warriorParams->warrior)->directionFacing;
     int dd = get_direction_rows(warriorParams->type)[d];
     int sf;
     if (warriorParams->type == WarriorType::WARRIOR_TYPE_SPEARMAN) {

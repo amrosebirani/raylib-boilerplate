@@ -1,16 +1,16 @@
 #pragma once
 
+#include "game_object.h"
 #include "state_params.hpp"
-#include "warrior.hpp"
 #include "warrior_types.h"
 
 struct WarriorStateParams : public StateParams {
-        Warrior *warrior;
+        GameObject *warrior;
         float enemy_x;
         float enemy_y;
         WarriorType type;
 
-        WarriorStateParams(Warrior *warrior, WarriorType type) {
+        WarriorStateParams(GameObject *warrior, WarriorType type) {
             this->warrior = warrior;
             this->type = type;
         }
