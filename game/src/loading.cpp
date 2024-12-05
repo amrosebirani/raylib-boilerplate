@@ -256,6 +256,8 @@ void initSprites() {
                          getAssetPath("textures/icons/magic.png"), 0, 0),
         new SpriteConfig(UI_ICONS, getAssetPath("textures/ui-icons.png"), 48,
                          48),
+        new SpriteConfig(PANEL_SPRITE_ID,
+                         getAssetPath("textures/gradient_panel.png"), 3, 3),
     });
 }
 

@@ -61,6 +61,7 @@ const std::string ARCHERY_ICON = "archery_icon";
 const std::string WIZARDRY_ICON = "wizardry_icon";
 
 const std::string UI_ICONS = "ui_icons";
+const std::string PANEL_SPRITE_ID = "panel";
 // for footman
 const std::string FOOTMAN_ATTACKS_SPRITE_ID = "footman_attack";
 const std::string FOOTMAN_BUST_SPRITE_ID = "footman_bust";
