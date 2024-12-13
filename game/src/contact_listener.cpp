@@ -2,8 +2,10 @@
 #include "attack_tower.hpp"
 #include "box2d/b2_contact.h"
 #include "box2d/b2_fixture.h"
+#include "castle.hpp"
 #include "collider_user_data.h"
 #include "collectible.hpp"
+#include "fire_ball.hpp"
 #include "lightning_tower.hpp"
 #include "warrior.hpp"
 #include "enemy.hpp"
@@ -153,6 +155,25 @@ void MyContactListener::BeginContact(b2Contact *contact) {
             return;
         }
 
+        bool ctSensorCondition1 =
+            typeA == ColliderUserData::Type::CastleSensor &&
+            typeB == ColliderUserData::Type::Enemy;
+        bool ctSensorCondition2 = typeA == ColliderUserData::Type::Enemy &&
+                                  typeB == ColliderUserData::Type::CastleSensor;
+        if (ctSensorCondition2 || ctSensorCondition1) {
+            std::shared_ptr<Castle> castle;
+            std::shared_ptr<Enemy> enemy;
+            if (ctSensorCondition1) {
+                castle = std::dynamic_pointer_cast<Castle>(dataA->obj);
+                enemy = std::dynamic_pointer_cast<Enemy>(dataB->obj);
+            } else {
+                castle = std::dynamic_pointer_cast<Castle>(dataB->obj);
+                enemy = std::dynamic_pointer_cast<Enemy>(dataA->obj);
+            }
+            castle->addEnemy(enemy);
+            return;
+        }
+
         bool acSensorCondition1 =
             typeA == ColliderUserData::Type::ArcherSensor &&
             typeB == ColliderUserData::Type::Enemy;
@@ -230,6 +251,24 @@ void MyContactListener::BeginContact(b2Contact *contact) {
             return;
         }
 
+        bool fbCondition1 = typeA == ColliderUserData::Type::Enemy &&
+                            typeB == ColliderUserData::Type::FireBall;
+        bool fbCondition2 = typeA == ColliderUserData::Type::FireBall &&
+                            typeB == ColliderUserData::Type::Enemy;
+        if (fbCondition1 || fbCondition2) {
+            std::shared_ptr<Enemy> enemy;
+            std::shared_ptr<FireBall> fireball;
+            if (fbCondition1) {
+                enemy = std::dynamic_pointer_cast<Enemy>(dataA->obj);
+                fireball = std::dynamic_pointer_cast<FireBall>(dataB->obj);
+            } else {
+                enemy = std::dynamic_pointer_cast<Enemy>(dataB->obj);
+                fireball = std::dynamic_pointer_cast<FireBall>(dataA->obj);
+            }
+            enemy->takeAttack(fireball->getDamage());
+            return;
+        }
+
         bool bSensorCondition1 =
             typeA == ColliderUserData::Type::BuildingSensor &&
             typeB == ColliderUserData::Type::Formation;
@@ -244,6 +283,23 @@ void MyContactListener::BeginContact(b2Contact *contact) {
                 building = std::dynamic_pointer_cast<Building>(dataB->obj);
             }
             building->startContact();
+            // std::cout << "Building in contact" << std::endl;
+            return;
+        }
+
+        bool sSensorCondition1 =
+            typeA == ColliderUserData::Type::SummonSensor &&
+            typeB == ColliderUserData::Type::Formation;
+        bool sSensorCondition2 = typeA == ColliderUserData::Type::Formation &&
+                                 typeB == ColliderUserData::Type::SummonSensor;
+        if (sSensorCondition2 || sSensorCondition1) {
+            std::shared_ptr<Building> building;
+            if (sSensorCondition1) {
+                building = std::dynamic_pointer_cast<Building>(dataA->obj);
+            } else {
+                building = std::dynamic_pointer_cast<Building>(dataB->obj);
+            }
+            building->startSummonContact();
             // std::cout << "Building in contact" << std::endl;
         }
     }
@@ -280,6 +336,23 @@ void MyContactListener::EndContact(b2Contact *contact) {
             }
             building->endContact();
             // std::cout << "Building not in contact" << std::endl;
+            return;
+        }
+
+        bool sSensorCondition1 =
+            typeA == ColliderUserData::Type::SummonSensor &&
+            typeB == ColliderUserData::Type::Formation;
+        bool sSensorCondition2 = typeA == ColliderUserData::Type::Formation &&
+                                 typeB == ColliderUserData::Type::SummonSensor;
+        if (sSensorCondition2 || sSensorCondition1) {
+            std::shared_ptr<Building> building;
+            if (sSensorCondition1) {
+                building = std::dynamic_pointer_cast<Building>(dataA->obj);
+            } else {
+                building = std::dynamic_pointer_cast<Building>(dataB->obj);
+            }
+            building->endSummonContact();
+            // std::cout << "Building in contact" << std::endl;
             return;
         }
 

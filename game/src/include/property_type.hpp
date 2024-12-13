@@ -11,4 +11,5 @@ enum PropertyType {
 };
 
 float getTributeRate(PropertyType type);
+float getHouseTributeRate(int level);
 void initPropertyTributeRates();

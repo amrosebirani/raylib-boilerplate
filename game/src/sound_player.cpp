@@ -27,4 +27,5 @@ void SoundPlayer::stop() {
 
 SoundPlayer::SoundPlayer(std::string sound) : sound(sound) {
     soundDuration = getAudioManager()->getSoundDuration(sound);
+    playTill = 0;
 }

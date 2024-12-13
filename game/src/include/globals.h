@@ -5,6 +5,7 @@
 #include "container.h"
 #include "gameover.hpp"
 #include "joystick.hpp"
+#include "mainmenu.hpp"
 #include "sprite_holder.hpp"
 #include "victory.hpp"
 #include "world_state.hpp"
@@ -21,10 +22,13 @@ std::shared_ptr<CameraEnhanced> getViewCamera();
 std::shared_ptr<WorldState> getWorldState();
 std::shared_ptr<Joystick> getJoystick();
 std::shared_ptr<GameOver> getGameOver();
+std::shared_ptr<MainMenu> getMainMenu();
 std::shared_ptr<Victory> getVictory();
 bool isShakeDetected();
 void resetShakeDetected();
 void reinitializeGame();
+void resetGame();
+void startGame();
 Rectangle getJoystickRect();
 bool isPlatformAndroid();
 bool isPlatformDesktop();

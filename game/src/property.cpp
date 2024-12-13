@@ -92,6 +92,10 @@ void PropertySlot::update(float dt) {
     // }
 }
 
+std::shared_ptr<Building> PropertySlot::getBuilding() {
+    return building;
+}
+
 PropertySlot::PropertySlot(float x, float y, float width, float height,
                            PropertyType type, PropertyRing *ring)
     : x(x), y(y), width(width), height(height), type(type), ring(ring) {

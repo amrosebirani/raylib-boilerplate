@@ -50,6 +50,11 @@ bool HouseBlock::isAlive() {
 void HouseBlock::update(float dt) {
     timer->update(dt);
     awakenColliders(dt);
+    tributeGenerated += tributeRate * dt;
+    if (tributeGenerated >= 5) {
+        tributeGenerated -= 5;
+        getWorldState()->addCoins(5);
+    }
 }
 
 void HouseBlock::cleanupData() {
@@ -65,4 +70,5 @@ HouseBlock::~HouseBlock() {
 }
 
 void HouseBlock::onUpgrade(int level) {
+    tributeRate = getHouseTributeRate(level);
 }

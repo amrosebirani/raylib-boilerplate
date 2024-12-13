@@ -1,5 +1,6 @@
 #include "region.hpp"
 #include "constants.h"
+#include "property_type.hpp"
 #include "raylib.h"
 
 #include "utils.h"
@@ -41,6 +42,30 @@ void Region::init() {
     Vector2 ss = getWorldIsometricCoordinated(Vector2{x, y});
     castle = std::make_shared<Castle>(ss.x, ss.y, health, level);
     castle->init();
+}
+
+std::shared_ptr<GameObject> Region::getTutorialTower(PropertyType type) {
+    if (type == PropertyType::DEFENSE_TOWER && towerRaised) {
+        return nullptr;
+    }
+    if (type == PropertyType::BARRACKS && barracksRaised) {
+        return nullptr;
+    }
+    if (type == PropertyType::ARCHERY && archeryRaised) {
+        return nullptr;
+    }
+    if (type == PropertyType::HOUSE && houseRaised) {
+        return nullptr;
+    }
+    PropertyRing *first = propertyRings[0];
+    std::shared_ptr<GameObject> tower;
+    for (auto &p : first->properties) {
+        if (p->type == type) {
+            tower = p->getBuilding();
+            break;
+        }
+    }
+    return tower;
 }
 
 std::vector<Vector2> Region::getRegionPoints() {
@@ -159,6 +184,7 @@ Region::Region(float x, float y, float width, float height, float gold,
 //
 void Region::addPropertyRing(int ring_no) {
     propertyRings.push_back(new PropertyRing(ring_no, {x, y}, this));
+    castleUpgraded = true;
 }
 
 void Region::setCurrentHeightAndWidth(float percentHealth) {

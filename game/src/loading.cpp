@@ -1,6 +1,10 @@
 #include "loading.h"
+#include "constants.h"
+#include "game.h"
 #include "globals.h"
 #include "raylib.h"
+#include "sprite_holder.hpp"
+#include "textbox.hpp"
 #include "utils.h"
 
 void initBuildingSprites() {
@@ -91,6 +95,49 @@ void initWarriorSprites() {
         new SpriteConfig(ARCHER_IDLE_SPRITE_ID,
                          getAssetPath("textures/archer_all_ROE_Idle2.png"), 160,
                          160),
+        // add for crossbowman
+        new SpriteConfig(
+            CROSSBOWMAN_ATTACKS_SPRITE_ID,
+            getAssetPath("textures/crossbowman/crossbowman_attack.png"), 128,
+            128),
+        new SpriteConfig(
+            CROSSBOWMAN_BUST_SPRITE_ID,
+            getAssetPath("textures/crossbowman/crossbowman_bust.png"), 0, 0),
+        new SpriteConfig(
+            CROSSBOWMAN_IDLE_SPRITE_ID,
+            getAssetPath("textures/crossbowman/crossbowman_idle.png"), 128,
+            128),
+        new SpriteConfig(
+            CROSSBOWMAN_PAPERDOLL_SPRITE_ID,
+            getAssetPath("textures/crossbowman/crossbowman_paperdoll.png"), 0,
+            0),
+        new SpriteConfig(
+            CROSSBOWMAN_DEAD_SPRITE_ID,
+            getAssetPath("textures/crossbowman/crossbowman_dead.png"), 128,
+            128),
+        new SpriteConfig(
+            CROSSBOWMAN_RUN_SPRITE_ID,
+            getAssetPath("textures/crossbowman/crossbowman_run.png"), 128, 128),
+        // add for javeliner
+        new SpriteConfig(
+            JAVELINER_ATTACKS_SPRITE_ID,
+            getAssetPath("textures/javeliner/javeliner_attack.png"), 128, 128),
+        new SpriteConfig(JAVELINER_BUST_SPRITE_ID,
+                         getAssetPath("textures/javeliner/javeliner_bust.png"),
+                         0, 0),
+        new SpriteConfig(JAVELINER_IDLE_SPRITE_ID,
+                         getAssetPath("textures/javeliner/javeliner_idle.png"),
+                         128, 128),
+        new SpriteConfig(
+            JAVELINER_PAPERDOLL_SPRITE_ID,
+            getAssetPath("textures/javeliner/javeliner_paperdoll.png"), 0, 0),
+        new SpriteConfig(JAVELINER_DEAD_SPRITE_ID,
+                         getAssetPath("textures/javeliner/javeliner_dead.png"),
+                         128, 128),
+        new SpriteConfig(JAVELINER_RUN_SPRITE_ID,
+                         getAssetPath("textures/javeliner/javeliner_run.png"),
+                         128, 128),
+        //
         new SpriteConfig(FOOTMAN_IDLE_SPRITE_ID,
                          getAssetPath("textures/footman/footman_idle.png"), 160,
                          160),
@@ -109,6 +156,63 @@ void initWarriorSprites() {
         new SpriteConfig(FOOTMAN_DEAD_SPRITE_ID,
                          getAssetPath("textures/footman/footman_dead.png"), 160,
                          160),
+        // for swordsman, similar to footman
+        new SpriteConfig(SWORDSMAN_IDLE_SPRITE_ID,
+                         getAssetPath("textures/swordsman/swordsman_idle.png"),
+                         160, 160),
+        new SpriteConfig(
+            SWORDSMAN_ATTACKS_SPRITE_ID,
+            getAssetPath("textures/swordsman/swordsman_attack.png"), 160, 160),
+        new SpriteConfig(SWORDSMAN_BUST_SPRITE_ID,
+                         getAssetPath("textures/swordsman/swordsman_bust.png"),
+                         0, 0),
+        new SpriteConfig(SWORDSMAN_RUN_SPRITE_ID,
+                         getAssetPath("textures/swordsman/swordsman_run.png"),
+                         160, 160),
+        new SpriteConfig(
+            SWORDSMAN_PAPERDOLL_SPRITE_ID,
+            getAssetPath("textures/swordsman/swordsman_paperdoll.png"), 0, 0),
+        new SpriteConfig(SWORDSMAN_DEAD_SPRITE_ID,
+                         getAssetPath("textures/swordsman/swordsman_dead.png"),
+                         160, 160),
+        // for axeman, give all 6 lines at once
+        new SpriteConfig(AXEMAN_IDLE_SPRITE_ID,
+                         getAssetPath("textures/axeman/axeman_idle.png"), 160,
+                         160),
+        new SpriteConfig(AXEMAN_ATTACKS_SPRITE_ID,
+                         getAssetPath("textures/axeman/axeman_attack.png"), 160,
+                         160),
+        new SpriteConfig(AXEMAN_BUST_SPRITE_ID,
+                         getAssetPath("textures/axeman/axeman_bust.png"), 0, 0),
+        new SpriteConfig(AXEMAN_RUN_SPRITE_ID,
+                         getAssetPath("textures/axeman/axeman_run.png"), 160,
+                         160),
+        new SpriteConfig(AXEMAN_PAPERDOLL_SPRITE_ID,
+                         getAssetPath("textures/axeman/axeman_paperdoll.png"),
+                         0, 0),
+        new SpriteConfig(AXEMAN_DEAD_SPRITE_ID,
+                         getAssetPath("textures/axeman/axeman_dead.png"), 160,
+                         160),
+        // for berserker
+        new SpriteConfig(BERSERKER_IDLE_SPRITE_ID,
+                         getAssetPath("textures/berserker/berserker_idle.png"),
+                         160, 160),
+        new SpriteConfig(
+            BERSERKER_ATTACKS_SPRITE_ID,
+            getAssetPath("textures/berserker/berserker_attack.png"), 160, 160),
+        new SpriteConfig(BERSERKER_BUST_SPRITE_ID,
+                         getAssetPath("textures/berserker/berserker_bust.png"),
+                         0, 0),
+        new SpriteConfig(BERSERKER_RUN_SPRITE_ID,
+                         getAssetPath("textures/berserker/berserker_run.png"),
+                         160, 160),
+        new SpriteConfig(
+            BERSERKER_PAPERDOLL_SPRITE_ID,
+            getAssetPath("textures/berserker/berserker_paperdoll.png"), 0, 0),
+        new SpriteConfig(BERSERKER_DEAD_SPRITE_ID,
+                         getAssetPath("textures/berserker/berserker_dead.png"),
+                         160, 160),
+        //
         new SpriteConfig(SPEARMAN_IDLE_SPRITE_ID,
                          getAssetPath("textures/spearman/spearman_idle.png"),
                          128, 128),
@@ -258,6 +362,50 @@ void initSprites() {
                          48),
         new SpriteConfig(PANEL_SPRITE_ID,
                          getAssetPath("textures/gradient_panel.png"), 3, 3),
+        new SpriteConfig(PANEL_BG, getAssetPath("textures/powersave_bg.png"), 0,
+                         0),
+        new SpriteConfig(CHARACTER_FRAME_SPRITE_ID,
+                         getAssetPath("textures/play_character_frame.png"), 0,
+                         0),
+        new SpriteConfig(GOLD_ICON, getAssetPath("textures/icon_gold.png"), 0,
+                         0),
+        new SpriteConfig(TOWER_ICON, getAssetPath("textures/icon_tower.png"), 0,
+                         0),
+        new SpriteConfig(LTOWER_ICON, getAssetPath("textures/icon_thunder.png"),
+                         0, 0),
+        new SpriteConfig(BARRACKS_ICON,
+                         getAssetPath("textures/icon_barracks.png"), 0, 0),
+        new SpriteConfig(ARCHERYB_ICON,
+                         getAssetPath("textures/icon_archery.png"), 0, 0),
+        new SpriteConfig(WIZARDRYB_ICON,
+                         getAssetPath("textures/icon_wizardry.png"), 0, 0),
+        new SpriteConfig(HOUSE_ICON, getAssetPath("textures/icon_house.png"), 0,
+                         0),
+        new SpriteConfig(CASTLE_ICON, getAssetPath("textures/icon_castle.png"),
+                         0, 0),
+        new SpriteConfig(UPG_ICON, getAssetPath("textures/icon_arrow_up.png"),
+                         0, 0),
+        new SpriteConfig(ARROW_GO_ICON,
+                         getAssetPath("textures/icon_arrow_go.png"), 0, 0),
+        new SpriteConfig(ARROW_PREV, getAssetPath("textures/arrow_prev.png"), 0,
+                         0),
+        new SpriteConfig(ARROW_NEXT, getAssetPath("textures/arrow_next.png"), 0,
+                         0),
+        new SpriteConfig(BUTTON_ICON, getAssetPath("textures/icon_button.png"),
+                         0, 0),
+        new SpriteConfig(CLEAR_ICON, getAssetPath("textures/icon_clear.png"), 0,
+                         0),
+        new SpriteConfig(FIRE_BURNING_SPRITE_ID,
+                         getAssetPath("textures/fire_burn_sprites.png"), 160,
+                         160),
+        new SpriteConfig(FIRE_BALL_SPRITE_ID,
+                         getAssetPath("textures/fire_ball.png"), 36, 16),
+        new SpriteConfig(WARRIOR_ICONS,
+                         getAssetPath("textures/warrior_icons.png"), 256, 256),
+        new SpriteConfig(SUMMON_BUTTON,
+                         getAssetPath("textures/summon_circle.png"), 0, 0),
+        new SpriteConfig(SUMMON_CARD_FRAME,
+                         getAssetPath("textures/summon_card_frame.png"), 0, 0),
     });
 }
 
@@ -316,9 +464,21 @@ bool Loading::update(float dt) {
     }
     if (buildingSpritesInit && warriorSpritesInit && treeSpritesInit &&
         enemySpritesInit && townSpritesInit && soundsLoaded) {
-        getContainer()->init();
-        getStateStack()->push(getContainer());
-        getStateStack()->push(getWorldState());
+        // getContainer()->init();
+        // getStateStack()->push(getContainer());
+        // getStateStack()->push(getWorldState());
+        // getStateStack()->push(std::make_shared<TextBox>(
+        //     "Welcome to the world of the Kingdom of the Lost! "
+        //     "You are the ruler of this kingdom. "
+        //     "You must build your kingdom, train your warriors, "
+        //     "and defend your kingdom from the enemies that seek to destroy
+        //     it. " "Good luck, my liege!", ARCHER_BUST_SPRITE_ID, true, 20,
+        //     2));
+        //
+        // getStateStack()->push(std::make_shared<TextBox>(
+        //     "Hello", ARCHER_BUST_SPRITE_ID, false, 20, 2));
+        getMainMenu()->reset();
+        getStateStack()->push(getMainMenu());
         finished = true;
     }
     return false;

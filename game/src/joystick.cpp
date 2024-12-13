@@ -15,6 +15,7 @@ Joystick::Joystick(Vector2 pos) : position(pos) {
     float ss = (sw > sh) ? sw : sh;
     jr = ss * JOYSTICK_RADIUS;
     jbr = ss * JOYSTICK_BASE_RADIUS;
+    prohibitedRects = std::vector<Rectangle>();
 }
 
 void Joystick::update(float dt) {
@@ -34,7 +35,17 @@ void Joystick::update(float dt) {
             // if (distToBase <= jbr) {
             // active = true;
             // }
-            // TODO: check for position not in control regions
+            bool prohibited = false;
+            for (auto &rect : prohibitedRects) {
+                if (CheckCollisionPointRec(touchPos, rect)) {
+                    prohibited = true;
+                    break;
+                }
+            }
+            if (prohibited) {
+                active = false;
+                return;
+            }
             active = true;
             stickPosition = touchPos;
             position = touchPos;
@@ -61,6 +72,19 @@ void Joystick::update(float dt) {
         stickPosition = position;
         direction = Vector2{0, 0};
     }
+}
+
+bool Joystick::isActive() {
+    return active;
+}
+
+void Joystick::setProhibitedRects(std::vector<Rectangle> rects) {
+    prohibitedRects = rects;
+}
+
+void Joystick::clearProhibitedRects() {
+    float ss = prohibitedRects.size();
+    if (prohibitedRects.size() > 0) prohibitedRects.clear();
 }
 
 void Joystick::draw() {

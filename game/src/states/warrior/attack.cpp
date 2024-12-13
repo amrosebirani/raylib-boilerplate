@@ -25,7 +25,7 @@ void AttackingWarrior::draw() {
     float size = 2 * get_warrior_size(warriorParams->type);
     bool flipped = false;
     if (warriorParams->type == WarriorType::WARRIOR_TYPE_SPEARMAN) {
-        Direction d = warrior->directionFacing;
+        Direction d = warrior->directionAttacking;
         if (d == Direction::NORTH_EAST || d == Direction::EAST ||
             d == Direction::SOUTH_EAST) {
             flipped = true;
@@ -46,8 +46,8 @@ void AttackingWarrior::update(float dt) {
 
 void AttackingWarrior::Enter(StateParams *params) {
     warriorParams = (WarriorStateParams *)params;
-    Direction d =
-        dynamic_cast<Warrior *>(warriorParams->warrior)->directionFacing;
+    Warrior *warrior = dynamic_cast<Warrior *>(warriorParams->warrior);
+    Direction d = warrior->directionAttacking;
     int dd = get_direction_rows(warriorParams->type)[d];
     int sf;
     if (warriorParams->type == WarriorType::WARRIOR_TYPE_SPEARMAN) {
@@ -55,7 +55,8 @@ void AttackingWarrior::Enter(StateParams *params) {
     } else {
         sf = dd * 3;
     }
-    animation = new Animation({sf, sf + 1, sf + 2}, false, 0.12f);
+    animation = new Animation({sf, sf + 1, sf + 2}, false,
+                              0.12f * warrior->attackCooldown);
 }
 
 void AttackingWarrior::Exit() {

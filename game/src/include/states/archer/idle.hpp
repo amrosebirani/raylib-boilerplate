@@ -3,10 +3,11 @@
 #include "state_params.hpp"
 #include "animation.hpp"
 #include "archer_state_params.hpp"
+#include "warrior_types.h"
 
 class IdleArcher : public State {
     public:
-        IdleArcher();
+        IdleArcher(WarriorType type, bool hasTower);
         ~IdleArcher();
         void draw() override;
         void update(float dt) override;
@@ -19,4 +20,6 @@ class IdleArcher : public State {
         bool canAttack = true;
         float attackCooldown = 1.0f;
         float attackCooldownTracker = 0.0f;
+        WarriorType type;
+        bool hasTower;
 };

@@ -6,8 +6,10 @@
 #include "utils.h"
 #include "warrior_types.h"
 
-IdleArcher::IdleArcher() {
-    attackCooldown = get_warrior_attack_time(WarriorType::WARRIOR_TYPE_ARCHER);
+IdleArcher::IdleArcher(WarriorType type, bool hasTower) {
+    this->type = type;
+    this->hasTower = hasTower;
+    this->attackCooldown = get_warrior_attack_time(type);
 }
 
 IdleArcher::~IdleArcher() {
@@ -24,10 +26,20 @@ void IdleArcher::draw() {
     int frame = animation->getCurrentFrame();
     Archer *archer = archerParams->archer;
     float cr = 1.3 * DEFENSE_TOWER_RADIUS;
-    getSpriteHolder()->drawSpriteWithColor(
-        ARCHER_IDLE_SPRITE_ID, frame,
-        {archer->x - cr, archer->y - 2 * cr + .2f * cr, 2 * cr, 2 * cr},
-        {WHITE.r, WHITE.g, WHITE.b, archer->alpha});
+    std::string idle_sprite_id = get_warrior_sprite_ids(type)[0];
+    float size = 2 * get_warrior_size(type);
+    if (hasTower) {
+        getSpriteHolder()->drawSpriteWithColor(
+            idle_sprite_id, frame,
+            {archer->x - cr, archer->y - 2 * cr + .2f * cr, 2 * cr, 2 * cr},
+            {WHITE.r, WHITE.g, WHITE.b, archer->alpha});
+    } else {
+
+        getSpriteHolder()->drawSpriteWithColor(
+            idle_sprite_id, frame,
+            {archer->x - size, archer->y - size, 2 * size, 2 * size},
+            {255, 255, 255, archer->alpha});
+    }
 }
 
 void IdleArcher::update(float dt) {

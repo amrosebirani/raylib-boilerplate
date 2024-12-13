@@ -10,13 +10,12 @@ enum class SummonCardType {
 
 class SummonCard {
     public:
-        SummonCard(int w, int d, std::vector<WarriorType> types,
-                   SummonCardType type = SummonCardType::INFANTRY)
-            : w(w), d(d), types(types), summon_type(type) {};
+        SummonCard(int level, WarriorType wtype,
+                   SummonCardType stype = SummonCardType::INFANTRY)
+            : level(level), type(wtype), summon_type(stype) {};
         ~SummonCard() {};
 
-        int w;
-        int d;
-        std::vector<WarriorType> types;
+        int level;
+        WarriorType type;
         SummonCardType summon_type;
 };

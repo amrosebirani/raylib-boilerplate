@@ -15,6 +15,7 @@ class PropertySlot {
         PropertyType type;
         void update(float dt);
         void draw();
+        std::shared_ptr<Building> getBuilding();
 
     private:
         PropertyRing *ring;
@@ -34,10 +35,10 @@ class PropertyRing {
         void update(float dt);
         void draw();
         GameObject *region;
+        std::vector<PropertySlot *> properties;
 
     private:
         int ring_no;
-        std::vector<PropertySlot *> properties;
         bool operational = true;
 };
 

@@ -14,17 +14,18 @@ InfantrySummon::InfantrySummon(Vector2 position,
     Vector2 dp1 = {-dirDepth.y, dirDepth.x};
     Vector2 dp2 = {dirDepth.y, -dirDepth.x};
     Vector2 sp = position;
-    WarriorType wtype =
-        card->types[getRandomIntInRange(0, card->types.size() - 1)];
+    WarriorType wtype = card->type;
+    Vector2 summonDim =
+        getBuildingSummonDim(PropertyType::BARRACKS, card->level);
     int unit_size = get_warrior_size(wtype);
-    int us = card->w / 2;
+    int us = summonDim.x / 2;
     float uss = unit_size * 3;
     float ssx = sp.x + dp1.x * us * uss;
     float ssy = sp.y + dp1.y * us * uss;
-    for (int i = 0; i < card->w; i++) {
+    for (int i = 0; i < summonDim.x; i++) {
         float spawn_x = ssx;
         float spawn_y = ssy;
-        for (int j = 0; j < card->d; j++) {
+        for (int j = 0; j < summonDim.y; j++) {
             // spawning enemy unit here and adding to game objects
             std::shared_ptr<Warrior> pe =
                 WarriorFactory::createWarrior(wtype, spawn_x, spawn_y, 0);

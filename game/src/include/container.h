@@ -1,5 +1,6 @@
 #pragma once
 
+#include "animation.hpp"
 #include "room.hpp"
 #include "box2d/b2_world.h"
 // #include "cinematographer.hpp"
@@ -58,6 +59,7 @@ class Container : public Room {
         void endGame();
         void gameOverSet();
         void victorySet();
+        int getCurrentFireFrame();
 
     private:
         std::shared_ptr<b2World> world;
@@ -93,4 +95,5 @@ class Container : public Room {
         Vector2 center;
         float physicsTimeStep = 1.0f / 60.0f;
         float physicsAccumulator = 0;
+        Animation *fireAnimation;
 };

@@ -26,6 +26,8 @@ class WorldState : public Room {
         void setRespawning(bool respawning);
         void setStartX(float ct);
         void setSummonEnabled(bool enabled);
+        void setPopupActive(bool active);
+        bool isPopupActive();
 
     private:
         int coins = 100;
@@ -38,4 +40,5 @@ class WorldState : public Room {
         float formation_respawn_time = 0;
         bool is_formation_respawning = false;
         float startX;
+        bool popup_active = false;
 };

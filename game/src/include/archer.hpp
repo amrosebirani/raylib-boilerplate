@@ -6,11 +6,13 @@
 #include <memory>
 #include "direction.hpp"
 #include "box2d/b2_body.h"
+#include "warrior_types.h"
 
 class Archer : public GameObject {
     public:
         Archer(float rx, float ry, std::shared_ptr<GameObject> tower,
                bool operational = false);
+        Archer(float rx, float ry, WarriorType type);
         ~Archer();
 
         void draw() override;
@@ -42,6 +44,7 @@ class Archer : public GameObject {
         bool hasTower = false;
         std::shared_ptr<b2Body> collider;
         ColliderUserData *collider_data;
+        WarriorType type;
 
     private:
         StateMachine *stateMachine;

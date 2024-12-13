@@ -26,7 +26,10 @@ bool Victory::update(float dt) {
         Vector2 mousePos = GetMousePosition();
         if (CheckCollisionPointRec(mousePos, mainMenuRect)) {
             finished = true;
-            reinitializeGame();
+            // reinitializeGame();
+            getMainMenu()->reset();
+            resetGame();
+            getStateStack()->push(getMainMenu());
         }
     }
     return true;
@@ -61,4 +64,6 @@ void Victory::draw() {
     DrawText(mainMenuText.c_str(),
              mainMenuRect.x + mainMenuRect.width / 2 - rtm / 2,
              mainMenuRect.y + 10, 30, WHITE);
+    DrawText("Victory", sw / 2 - MeasureText("Victory", 70) / 2.0f, sh / 2 - 35,
+             70, WHITE);
 }

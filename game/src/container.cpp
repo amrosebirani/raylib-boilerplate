@@ -12,6 +12,7 @@
 #include "utils.h"
 #include "add_warriors.hpp"
 #include "raymath.h"
+#include <algorithm>
 #include <memory>
 
 Container::Container() {
@@ -25,6 +26,8 @@ Container::Container() {
     RaylibDebugDraw *debugDraw = new RaylibDebugDraw();
     debugDraw->SetFlags(b2Draw::e_shapeBit | b2Draw::e_jointBit);
     world->SetDebugDraw(debugDraw);
+    fireAnimation =
+        new Animation({2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, true, 0.2);
     // initTimers();
 }
 
@@ -137,6 +140,7 @@ void Container::initAppend(int count) {
 Container::~Container() {
     world = nullptr;
     delete contactListener;
+    delete fireAnimation;
 }
 
 std::shared_ptr<b2World> Container::getWorld() {
@@ -247,7 +251,7 @@ void Container::draw() {
     // }
     getViewCamera()->detach();
 
-    DrawRectangleRounded(miniMap, .5, 50, {BLACK.r, BLACK.g, BLACK.b, 150});
+    DrawRectangleRounded(miniMap, .5, 50, {BLACK.r, BLACK.g, BLACK.b, 180});
     DrawRectangleRoundedLinesEx(miniMap, .5, 50, 1,
                                 {WHITE.r, WHITE.g, WHITE.b, 150});
     for (auto &go : gameObjectsMerged) {
@@ -279,19 +283,23 @@ void Container::setMiniMapDetails() {
     float sh = GetScreenHeight();
     float distToCover = 4.5 * CASTLE_WIDTH;
     if (sw > sh) {
-        miniMapH = sh / 3;
-        miniMapW = sw / 4;
+        miniMapH = sh / 4;
+        miniMapW = sw / 5;
         miniMapS = (miniMapH / 2) / distToCover;
         miniMap = {5.0f / 6 * sw - miniMapW / 2, 140, miniMapW, miniMapH};
         miniMapO = {miniMap.x + miniMapW / 2, miniMap.y + miniMapH / 2};
     } else {
-        miniMapH = sh / 5;
-        miniMapW = sw / 2;
+        miniMapH = sh / 6;
+        miniMapW = sw / 3;
         miniMapS = (miniMapH / 2) / distToCover;
         miniMap = {1.0f / 2 * sw - miniMapW / 2, 140, miniMapW, miniMapH};
         miniMapO = {miniMap.x + miniMapW / 2, miniMap.y + miniMapH / 2};
     }
     center = region->getCenterCoordinates();
+}
+
+int Container::getCurrentFireFrame() {
+    return fireAnimation->getCurrentFrame();
 }
 
 bool Container::update(float dt) {
@@ -303,6 +311,7 @@ bool Container::update(float dt) {
         return true;
     }
     timer.update(dt);
+    fireAnimation->update(dt);
     physicsAccumulator += dt;
     while (physicsAccumulator >= physicsTimeStep) {
         world->Step(physicsTimeStep, 8, 3);
@@ -382,6 +391,7 @@ bool Container::update(float dt) {
 }
 
 void Container::gameOverSet() {
+    getAudioManager()->switchBGM("sad");
     gameover = true;
     getWorldState()->finalize();
     getGameOver()->reset();
@@ -389,6 +399,7 @@ void Container::gameOverSet() {
 }
 
 void Container::victorySet() {
+    getAudioManager()->switchBGM("victory");
     victory = true;
     getWorldState()->finalize();
     getVictory()->reset();
@@ -398,7 +409,6 @@ void Container::victorySet() {
 void Container::endGame() {
 
     getViewCamera()->follow(nullptr);
-    getAudioManager()->switchBGM("sad");
     cleanup();
 }
 

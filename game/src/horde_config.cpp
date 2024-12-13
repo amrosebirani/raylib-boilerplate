@@ -66,27 +66,27 @@ HordeConfig *getHordeConfig(HordeType type) {
 Vector2 getHordeSizeBasedOnLevel(int level) {
     switch (level) {
     case 1:
-        return Vector2{5, 7};
+        return Vector2{9, 11};
     case 2:
-        return Vector2{7, 9};
+        return Vector2{12, 7};
     case 3:
-        return Vector2{7, 9};
+        return Vector2{17, 5};
     case 4:
-        return Vector2{9, 9};
+        return Vector2{9, 15};
     case 5:
-        return Vector2{7, 12};
+        return Vector2{10, 12};
     case 6:
-        return Vector2{8, 11};
-    case 7:
-        return Vector2{9, 12};
-    case 8:
         return Vector2{10, 11};
+    case 7:
+        return Vector2{9, 15};
+    case 8:
+        return Vector2{15, 11};
     case 9:
-        return Vector2{10, 13};
+        return Vector2{15, 15};
     case 10:
-        return Vector2{11, 12};
+        return Vector2{10, 22};
     case 11:
-        return Vector2{12, 12};
+        return Vector2{20, 10};
     default:
         return Vector2{3, 3};
     }

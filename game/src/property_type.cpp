@@ -16,3 +16,15 @@ void initPropertyTributeRates() {
 float getTributeRate(PropertyType type) {
     return property_tribute_rates[type];
 }
+
+float getHouseTributeRate(int level) {
+    if (level == 0) {
+        return 0;
+    } else if (level == 1) {
+        return 5.0f / 6;
+    } else if (level == 2) {
+        return 10.0f / 6;
+    } else {
+        return 15.0f / 6;
+    }
+}

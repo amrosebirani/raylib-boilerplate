@@ -251,9 +251,7 @@ void Formation::draw() {
 void Formation::clearOtherUnits() {
     for (FormationOrbit *&orbit : orbits) {
         for (FormationOrbit::WarriorSlot &slot : orbit->slots) {
-            if (slot.warrior != nullptr) {
-                slot.eliminate();
-            }
+            slot.eliminate();
         }
     }
 }

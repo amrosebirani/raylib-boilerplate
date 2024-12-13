@@ -8,6 +8,7 @@ class Wizardry : public Building {
         ~Wizardry();
         void repair(float repairAmount) override;
         void onUpgrade(int level) override;
+        void pushSummonDialog() override;
         void update(float dt) override;
         void draw() override;
         bool isAlive() override;

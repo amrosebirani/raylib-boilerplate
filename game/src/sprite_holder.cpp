@@ -66,10 +66,20 @@ void SpriteHolder::drawSpriteWithColor(std::string sprite_id, int sprite_no,
                    rotation, sprite_color);
 }
 
+void SpriteHolder::drawSpriteWithColor(std::string sprite_id,
+                                       Rectangle dest_rec, Color sprite_color,
+                                       Vector2 origin, float rotation) {
+    SpriteConfig *spriteConfig = sprites[sprite_id];
+    DrawTexturePro(spriteConfig->texture,
+                   {0, 0, spriteConfig->texture.width * 1.0f,
+                    spriteConfig->texture.height * 1.0f},
+                   dest_rec, origin, rotation, sprite_color);
+}
 void SpriteHolder::drawSprite(BuildingData *building, float x, float y,
-                              float perc_cover, unsigned char alpha) {
+                              float perc_cover, unsigned char alpha,
+                              float scale_length) {
     SpriteConfig *spriteConfig = sprites[building->building_id];
-    float required_length = std::sqrt(1.25) * CASTLE_WIDTH * perc_cover;
+    float required_length = std::sqrt(1.25) * scale_length * perc_cover;
     float scale = required_length / building->aligned_l;
     float tw = spriteConfig->texture.width * 1.0f;
     float th = spriteConfig->texture.height * 1.0f;

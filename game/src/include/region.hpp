@@ -8,6 +8,7 @@
 #include "castle.hpp"
 #include "game_object.h"
 #include "property.hpp"
+#include "property_type.hpp"
 
 class Region : public GameObject {
     public:
@@ -44,6 +45,13 @@ class Region : public GameObject {
         std::shared_ptr<Castle> castle;
         std::vector<Vector2> getRegionPoints();
         std::vector<Vector2> getRegionPoints(float random_angle);
+        std::shared_ptr<GameObject>
+        getTutorialTower(PropertyType type = PropertyType::DEFENSE_TOWER);
+        bool towerRaised = false;
+        bool barracksRaised = false;
+        bool archeryRaised = false;
+        bool houseRaised = false;
+        bool castleUpgraded = false;
 
     private:
         float width;

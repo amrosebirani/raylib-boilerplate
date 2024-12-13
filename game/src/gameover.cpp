@@ -64,4 +64,6 @@ void GameOver::draw() {
     DrawText(restartText.c_str(),
              restartRect.x + restartRect.width / 2 - rtm / 2,
              restartRect.y + 10, 30, WHITE);
+    DrawText("Game Over", sw / 2 - MeasureText("Game Over", 70) / 2.0f,
+             sh / 2 - 35, 70, WHITE);
 }

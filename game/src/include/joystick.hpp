@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include <vector>
 
 class Joystick {
     public:
@@ -8,6 +9,9 @@ class Joystick {
         void update(float dt);
         void draw();
         Vector2 getDirection();
+        void setProhibitedRects(std::vector<Rectangle> rects);
+        void clearProhibitedRects();
+        bool isActive();
 
     private:
         Vector2 position;
@@ -16,4 +20,5 @@ class Joystick {
         bool active;
         float jr;
         float jbr;
+        std::vector<Rectangle> prohibitedRects;
 };

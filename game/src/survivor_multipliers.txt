@@ -1,0 +1,37 @@
+Hero Multipliers
+
+- Increase mvspd
+- Increase attack speed
+- Increase attack range
+- Increase attack damage
+- Increase number of warriors in outer orbit
+- Increse hp
+
+Building Multipliers
+
+- Increase hp
+- Increase summon card produce speed
+- Discount on building upgrade cost
+- Increase in tribute production rate
+- Increase in castle attack range
+- Increase in castle attack damage
+- Increase in castle attack speed
+- Increase in castle hp
+
+Warrior Multipliers
+
+- Increase hp
+- Increase attack damage
+- Increase attack speed
+- Increase attack range
+- Increase mvspd
+
+Weapons
+
+- Hero throws fire projectiles on nearest enemy
+- Hero throws ice projectiles on nearest enemy
+- Hero throws poison projectiles on nearest enemy
+- Hero throws lightning projectiles on nearest enemy
+- Hero throws earth projectiles on nearest enemy
+- Hero has a protective aura
+

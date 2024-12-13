@@ -5,10 +5,11 @@
 #include <memory>
 #include "box2d/b2_body.h"
 #include "collider_user_data.h"
+#include "warrior_types.h"
 
 class Arrow : public GameObject {
     public:
-        Arrow(float x, float y, Vector2 direction);
+        Arrow(float x, float y, Vector2 direction, WarriorType type);
         ~Arrow();
 
         void draw() override;
@@ -32,4 +33,5 @@ class Arrow : public GameObject {
         float tt = 0.0f;
         bool alive = true;
         float rotation = 0.0f;
+        WarriorType type;
 };

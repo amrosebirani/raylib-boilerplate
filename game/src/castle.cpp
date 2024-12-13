@@ -1,11 +1,17 @@
 #include "castle.hpp"
+#include "arrow.hpp"
 #include "collider_user_data.h"
+#include "constants.h"
+#include "fire_ball.hpp"
 #include "globals.h"
 #include "utils.h"
 #include "raylib.h"
+#include "collider_factory.hpp"
+#include "warrior_types.h"
+#include <iostream>
 
 Castle::Castle(float x, float y, float health, int level)
-    : Building(x, y, PropertyType::CASTLE, level, health), level(level) {
+    : Building(x, y, PropertyType::CASTLE, level, health) {
     graphics_types.push_back("castle");
     maxHealth = getMaxHealthByLevel(level, PropertyType::CASTLE);
     changeAttackTimeout = getCastleAttackTimer(level);
@@ -17,16 +23,26 @@ void Castle::init() {
     initAuraPoints();
     setUpgradeInfo();
     setColliders();
+    esdata = new ColliderUserData();
+    esdata->obj = get_shared_ptr();
+    esdata->type = ColliderUserData::Type::CastleSensor;
+    enemySensor = ColliderFactory::newCircleSensor(
+        esdata, x, y, CASTLE_SENSOR_RADIUS, b2_staticBody,
+        CATEGORY_BUILDING_SENSOR, CATEGORY_ENEMY, getContainer()->getWorld());
 }
 
 Castle::~Castle() {
+    delete esdata;
+    enemySensor = nullptr;
 }
 
 void Castle::cleanupData() {
     colliderCleanup();
+    esdata->obj = nullptr;
 }
 
 void Castle::update(float dt) {
+    enemySensor->SetAwake(true);
     if (!alive) {
         cdata->obj = nullptr;
         return;
@@ -56,6 +72,56 @@ void Castle::update(float dt) {
     }
     timer->update(dt);
     awakenColliders(dt);
+    std::vector<size_t> enemyIndicesToRemove;
+
+    for (size_t i = 0; i < enemies.size(); i++) {
+        std::shared_ptr<GameObject> go = enemies[i];
+        if (!go->isAlive()) {
+            enemyIndicesToRemove.push_back(i);
+        }
+    }
+    for (size_t i = enemyIndicesToRemove.size(); i > 0; --i) {
+        size_t index = enemyIndicesToRemove[i - 1];
+        enemies.erase(enemies.begin() + index);
+    }
+    if (level > 0) {
+        bowAttackCounter += dt;
+        if (bowAttackCounter >= bowAttackTime) {
+            bowAttack();
+            bowAttackCounter = 0;
+        }
+    }
+    if (level > 1) {
+        fireBallAttackCounter += dt;
+        if (fireBallAttackCounter >= fireBallAttackTime) {
+            fireBallAttack();
+            fireBallAttackCounter = 0;
+        }
+    }
+}
+
+void Castle::bowAttack() {
+    if (enemies.empty()) {
+        return;
+    }
+    auto enemy = enemies[getRandomIntInRange(0, enemies.size() - 1)];
+    std::shared_ptr<Arrow> arrow =
+        std::make_shared<Arrow>(x, y, Vector2{enemy->x - x, enemy->y - y},
+                                WarriorType::WARRIOR_TYPE_ARCHER);
+    arrow->init();
+    getContainer()->addGameObject(arrow);
+}
+
+void Castle::fireBallAttack() {
+    if (enemies.empty()) {
+        return;
+    }
+    auto enemy = enemies[getRandomIntInRange(0, enemies.size() - 1)];
+    std::shared_ptr<FireBall> fireBall =
+        std::make_shared<FireBall>(x, y, Vector2{enemy->x - x, enemy->y - y});
+    fireBall->init();
+    getContainer()->addGameObject(fireBall);
+    std::cout << "fireball launched" << std::endl;
 }
 
 void Castle::hit(float damage) {
@@ -108,6 +174,7 @@ bool Castle::isAlive() {
 
 void Castle::die() {
     alive = false;
+    enemies.clear();
 }
 
 Vector2 Castle::getDimensions() {
@@ -116,6 +183,16 @@ Vector2 Castle::getDimensions() {
 
 Castle::CastleState Castle::getState() {
     return state;
+}
+
+void Castle::addEnemy(std::shared_ptr<GameObject> enemy) {
+    if (level == 0) {
+        return;
+    }
+    if (!enemy->isAlive()) {
+        return;
+    }
+    enemies.push_back(enemy);
 }
 
 void Castle::onUpgrade(int level) {

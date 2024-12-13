@@ -9,6 +9,7 @@
 #include "timer.h"
 #include <memory>
 #include <unordered_map>
+#include "upgrade_info.hpp"
 #include "utils.h"
 #include "level_config.h"
 #include "victory.hpp"
@@ -92,6 +93,7 @@ std::shared_ptr<Joystick> joystick;
 Rectangle joystickRect;
 std::shared_ptr<Loading> loading;
 std::shared_ptr<GameOver> gameOver;
+std::shared_ptr<MainMenu> mainMenu;
 std::shared_ptr<Victory> victory;
 
 std::shared_ptr<Container> getContainer() {
@@ -126,6 +128,10 @@ std::shared_ptr<GameOver> getGameOver() {
     return gameOver;
 }
 
+std::shared_ptr<MainMenu> getMainMenu() {
+    return mainMenu;
+}
+
 std::shared_ptr<Victory> getVictory() {
     return victory;
 }
@@ -139,6 +145,22 @@ void reinitializeGame() {
     mStateStack->push(container);
     mStateStack->push(worldState);
     getAudioManager()->switchBGM("normal");
+}
+
+void resetGame() {
+
+    container = nullptr;
+    worldState = nullptr;
+    container = std::make_shared<Container>();
+    worldState = std::make_shared<WorldState>();
+}
+
+void startGame() {
+
+    getContainer()->init();
+    getStateStack()->push(getContainer());
+    getStateStack()->push(getWorldState());
+    // getAudioManager()->switchBGM("normal");
 }
 
 Rectangle getJoystickRect() {
@@ -237,7 +259,8 @@ void SetPlatform() {
 #elif defined(PLATFORM_ANDROID)
     setPlatform("Android");
     SetGesturesEnabled(GESTURE_DRAG | GESTURE_PINCH_IN | GESTURE_PINCH_OUT |
-                       GESTURE_TAP | GESTURE_HOLD);
+                       GESTURE_TAP | GESTURE_HOLD | GESTURE_SWIPE_RIGHT |
+                       GESTURE_SWIPE_LEFT);
 #elif defined(PLATFORM_RPI)
     setPlatform("Raspberry Pi");
 #elif defined(PLATFORM_WEB)
@@ -320,7 +343,7 @@ void startGameLoop() {
         SetWindowSize(GetScreenWidth(), GetScreenHeight());
         SetWindowPosition(0, 0);
         // SetWindowState(FLAG_WINDOW_MAXIMIZED);
-        SetWindowState(FLAG_WINDOW_RESIZABLE);
+        // SetWindowState(FLAG_WINDOW_RESIZABLE);
         if (isPlatformDesktop()) {
             SetWindowPosition(0, 0);
         }
@@ -336,6 +359,7 @@ void startGameLoop() {
     initHordeConfigs();
     spriteHolder = std::make_shared<SpriteHolder>();
     setBuildingData();
+    setUpgradeInfo();
     float sh = GetScreenHeight();
     float sw = GetScreenWidth();
     float scaleX = (float)sw / VIRTUAL_WIDTH;
@@ -367,6 +391,7 @@ void startGameLoop() {
     mStateStack = std::make_shared<StateStack>();
     loading = std::make_shared<Loading>();
     gameOver = std::make_shared<GameOver>();
+    mainMenu = std::make_shared<MainMenu>();
     victory = std::make_shared<Victory>();
     mStateStack->push(loading);
     // overtime we will check for world state in saved game implementation

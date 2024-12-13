@@ -15,4 +15,5 @@ class HouseBlock : public Building {
         void die() override;
 
     private:
+        float tributeRate;
 };

@@ -17,9 +17,12 @@ struct ColliderUserData {
             TreePatch,
             Building,
             BuildingSensor,
+            SummonSensor,
             AttackTowerSensor,
             LightningTowerSensor,
             ArcherSensor,
+            CastleSensor,
+            FireBall,
         };
         Type type;
         std::string sub_type;

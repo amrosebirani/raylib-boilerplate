@@ -1,5 +1,6 @@
 #pragma once
 
+#include "property_type.hpp"
 #include "timer.h"
 
 class HordeManager {
@@ -14,6 +15,9 @@ class HordeManager {
                    std::to_string(totalWaves);
         }
         bool isVictory();
+        void launchTutBoxes();
+        void launchTutorial(PropertyType type, std::string text,
+                            std::string sprite_id);
 
     private:
         int countToCheck = -1;

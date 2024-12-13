@@ -10,7 +10,7 @@ class SoundPlayer {
         void stop();
 
     private:
-        std::string sound;
+        std::string sound = "";
         float playTill;
         float soundDuration;
 };

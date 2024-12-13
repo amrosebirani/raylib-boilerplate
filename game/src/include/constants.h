@@ -62,13 +62,78 @@ const std::string WIZARDRY_ICON = "wizardry_icon";
 
 const std::string UI_ICONS = "ui_icons";
 const std::string PANEL_SPRITE_ID = "panel";
+const std::string CHARACTER_FRAME_SPRITE_ID = "character_frame";
+const std::string PANEL_BG = "panel_bg";
+const std::string GOLD_ICON = "gold_icon";
+const std::string TOWER_ICON = "tower_icon";
+const std::string LTOWER_ICON = "ltower_icon";
+const std::string BARRACKS_ICON = "barracks_icon";
+const std::string ARCHERYB_ICON = "archery_icon";
+const std::string WIZARDRYB_ICON = "wizardry_icon";
+const std::string HOUSE_ICON = "house_icon";
+const std::string CASTLE_ICON = "castle_icon";
+const std::string UPG_ICON = "upg_icon";
+const std::string BUTTON_ICON = "button_icon";
+const std::string ARROW_GO_ICON = "arrow_go_icon";
+const std::string ARROW_NEXT = "arrow_next";
+const std::string ARROW_PREV = "arrow_prev";
+const std::string CLEAR_ICON = "clear_icon";
+const std::string WARRIOR_ICONS = "warrior_icons";
+const std::string SUMMON_BUTTON = "summon_button";
+const std::string SUMMON_CARD_FRAME = "summon_card_frame";
 // for footman
+
 const std::string FOOTMAN_ATTACKS_SPRITE_ID = "footman_attack";
 const std::string FOOTMAN_BUST_SPRITE_ID = "footman_bust";
 const std::string FOOTMAN_IDLE_SPRITE_ID = "footman_idle";
 const std::string FOOTMAN_RUN_SPRITE_ID = "footman_run";
 const std::string FOOTMAN_PAPERDOLL_SPRITE_ID = "footman_paperdoll";
 const std::string FOOTMAN_DEAD_SPRITE_ID = "footman_dead";
+// for swordsman
+
+const std::string SWORDSMAN_ATTACKS_SPRITE_ID = "swordsman_attack";
+const std::string SWORDSMAN_BUST_SPRITE_ID = "swordsman_bust";
+const std::string SWORDSMAN_IDLE_SPRITE_ID = "swordsman_idle";
+const std::string SWORDSMAN_RUN_SPRITE_ID = "swordsman_run";
+const std::string SWORDSMAN_PAPERDOLL_SPRITE_ID = "swordsman_paperdoll";
+const std::string SWORDSMAN_DEAD_SPRITE_ID = "swordsman_dead";
+
+// for berserker
+
+const std::string BERSERKER_ATTACKS_SPRITE_ID = "berserker_attack";
+const std::string BERSERKER_BUST_SPRITE_ID = "berserker_bust";
+const std::string BERSERKER_IDLE_SPRITE_ID = "berserker_idle";
+const std::string BERSERKER_RUN_SPRITE_ID = "berserker_run";
+const std::string BERSERKER_PAPERDOLL_SPRITE_ID = "berserker_paperdoll";
+const std::string BERSERKER_DEAD_SPRITE_ID = "berserker_dead";
+
+// for axeman
+
+const std::string AXEMAN_ATTACKS_SPRITE_ID = "axeman_attack";
+const std::string AXEMAN_BUST_SPRITE_ID = "axeman_bust";
+const std::string AXEMAN_IDLE_SPRITE_ID = "axeman_idle";
+const std::string AXEMAN_RUN_SPRITE_ID = "axeman_run";
+const std::string AXEMAN_PAPERDOLL_SPRITE_ID = "axeman_paperdoll";
+const std::string AXEMAN_DEAD_SPRITE_ID = "axeman_dead";
+
+// for javeliner
+
+const std::string JAVELINER_ATTACKS_SPRITE_ID = "javeliner_attack";
+const std::string JAVELINER_BUST_SPRITE_ID = "javeliner_bust";
+const std::string JAVELINER_IDLE_SPRITE_ID = "javeliner_idle";
+const std::string JAVELINER_RUN_SPRITE_ID = "javeliner_run";
+const std::string JAVELINER_PAPERDOLL_SPRITE_ID = "javeliner_paperdoll";
+const std::string JAVELINER_DEAD_SPRITE_ID = "javeliner_dead";
+
+// for crossbowman
+
+const std::string CROSSBOWMAN_ATTACKS_SPRITE_ID = "crossbowman_attack";
+const std::string CROSSBOWMAN_BUST_SPRITE_ID = "crossbowman_bust";
+const std::string CROSSBOWMAN_IDLE_SPRITE_ID = "crossbowman_idle";
+const std::string CROSSBOWMAN_RUN_SPRITE_ID = "crossbowman_run";
+const std::string CROSSBOWMAN_PAPERDOLL_SPRITE_ID = "crossbowman_paperdoll";
+const std::string CROSSBOWMAN_DEAD_SPRITE_ID = "crossbowman_dead";
+
 // for spearman
 const std::string SPEARMAN_ATTACKS_SPRITE_ID = "spearman_attack";
 const std::string SPEARMAN_BUST_SPRITE_ID = "spearman_bust";
@@ -251,8 +316,12 @@ const std::string LIGHTNING_TOWER_SPRITE_ID = "lightning_tower";
 const std::string BLOCK_TOWER1_SPRITE_ID = "block_tower1";
 const std::string BLOCK_TOWER2_SPRITE_ID = "block_tower2";
 
+const std::string FIRE_BURNING_SPRITE_ID = "fire_sheet";
+const std::string FIRE_BALL_SPRITE_ID = "fire_ball";
+
 const float DEFENSE_TOWER_RADIUS = 15.0f;
 const float DEFENSE_TOWER_SENSOR_RADIUS = 70.0f;
+const float CASTLE_SENSOR_RADIUS = 140.0f;
 const float TREE_HEIGHT = 90.0f;
 const std::vector<Color> bloodColors = {
     {178, 34, 34, 255}, {90, 0, 0, 255}, {75, 0, 0, 255}};
@@ -270,6 +339,8 @@ constexpr float ENEMY_BASE_MVSPD = 55.0f;
 constexpr float FORMATION_BASE_MVSPD = 150.0f;
 constexpr float WARRIOR_BASE_MVSPD = 80.0f;
 constexpr float ARROW_BASE_MVSPD = 220.0f;
+
+constexpr float FIREBALL_BASE_MVSPD = 50.0f;
 
 constexpr int WARRIOR_RESPAWN_TIME = 30;
 constexpr int FORMATION_RESPAWN_TIME = 20;

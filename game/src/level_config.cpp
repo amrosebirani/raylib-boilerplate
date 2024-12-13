@@ -7,7 +7,7 @@ std::unordered_map<int, LevelConfig *> level_configs;
 void initLevels() {
     LevelConfig *lv = new LevelConfig();
     lv->level = 1;
-    lv->key_warrior = WarriorType::WARRIOR_TYPE_SWORDSMAN;
+    lv->key_warrior = WarriorType::WARRIOR_TYPE_KNIGHT;
     lv->expansion_warrior = WarriorType::WARRIOR_TYPE_SPEARMAN;
     OrbitConfig *orb11 = new OrbitConfig();
     orb11->type = WarriorType::WARRIOR_TYPE_SHIELD_BEARER;

@@ -4,10 +4,11 @@
 #include "state_params.hpp"
 #include "animation.hpp"
 #include "archer_state_params.hpp"
+#include "warrior_types.h"
 
 class PlayAnimation : public State {
     public:
-        PlayAnimation();
+        PlayAnimation(WarriorType type, bool hasTower);
         ~PlayAnimation();
         void draw() override;
         void update(float dt) override;
@@ -17,4 +18,6 @@ class PlayAnimation : public State {
     private:
         Animation *animation = nullptr;
         ArcherStateParams *archerParams = nullptr;
+        WarriorType type;
+        bool hasTower;
 };

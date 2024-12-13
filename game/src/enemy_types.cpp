@@ -25,22 +25,22 @@ void initEnemySizes() {
     enemy_sizes[EnemyType::ZOMBIE6] = 14;
     enemy_sizes[EnemyType::ZOMBIE_GIANT] = 22;
 
-    enemy_damage[EnemyType::ENEMY_TYPE_SHIELD_BEARER] = 3;
-    enemy_damage[EnemyType::GHOUL] = 6;
+    enemy_damage[EnemyType::ENEMY_TYPE_SHIELD_BEARER] = 5;
+    enemy_damage[EnemyType::GHOUL] = 7;
     enemy_damage[EnemyType::NECROMANCER] = 12;
-    enemy_damage[EnemyType::RAT] = 5;
-    enemy_damage[EnemyType::SPIDER] = 10;
+    enemy_damage[EnemyType::RAT] = 7;
+    enemy_damage[EnemyType::SPIDER] = 15;
     enemy_damage[EnemyType::SKELETON] = 3;
     enemy_damage[EnemyType::SKELETON_PRINCE] = 10;
-    enemy_damage[EnemyType::BUCK] = 4;
-    enemy_damage[EnemyType::WOLF] = 7;
-    enemy_damage[EnemyType::ZOMBIE1] = 3;
-    enemy_damage[EnemyType::ZOMBIE2] = 3;
-    enemy_damage[EnemyType::ZOMBIE3] = 3;
-    enemy_damage[EnemyType::ZOMBIE4] = 3;
-    enemy_damage[EnemyType::ZOMBIE5] = 3;
+    enemy_damage[EnemyType::BUCK] = 5;
+    enemy_damage[EnemyType::WOLF] = 10;
+    enemy_damage[EnemyType::ZOMBIE1] = 5;
+    enemy_damage[EnemyType::ZOMBIE2] = 5;
+    enemy_damage[EnemyType::ZOMBIE3] = 5;
+    enemy_damage[EnemyType::ZOMBIE4] = 5;
+    enemy_damage[EnemyType::ZOMBIE5] = 5;
     enemy_damage[EnemyType::ZOMBIE6] = 5;
-    enemy_damage[EnemyType::ZOMBIE_GIANT] = 22;
+    enemy_damage[EnemyType::ZOMBIE_GIANT] = 17;
 
     enemy_hp[EnemyType::ENEMY_TYPE_SHIELD_BEARER] = 30;
     enemy_hp[EnemyType::GHOUL] = 40;
@@ -74,7 +74,7 @@ void initEnemySizes() {
     enemy_atime[EnemyType::ZOMBIE4] = 1;
     enemy_atime[EnemyType::ZOMBIE5] = 1;
     enemy_atime[EnemyType::ZOMBIE6] = 1;
-    enemy_atime[EnemyType::ZOMBIE_GIANT] = 5;
+    enemy_atime[EnemyType::ZOMBIE_GIANT] = 2;
 }
 
 int get_enemy_size(EnemyType type) {

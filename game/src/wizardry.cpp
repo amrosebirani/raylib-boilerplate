@@ -29,6 +29,7 @@ void Wizardry::draw() {
     getSpriteHolder()->drawSprite(buildingData, x, y, perc_cover,
                                   buildingAlpha);
     drawUpgradeView(RED);
+    drawSummonView();
 }
 
 bool Wizardry::isAlive() {
@@ -53,4 +54,11 @@ Wizardry::~Wizardry() {
 }
 
 void Wizardry::onUpgrade(int level) {
+}
+
+void Wizardry::pushSummonDialog() {
+    // std::shared_ptr<SummonDialog> sd = std::make_shared<SummonDialog>(
+    //     x, y, PropertyType::WIZARDRY, level);
+    // sd->init();
+    // getDialogHolder()->pushDialog(sd);
 }

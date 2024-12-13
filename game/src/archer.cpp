@@ -20,9 +20,26 @@ Archer::Archer(float rx, float ry, std::shared_ptr<GameObject> tower,
     } else {
         raised = false;
     }
-    hp = get_warrior_hp(WarriorType::WARRIOR_TYPE_ARCHER);
+    type = WarriorType::WARRIOR_TYPE_ARCHER;
+    hp = get_warrior_hp(type);
     stateMachine = new StateMachine(
-        {{"Idle", new IdleArcher()}, {"PlayAnimation", new PlayAnimation()}});
+        {{"Idle", new IdleArcher(WarriorType::WARRIOR_TYPE_ARCHER, hasTower)},
+         {"PlayAnimation",
+          new PlayAnimation(WarriorType::WARRIOR_TYPE_ARCHER, hasTower)}});
+    archer_params = new ArcherStateParams(this);
+    stateMachine->changeState("Idle", archer_params);
+}
+
+Archer::Archer(float rx, float ry, WarriorType type)
+    : GameObject(rx, ry), type(type) {
+    raised = false;
+    tower = nullptr;
+    hasTower = false;
+    isOperational = true;
+    hp = get_warrior_hp(type);
+    stateMachine = new StateMachine(
+        {{"Idle", new IdleArcher(type, false)},
+         {"PlayAnimation", new PlayAnimation(type, hasTower)}});
     archer_params = new ArcherStateParams(this);
     stateMachine->changeState("Idle", archer_params);
 }
@@ -38,8 +55,7 @@ void Archer::init() {
             getContainer()->getWorld());
         collider_data = new ColliderUserData();
         collider_data->obj = get_shared_ptr();
-        collider = getArcherCollider(WarriorType::WARRIOR_TYPE_ARCHER, x, y,
-                                     collider_data, false);
+        collider = getArcherCollider(type, x, y, collider_data, false);
     }
 }
 

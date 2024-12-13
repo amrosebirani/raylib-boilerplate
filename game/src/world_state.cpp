@@ -45,12 +45,11 @@ void WorldState::draw() {
     if (isPlatformAndroid()) {
         getJoystick()->draw();
     }
-    DrawRectangle(0, GetScreenHeight() - 60, GetScreenWidth(), 60,
-                  {0, 0, 0, 125});
+    // DrawRectangle(0, GetScreenHeight() - 60, GetScreenWidth(), 60,
+    // {0, 0, 0, 125});
     std::string waveText = getContainer()->hmm->getWaveText();
     float waveTextWidth = MeasureText(waveText.c_str(), 30);
-    DrawText(waveText.c_str(), GetScreenWidth() * 1.0f / 2 - waveTextWidth / 2,
-             GetScreenHeight() - 45, 30, WHITE);
+    DrawText(waveText.c_str(), 20, 140, 30, BLACK);
     if (is_formation_respawning) {
         // need text in format "Respawn in 3.00"
         std::string formText = "Respawn in ";
@@ -63,6 +62,14 @@ void WorldState::draw() {
 
 void WorldState::setSummonEnabled(bool enabled) {
     summon_manager->enabled = enabled;
+}
+
+void WorldState::setPopupActive(bool active) {
+    popup_active = active;
+}
+
+bool WorldState::isPopupActive() {
+    return popup_active;
 }
 
 void WorldState::setStartX(float ct) {

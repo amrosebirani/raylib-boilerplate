@@ -109,6 +109,9 @@ void Warrior::tryAttack(std::shared_ptr<GameObject> target) {
     isAttacking = true;
     canAttack = -1;
     std::shared_ptr<Enemy> enemy = std::dynamic_pointer_cast<Enemy>(target);
+    // set directionAttacking here
+    Vector2 dirAttack = Vector2Subtract({target->x, target->y}, {x, y});
+    directionAttacking = get_direction(dirAttack);
     getAudioManager()->playRandomCombatSound();
     timer->after(
         0.3f,

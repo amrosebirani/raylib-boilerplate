@@ -18,7 +18,8 @@ std::shared_ptr<Room> StateStack::pop() {
 }
 
 void StateStack::update(float dt) {
-    // reverse loop and update till update returns false
+    // reverse iterate through the stack vector
+
     for (auto it = stack.rbegin(); it != stack.rend(); ++it) {
         std::shared_ptr<Room> room = *it;
         if (!room->update(dt)) {

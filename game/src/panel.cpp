@@ -11,11 +11,7 @@ Panel::Panel(float x, float y, float width, float height, Color color) {
 }
 
 void Panel::draw() {
-    DrawRectangleRounded({left, top, width, height}, 0.5, 50, color);
-}
-
-void Panel::update(float dt) {
-    // nothing to update
+    // DrawRectangleRounded({left, top, width, height}, 0.5, 50, color);
     float scale = 2;
     float margin = 1.5 * scale;
     float twidth = 3 * scale;
@@ -45,6 +41,10 @@ void Panel::update(float dt) {
         {right - margin, top + margin, twidth, height - 2 * margin});
 
     getSpriteHolder()->drawSprite(
-        PANEL_SPRITE_ID, 4,
+        PANEL_BG,
         {left + margin, top + margin, width - 2 * margin, height - 2 * margin});
+}
+
+void Panel::update(float dt) {
+    // nothing to update
 }

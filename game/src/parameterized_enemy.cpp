@@ -111,9 +111,6 @@ void ParameterizedEnemy::init() {
 }
 
 ParameterizedEnemy::~ParameterizedEnemy() {
-    delete collider_data;
-    collider = nullptr;
-    delete stateMachine;
 }
 
 void ParameterizedEnemy::hasCrossedMarchingPoint() {
@@ -143,7 +140,7 @@ void ParameterizedEnemy::hasCrossedCameraTriggerPoint() {
 
 void ParameterizedEnemy::update(float dt) {
     if (!alive) {
-        collider_data->obj = nullptr;
+        // collider_data->obj = nullptr;
         return;
     }
     updateCounter++;
@@ -204,9 +201,12 @@ void ParameterizedEnemy::update(float dt) {
         }
     }
 }
-
+//
 void ParameterizedEnemy::cleanupData() {
     collider_data->obj = nullptr;
+    delete collider_data;
+    collider = nullptr;
+    delete stateMachine;
 }
 
 bool ParameterizedEnemy::isAlive() {

@@ -84,6 +84,7 @@ int getUpgradeCoins(PropertyType type, int level);
 std::string getBuildingId(PropertyType type, int level);
 void initLevelUpgradeData();
 float getPercentCover(PropertyType type, int level);
+float getUIPercentCover(PropertyType type, int level);
 Rectangle getBuildingTransparencyRect(BuildingData *buildingData, float x,
                                       float y, float perc_cover);
 std::vector<Vector2> getAttackTowerArcherPos(int level);
@@ -91,3 +92,11 @@ Vector2 translateBuildingPoint(BuildingData *buildingData, float x, float y,
                                float perc_cover, Vector2 pp);
 
 void drawFullScreenTextureWithAspect(Texture2D texture);
+std::vector<Vector2> getBuildingUpgradePolygon(BuildingData *buildingData,
+                                               float perc_cover);
+Vector2 getBuildingUpgradeOrigin(BuildingData *buildingData, float x, float y,
+                                 float perc_cover);
+Vector2 getBuildingSummonOrigin(BuildingData *buildingData, float x, float y,
+                                float perc_cover);
+void drawSummonTextRotated(Vector2 pos);
+void initSummonText();
