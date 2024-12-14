@@ -12,6 +12,8 @@
 // #include "enemy_wave.hpp"
 // #include "tower_spawn.hpp"
 #include "tree_patch.hpp"
+#include "upgrade_manager.hpp"
+#include "upgrade_content.hpp"
 #include <memory>
 // #include <stack>
 
@@ -60,6 +62,8 @@ class Container : public Room {
         void gameOverSet();
         void victorySet();
         int getCurrentFireFrame();
+        std::shared_ptr<UpgradeManager> getUpgradeManager();
+        std::shared_ptr<UpgradeContent> getUpgradeContent();
 
     private:
         std::shared_ptr<b2World> world;
@@ -71,6 +75,8 @@ class Container : public Room {
         // scum objects contain
         std::vector<std::shared_ptr<GameObject>> scumObjects;
         std::vector<std::shared_ptr<Building>> attackUnits;
+        std::shared_ptr<UpgradeContent> upgradeContent;
+        std::shared_ptr<UpgradeManager> upgradeManager;
         bool colliderDebugDraw = false;
         Timer timer;
         void initTimers();

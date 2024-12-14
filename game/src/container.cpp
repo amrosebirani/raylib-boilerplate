@@ -51,8 +51,18 @@ void Container::removeFormFixture(b2Fixture *fixture) {
     form->removeFormationFixture(fixture);
 }
 
+std::shared_ptr<UpgradeContent> Container::getUpgradeContent() {
+    return upgradeContent;
+}
+
+std::shared_ptr<UpgradeManager> Container::getUpgradeManager() {
+    return upgradeManager;
+}
+
 void Container::init() {
     float region_dimension = CASTLE_WIDTH + CASTLE_WIDTH * 2;
+    upgradeContent = std::make_shared<UpgradeContent>();
+    upgradeManager = std::make_shared<UpgradeManager>();
     region = std::make_shared<Region>(VIRTUAL_WIDTH / 2.0f,
                                       VIRTUAL_HEIGHT / 2.0f, region_dimension,
                                       region_dimension, 9999, 0, 0, 0);

@@ -109,6 +109,24 @@ WarriorPara::~WarriorPara() {
 }
 
 void WarriorPara::takeAttack(float damage) {
+    if (type == WarriorType::WARRIOR_TYPE_KNIGHT) {
+        if (getContainer()->getUpgradeContent()->get_chance(
+                HERO_DODGE_CHANCE_M)) {
+            return;
+        }
+    }
+    if (inFormation) {
+        if (getContainer()->getUpgradeContent()->get_chance(
+                HERO_UNIT_DODGE_CHANCE_M)) {
+            return;
+        }
+    }
+    if (!inFormation) {
+        if (getContainer()->getUpgradeContent()->get_chance(
+                INFANTRY_DODGE_CHANCE_M)) {
+            return;
+        }
+    }
     hp -= damage * in_damage_mult;
     throwBlood();
 }

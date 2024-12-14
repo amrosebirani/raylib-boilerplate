@@ -81,6 +81,8 @@ const std::string CLEAR_ICON = "clear_icon";
 const std::string WARRIOR_ICONS = "warrior_icons";
 const std::string SUMMON_BUTTON = "summon_button";
 const std::string SUMMON_CARD_FRAME = "summon_card_frame";
+const std::string UPGRADE_CARD = "upgrade_card";
+const std::string ARROW_BOTTOM = "arrow_bottom";
 // for footman
 
 const std::string FOOTMAN_ATTACKS_SPRITE_ID = "footman_attack";
@@ -344,3 +346,45 @@ constexpr float FIREBALL_BASE_MVSPD = 50.0f;
 
 constexpr int WARRIOR_RESPAWN_TIME = 30;
 constexpr int FORMATION_RESPAWN_TIME = 20;
+
+// multipliers
+
+const std::string HERO_HP_M = "hero_hp";
+const std::string HERO_DAMAGE_M = "hero_damage";
+const std::string HERO_ATTACK_SPEED_M = "hero_attack_speed";
+const std::string HERO_SPEED_M = "hero_speed";
+const std::string HERO_RESPAWN_TIME_M = "hero_respawn_time";
+const std::string HERO_UNIT_HP_M = "hero_unit_hp";
+const std::string HERO_UNIT_DAMAGE_M = "hero_unit_damage";
+const std::string HERO_UNIT_ATTACK_SPEED_M = "hero_unit_attack_speed";
+const std::string HERO_UNIT_RESPAWN_TIME_M = "hero_unit_respawn_time";
+const std::string GOLD_PICKUP_RANGE_M = "gold_pickup_range";
+const std::string HOUSE_HP_M = "house_hp";
+const std::string BUILDING_UPGRADE_COST_M = "building_upgrade_cost";
+const std::string TRIBUTE_RATE_M = "tribute_rate";
+const std::string CASTLE_ATTACK_RANGE_M = "castle_attack_range";
+const std::string CASTLE_ATTACK_SPEED_M = "castle_attack_speed";
+const std::string CASTLE_DAMAGE_M = "castle_damage";
+const std::string CASTLE_HP_M = "castle_hp";
+const std::string BARRACKS_HP_M = "barracks_hp";
+const std::string ARCHERY_HP_M = "archery_hp";
+const std::string DEFENSE_TOWER_HP_M = "defense_tower_hp";
+const std::string WIZARDRY_HP_M = "wizardry_hp";
+const std::string BARRACKS_PRODUCTION_RATE_M = "barracks_production_rate";
+const std::string ARCHERY_PRODUCTION_RATE_M = "archery_production_rate";
+const std::string WIZARDRY_PRODUCTION_RATE_M = "wizardry_production_rate";
+const std::string BARRACKS_UNIT_COST_M = "barracks_unit_cost";
+const std::string ARCHERY_UNIT_COST_M = "archery_unit_cost";
+const std::string WIZARDRY_UNIT_COST_M = "wizardry_unit_cost";
+const std::string DEFENSE_TOWER_RANGE_M = "defense_tower_range";
+const std::string INFANTRY_HP_M = "infantry_hp";
+const std::string INFANTRY_DAMAGE_M = "infantry_damage";
+const std::string INFANTRY_ATTACK_SPEED_M = "infantry_attack_speed";
+const std::string INFANTRY_MOVEMENT_SPEED_M = "infantry_movement_speed";
+const std::string RANGED_UNIT_HP_M = "ranged_unit_hp";
+const std::string RANGED_UNIT_DAMAGE_M = "ranged_unit_damage";
+const std::string RANGED_UNIT_ATTACK_SPEED_M = "ranged_unit_attack_speed";
+const std::string RANGED_UNIT_RANGE_M = "ranged_unit_range";
+const std::string HERO_DODGE_CHANCE_M = "hero_dodge_chance";
+const std::string HERO_UNIT_DODGE_CHANCE_M = "hero_unit_dodge_chance";
+const std::string INFANTRY_DODGE_CHANCE_M = "infantry_dodge_chance";

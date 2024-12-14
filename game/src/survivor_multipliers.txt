@@ -5,7 +5,9 @@ Hero Multipliers
 - Increase attack range
 - Increase attack damage
 - Increase number of warriors in outer orbit
-- Increse hp
+- Increase hp
+- Decrease respawn time
+- Gold Pickup range
 
 Building Multipliers
 
@@ -17,8 +19,12 @@ Building Multipliers
 - Increase in castle attack damage
 - Increase in castle attack speed
 - Increase in castle hp
+- Discount on unit production cost
+
+
 
 Warrior Multipliers
+Infantry & Ranged units
 
 - Increase hp
 - Increase attack damage

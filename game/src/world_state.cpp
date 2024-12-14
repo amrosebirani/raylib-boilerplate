@@ -1,6 +1,7 @@
 #include "world_state.hpp"
 #include "constants.h"
 #include "gem_type.hpp"
+#include "multiplier_dialog.hpp"
 #include "raylib.h"
 #include "globals.h"
 #include "raymath.h"
@@ -96,8 +97,10 @@ void WorldState::addGems(int g) {
     if (this->gems >= gems_for_next_upgrade[gem_round]) {
         this->gems -= gems_for_next_upgrade[gem_round];
         gem_round += 1;
+        getStateStack()->push(std::make_shared<MultiplierDialog>());
     }
     gem_progress_bar->setCurrent(getCurrentGemPercent());
+    // popup the multiplier dialog here
 }
 
 void WorldState::removeCoins(int coins) {
