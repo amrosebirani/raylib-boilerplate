@@ -18,7 +18,10 @@ void Gem::init() {
     std::shared_ptr<Container> cont = getContainer();
     std::shared_ptr<b2World> world = cont->getWorld();
     collider = ColliderFactory::newCircleCollider(
-        data, x, y, 5.0f, b2_dynamicBody, CATEGORY_COLLECTIBLE,
+        data, x, y,
+        5.0f *
+            getContainer()->getUpgradeContent()->get_stat(GOLD_PICKUP_RANGE_M),
+        b2_dynamicBody, CATEGORY_COLLECTIBLE,
         CATEGORY_WARRIOR | CATEGORY_BUILDING, world);
 }
 

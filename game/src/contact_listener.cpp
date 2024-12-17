@@ -7,6 +7,7 @@
 #include "collectible.hpp"
 #include "fire_ball.hpp"
 #include "lightning_tower.hpp"
+#include "spell.hpp"
 #include "warrior.hpp"
 #include "enemy.hpp"
 #include "defense_tower.hpp"
@@ -152,6 +153,24 @@ void MyContactListener::BeginContact(b2Contact *contact) {
                 enemy = std::dynamic_pointer_cast<Enemy>(dataA->obj);
             }
             atower->addEnemy(enemy);
+            return;
+        }
+
+        bool spSensorCondition1 = typeA == ColliderUserData::Type::Spell &&
+                                  typeB == ColliderUserData::Type::Enemy;
+        bool spSensorCondition2 = typeA == ColliderUserData::Type::Enemy &&
+                                  typeB == ColliderUserData::Type::Spell;
+        if (spSensorCondition2 || spSensorCondition1) {
+            std::shared_ptr<Spell> spell;
+            std::shared_ptr<Enemy> enemy;
+            if (spSensorCondition1) {
+                spell = std::dynamic_pointer_cast<Spell>(dataA->obj);
+                enemy = std::dynamic_pointer_cast<Enemy>(dataB->obj);
+            } else {
+                spell = std::dynamic_pointer_cast<Spell>(dataB->obj);
+                enemy = std::dynamic_pointer_cast<Enemy>(dataA->obj);
+            }
+            spell->addEnemy(enemy);
             return;
         }
 

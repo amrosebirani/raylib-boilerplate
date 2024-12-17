@@ -81,16 +81,90 @@ int get_warrior_size(WarriorType type) {
     return warrior_sizes[type];
 }
 
-float get_warrior_hp(WarriorType type) {
-    return warrior_hp[type];
+float get_warrior_hp(WarriorType type, bool inFormation) {
+    float mm = 1;
+    if (inFormation) {
+        if (type == WarriorType::WARRIOR_TYPE_KNIGHT) {
+            mm = getContainer()->getUpgradeContent()->get_stat(HERO_HP_M);
+        } else {
+            mm = getContainer()->getUpgradeContent()->get_stat(HERO_UNIT_HP_M);
+        }
+    } else {
+        if (is_infanty_unit(type)) {
+            mm = getContainer()->getUpgradeContent()->get_stat(INFANTRY_HP_M);
+        }
+        if (is_ranged_unit(type)) {
+            mm =
+                getContainer()->getUpgradeContent()->get_stat(RANGED_UNIT_HP_M);
+        }
+    }
+    return warrior_hp[type] * mm;
 }
 
-float get_warrior_damage(WarriorType type) {
-    return warrior_damage[type];
+bool is_infantry_unit(WarriorType type) {
+    if (type == WarriorType::WARRIOR_TYPE_SWORDSMAN ||
+        type == WarriorType::WARRIOR_TYPE_SPEARMAN ||
+        type == WarriorType::WARRIOR_TYPE_SHIELD_BEARER ||
+        type == WarriorType::WARRIOR_TYPE_BERSERKER ||
+        type == WarriorType::WARRIOR_TYPE_KNIGHT ||
+        type == WarriorType::WARRIOR_TYPE_AXEMAN) {
+        return true;
+    }
+    return false;
 }
 
-float get_warrior_attack_time(WarriorType type) {
-    return warrior_atime[type];
+bool is_ranged_unit(WarriorType type) {
+    if (type == WarriorType::WARRIOR_TYPE_ARCHER ||
+        type == WarriorType::WARRIOR_TYPE_JAVELINER ||
+        type == WarriorType::WARRIOR_TYPE_CROSSBOWMAN) {
+        return true;
+    }
+    return false;
+}
+
+float get_warrior_damage(WarriorType type, bool inFormation) {
+    float mm = 1;
+    if (inFormation) {
+        if (type == WarriorType::WARRIOR_TYPE_KNIGHT) {
+            mm = getContainer()->getUpgradeContent()->get_stat(HERO_DAMAGE_M);
+        } else {
+            mm = getContainer()->getUpgradeContent()->get_stat(
+                HERO_UNIT_DAMAGE_M);
+        }
+    } else {
+        if (is_infanty_unit(type)) {
+            mm = getContainer()->getUpgradeContent()->get_stat(
+                INFANTRY_DAMAGE_M);
+        }
+        if (is_ranged_unit(type)) {
+            mm = getContainer()->getUpgradeContent()->get_stat(
+                RANGED_UNIT_DAMAGE_M);
+        }
+    }
+    return warrior_damage[type] * mm;
+}
+
+float get_warrior_attack_time(WarriorType type, bool inFormation) {
+    float mm = 1;
+    if (inFormation) {
+        if (type == WarriorType::WARRIOR_TYPE_KNIGHT) {
+            mm = getContainer()->getUpgradeContent()->get_stat(
+                HERO_ATTACK_SPEED_M);
+        } else {
+            mm = getContainer()->getUpgradeContent()->get_stat(
+                HERO_UNIT_ATTACK_SPEED_M);
+        }
+    } else {
+        if (is_infanty_unit(type)) {
+            mm = getContainer()->getUpgradeContent()->get_stat(
+                INFANTRY_ATTACK_SPEED_M);
+        }
+        if (is_ranged_unit(type)) {
+            mm = getContainer()->getUpgradeContent()->get_stat(
+                RANGED_UNIT_ATTACK_SPEED_M);
+        }
+    }
+    return warrior_atime[type] / mm;
 }
 
 float get_in_damage_multiplier(WarriorType type) {

@@ -72,6 +72,7 @@ void PlayAnimation::Enter(StateParams *params) {
 void PlayAnimation::Exit() {
     delete animation;
     animation = nullptr;
+    float damage = get_warrior_damage(type);
     // here also need to create the arrow projectile
     // and add it to the container
     std::shared_ptr<Arrow> arrow = nullptr;
@@ -79,7 +80,7 @@ void PlayAnimation::Exit() {
         archerParams->archer->x, archerParams->archer->y,
         Vector2{archerParams->enemy_x - archerParams->archer->x,
                 archerParams->enemy_y - archerParams->archer->y},
-        type);
+        damage);
     archerParams->enemy = nullptr;
     arrow->init();
     getContainer()->addGameObject(arrow);

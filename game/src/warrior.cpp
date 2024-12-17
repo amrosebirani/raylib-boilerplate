@@ -10,6 +10,7 @@
 #include "states/warrior/seeking.hpp"
 #include "utils.h"
 #include "raymath.h"
+#include "warrior_types.h"
 
 Warrior::Warrior(float radius, float x, float y, int i)
     : radius(radius), GameObject(x, y), inFormation(false) {
@@ -108,6 +109,7 @@ void Warrior::stateUpdate(WarriorType type, float dt) {
 void Warrior::tryAttack(std::shared_ptr<GameObject> target) {
     isAttacking = true;
     canAttack = -1;
+    damage = get_warrior_damage(getType(), inFormation);
     std::shared_ptr<Enemy> enemy = std::dynamic_pointer_cast<Enemy>(target);
     // set directionAttacking here
     Vector2 dirAttack = Vector2Subtract({target->x, target->y}, {x, y});
@@ -118,6 +120,8 @@ void Warrior::tryAttack(std::shared_ptr<GameObject> target) {
         [this, enemy](float dt) {
             this->canAttack = 0;
             this->attackCooldownTracker = 0;
+            this->attackCooldown =
+                get_warrior_attack_time(this->getType(), this->inFormation);
             if (!enemy->isAlive()) {
                 return;
             }

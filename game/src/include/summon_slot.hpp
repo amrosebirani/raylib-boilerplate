@@ -16,6 +16,7 @@ class SummonSlot {
 
         void update(float dt);
         void startProducing(WarriorType wtype);
+        void setProduceCost();
         float getProgress();
         void setLevel(int level);
         bool getIsProducing() {

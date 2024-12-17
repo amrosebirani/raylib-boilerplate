@@ -28,11 +28,13 @@ enum class WarriorType {
 };
 
 int get_warrior_size(WarriorType type);
-float get_warrior_damage(WarriorType type);
-float get_warrior_hp(WarriorType type);
-float get_warrior_attack_time(WarriorType type);
+float get_warrior_damage(WarriorType type, bool inFormation = false);
+float get_warrior_hp(WarriorType type, bool inFormation = false);
+float get_warrior_attack_time(WarriorType type, bool inFormation = false);
 float get_in_damage_multiplier(WarriorType type);
 std::string getWarriorText(WarriorType type);
+bool is_ranged_unit(WarriorType type);
+bool is_infanty_unit(WarriorType type);
 void initWarriorSizes();
 std::vector<std::string> get_warrior_sprite_ids(WarriorType type);
 std::unordered_map<Direction, int> get_direction_rows(WarriorType type);

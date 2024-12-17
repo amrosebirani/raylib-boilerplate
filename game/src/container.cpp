@@ -381,13 +381,13 @@ bool Container::update(float dt) {
     if (IsKeyPressed(KEY_F1)) {
         colliderDebugDraw = !colliderDebugDraw;
     }
-    if (isPlatformAndroid()) {
-        // check for long press
-        if (isShakeDetected()) {
-            resetShakeDetected();
-            colliderDebugDraw = !colliderDebugDraw;
-        }
-    }
+    // if (isPlatformAndroid()) {
+    //     // check for long press
+    //     if (isShakeDetected()) {
+    //         resetShakeDetected();
+    //         colliderDebugDraw = !colliderDebugDraw;
+    //     }
+    // }
     // if (!form->isKeyWarriorAlive()) gameover = true;
     if (!region->castle->isAlive()) {
         endGame();

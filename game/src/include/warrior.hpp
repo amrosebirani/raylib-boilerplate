@@ -59,6 +59,9 @@ class Warrior : public GameObject {
         void setMovement(Vector2 dir);
         Vector2 dirToMove;
         float mvspd = 0;
+        virtual WarriorType getType() {
+            return WarriorType::WARRIOR_TYPE_KNIGHT;
+        }
 
     private:
         float radius;

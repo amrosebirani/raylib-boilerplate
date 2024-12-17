@@ -185,6 +185,8 @@ void Formation::joyStickMove() {
 void Formation::update(float dt) {
     x = collider->GetPosition().x * PIXEL_TO_METER_SCALE;
     y = collider->GetPosition().y * PIXEL_TO_METER_SCALE;
+    mvspd = FORMATION_BASE_MVSPD *
+            getContainer()->getUpgradeContent()->get_stat(HERO_SPEED_M);
     if (isPlatformAndroid()) {
         joyStickMove();
     } else {
@@ -334,7 +336,9 @@ Formation::FormationOrbit::FormationOrbit(float starter_radius,
 void Formation::FormationOrbit::WarriorSlot::respawnWarrior(WarriorType type) {
     respawntype = type;
     respawn = true;
-    respawnTime = WARRIOR_RESPAWN_TIME;
+    respawnTime =
+        WARRIOR_RESPAWN_TIME *
+        getContainer()->getUpgradeContent()->get_stat(HERO_UNIT_RESPAWN_TIME_M);
     respawnTracker = 0;
 }
 
@@ -361,6 +365,9 @@ void Formation::FormationOrbit::draw() {
 
 void Formation::setRespawning() {
     respawning = true;
+    respawnCT =
+        FORMATION_RESPAWN_TIME *
+        getContainer()->getUpgradeContent()->get_stat(HERO_RESPAWN_TIME_M);
     getViewCamera()->follow(dummyWarrior);
     clearOtherUnits();
     getWorldState()->setRespawning(true);

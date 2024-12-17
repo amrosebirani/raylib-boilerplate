@@ -9,7 +9,7 @@
 
 class Arrow : public GameObject {
     public:
-        Arrow(float x, float y, Vector2 direction, WarriorType type);
+        Arrow(float x, float y, Vector2 direction, float damage);
         ~Arrow();
 
         void draw() override;
@@ -33,5 +33,4 @@ class Arrow : public GameObject {
         float tt = 0.0f;
         bool alive = true;
         float rotation = 0.0f;
-        WarriorType type;
 };

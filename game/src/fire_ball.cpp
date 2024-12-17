@@ -81,5 +81,6 @@ void FireBall::draw() {
 }
 
 float FireBall::getDamage() {
-    return damage;
+    return damage *
+           getContainer()->getUpgradeContent()->get_stat(CASTLE_DAMAGE_M);
 }

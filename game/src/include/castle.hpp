@@ -33,6 +33,7 @@ class Castle : public Building {
         std::vector<std::shared_ptr<GameObject>> enemies;
         void bowAttack();
         void fireBallAttack();
+        void setEnemySensor();
 
     private:
         float height = CASTLE_HEIGHT;
@@ -44,8 +45,9 @@ class Castle : public Building {
         float changeAttackCounter = 0;
         std::shared_ptr<b2Body> enemySensor;
         ColliderUserData *esdata;
-        float bowAttackTime = 3;
+        float bowAttackTime = CASTLE_BOW_ATTACK_TIME;
         float bowAttackCounter = 0;
-        float fireBallAttackTime = 4;
+        float fireBallAttackTime = CASTLE_FIREBALL_ATTACK_TIME;
         float fireBallAttackCounter = 0;
+        float previousRangeM = 1;
 };

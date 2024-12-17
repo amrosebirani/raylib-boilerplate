@@ -59,7 +59,9 @@ void SeekingWarrior::Enter(StateParams *params) {
     warriorParams = (WarriorStateParams *)params;
     GameObject *go = warriorParams->warrior;
     warrior = dynamic_cast<Warrior *>(go);
-    warrior->mvspd = WARRIOR_BASE_MVSPD;
+    warrior->mvspd =
+        WARRIOR_BASE_MVSPD * getContainer()->getUpgradeContent()->get_stat(
+                                 INFANTRY_MOVEMENT_SPEED_M);
     Direction d = warrior->directionFacing;
     int dd = get_direction_rows(warriorParams->type)[d];
     int sf = dd * 8;

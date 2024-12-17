@@ -19,6 +19,9 @@ class WarriorPara : public Warrior {
         void takeAttack(float damage) override;
         void init() override;
         void cleanupData() override;
+        WarriorType getType() override {
+            return type;
+        }
 
     private:
         bool alive = true;

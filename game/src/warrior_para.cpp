@@ -93,8 +93,8 @@ void WarriorPara::init() {
     }
     initStates(type);
     stateMachine->changeState("Idle", new WarriorStateParams(this, type));
-    damage = get_warrior_damage(type);
-    hp = get_warrior_hp(type);
+    damage = get_warrior_damage(type, inFormation);
+    hp = get_warrior_hp(type, inFormation);
     attackCooldown = get_warrior_attack_time(type);
     in_damage_mult = get_in_damage_multiplier(type);
 }

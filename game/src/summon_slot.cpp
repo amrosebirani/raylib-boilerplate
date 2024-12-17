@@ -2,6 +2,7 @@
 #include "constants.h"
 #include "globals.h"
 #include "raylib.h"
+#include "summon_card.hpp"
 #include "utils.h"
 #include "warrior_types.h"
 
@@ -9,8 +10,25 @@ SummonSlot::SummonSlot(int index, int level, PropertyType type,
                        SummonCardType stype)
     : level(level), type(type), summon_type(stype), index(index) {
     warriorTypes = getSummonChoices(type, level);
+    setProduceCost();
+}
+
+void SummonSlot::setProduceCost() {
+    float mm = 1;
+    if (summon_type == SummonCardType::INFANTRY) {
+        mm =
+            getContainer()->getUpgradeContent()->get_stat(BARRACKS_UNIT_COST_M);
+    }
+    if (summon_type == SummonCardType::ARCHERY) {
+        mm = getContainer()->getUpgradeContent()->get_stat(ARCHERY_UNIT_COST_M);
+    }
+    if (summon_type == SummonCardType::WIZARDRY) {
+        mm =
+            getContainer()->getUpgradeContent()->get_stat(WIZARDRY_UNIT_COST_M);
+    }
+
     produceCost =
-        get_warrior_summon_card_cost(warriorTypes[selectedIndex], level);
+        get_warrior_summon_card_cost(warriorTypes[selectedIndex], level) * mm;
 }
 
 SummonSlot::~SummonSlot() {
@@ -257,8 +275,7 @@ void SummonSlot::handleLandscapeClick(std::function<void()> unSelectAll) {
         Vector2 mp = GetMousePosition();
         if (selectedIndex > 0 && CheckCollisionPointRec(mp, leftCaretRect)) {
             selectedIndex--;
-            produceCost = get_warrior_summon_card_cost(
-                warriorTypes[selectedIndex], level);
+            setProduceCost();
         }
         lpressed = false;
     }
@@ -267,8 +284,7 @@ void SummonSlot::handleLandscapeClick(std::function<void()> unSelectAll) {
         if (selectedIndex < warriorTypes.size() - 1 &&
             CheckCollisionPointRec(mp, rightCaretRect)) {
             selectedIndex++;
-            produceCost = get_warrior_summon_card_cost(
-                warriorTypes[selectedIndex], level);
+            setProduceCost();
         }
         rpressed = false;
     }
@@ -284,15 +300,13 @@ void SummonSlot::handleLandscapeClick(std::function<void()> unSelectAll) {
         if (IsGestureDetected(GESTURE_SWIPE_LEFT)) {
             if (selectedIndex < warriorTypes.size() - 1) {
                 selectedIndex++;
-                produceCost = get_warrior_summon_card_cost(
-                    warriorTypes[selectedIndex], level);
+                setProduceCost();
             }
         }
         if (IsGestureDetected(GESTURE_SWIPE_RIGHT)) {
             if (selectedIndex > 0) {
                 selectedIndex--;
-                produceCost = get_warrior_summon_card_cost(
-                    warriorTypes[selectedIndex], level);
+                setProduceCost();
             }
         }
     }
@@ -308,8 +322,7 @@ void SummonSlot::handleClick() {
         for (auto &rect : clickRects) {
             if (CheckCollisionPointRec(mp, rect)) {
                 selectedIndex = index;
-                produceCost = get_warrior_summon_card_cost(
-                    warriorTypes[selectedIndex], level);
+                setProduceCost();
                 return;
             }
             index++;

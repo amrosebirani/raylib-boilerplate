@@ -27,4 +27,5 @@ class MultiplierDialog : public Room {
         void drawUpgradeText(Rectangle rect,
                              std::vector<std::string> display_strs);
         void handleClick(std::vector<Rectangle> rects);
+        bool isLocked = false;
 };

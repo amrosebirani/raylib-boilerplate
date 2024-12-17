@@ -367,6 +367,8 @@ void initSprites() {
         new SpriteConfig(CHARACTER_FRAME_SPRITE_ID,
                          getAssetPath("textures/play_character_frame.png"), 0,
                          0),
+        new SpriteConfig(LIGHTNING_ICON,
+                         getAssetPath("textures/lightning_icon.png"), 0, 0),
         new SpriteConfig(GOLD_ICON, getAssetPath("textures/icon_gold.png"), 0,
                          0),
         new SpriteConfig(TOWER_ICON, getAssetPath("textures/icon_tower.png"), 0,

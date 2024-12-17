@@ -4,11 +4,13 @@
 #include "constants.h"
 #include "globals.h"
 #include "infantry_summon.hpp"
+#include "magic_types.hpp"
 #include "property_type.hpp"
 #include "raylib.h"
 #include "summon_card.hpp"
 #include "utils.h"
 #include "warrior_types.h"
+#include "wizardry_summon.hpp"
 #include <algorithm>
 #include <iostream>
 
@@ -35,6 +37,8 @@ SummonManager::SummonManager() {
     //     2, WarriorType::WARRIOR_TYPE_AXEMAN, SummonCardType::ARCHERY));
     summonCards.push_back(std::make_shared<SummonCard>(
         1, WarriorType::WARRIOR_TYPE_CROSSBOWMAN, SummonCardType::ARCHERY));
+    summonCards.push_back(
+        std::make_shared<SummonCard>(1, MagicType::LIGHTNING_SPELL));
     setEndX();
     setCircleRects();
 }
@@ -265,6 +269,9 @@ void SummonManager::handleClick(Vector2 pos) {
             } else if (card->summon_type == SummonCardType::ARCHERY) {
                 ArcherySummon *as = new ArcherySummon(pos, card);
                 delete as;
+            } else if (card->summon_type == SummonCardType::WIZARDRY) {
+                WizardrySummon *ws = new WizardrySummon(pos, card);
+                delete ws;
             }
             summonCards.erase(
                 std::remove(summonCards.begin(), summonCards.end(), card),
@@ -311,6 +318,14 @@ void SummonManager::drawSummonCards() {
                      rect.x + rect.width / 2 -
                          MeasureText(summon_text.c_str(), 10) / 2.0f,
                      rect.y + rect.height - 25, 10, WHITE);
+        } else if (card->summon_type == SummonCardType::WIZARDRY) {
+            MagicType mt = card->magic_type;
+            draw_magic_icon(mt, rect);
+            std::string mtext = getMagicText(mt);
+            DrawText(mtext.c_str(),
+                     rect.x + rect.width / 2 -
+                         MeasureText(mtext.c_str(), 10) / 2.0f,
+                     rect.y + rect.height, 10, WHITE);
         }
         getSpriteHolder()->drawSprite(SUMMON_CARD_FRAME, rect);
         init_x += 15;

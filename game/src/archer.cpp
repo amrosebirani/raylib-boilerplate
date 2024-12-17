@@ -49,14 +49,21 @@ void Archer::init() {
         sdata = new ColliderUserData();
         sdata->obj = get_shared_ptr();
         sdata->type = ColliderUserData::Type::ArcherSensor;
-        enemySensor = ColliderFactory::newCircleSensor(
-            sdata, x, y, 1.5 * DEFENSE_TOWER_SENSOR_RADIUS, b2_staticBody,
-            CATEGORY_BUILDING_SENSOR, CATEGORY_ENEMY,
-            getContainer()->getWorld());
+        previousRangeM =
+            getContainer()->getUpgradeContent()->get_stat(RANGED_UNIT_RANGE_M);
+        setEnemySensor();
         collider_data = new ColliderUserData();
         collider_data->obj = get_shared_ptr();
         collider = getArcherCollider(type, x, y, collider_data, false);
     }
+}
+
+void Archer::setEnemySensor() {
+
+    enemySensor = ColliderFactory::newCircleSensor(
+        sdata, x, y, 1.5 * DEFENSE_TOWER_SENSOR_RADIUS * previousRangeM,
+        b2_staticBody, CATEGORY_BUILDING_SENSOR, CATEGORY_ENEMY,
+        getContainer()->getWorld());
 }
 
 Archer::~Archer() {
@@ -128,6 +135,13 @@ void Archer::update(float dt) {
     }
     // here we will check the queue from tower and attack a particuler enemy
     stateMachine->update(dt);
+    float currentRangeM =
+        getContainer()->getUpgradeContent()->get_stat(RANGED_UNIT_RANGE_M);
+    if (currentRangeM != previousRangeM) {
+        previousRangeM = currentRangeM;
+        enemySensor = nullptr;
+        setEnemySensor();
+    }
 }
 
 bool Archer::isAlive() {

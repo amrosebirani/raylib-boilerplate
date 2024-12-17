@@ -27,6 +27,7 @@ void AudioManager::init() {
     sounds_to_load.emplace_back("archer_swish1");
     sounds_to_load.emplace_back("archer_swish2");
     sounds_to_load.emplace_back("archer_swish3");
+    sounds_to_load.emplace_back("thunder");
 
     songs = {
         "normal", "under_attack_in_control", "under_attack_fucked", "victory",

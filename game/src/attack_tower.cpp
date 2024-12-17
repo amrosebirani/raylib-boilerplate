@@ -23,10 +23,22 @@ void AttackTower::init() {
     sdata = new ColliderUserData();
     sdata->obj = get_shared_ptr();
     sdata->type = ColliderUserData::Type::AttackTowerSensor;
-    enemySensor = ColliderFactory::newCircleSensor(
-        sdata, x, y, DEFENSE_TOWER_SENSOR_RADIUS, b2_staticBody,
-        CATEGORY_BUILDING_SENSOR, CATEGORY_ENEMY, getContainer()->getWorld());
+    previousRangeM =
+        getContainer()->getUpgradeContent()->get_stat(DEFENSE_TOWER_RANGE_M);
+    setEnemySensor();
     setArchers(1);
+}
+
+void AttackTower::setEnemySensor() {
+    enemySensor = nullptr;
+    float lm = 1;
+    if (level == 2) {
+        lm = 1.5;
+    }
+    enemySensor = ColliderFactory::newCircleSensor(
+        sdata, x, y, DEFENSE_TOWER_SENSOR_RADIUS * previousRangeM * lm,
+        b2_staticBody, CATEGORY_BUILDING_SENSOR, CATEGORY_ENEMY,
+        getContainer()->getWorld());
 }
 
 void AttackTower::repair(float repairAmount) {
@@ -95,20 +107,11 @@ void AttackTower::update(float dt) {
     }
     if (previous_level == 1 && level == 2) {
         setArchers(2, true);
-
-        enemySensor = nullptr;
-        enemySensor = ColliderFactory::newCircleSensor(
-            sdata, x, y, 1.5 * DEFENSE_TOWER_SENSOR_RADIUS, b2_staticBody,
-            CATEGORY_BUILDING_SENSOR, CATEGORY_ENEMY,
-            getContainer()->getWorld());
+        setEnemySensor();
     }
     if (previous_level == 2 && level == 0) {
         setArchers(1);
-        enemySensor = nullptr;
-        enemySensor = ColliderFactory::newCircleSensor(
-            sdata, x, y, DEFENSE_TOWER_SENSOR_RADIUS, b2_staticBody,
-            CATEGORY_BUILDING_SENSOR, CATEGORY_ENEMY,
-            getContainer()->getWorld());
+        setEnemySensor();
     }
     if (previousAlpha != buildingAlpha) {
         for (auto archer : archers) {
@@ -119,6 +122,12 @@ void AttackTower::update(float dt) {
     }
     previous_level = level;
     previousAlpha = buildingAlpha;
+    float currentRangeM =
+        getContainer()->getUpgradeContent()->get_stat(DEFENSE_TOWER_RANGE_M);
+    if (currentRangeM != previousRangeM) {
+        previousRangeM = currentRangeM;
+        setEnemySensor();
+    }
 }
 
 void AttackTower::cleanupData() {

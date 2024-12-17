@@ -13,8 +13,8 @@ void LightningLine::draw() {
     cc1.a = (*params)["alpha"];
     cc2.a = (*params)["alpha"];
     for (auto &segment : segments) {
-        DrawLineEx(segment.first, segment.second, 2.5, cc1);
-        DrawLineEx(segment.first, segment.second, 1.5, cc2);
+        DrawLineEx(segment.first, segment.second, 1.5, cc1);
+        DrawLineEx(segment.first, segment.second, .75, cc2);
     }
 }
 

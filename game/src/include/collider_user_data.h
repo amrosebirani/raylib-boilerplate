@@ -23,6 +23,7 @@ struct ColliderUserData {
             ArcherSensor,
             CastleSensor,
             FireBall,
+            Spell,
         };
         Type type;
         std::string sub_type;

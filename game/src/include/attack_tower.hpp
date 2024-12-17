@@ -19,6 +19,7 @@ class AttackTower : public Building {
         void die() override;
         void addEnemy(std::shared_ptr<GameObject> enemy);
         std::vector<std::shared_ptr<GameObject>> enemies;
+        void setEnemySensor();
 
     private:
         std::shared_ptr<b2Body> enemySensor;
@@ -27,4 +28,5 @@ class AttackTower : public Building {
         int previous_level;
         unsigned char previousAlpha;
         void setArchers(int level, bool operational = false);
+        float previousRangeM = 1;
 };

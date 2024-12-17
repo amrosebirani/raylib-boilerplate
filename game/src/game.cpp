@@ -330,8 +330,8 @@ void startGameLoop() {
     SetPlatform();
     timer = Timer();
     if (isPlatformWeb()) {
-        const int screenWidth = 960;
-        const int screenHeight = 540;
+        const int screenWidth = 1390;
+        const int screenHeight = 632;
 
         InitWindow(screenWidth, screenHeight, "Roots Of Evil");
     } else {

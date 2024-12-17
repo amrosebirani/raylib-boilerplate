@@ -516,7 +516,10 @@ void Building::setBasics() {
     if (nextLevel > getMaxLevel(type)) {
         nextLevel = level;
     }
-    coinsToUpgrade = getUpgradeCoins(type, nextLevel) / 2;
+    coinsToUpgrade =
+        getUpgradeCoins(type, nextLevel) *
+        getContainer()->getUpgradeContent()->get_stat(BUILDING_UPGRADE_COST_M) /
+        2;
     const char *tt = TextFormat("%d", coinsToUpgrade);
     float ttm = MeasureText(tt, 10);
     float tw = ttm + 10 + 5;

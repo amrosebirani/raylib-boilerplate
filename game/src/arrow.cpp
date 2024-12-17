@@ -6,9 +6,8 @@
 #include "raymath.h"
 #include "warrior_types.h"
 
-Arrow::Arrow(float x, float y, Vector2 direction, WarriorType type)
-    : GameObject(x, y), direction(direction) {
-    this->type = type;
+Arrow::Arrow(float x, float y, Vector2 direction, float damage)
+    : GameObject(x, y), direction(direction), damage(damage) {
 }
 
 void Arrow::init() {
@@ -31,7 +30,7 @@ void Arrow::init() {
     collider->SetLinearVelocity(linearVelocity);
     // rotate the collider
     collider->SetTransform(collider->GetPosition(), rotation * DEG2RAD);
-    damage = get_warrior_damage(type);
+    // damage = get_warrior_damage(type);
     getAudioManager()->playRandomSwishSound();
 }
 

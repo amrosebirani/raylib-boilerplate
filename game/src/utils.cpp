@@ -9,6 +9,7 @@
 #include "globals.h"
 #include "constants.h"
 #include "box2d/b2_body.h"
+#include "magic_types.hpp"
 #include "property_type.hpp"
 #include "raylib.h"
 #include "warrior_types.h"
@@ -25,6 +26,7 @@ std::unordered_map<PropertyType, std::vector<float>> buildingProduceTime;
 std::unordered_map<PropertyType, std::vector<Vector2>> buildingSummonDim;
 std::unordered_map<PropertyType, std::vector<std::vector<WarriorType>>>
     buildingSummonTypes;
+std::vector<std::vector<MagicType>> wizardryMagicTypes;
 
 RenderTexture2D summonText;
 
@@ -522,7 +524,32 @@ float getMaxHealthByLevel(int level, PropertyType type) {
     if (level == 0) {
         return 0;
     }
-    return maxHealthByLevel[type][level - 1];
+    float mm = 1;
+    std::shared_ptr<UpgradeContent> uc = getContainer()->getUpgradeContent();
+    switch (type) {
+    case PropertyType::HOUSE:
+        mm = uc->get_stat(HOUSE_HP_M);
+        break;
+    case PropertyType::ARCHERY:
+        mm = uc->get_stat(ARCHERY_HP_M);
+        break;
+    case PropertyType::BARRACKS:
+        mm = uc->get_stat(BARRACKS_HP_M);
+        break;
+    case PropertyType::CASTLE:
+        mm = uc->get_stat(CASTLE_HP_M);
+        break;
+    case PropertyType::WIZARDRY:
+        mm = uc->get_stat(WIZARDRY_HP_M);
+        break;
+    case PropertyType::DEFENSE_TOWER:
+        mm = uc->get_stat(DEFENSE_TOWER_HP_M);
+        break;
+    case PropertyType::LIGHTNING_TOWER:
+        mm = uc->get_stat(DEFENSE_TOWER_HP_M);
+        break;
+    };
+    return maxHealthByLevel[type][level - 1] * mm;
 }
 
 int getUpgradeCoins(PropertyType type, int level) {
@@ -562,7 +589,7 @@ void initLevelUpgradeData() {
     percentCover[PropertyType::BARRACKS] = {0.5, 0.4, 0.4, 0.5};
     percentCover[PropertyType::CASTLE] = {0.5, 0.5, 0.4, 0.5};
     percentCover[PropertyType::HOUSE] = {0.4, 0.4, 0.4, 0.4};
-    percentCover[PropertyType::WIZARDRY] = {0.3, 0.5, 0.5};
+    percentCover[PropertyType::WIZARDRY] = {0.3, 0.3, 0.3};
     percentCover[PropertyType::DEFENSE_TOWER] = {0.2, 0.3};
     percentCover[PropertyType::LIGHTNING_TOWER] = {0.10};
 
@@ -576,6 +603,7 @@ void initLevelUpgradeData() {
 
     buildingProduceTime[PropertyType::BARRACKS] = {60, 50, 40, 30};
     buildingProduceTime[PropertyType::ARCHERY] = {60, 50, 40};
+    buildingProduceTime[PropertyType::WIZARDRY] = {60, 50, 40};
 
     buildingSummonDim[PropertyType::BARRACKS] = {Vector2{4, 2}, Vector2{5, 2},
                                                  Vector2{6, 2}, Vector2{7, 2}};
@@ -605,6 +633,13 @@ void initLevelUpgradeData() {
         {WarriorType::WARRIOR_TYPE_ARCHER,
          WarriorType::WARRIOR_TYPE_CROSSBOWMAN,
          WarriorType::WARRIOR_TYPE_JAVELINER},
+    };
+
+    wizardryMagicTypes = {
+        {MagicType::LIGHTNING_SPELL},
+        {MagicType::LIGHTNING_SPELL, MagicType::FIRE_SPELL},
+        {MagicType::LIGHTNING_SPELL, MagicType::FIRE_SPELL,
+         MagicType::ICE_SPELL, MagicType::METEOR_SPELL},
     };
 
     initSummonText();
@@ -667,7 +702,26 @@ float getBuildingProduceTime(PropertyType type, int level) {
     if (level == 0) {
         level = 1;
     }
-    return buildingProduceTime[type][level - 1];
+    float mm = 1;
+    switch (type) {
+    case PropertyType::BARRACKS:
+        mm = getContainer()->getUpgradeContent()->get_stat(
+            BARRACKS_PRODUCTION_RATE_M);
+        break;
+    case PropertyType::ARCHERY:
+        mm = getContainer()->getUpgradeContent()->get_stat(
+            ARCHERY_PRODUCTION_RATE_M);
+        break;
+    case PropertyType::WIZARDRY:
+        mm = getContainer()->getUpgradeContent()->get_stat(
+            WIZARDRY_PRODUCTION_RATE_M);
+        break;
+    default:
+        mm = 1;
+        break;
+    }
+
+    return buildingProduceTime[type][level - 1] / mm;
 }
 
 std::vector<WarriorType> getSummonChoices(PropertyType type, int level) {
@@ -675,6 +729,13 @@ std::vector<WarriorType> getSummonChoices(PropertyType type, int level) {
         level = 1;
     }
     return buildingSummonTypes[type][level - 1];
+}
+
+std::vector<MagicType> getMagicChoices(int level) {
+    if (level == 0) {
+        level = 1;
+    }
+    return wizardryMagicTypes[level - 1];
 }
 
 std::vector<Vector2> getAttackTowerArcherPos(int level) {

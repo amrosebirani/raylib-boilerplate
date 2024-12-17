@@ -4,6 +4,7 @@
 #include "box2d/b2_body.h"
 #include "building_data.hpp"
 #include "enemy_types.h"
+#include "magic_types.hpp"
 #include "property_type.hpp"
 #include "warrior_types.h"
 #include <unordered_map>
@@ -79,6 +80,7 @@ int getMaxLevel(PropertyType type);
 float getBuildingProduceTime(PropertyType type, int level);
 Vector2 getBuildingSummonDim(PropertyType type, int level);
 std::vector<WarriorType> getSummonChoices(PropertyType type, int level);
+std::vector<MagicType> getMagicChoices(int level);
 
 int getUpgradeCoins(PropertyType type, int level);
 std::string getBuildingId(PropertyType type, int level);

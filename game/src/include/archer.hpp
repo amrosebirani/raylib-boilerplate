@@ -45,6 +45,7 @@ class Archer : public GameObject {
         std::shared_ptr<b2Body> collider;
         ColliderUserData *collider_data;
         WarriorType type;
+        void setEnemySensor();
 
     private:
         StateMachine *stateMachine;
@@ -54,4 +55,5 @@ class Archer : public GameObject {
         std::shared_ptr<b2Body> enemySensor;
         ColliderUserData *sdata;
         StateParams *archer_params;
+        float previousRangeM;
 };

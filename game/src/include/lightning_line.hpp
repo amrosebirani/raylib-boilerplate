@@ -20,8 +20,8 @@ class LightningLine : public GameObject {
         bool alive = true;
         float x1, y1, x2, y2;
         std::vector<std::pair<Vector2, Vector2>> segments;
-        float maximumOffset = 45;
-        float generationCount = 7;
+        float maximumOffset = 25;
+        float generationCount = 5;
         Color c1;
         Color c2;
 };

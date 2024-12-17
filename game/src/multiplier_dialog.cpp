@@ -29,6 +29,9 @@ MultiplierDialog::MultiplierDialog() {
         rect3 = {x, sh / 4 - ww / 2, ww, ww};
         rect4 = {x, 3 * sh / 4 - ww / 2, ww, ww};
     }
+    if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+        isLocked = true;
+    }
 }
 
 MultiplierDialog::~MultiplierDialog() {
@@ -96,7 +99,7 @@ void MultiplierDialog::drawUpgradeText(Rectangle rect,
     if (display_strs.size() == 0) {
         return;
     }
-    float fs = rect.height / 10;
+    float fs = rect.height / 12;
     if (display_strs.size() == 1) {
         float mm = MeasureText(display_strs[0].c_str(), fs);
         DrawText(display_strs[0].c_str(), rect.x + rect.width / 2 - mm / 2,
@@ -140,6 +143,12 @@ bool MultiplierDialog::update(float dt) {
     }
     if (upgrades.size() == 0) {
         finished = true;
+        return false;
+    }
+    if (isLocked && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+        isLocked = false;
+    }
+    if (isLocked) {
         return false;
     }
     if (upgrades.size() == 1) {

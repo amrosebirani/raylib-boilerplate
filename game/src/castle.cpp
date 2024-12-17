@@ -26,8 +26,15 @@ void Castle::init() {
     esdata = new ColliderUserData();
     esdata->obj = get_shared_ptr();
     esdata->type = ColliderUserData::Type::CastleSensor;
+    previousRangeM =
+        getContainer()->getUpgradeContent()->get_stat(CASTLE_ATTACK_RANGE_M);
+    setEnemySensor();
+}
+
+void Castle::setEnemySensor() {
+
     enemySensor = ColliderFactory::newCircleSensor(
-        esdata, x, y, CASTLE_SENSOR_RADIUS, b2_staticBody,
+        esdata, x, y, CASTLE_SENSOR_RADIUS * previousRangeM, b2_staticBody,
         CATEGORY_BUILDING_SENSOR, CATEGORY_ENEMY, getContainer()->getWorld());
 }
 
@@ -89,6 +96,9 @@ void Castle::update(float dt) {
         if (bowAttackCounter >= bowAttackTime) {
             bowAttack();
             bowAttackCounter = 0;
+            bowAttackTime = CASTLE_BOW_ATTACK_TIME /
+                            getContainer()->getUpgradeContent()->get_stat(
+                                CASTLE_ATTACK_SPEED_M);
         }
     }
     if (level > 1) {
@@ -96,7 +106,17 @@ void Castle::update(float dt) {
         if (fireBallAttackCounter >= fireBallAttackTime) {
             fireBallAttack();
             fireBallAttackCounter = 0;
+            fireBallAttackTime = CASTLE_FIREBALL_ATTACK_TIME /
+                                 getContainer()->getUpgradeContent()->get_stat(
+                                     CASTLE_ATTACK_SPEED_M);
         }
+    }
+    float currentRangeM =
+        getContainer()->getUpgradeContent()->get_stat(CASTLE_ATTACK_RANGE_M);
+    if (previousRangeM != currentRangeM) {
+        previousRangeM = currentRangeM;
+        enemySensor = nullptr;
+        setEnemySensor();
     }
 }
 
@@ -105,9 +125,11 @@ void Castle::bowAttack() {
         return;
     }
     auto enemy = enemies[getRandomIntInRange(0, enemies.size() - 1)];
-    std::shared_ptr<Arrow> arrow =
-        std::make_shared<Arrow>(x, y, Vector2{enemy->x - x, enemy->y - y},
-                                WarriorType::WARRIOR_TYPE_ARCHER);
+    float damage =
+        CASTLE_ARROW_DAMAGE *
+        getContainer()->getUpgradeContent()->get_stat(CASTLE_DAMAGE_M);
+    std::shared_ptr<Arrow> arrow = std::make_shared<Arrow>(
+        x, y, Vector2{enemy->x - x, enemy->y - y}, damage);
     arrow->init();
     getContainer()->addGameObject(arrow);
 }
