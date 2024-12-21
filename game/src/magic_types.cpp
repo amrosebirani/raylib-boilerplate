@@ -69,6 +69,8 @@ std::string getMagicText(MagicType type) {
         return "Ice Spell";
     case MagicType::METEOR_SPELL:
         return "Meteor Spell";
+    default:
+        return "Unknown";
     };
 }
 

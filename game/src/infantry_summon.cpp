@@ -1,4 +1,5 @@
 #include "infantry_summon.hpp"
+#include "firebase.hpp"
 #include "globals.h"
 #include "utils.h"
 #include "warrior_types.h"
@@ -7,6 +8,9 @@
 
 InfantrySummon::InfantrySummon(Vector2 position,
                                std::shared_ptr<SummonCard> card) {
+    sendFirebaseEvent("InfantrySummon",
+                      {{"level", TextFormat("%d", card->level)},
+                       {"warrior_type", getWarriorText(card->type)}});
     getAudioManager()->playSound("summon_infantry");
     Vector2 cc = getContainer()->region->getCenterCoordinates();
     Vector2 dirDepth = Vector2Subtract(position, cc);

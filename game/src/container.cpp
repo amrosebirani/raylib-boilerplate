@@ -2,7 +2,7 @@
 // #include "cinematographer.hpp"
 #include "collider_user_data.h"
 #include "constants.h"
-#include "game.h"
+#include "firebase.hpp"
 #include "game_object.h"
 #include "box2d/b2_draw.h"
 #include "debug_draw.hpp"
@@ -296,13 +296,15 @@ void Container::setMiniMapDetails() {
         miniMapH = sh / 4;
         miniMapW = sw / 5;
         miniMapS = (miniMapH / 2) / distToCover;
-        miniMap = {5.0f / 6 * sw - miniMapW / 2, 140, miniMapW, miniMapH};
+        miniMap = {5.0f / 6 * sw - miniMapW / 2, getWorldState()->getMiniMapH(),
+                   miniMapW, miniMapH};
         miniMapO = {miniMap.x + miniMapW / 2, miniMap.y + miniMapH / 2};
     } else {
         miniMapH = sh / 6;
         miniMapW = sw / 3;
         miniMapS = (miniMapH / 2) / distToCover;
-        miniMap = {1.0f / 2 * sw - miniMapW / 2, 140, miniMapW, miniMapH};
+        miniMap = {1.0f / 2 * sw - miniMapW / 2, getWorldState()->getMiniMapH(),
+                   miniMapW, miniMapH};
         miniMapO = {miniMap.x + miniMapW / 2, miniMap.y + miniMapH / 2};
     }
     center = region->getCenterCoordinates();
@@ -406,6 +408,7 @@ void Container::gameOverSet() {
     getWorldState()->finalize();
     getGameOver()->reset();
     getStateStack()->push(getGameOver());
+    sendFirebaseEvent("GameOver", {});
 }
 
 void Container::victorySet() {
@@ -414,6 +417,7 @@ void Container::victorySet() {
     getWorldState()->finalize();
     getVictory()->reset();
     getStateStack()->push(getVictory());
+    sendFirebaseEvent("Victory", {});
 }
 
 void Container::endGame() {

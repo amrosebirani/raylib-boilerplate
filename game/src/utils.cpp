@@ -593,12 +593,12 @@ void initLevelUpgradeData() {
     percentCover[PropertyType::DEFENSE_TOWER] = {0.2, 0.3};
     percentCover[PropertyType::LIGHTNING_TOWER] = {0.10};
 
-    uiPercentCover[PropertyType::ARCHERY] = {0.3, 0.3, 0.3};
-    uiPercentCover[PropertyType::BARRACKS] = {0.3, 0.2, 0.3, 0.3};
+    uiPercentCover[PropertyType::ARCHERY] = {0.5, 0.5, 0.5};
+    uiPercentCover[PropertyType::BARRACKS] = {0.5, 0.4, 0.5, 0.5};
     uiPercentCover[PropertyType::CASTLE] = {0.3, 0.3, 0.3, 0.3};
     uiPercentCover[PropertyType::HOUSE] = {0.2, 0.2, 0.3, 0.3};
     uiPercentCover[PropertyType::WIZARDRY] = {0.3, 0.5, 0.5};
-    uiPercentCover[PropertyType::DEFENSE_TOWER] = {0.15, 0.15};
+    uiPercentCover[PropertyType::DEFENSE_TOWER] = {0.35, 0.35};
     uiPercentCover[PropertyType::LIGHTNING_TOWER] = {0.10};
 
     buildingProduceTime[PropertyType::BARRACKS] = {60, 50, 40, 30};

@@ -24,6 +24,11 @@ struct Upgrade {
               multiplier_id(multiplier_id), isChance(isChance) {
             isPercent = false;
         }
+        Upgrade(bool isCount, int rate_of_change, std::string multiplier_id)
+            : isCount(isCount), rate_of_change(rate_of_change),
+              multiplier_id(multiplier_id) {
+            isPercent = false;
+        }
 };
 
 struct UpgradeAction {
@@ -40,6 +45,9 @@ class UpgradeManager {
         void update();
         std::shared_ptr<UpgradeAction>
         getUpgrade(std::vector<std::shared_ptr<Upgrade>> upgrades);
+        std::shared_ptr<UpgradeAction>
+        getSummonCardUpgrade(int cards, std::string card_type);
+        std::shared_ptr<UpgradeAction> getRandomSummonCardUpgrade(int cards);
 
     private:
         std::vector<std::string> hero_upgrades;

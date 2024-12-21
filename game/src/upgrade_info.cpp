@@ -8,18 +8,18 @@ void setUpgradeInfo() {
     std::vector<std::shared_ptr<UpgradeInfo>> archer_info;
     std::shared_ptr<UpgradeInfo> archer_level_0 = std::make_shared<UpgradeInfo>(
         0, 1,
-        std::vector<std::string>{"Enable Archers", "5X2 units/summon card",
-                                 "1 card slot"});
+        std::vector<std::string>{"Enable Archers", "5 x 2 units/summon card",
+                                 "1 Training Arena"});
     std::shared_ptr<UpgradeInfo> archer_level_1 = std::make_shared<UpgradeInfo>(
         1, 2,
         std::vector<std::string>{"Enable Crossbowmen", "+50% HP", "+20% damage",
-                                 "+20% range", "6X2 units/summon card",
-                                 "+1 card slot"});
+                                 "+20% range", "6 x 2 units/summon card",
+                                 "+1 Training Arena"});
     std::shared_ptr<UpgradeInfo> archer_level_2 = std::make_shared<UpgradeInfo>(
         2, 3,
         std::vector<std::string>{"Enable Javeliner", "+50% HP", "+30% damage",
-                                 "+20% range", "7X3 units/summon card",
-                                 "+30% fire rate", "+1 card slot"});
+                                 "+20% range", "7 x 3 units/summon card",
+                                 "+30% fire rate", "+1 Training Arena"});
     archer_info.push_back(archer_level_0);
     archer_info.push_back(archer_level_1);
     archer_info.push_back(archer_level_2);
@@ -31,29 +31,31 @@ void setUpgradeInfo() {
         std::make_shared<UpgradeInfo>(
             0, 1,
             std::vector<std::string>{"Enable Spearmen", "Enable Shield Bearer",
-                                     "4X2 units/summon card", "1 card slot"});
+                                     "4 x 2 units/summon card",
+                                     "1 Training Arena"});
     std::shared_ptr<UpgradeInfo> barracks_level_1 =
         std::make_shared<UpgradeInfo>(
             1, 2,
-            std::vector<std::string>{"Enable Shield Bearer", "+20% HP",
-                                     "+20% damage", "+20% attack rate",
-                                     "+10% dodge rate", "4X3 units/summon card",
-                                     "+1 card slot"});
+            std::vector<std::string>{
+                "Enable Shield Bearer", "+20% HP", "+20% damage",
+                "+20% attack rate", "+10% dodge rate",
+                "4 x 3 units/summon card", "+1 Training Arena"});
 
     std::shared_ptr<UpgradeInfo> barracks_level_2 =
         std::make_shared<UpgradeInfo>(
             2, 3,
             std::vector<std::string>{"Enable Axeman", "+25% HP", "+30% damage",
                                      "+20% attack rate", "+10% dodge rate",
-                                     "5X3 units/summon card", "+1 card slot"});
+                                     "5 x 3 units/summon card",
+                                     "+1 Training Arena"});
 
     std::shared_ptr<UpgradeInfo> barracks_level_3 =
         std::make_shared<UpgradeInfo>(
             3, 4,
-            std::vector<std::string>{"Enable Berserker", "+30% HP",
-                                     "+40% damage", "+30% attack rate",
-                                     "+10% dodge rate", "6X4 units/summon card",
-                                     "+1 card slot"});
+            std::vector<std::string>{
+                "Enable Berserker", "+30% HP", "+40% damage",
+                "+30% attack rate", "+10% dodge rate",
+                "6 x 4 units/summon card", "+1 Training Arena"});
     barracks_info.push_back(barracks_level_0);
     barracks_info.push_back(barracks_level_1);
     barracks_info.push_back(barracks_level_2);

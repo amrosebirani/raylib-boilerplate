@@ -28,6 +28,7 @@ class WorldState : public Room {
         void setSummonEnabled(bool enabled);
         void setPopupActive(bool active);
         bool isPopupActive();
+        float getMiniMapH();
 
     private:
         int coins = 100;
@@ -41,4 +42,8 @@ class WorldState : public Room {
         bool is_formation_respawning = false;
         float startX;
         bool popup_active = false;
+        float topPercentCover = 10;
+        float topMargin = 0.0f;
+        float topHeight = 0.0f;
+        float fs = 0.0f;
 };

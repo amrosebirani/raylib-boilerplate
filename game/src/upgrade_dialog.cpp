@@ -3,6 +3,7 @@
 #include "globals.h"
 #include "raylib.h"
 #include "utils.h"
+#include <algorithm>
 
 UpgradeDialog::UpgradeDialog(PropertyType type, int level, int coingToUpgrade,
                              std::function<void()> dialogUpgradeCallback,
@@ -12,8 +13,8 @@ UpgradeDialog::UpgradeDialog(PropertyType type, int level, int coingToUpgrade,
     float sw = GetScreenWidth();
     float sh = GetScreenHeight();
     if (sw > sh) {
-        float width = sw / 3;
-        float height = sh * 4.0f / 5;
+        float width = sw / 2.5;
+        float height = sh;
         panel = std::make_shared<Panel>(sw / 2, sh / 2, width, height);
     } else {
         float width = sw * 4.0f / 5;
@@ -30,7 +31,7 @@ void UpgradeDialog::draw() {
     panel->draw();
 
     getSpriteHolder()->drawSprite(
-        CLEAR_ICON, {panel->left + panel->width - 60, panel->top + 20, 40, 40});
+        CLEAR_ICON, {panel->left + panel->width - 70, panel->top + 20, 50, 50});
     float sw = GetScreenWidth();
 
     float mm = MeasureText(buildingData->building_text.c_str(), 30);
@@ -45,17 +46,22 @@ void UpgradeDialog::draw() {
     DrawText(levelT.c_str(), sw / 2 - ml / 2, y, 15, WHITE);
 
     // draw the building here now
-    y += 120;
+    y += 150;
     getSpriteHolder()->drawSprite(buildingData, sw / 2, y,
                                   getUIPercentCover(type, level), 255, 200);
 
-    y += 70;
+    y += 90;
+
+    float draw_height = panel->top + panel->height - 100 - y - 10;
+    int draw_lines = upgradeInfo->key_points.size();
+    int fs = draw_height / (draw_lines * (1.5f));
+    fs = std::min(fs, 50);
 
     for (auto &upgrade : upgradeInfo->key_points) {
         DrawText(upgrade.c_str(),
-                 sw / 2 - MeasureText(upgrade.c_str(), 20) / 2.0f, y, 20,
+                 sw / 2 - MeasureText(upgrade.c_str(), fs) / 2.0f, y, fs,
                  WHITE);
-        y += 30;
+        y += fs * 1.5f;
     }
 
     if (getWorldState()->getCoins() < coingToUpgrade) {
@@ -86,7 +92,7 @@ bool UpgradeDialog::update(float dt) {
             upgradePressed = true;
         }
         if (CheckCollisionPointRec(mouse, {panel->left + panel->width - 100,
-                                           panel->top, 100, 100})) {
+                                           panel->top, 100, 200})) {
             upgradePressed = true;
         }
     }
@@ -102,7 +108,7 @@ bool UpgradeDialog::update(float dt) {
             getWorldState()->setPopupActive(false);
         }
         if (CheckCollisionPointRec(mouse, {panel->left + panel->width - 100,
-                                           panel->top + 20, 80, 80}) &&
+                                           panel->top, 100, 200}) &&
             upgradePressed) {
             finished = true;
             getWorldState()->setPopupActive(false);

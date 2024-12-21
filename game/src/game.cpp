@@ -1,4 +1,5 @@
 #include "game.h"
+#include "platform.hpp"
 #include "audio_manager.hpp"
 #include "gameover.hpp"
 #include "globals.h"
@@ -13,6 +14,8 @@
 #include "utils.h"
 #include "level_config.h"
 #include "victory.hpp"
+#include "firebase.hpp"
+#include "session.hpp"
 #if defined(PLATFORM_WEB)
 #include <emscripten/emscripten.h>
 #endif
@@ -24,6 +27,12 @@ std::shared_ptr<std::unordered_map<std::string, float>> slowParams =
 Timer timer;
 std::vector<Font> LoadedFonts;
 std::string platform = "Desktop";
+RenderTexture2D renderTexture;
+std::string session_id = Timer::generateUUID();
+
+std::string getSessionId() {
+    return session_id;
+}
 
 void slow(float amount, float duration) {
     (*slowParams)["slow"] = amount;
@@ -222,6 +231,15 @@ void Java_com_example_rootsofevil_MainActivity_onResumeNative(JNIEnv *env,
                                                               jobject obj);
 void Java_com_example_rootsofevil_MainActivity_passAccelerometerData(
     JNIEnv *env, jobject obj, jfloat x, jfloat y, jfloat z);
+void Java_com_example_rootsofevil_MainActivity_OnDestroyNative(JNIEnv *env,
+                                                               jobject obj);
+void Java_com_example_roosofevil_MainActivity_InitNative(JNIEnv *env,
+                                                         jobject obj,
+                                                         jobject activity);
+
+void Java_com_example_rootsofevil_MainActivity_InitNative(JNIEnv *env,
+                                                          jobject thiz,
+                                                          jobject activity);
 }
 
 // Implement the onPauseNative method
@@ -234,6 +252,17 @@ void Java_com_example_rootsofevil_MainActivity_onPauseNative(JNIEnv *env,
 void Java_com_example_rootsofevil_MainActivity_onResumeNative(JNIEnv *env,
                                                               jobject obj) {
     paused = false;
+}
+
+void Java_com_example_rootsofevil_MainActivity_InitNative(JNIEnv *env,
+                                                          jobject obj,
+                                                          jobject activity) {
+    setActivity(env->NewGlobalRef(activity));
+}
+
+void Java_com_example_rootsofevil_MainActivity_OnDestroyNative(JNIEnv *env,
+                                                               jobject obj) {
+    clearActivity(env);
 }
 
 void Java_com_example_rootsofevil_MainActivity_passAccelerometerData(
@@ -251,6 +280,12 @@ void Java_com_example_rootsofevil_MainActivity_passAccelerometerData(
     }
 }
 
+extern "C" JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
+
+    // Save the JavaVM pointer globally
+    setJavaVM(vm);
+    return JNI_VERSION_1_6; // Specify JNI version
+}
 #endif
 
 void SetPlatform() {
@@ -274,9 +309,39 @@ bool spaceActivated = true;
 const float spaceRT = 0.5f;
 float spaceAT = 0.0f;
 bool keyReleased = true;
+int screenHeight = 440;
+int screenWidth = 960;
+
+void basicDraw() {
+
+    ClearBackground(GRAY);
+    mStateStack->draw();
+    if (paused) {
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(),
+                      Fade(BLACK, 0.5f));
+        DrawText("Paused", GetScreenWidth() / 2 - 50,
+                 GetScreenHeight() / 2 - 10, 20, WHITE);
+    }
+}
 
 void updateDrawFrame() {
 
+    if (isPlatformWeb()) {
+
+        float sh = GetScreenHeight();
+        float sw = GetScreenWidth();
+        if (sh != screenHeight || sw != screenWidth) {
+            screenWidth = sw;
+            screenHeight = sh;
+            // SetWindowSize(screenWidth, screenHeight);
+            CloseWindow();
+            InitWindow(sw, sh, "Roots Of Evil");
+            // std::cout << "Resized" << std::endl;
+            // UnloadRenderTexture(renderTexture);
+            renderTexture =
+                LoadRenderTexture(GetScreenWidth(), GetScreenHeight());
+        }
+    }
     if (IsKeyUp(KEY_P)) {
         keyReleased = true;
     }
@@ -308,21 +373,28 @@ void updateDrawFrame() {
         mStateStack->update(dt);
     }
     getAudioManager()->update(dt);
+    if (isPlatformWeb() || isPlatformDesktop()) {
+
+        BeginTextureMode(renderTexture);
+        basicDraw();
+        EndTextureMode();
+    }
+
     BeginDrawing();
 
-    ClearBackground(GRAY);
-    mStateStack->draw();
     // container->draw();
     // DrawCircleV(viewCam->getMousePosition(), 5, RED);
     // DrawFPS(10, 10);
-    // worldState->draw();
-    if (paused) {
-        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(),
-                      Fade(BLACK, 0.5f));
-        DrawText("Paused", GetScreenWidth() / 2 - 50,
-                 GetScreenHeight() / 2 - 10, 20, WHITE);
-    }
+    if (isPlatformWeb() || isPlatformDesktop()) {
 
+        DrawTextureRec(renderTexture.texture,
+                       (Rectangle){0, 0, renderTexture.texture.width * 1.0f,
+                                   -renderTexture.texture.height * 1.0f},
+                       (Vector2){0, 0}, WHITE); // worldState->draw();
+    } else {
+        basicDraw();
+    }
+    // DrawFPS(screenWidth / 2, screenHeight / 2);
     EndDrawing();
 }
 
@@ -330,10 +402,15 @@ void startGameLoop() {
     SetPlatform();
     timer = Timer();
     if (isPlatformWeb()) {
-        const int screenWidth = 1390;
-        const int screenHeight = 632;
+        // const int screenWidth = 960;
+        // const int screenHeight = 440;
 
+        SetConfigFlags(FLAG_WINDOW_HIGHDPI);
+        SetConfigFlags(FLAG_VSYNC_HINT);
+        SetConfigFlags(FLAG_WINDOW_RESIZABLE);
         InitWindow(screenWidth, screenHeight, "Roots Of Evil");
+        SetWindowState(FLAG_WINDOW_RESIZABLE);
+        renderTexture = LoadRenderTexture(screenWidth, screenHeight);
     } else {
         SetConfigFlags(FLAG_VSYNC_HINT);
         // SetConfigFlags(FLAG_WINDOW_UNDECORATED);
@@ -347,7 +424,10 @@ void startGameLoop() {
         if (isPlatformDesktop()) {
             SetWindowPosition(0, 0);
         }
+        renderTexture = LoadRenderTexture(GetScreenWidth(), GetScreenHeight());
     }
+    SetTargetFPS(60);
+    sendFirebaseEvent("GameLaunched", {});
     if (isPlatformDesktop() || isPlatformWeb())
         SearchAndSetResourceDir("resources");
 
@@ -405,7 +485,6 @@ void startGameLoop() {
     emscripten_set_main_loop(updateDrawFrame, 0, 1);
 #else
 
-    SetTargetFPS(60);
     while (!WindowShouldClose()) {
         updateDrawFrame();
     }

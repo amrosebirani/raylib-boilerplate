@@ -137,10 +137,12 @@ void Archer::update(float dt) {
     stateMachine->update(dt);
     float currentRangeM =
         getContainer()->getUpgradeContent()->get_stat(RANGED_UNIT_RANGE_M);
-    if (currentRangeM != previousRangeM) {
-        previousRangeM = currentRangeM;
-        enemySensor = nullptr;
-        setEnemySensor();
+    if (!hasTower) {
+        if (currentRangeM != previousRangeM) {
+            previousRangeM = currentRangeM;
+            enemySensor = nullptr;
+            setEnemySensor();
+        }
     }
 }
 

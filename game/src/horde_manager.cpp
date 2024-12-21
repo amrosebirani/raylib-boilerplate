@@ -1,6 +1,7 @@
 #include "horde_manager.hpp"
 #include "constants.h"
 #include "enemy_horde.hpp"
+#include "firebase.hpp"
 #include "globals.h"
 #include "horde_config.hpp"
 #include "property_type.hpp"
@@ -26,7 +27,7 @@ void HordeManager::launchTutorial(PropertyType type, std::string text,
             std::dynamic_pointer_cast<Building>(tower);
         b->highlight();
         getStateStack()->push(std::make_shared<TextBox>(
-            text, sprite_id, true, 20, 2, true, -GetScreenWidth() / 4, 8));
+            text, sprite_id, true, 40, 2, true, -GetScreenWidth() / 4, 8));
     }
 }
 
@@ -80,7 +81,7 @@ void HordeManager::launchTutBoxes() {
                 "enhancing our castle, we can fortify our structures, amplify "
                 "our troops' might, and harness magical forces to decimate our "
                 "enemies with spells.",
-                MAGE_BUST_SPRITE_ID, false, 20, 2, true, -GetScreenWidth() / 4,
+                MAGE_BUST_SPRITE_ID, false, 40, 2, true, -GetScreenWidth() / 4,
                 8));
             this->timer.after(
                 4,
@@ -112,6 +113,7 @@ void HordeManager::update(float dt) {
 }
 
 void HordeManager::spawnHorde() {
+    sendFirebaseEvent("SpawnHorde", {{"wave", TextFormat("%d", currentWave)}});
     std::vector<HordeConfig *> hordeConfigs =
         getHordeConfigsForLevel(currentWave);
     int totalEnemyCount = 0;

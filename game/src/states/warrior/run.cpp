@@ -25,7 +25,8 @@ void RunningWarrior::draw() {
     // draw sprite
     float size = 2 * get_warrior_size(warriorParams->type);
     getSpriteHolder()->drawSpriteWithColor(
-        sprite_id, frame, {go->x - size, go->y - size, 2 * size, 2 * size},
+        sprite_id, frame,
+        {floor(go->x) - size, floor(go->y) - size, 2 * size, 2 * size},
         {255, 255, 255, alpha});
 }
 

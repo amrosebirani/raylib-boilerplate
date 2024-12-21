@@ -1,10 +1,12 @@
 #include "summon_slot.hpp"
 #include "constants.h"
+#include "firebase.hpp"
 #include "globals.h"
 #include "raylib.h"
 #include "summon_card.hpp"
 #include "utils.h"
 #include "warrior_types.h"
+#include "platform.hpp"
 
 SummonSlot::SummonSlot(int index, int level, PropertyType type,
                        SummonCardType stype)
@@ -53,12 +55,12 @@ void SummonSlot::drawSlotAvailableMaster(std::shared_ptr<Panel> panel,
         textColor = DARKBLUE;
     }
     float ww = panel->width * .22f;
-    Rectangle rect = {panel->left + panel->width * .33f - ww, y, ww, 60};
+    Rectangle rect = {panel->left + panel->width * .05f, y, ww, 60};
     masterRect = rect;
     DrawRectangleRec(rect, bgColor);
     std::string tt = TextFormat("Arena %d", index);
-    float ttm = MeasureText(tt.c_str(), 20);
-    DrawText(tt.c_str(), rect.x + rect.width / 2 - ttm / 2, y + 20, 20,
+    float ttm = MeasureText(tt.c_str(), 40);
+    DrawText(tt.c_str(), rect.x + rect.width / 2 - ttm / 2, y + 10, 40,
              textColor);
 }
 
@@ -143,16 +145,16 @@ void SummonSlot::drawSlotProducingMaster(std::shared_ptr<Panel> panel,
 
     float ww = panel->width * .22f;
     progressBar =
-        std::make_shared<ProgressBar>(panel->left + panel->width * .33f - ww, y,
-                                      ww, 60, produceTime, produceTimeCounter);
+        std::make_shared<ProgressBar>(panel->left + panel->width * .05f, y, ww,
+                                      60, produceTime, produceTimeCounter);
     progressBar->draw();
 
-    Rectangle rect = {panel->left + panel->width * .33f - ww, y, ww, 60};
+    Rectangle rect = {panel->left + panel->width * .05f, y, ww, 60};
     masterRect = rect;
     DrawRectangleRec(rect, bgColor);
     std::string tt = TextFormat("Arena %d", index);
-    float ttm = MeasureText(tt.c_str(), 20);
-    DrawText(tt.c_str(), rect.x + rect.width / 2 - ttm / 2, y + 20, 20,
+    float ttm = MeasureText(tt.c_str(), 40);
+    DrawText(tt.c_str(), rect.x + rect.width / 2 - ttm / 2, y + 10, 40,
              textColor);
 }
 
@@ -160,8 +162,26 @@ void SummonSlot::update(float dt) {
     if (isProducing) {
         produceTimeCounter += dt;
         if (produceTimeCounter > produceTime) {
-            getWorldState()->summon_manager->addSummonCard(
-                std::make_shared<SummonCard>(level, warriorType, summon_type));
+            std::shared_ptr<SummonCard> card =
+                std::make_shared<SummonCard>(level, warriorType, summon_type);
+            std::string card_type;
+            switch (card->summon_type) {
+            case SummonCardType::ARCHERY:
+                card_type = "archery";
+                break;
+            case SummonCardType::INFANTRY:
+                card_type = "infantry";
+                break;
+            case SummonCardType::WIZARDRY:
+                card_type = "wizardry";
+                break;
+            };
+            sendFirebaseEvent("SummonCardCreated",
+                              {{"card_type", card_type},
+                               {"level", TextFormat("%d", card->level)},
+                               {"wtype", getWarriorText(card->type)},
+                               {"magic_type", getMagicText(card->magic_type)}});
+            getWorldState()->summon_manager->addSummonCard(card);
             isProducing = false;
             selectedIndex = 0;
         }

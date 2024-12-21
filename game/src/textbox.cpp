@@ -2,6 +2,7 @@
 #include "globals.h"
 #include "raylib.h"
 #include <cstring>
+#include <iostream>
 
 TextBox::TextBox(std::string text, std::string bust_sprite, bool blocking,
                  float fontSize, float spacing, bool shifted, float shifted_by,
@@ -30,6 +31,16 @@ TextBox::TextBox(std::string text, std::string bust_sprite, bool blocking,
     if (mm.first < tWidth) {
         tWidth = mm.first;
         width = iWidth + tWidth + 45;
+    }
+    while (mm.second > sh - 90) {
+        std::cout << "Reducing font size" << std::endl;
+        std::cout << fontSize << std::endl;
+        std::cout << mm.second << std::endl;
+        std::cout << sh << std::endl;
+
+        this->fontSize = this->fontSize * .8f;
+        mm = MeasureTextWrapped(text.c_str(), {0, 0, tWidth, 0},
+                                GetFontDefault());
     }
     iHeight = iWidth;
     tHeight = mm.second;

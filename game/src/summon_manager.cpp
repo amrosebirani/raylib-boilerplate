@@ -1,6 +1,7 @@
 #include "summon_manager.hpp"
 #include "archery_summon.hpp"
-#include "game.h"
+#include "firebase.hpp"
+#include "platform.hpp"
 #include "constants.h"
 #include "globals.h"
 #include "infantry_summon.hpp"
@@ -225,8 +226,9 @@ void SummonManager::drawSummonCircle() {
     float sh = GetScreenHeight();
     getSpriteHolder()->drawSprite(
         SUMMON_BUTTON, {sw / 2 - sh / 10, summonCircleY, sh / 5, sh / 5});
-    DrawText("Summon", sw / 2 - MeasureText("Summon", 20) / 2.0f,
-             summonCircleY + sh / 10, 20, WHITE);
+    float st_fs = sh / 30;
+    DrawText("Summon", sw / 2 - MeasureText("Summon", sh / 30) / 2.0f,
+             summonCircleY + sh / 10 - sh / 60, sh / 30, WHITE);
 }
 
 void SummonManager::drawSummonBox() {

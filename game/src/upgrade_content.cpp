@@ -1,5 +1,6 @@
 #include "upgrade_content.hpp"
 #include "constants.h"
+#include "stat.hpp"
 #include <memory>
 
 std::vector<std::string> UpgradeContent::get_display_strs(std::string key) {
@@ -124,6 +125,16 @@ void UpgradeContent::initStats() {
     upgrade_entities[RANGED_UNIT_RANGE_M] = std::make_shared<UpgradeEntity>(
         1, 0, StatType::PERCENTAGE,
         std::vector<std::string>{"Ranged Unit", "Range"});
+
+    upgrade_entities[INFANTRY_SUMMON_CARD_U] = std::make_shared<UpgradeEntity>(
+        1, 0, StatType::COUNT,
+        std::vector<std::string>{"Infantry", "Summon", "Card"});
+    upgrade_entities[ARCHERY_SUMMON_CARD_U] = std::make_shared<UpgradeEntity>(
+        1, 0, StatType::COUNT,
+        std::vector<std::string>{"Archery", "Summon", "Card"});
+    upgrade_entities[MAGIC_SUMMON_CARD_U] = std::make_shared<UpgradeEntity>(
+        1, 0, StatType::COUNT,
+        std::vector<std::string>{"Magic", "Summon", "Card"});
 }
 
 void UpgradeContent::initChances(float lm) {

@@ -20,7 +20,7 @@ class SummonCard {
         ~SummonCard() {};
 
         int level;
-        WarriorType type;
-        MagicType magic_type;
+        WarriorType type = WarriorType::WARRIOR_TYPE_AXEMAN;
+        MagicType magic_type = MagicType::ICE_SPELL;
         SummonCardType summon_type;
 };
