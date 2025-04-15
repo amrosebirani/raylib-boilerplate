@@ -145,7 +145,7 @@ void Archery::onUpgrade(int level) {
     //         summonDim.x, summonDim.y, summonTypes, SummonCardType::ARCHERY);
     //     producedSummonCards.push(sc);
     // }
-
+    getWorldState()->addScore(600);
     if (level == 0) {
         summonSlots->clear();
     } else {

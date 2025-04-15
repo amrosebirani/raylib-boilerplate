@@ -103,7 +103,8 @@ void HordeManager::update(float dt) {
         countToCheck = -1;
         currentWave++;
         launchTutBoxes();
-        if (currentWave > totalWaves) {
+        if (totalWaves != -1 &&
+            currentWave > totalWaves) { // totalWaves == -1 means infinite waves
             victory = true;
             return;
         }

@@ -44,6 +44,19 @@ Archer::Archer(float rx, float ry, WarriorType type)
     stateMachine->changeState("Idle", archer_params);
 }
 
+Archer::Archer(std::ifstream &in) : GameObject(in) {
+    raised = false;
+    tower = nullptr;
+    hasTower = false;
+    isOperational = true;
+    in.read(reinterpret_cast<char *>(&hp), sizeof(hp));
+    stateMachine = new StateMachine(
+        {{"Idle", new IdleArcher(type, false)},
+         {"PlayAnimation", new PlayAnimation(type, hasTower)}});
+    archer_params = new ArcherStateParams(this);
+    stateMachine->changeState("Idle", archer_params);
+}
+
 void Archer::init() {
     if (!hasTower) {
         sdata = new ColliderUserData();
@@ -186,4 +199,13 @@ void Archer::changeState(std::string stateName, StateParams *params) {
 
 float Archer::getAttackRange() {
     return attackRange;
+}
+
+void Archer::Save(std::ofstream &out) const {
+    // saving the archer only if hasTower is false
+    if (hasTower) {
+        return;
+    }
+    gameObjectSave(out);
+    out.write(reinterpret_cast<const char *>(&hp), sizeof(hp));
 }

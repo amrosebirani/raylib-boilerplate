@@ -8,6 +8,7 @@
 #include "formation.h"
 #include "horde_manager.hpp"
 #include "region.hpp"
+#include "scoreboard.hpp"
 #include "timer.h"
 // #include "enemy_wave.hpp"
 // #include "tower_spawn.hpp"
@@ -46,6 +47,7 @@ class Container : public Room {
         bool update(float dt) override;
         void cleanup();
         void addGameObject(std::shared_ptr<GameObject> obj);
+        void addFlashObject(std::shared_ptr<GameObject> obj);
         void addScumObject(std::shared_ptr<GameObject> obj);
         void addAttackUnit(std::shared_ptr<Building> obj);
         std::shared_ptr<GameObject> getClosestAttackUnit(Vector2 pos);
@@ -72,6 +74,7 @@ class Container : public Room {
         // b2Body *groundBody;
         MyContactListener *contactListener;
         std::vector<std::shared_ptr<GameObject>> gameObjects;
+        std::vector<std::shared_ptr<GameObject>> flashObjects;
         // scum objects contain
         std::vector<std::shared_ptr<GameObject>> scumObjects;
         std::vector<std::shared_ptr<Building>> attackUnits;
@@ -102,4 +105,5 @@ class Container : public Room {
         float physicsTimeStep = 1.0f / 60.0f;
         float physicsAccumulator = 0;
         Animation *fireAnimation;
+        std::shared_ptr<ScoreBoard> getScoreBoard();
 };

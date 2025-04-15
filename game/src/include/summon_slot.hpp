@@ -1,5 +1,6 @@
 #pragma once
 
+#include "magic_types.hpp"
 #include "panel.hpp"
 #include "progress_bar.hpp"
 #include "property_type.hpp"
@@ -15,7 +16,7 @@ class SummonSlot {
         ~SummonSlot();
 
         void update(float dt);
-        void startProducing(WarriorType wtype);
+        void startProducing();
         void setProduceCost();
         float getProgress();
         void setLevel(int level);
@@ -28,6 +29,7 @@ class SummonSlot {
         std::vector<Rectangle> clickRects;
         Rectangle startProduceRect;
         std::vector<WarriorType> warriorTypes;
+        std::vector<MagicType> magicTypes;
         void drawSlotAvailable(std::shared_ptr<Panel> panel, float y);
         void drawSlotProducing(std::shared_ptr<Panel> panel, float y);
         void handleClick();
@@ -47,6 +49,7 @@ class SummonSlot {
         float produceTime;
         float produceTimeCounter;
         WarriorType warriorType;
+        MagicType magicType;
         int selectedIndex = 0;
         int produceCost;
         std::shared_ptr<ProgressBar> progressBar;

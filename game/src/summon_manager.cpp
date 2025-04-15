@@ -214,6 +214,7 @@ void SummonManager::draw() {
 }
 
 void SummonManager::addSummonCard(std::shared_ptr<SummonCard> card) {
+    getWorldState()->addScore(300);
     summonCards.push_back(card);
     setEndX();
 }

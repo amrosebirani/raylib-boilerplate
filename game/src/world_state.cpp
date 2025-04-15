@@ -207,8 +207,29 @@ void dragAndMoveAround() {
     }
 }
 
+void WorldState::addKill() {
+    totalKills++;
+}
+
+void WorldState::addScore(int score) {
+    this->score += score;
+}
+
+int64 WorldState::getScore() {
+    return score;
+}
+
+int WorldState::getTotalKills() {
+    return totalKills;
+}
+
+float WorldState::getTimeSurvived() {
+    return timeSurvived;
+}
+
 bool WorldState::update(float dt) {
     summon_manager->update(dt);
+    timeSurvived += dt;
     if (isPlatformAndroid()) {
         getJoystick()->update(dt);
         setPinchZoom();

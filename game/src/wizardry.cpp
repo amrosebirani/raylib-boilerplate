@@ -9,12 +9,21 @@ Wizardry::Wizardry(float x, float y, int level)
     health = maxHealth;
 }
 
+bool Wizardry::hasSummonCards() {
+    return false;
+}
+
 void Wizardry::init() {
     initiate();
     alive = false;
     initAuraPoints();
     setUpgradeInfo();
     setColliders();
+    summonSlots = std::make_shared<std::vector<std::shared_ptr<SummonSlot>>>();
+}
+
+std::shared_ptr<SummonCard> Wizardry::getCard() {
+    return nullptr;
 }
 
 void Wizardry::repair(float repairAmount) {
@@ -39,6 +48,9 @@ bool Wizardry::isAlive() {
 void Wizardry::update(float dt) {
     timer->update(dt);
     awakenColliders(dt);
+    for (auto &slot : *summonSlots) {
+        slot->update(dt);
+    }
 }
 
 void Wizardry::cleanupData() {
@@ -54,6 +66,22 @@ Wizardry::~Wizardry() {
 }
 
 void Wizardry::onUpgrade(int level) {
+    getWorldState()->addScore(700);
+
+    if (level == 0) {
+        summonSlots->clear();
+    } else {
+        if (summonSlots->size() < level) {
+            for (int i = summonSlots->size(); i < level; i++) {
+                summonSlots->push_back(std::make_shared<SummonSlot>(
+                    summonSlots->size() + 1, level, PropertyType::WIZARDRY,
+                    SummonCardType::WIZARDRY));
+            }
+        }
+        for (auto &ss : *summonSlots) {
+            ss->setLevel(level);
+        }
+    }
 }
 
 void Wizardry::pushSummonDialog() {

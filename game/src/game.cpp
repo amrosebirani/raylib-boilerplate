@@ -104,6 +104,7 @@ std::shared_ptr<Loading> loading;
 std::shared_ptr<GameOver> gameOver;
 std::shared_ptr<MainMenu> mainMenu;
 std::shared_ptr<Victory> victory;
+std::shared_ptr<ScoreBoard> scoreBoard = nullptr;
 
 std::shared_ptr<Container> getContainer() {
     return container;
@@ -135,6 +136,14 @@ std::shared_ptr<Joystick> getJoystick() {
 
 std::shared_ptr<GameOver> getGameOver() {
     return gameOver;
+}
+
+std::shared_ptr<ScoreBoard> getScoreBoard() {
+    return scoreBoard;
+}
+
+void setScoreBoard(std::shared_ptr<ScoreBoard> sb) {
+    scoreBoard = sb;
 }
 
 std::shared_ptr<MainMenu> getMainMenu() {
@@ -373,7 +382,7 @@ void updateDrawFrame() {
         mStateStack->update(dt);
     }
     getAudioManager()->update(dt);
-    if (isPlatformWeb() || isPlatformDesktop()) {
+    if (isPlatformDesktop() || isPlatformWeb()) {
 
         BeginTextureMode(renderTexture);
         basicDraw();
@@ -386,7 +395,7 @@ void updateDrawFrame() {
     // DrawCircleV(viewCam->getMousePosition(), 5, RED);
     // DrawFPS(10, 10);
     if (isPlatformWeb() || isPlatformDesktop()) {
-
+        // ClearBackground(GRAY);
         DrawTextureRec(renderTexture.texture,
                        (Rectangle){0, 0, renderTexture.texture.width * 1.0f,
                                    -renderTexture.texture.height * 1.0f},

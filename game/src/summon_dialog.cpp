@@ -1,5 +1,6 @@
 #include "summon_dialog.hpp"
 #include "globals.h"
+#include "property_type.hpp"
 #include "raylib.h"
 #include "summon_slot.hpp"
 
@@ -64,8 +65,9 @@ void SummonDialog::drawLandscape() {
     float detail_y = y;
     float m_end = panel->left + panel->width * .33f;
 
-    DrawText("Training Grounds", panel->left + panel->width * .05f, y, 40,
-             WHITE);
+    std::string tt =
+        type == PropertyType::WIZARDRY ? "Spell Sanctums" : "Training Arenas";
+    DrawText(tt.c_str(), panel->left + panel->width * .05f, y, 40, WHITE);
 
     y += 50;
 

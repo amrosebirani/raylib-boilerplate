@@ -147,6 +147,8 @@ void Barrack::onUpgrade(int level) {
     // producedSummonCards.push(sc);
     // }
 
+    getWorldState()->addScore(500);
+
     if (level == 0) {
         summonSlots->clear();
     } else {

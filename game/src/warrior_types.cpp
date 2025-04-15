@@ -1,6 +1,7 @@
 #include "warrior_types.h"
 #include "constants.h"
 #include "globals.h"
+#include "magic_types.hpp"
 #include "utils.h"
 #include <unordered_map>
 
