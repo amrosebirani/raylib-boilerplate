@@ -1,4 +1,5 @@
 build/
+build_mac/
 build_release/
 build_web/
 build_web_release/

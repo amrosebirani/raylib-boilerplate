@@ -1,152 +1,877 @@
 [
   {
-    "arguments": [
-      "/usr/bin/c++",
-      "-DGRAPHICS_API_OPENGL_33",
-      "-DPLATFORM_DESKTOP",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/src",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/src/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src/external",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src/external/glfw/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/box2d/src/../include",
-      "-DDEBUG",
-      "-DPLATFORM_DESKTOP",
-      "-DGRAPHICS_API_OPENGL_33",
-      "-std=c++17",
-      "-m64",
-      "-g",
-      "-Wno-deprecated-declarations",
-      "-std=gnu++17",
-      "-c",
-      "-o",
-      "CMakeFiles/game.dir/game/src/main.cpp.o",
-      "/mnt/c/Users/amros/raylib-playground/avalon/game/src/main.cpp"
-    ],
-    "directory": "/mnt/c/Users/amros/raylib-playground/avalon/build",
-    "file": "/mnt/c/Users/amros/raylib-playground/avalon/game/src/main.cpp",
-    "output": "/mnt/c/Users/amros/raylib-playground/avalon/build/CMakeFiles/game.dir/game/src/main.cpp.o"
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/collision/b2_broad_phase.cpp.o -MF CMakeFiles/box2d.dir/collision/b2_broad_phase.cpp.o.d -o CMakeFiles/box2d.dir/collision/b2_broad_phase.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_broad_phase.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_broad_phase.cpp"
   },
   {
-    "arguments": [
-      "/usr/bin/c++",
-      "-DGRAPHICS_API_OPENGL_33",
-      "-DPLATFORM_DESKTOP",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/src",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/src/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src/external",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src/external/glfw/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/box2d/src/../include",
-      "-DDEBUG",
-      "-DPLATFORM_DESKTOP",
-      "-DGRAPHICS_API_OPENGL_33",
-      "-std=c++17",
-      "-m64",
-      "-g",
-      "-Wno-deprecated-declarations",
-      "-std=gnu++17",
-      "-c",
-      "-o",
-      "CMakeFiles/game.dir/game/src/utils.cpp.o",
-      "/mnt/c/Users/amros/raylib-playground/avalon/game/src/utils.cpp"
-    ],
-    "directory": "/mnt/c/Users/amros/raylib-playground/avalon/build",
-    "file": "/mnt/c/Users/amros/raylib-playground/avalon/game/src/utils.cpp",
-    "output": "/mnt/c/Users/amros/raylib-playground/avalon/build/CMakeFiles/game.dir/game/src/utils.cpp.o"
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/collision/b2_chain_shape.cpp.o -MF CMakeFiles/box2d.dir/collision/b2_chain_shape.cpp.o.d -o CMakeFiles/box2d.dir/collision/b2_chain_shape.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_chain_shape.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_chain_shape.cpp"
   },
   {
-    "arguments": [
-      "/usr/bin/c++",
-      "-DGRAPHICS_API_OPENGL_33",
-      "-DPLATFORM_DESKTOP",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/src",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/src/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src/external",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src/external/glfw/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/box2d/src/../include",
-      "-DDEBUG",
-      "-DPLATFORM_DESKTOP",
-      "-DGRAPHICS_API_OPENGL_33",
-      "-std=c++17",
-      "-m64",
-      "-g",
-      "-Wno-deprecated-declarations",
-      "-std=gnu++17",
-      "-c",
-      "-o",
-      "CMakeFiles/game.dir/game/src/warrior.cpp.o",
-      "/mnt/c/Users/amros/raylib-playground/avalon/game/src/warrior.cpp"
-    ],
-    "directory": "/mnt/c/Users/amros/raylib-playground/avalon/build",
-    "file": "/mnt/c/Users/amros/raylib-playground/avalon/game/src/warrior.cpp",
-    "output": "/mnt/c/Users/amros/raylib-playground/avalon/build/CMakeFiles/game.dir/game/src/warrior.cpp.o"
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/collision/b2_circle_shape.cpp.o -MF CMakeFiles/box2d.dir/collision/b2_circle_shape.cpp.o.d -o CMakeFiles/box2d.dir/collision/b2_circle_shape.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_circle_shape.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_circle_shape.cpp"
   },
   {
-    "arguments": [
-      "/usr/bin/c++",
-      "-DGRAPHICS_API_OPENGL_33",
-      "-DPLATFORM_DESKTOP",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/src",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/src/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src/external",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src/external/glfw/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/box2d/src/../include",
-      "-DDEBUG",
-      "-DPLATFORM_DESKTOP",
-      "-DGRAPHICS_API_OPENGL_33",
-      "-std=c++17",
-      "-m64",
-      "-g",
-      "-Wno-deprecated-declarations",
-      "-std=gnu++17",
-      "-c",
-      "-o",
-      "CMakeFiles/game.dir/game/src/warrior_factory.cpp.o",
-      "/mnt/c/Users/amros/raylib-playground/avalon/game/src/warrior_factory.cpp"
-    ],
-    "directory": "/mnt/c/Users/amros/raylib-playground/avalon/build",
-    "file": "/mnt/c/Users/amros/raylib-playground/avalon/game/src/warrior_factory.cpp",
-    "output": "/mnt/c/Users/amros/raylib-playground/avalon/build/CMakeFiles/game.dir/game/src/warrior_factory.cpp.o"
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/collision/b2_collide_circle.cpp.o -MF CMakeFiles/box2d.dir/collision/b2_collide_circle.cpp.o.d -o CMakeFiles/box2d.dir/collision/b2_collide_circle.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_collide_circle.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_collide_circle.cpp"
   },
   {
-    "arguments": [
-      "/usr/bin/c++",
-      "-DGRAPHICS_API_OPENGL_33",
-      "-DPLATFORM_DESKTOP",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/src",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/game/src/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src/external",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/raylib-master/src/external/glfw/include",
-      "-I/mnt/c/Users/amros/raylib-playground/avalon/box2d/src/../include",
-      "-DDEBUG",
-      "-DPLATFORM_DESKTOP",
-      "-DGRAPHICS_API_OPENGL_33",
-      "-std=c++17",
-      "-m64",
-      "-g",
-      "-Wno-deprecated-declarations",
-      "-std=gnu++17",
-      "-c",
-      "-o",
-      "CMakeFiles/game.dir/game/src/warrior_types.cpp.o",
-      "/mnt/c/Users/amros/raylib-playground/avalon/game/src/warrior_types.cpp"
-    ],
-    "directory": "/mnt/c/Users/amros/raylib-playground/avalon/build",
-    "file": "/mnt/c/Users/amros/raylib-playground/avalon/game/src/warrior_types.cpp",
-    "output": "/mnt/c/Users/amros/raylib-playground/avalon/build/CMakeFiles/game.dir/game/src/warrior_types.cpp.o"
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/collision/b2_collide_edge.cpp.o -MF CMakeFiles/box2d.dir/collision/b2_collide_edge.cpp.o.d -o CMakeFiles/box2d.dir/collision/b2_collide_edge.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_collide_edge.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_collide_edge.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/collision/b2_collide_polygon.cpp.o -MF CMakeFiles/box2d.dir/collision/b2_collide_polygon.cpp.o.d -o CMakeFiles/box2d.dir/collision/b2_collide_polygon.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_collide_polygon.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_collide_polygon.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/collision/b2_collision.cpp.o -MF CMakeFiles/box2d.dir/collision/b2_collision.cpp.o.d -o CMakeFiles/box2d.dir/collision/b2_collision.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_collision.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_collision.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/collision/b2_distance.cpp.o -MF CMakeFiles/box2d.dir/collision/b2_distance.cpp.o.d -o CMakeFiles/box2d.dir/collision/b2_distance.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_distance.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_distance.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/collision/b2_dynamic_tree.cpp.o -MF CMakeFiles/box2d.dir/collision/b2_dynamic_tree.cpp.o.d -o CMakeFiles/box2d.dir/collision/b2_dynamic_tree.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_dynamic_tree.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_dynamic_tree.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/collision/b2_edge_shape.cpp.o -MF CMakeFiles/box2d.dir/collision/b2_edge_shape.cpp.o.d -o CMakeFiles/box2d.dir/collision/b2_edge_shape.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_edge_shape.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_edge_shape.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/collision/b2_polygon_shape.cpp.o -MF CMakeFiles/box2d.dir/collision/b2_polygon_shape.cpp.o.d -o CMakeFiles/box2d.dir/collision/b2_polygon_shape.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_polygon_shape.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_polygon_shape.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/collision/b2_time_of_impact.cpp.o -MF CMakeFiles/box2d.dir/collision/b2_time_of_impact.cpp.o.d -o CMakeFiles/box2d.dir/collision/b2_time_of_impact.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_time_of_impact.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/collision/b2_time_of_impact.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/common/b2_block_allocator.cpp.o -MF CMakeFiles/box2d.dir/common/b2_block_allocator.cpp.o.d -o CMakeFiles/box2d.dir/common/b2_block_allocator.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/common/b2_block_allocator.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/common/b2_block_allocator.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/common/b2_draw.cpp.o -MF CMakeFiles/box2d.dir/common/b2_draw.cpp.o.d -o CMakeFiles/box2d.dir/common/b2_draw.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/common/b2_draw.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/common/b2_draw.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/common/b2_math.cpp.o -MF CMakeFiles/box2d.dir/common/b2_math.cpp.o.d -o CMakeFiles/box2d.dir/common/b2_math.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/common/b2_math.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/common/b2_math.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/common/b2_settings.cpp.o -MF CMakeFiles/box2d.dir/common/b2_settings.cpp.o.d -o CMakeFiles/box2d.dir/common/b2_settings.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/common/b2_settings.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/common/b2_settings.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/common/b2_stack_allocator.cpp.o -MF CMakeFiles/box2d.dir/common/b2_stack_allocator.cpp.o.d -o CMakeFiles/box2d.dir/common/b2_stack_allocator.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/common/b2_stack_allocator.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/common/b2_stack_allocator.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/common/b2_timer.cpp.o -MF CMakeFiles/box2d.dir/common/b2_timer.cpp.o.d -o CMakeFiles/box2d.dir/common/b2_timer.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/common/b2_timer.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/common/b2_timer.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_body.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_body.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_body.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_body.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_body.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_chain_circle_contact.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_chain_circle_contact.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_chain_circle_contact.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_chain_circle_contact.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_chain_circle_contact.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_chain_polygon_contact.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_chain_polygon_contact.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_chain_polygon_contact.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_chain_polygon_contact.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_chain_polygon_contact.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_circle_contact.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_circle_contact.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_circle_contact.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_circle_contact.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_circle_contact.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_contact.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_contact.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_contact.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_contact.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_contact.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_contact_manager.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_contact_manager.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_contact_manager.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_contact_manager.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_contact_manager.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_contact_solver.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_contact_solver.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_contact_solver.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_contact_solver.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_contact_solver.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_distance_joint.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_distance_joint.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_distance_joint.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_distance_joint.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_distance_joint.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_edge_circle_contact.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_edge_circle_contact.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_edge_circle_contact.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_edge_circle_contact.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_edge_circle_contact.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_edge_polygon_contact.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_edge_polygon_contact.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_edge_polygon_contact.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_edge_polygon_contact.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_edge_polygon_contact.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_fixture.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_fixture.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_fixture.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_fixture.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_fixture.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_friction_joint.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_friction_joint.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_friction_joint.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_friction_joint.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_friction_joint.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_gear_joint.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_gear_joint.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_gear_joint.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_gear_joint.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_gear_joint.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_island.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_island.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_island.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_island.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_island.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_joint.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_joint.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_joint.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_joint.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_joint.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_motor_joint.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_motor_joint.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_motor_joint.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_motor_joint.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_motor_joint.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_mouse_joint.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_mouse_joint.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_mouse_joint.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_mouse_joint.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_mouse_joint.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_polygon_circle_contact.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_polygon_circle_contact.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_polygon_circle_contact.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_polygon_circle_contact.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_polygon_circle_contact.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_polygon_contact.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_polygon_contact.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_polygon_contact.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_polygon_contact.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_polygon_contact.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_prismatic_joint.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_prismatic_joint.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_prismatic_joint.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_prismatic_joint.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_prismatic_joint.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_pulley_joint.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_pulley_joint.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_pulley_joint.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_pulley_joint.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_pulley_joint.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_revolute_joint.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_revolute_joint.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_revolute_joint.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_revolute_joint.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_revolute_joint.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_weld_joint.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_weld_joint.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_weld_joint.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_weld_joint.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_weld_joint.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_wheel_joint.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_wheel_joint.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_wheel_joint.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_wheel_joint.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_wheel_joint.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_world.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_world.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_world.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_world.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_world.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/dynamics/b2_world_callbacks.cpp.o -MF CMakeFiles/box2d.dir/dynamics/b2_world_callbacks.cpp.o.d -o CMakeFiles/box2d.dir/dynamics/b2_world_callbacks.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_world_callbacks.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/dynamics/b2_world_callbacks.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c++11 -arch arm64 -fvisibility=hidden -fvisibility-inlines-hidden -MD -MT box2d/src/CMakeFiles/box2d.dir/rope/b2_rope.cpp.o -MF CMakeFiles/box2d.dir/rope/b2_rope.cpp.o.d -o CMakeFiles/box2d.dir/rope/b2_rope.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/rope/b2_rope.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/rope/b2_rope.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.o -MF CMakeFiles/glfw.dir/context.c.o.d -o CMakeFiles/glfw.dir/context.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/context.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/context.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.o -MF CMakeFiles/glfw.dir/init.c.o.d -o CMakeFiles/glfw.dir/init.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/init.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/init.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.o -MF CMakeFiles/glfw.dir/input.c.o.d -o CMakeFiles/glfw.dir/input.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/input.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/input.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.o -MF CMakeFiles/glfw.dir/monitor.c.o.d -o CMakeFiles/glfw.dir/monitor.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/monitor.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/monitor.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.o -MF CMakeFiles/glfw.dir/platform.c.o.d -o CMakeFiles/glfw.dir/platform.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/platform.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/platform.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o -MF CMakeFiles/glfw.dir/vulkan.c.o.d -o CMakeFiles/glfw.dir/vulkan.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/vulkan.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/vulkan.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.o -MF CMakeFiles/glfw.dir/window.c.o.d -o CMakeFiles/glfw.dir/window.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/window.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/window.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o -MF CMakeFiles/glfw.dir/egl_context.c.o.d -o CMakeFiles/glfw.dir/egl_context.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/egl_context.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/egl_context.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o -MF CMakeFiles/glfw.dir/osmesa_context.c.o.d -o CMakeFiles/glfw.dir/osmesa_context.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/osmesa_context.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/osmesa_context.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.o -MF CMakeFiles/glfw.dir/null_init.c.o.d -o CMakeFiles/glfw.dir/null_init.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/null_init.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/null_init.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o -MF CMakeFiles/glfw.dir/null_monitor.c.o.d -o CMakeFiles/glfw.dir/null_monitor.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/null_monitor.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/null_monitor.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.o -MF CMakeFiles/glfw.dir/null_window.c.o.d -o CMakeFiles/glfw.dir/null_window.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/null_window.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/null_window.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o -MF CMakeFiles/glfw.dir/null_joystick.c.o.d -o CMakeFiles/glfw.dir/null_joystick.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/null_joystick.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/null_joystick.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o -MF CMakeFiles/glfw.dir/cocoa_time.c.o.d -o CMakeFiles/glfw.dir/cocoa_time.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/cocoa_time.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/cocoa_time.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o -MF CMakeFiles/glfw.dir/posix_module.c.o.d -o CMakeFiles/glfw.dir/posix_module.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/posix_module.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/posix_module.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o -MF CMakeFiles/glfw.dir/posix_thread.c.o.d -o CMakeFiles/glfw.dir/posix_thread.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/posix_thread.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/posix_thread.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o -MF CMakeFiles/glfw.dir/cocoa_init.m.o.d -o CMakeFiles/glfw.dir/cocoa_init.m.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/cocoa_init.m",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/cocoa_init.m"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o -MF CMakeFiles/glfw.dir/cocoa_joystick.m.o.d -o CMakeFiles/glfw.dir/cocoa_joystick.m.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/cocoa_joystick.m",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/cocoa_joystick.m"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o -MF CMakeFiles/glfw.dir/cocoa_monitor.m.o.d -o CMakeFiles/glfw.dir/cocoa_monitor.m.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/cocoa_monitor.m",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/cocoa_monitor.m"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o -MF CMakeFiles/glfw.dir/cocoa_window.m.o.d -o CMakeFiles/glfw.dir/cocoa_window.m.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/cocoa_window.m",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/cocoa_window.m"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -D_GLFW_COCOA -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src -I/Users/amrosebirani/game-code/raylib-boilerplate/build/raylib-master/raylib/external/glfw/src -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=c99 -arch arm64 -fPIC -Wall -MD -MT raylib-master/raylib/external/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o -MF CMakeFiles/glfw.dir/nsgl_context.m.o.d -o CMakeFiles/glfw.dir/nsgl_context.m.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/nsgl_context.m",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/src/nsgl_context.m"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu99 -arch arm64 -MD -MT raylib-master/raylib/CMakeFiles/raylib.dir/raudio.c.o -MF CMakeFiles/raylib.dir/raudio.c.o.d -o CMakeFiles/raylib.dir/raudio.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/raudio.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/raudio.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu99 -arch arm64 -MD -MT raylib-master/raylib/CMakeFiles/raylib.dir/rcore.c.o -MF CMakeFiles/raylib.dir/rcore.c.o.d -o CMakeFiles/raylib.dir/rcore.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/rcore.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/rcore.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu99 -arch arm64 -MD -MT raylib-master/raylib/CMakeFiles/raylib.dir/rmodels.c.o -MF CMakeFiles/raylib.dir/rmodels.c.o.d -o CMakeFiles/raylib.dir/rmodels.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/rmodels.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/rmodels.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu99 -arch arm64 -MD -MT raylib-master/raylib/CMakeFiles/raylib.dir/rshapes.c.o -MF CMakeFiles/raylib.dir/rshapes.c.o.d -o CMakeFiles/raylib.dir/rshapes.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/rshapes.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/rshapes.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu99 -arch arm64 -MD -MT raylib-master/raylib/CMakeFiles/raylib.dir/rtext.c.o -MF CMakeFiles/raylib.dir/rtext.c.o.d -o CMakeFiles/raylib.dir/rtext.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/rtext.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/rtext.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu99 -arch arm64 -MD -MT raylib-master/raylib/CMakeFiles/raylib.dir/rtextures.c.o -MF CMakeFiles/raylib.dir/rtextures.c.o.d -o CMakeFiles/raylib.dir/rtextures.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/rtextures.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/rtextures.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/cc -DGL_SILENCE_DEPRECATION -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -F/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu99 -arch arm64 -MD -MT raylib-master/raylib/CMakeFiles/raylib.dir/utils.c.o -MF CMakeFiles/raylib.dir/utils.c.o.d -o CMakeFiles/raylib.dir/utils.c.o -c /Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/utils.c",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/utils.c"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/ParticleSystem.cpp.o -MF CMakeFiles/game.dir/game/src/ParticleSystem.cpp.o.d -o CMakeFiles/game.dir/game/src/ParticleSystem.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/ParticleSystem.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/ParticleSystem.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/Quad.cpp.o -MF CMakeFiles/game.dir/game/src/Quad.cpp.o.d -o CMakeFiles/game.dir/game/src/Quad.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/Quad.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/Quad.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/RandomGenerator.cpp.o -MF CMakeFiles/game.dir/game/src/RandomGenerator.cpp.o.d -o CMakeFiles/game.dir/game/src/RandomGenerator.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/RandomGenerator.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/RandomGenerator.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/add_tower.cpp.o -MF CMakeFiles/game.dir/game/src/add_tower.cpp.o.d -o CMakeFiles/game.dir/game/src/add_tower.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/add_tower.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/add_tower.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/add_warriors.cpp.o -MF CMakeFiles/game.dir/game/src/add_warriors.cpp.o.d -o CMakeFiles/game.dir/game/src/add_warriors.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/add_warriors.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/add_warriors.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/animation.cpp.o -MF CMakeFiles/game.dir/game/src/animation.cpp.o.d -o CMakeFiles/game.dir/game/src/animation.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/animation.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/animation.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/archer.cpp.o -MF CMakeFiles/game.dir/game/src/archer.cpp.o.d -o CMakeFiles/game.dir/game/src/archer.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/archer.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/archer.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/archery.cpp.o -MF CMakeFiles/game.dir/game/src/archery.cpp.o.d -o CMakeFiles/game.dir/game/src/archery.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/archery.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/archery.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/archery_summon.cpp.o -MF CMakeFiles/game.dir/game/src/archery_summon.cpp.o.d -o CMakeFiles/game.dir/game/src/archery_summon.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/archery_summon.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/archery_summon.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/arrow.cpp.o -MF CMakeFiles/game.dir/game/src/arrow.cpp.o.d -o CMakeFiles/game.dir/game/src/arrow.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/arrow.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/arrow.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/attack_tower.cpp.o -MF CMakeFiles/game.dir/game/src/attack_tower.cpp.o.d -o CMakeFiles/game.dir/game/src/attack_tower.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/attack_tower.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/attack_tower.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/audio.cpp.o -MF CMakeFiles/game.dir/game/src/audio.cpp.o.d -o CMakeFiles/game.dir/game/src/audio.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/audio.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/audio.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/audio_manager.cpp.o -MF CMakeFiles/game.dir/game/src/audio_manager.cpp.o.d -o CMakeFiles/game.dir/game/src/audio_manager.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/audio_manager.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/audio_manager.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/barrack.cpp.o -MF CMakeFiles/game.dir/game/src/barrack.cpp.o.d -o CMakeFiles/game.dir/game/src/barrack.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/barrack.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/barrack.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/building.cpp.o -MF CMakeFiles/game.dir/game/src/building.cpp.o.d -o CMakeFiles/game.dir/game/src/building.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/building.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/building.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/camera.cpp.o -MF CMakeFiles/game.dir/game/src/camera.cpp.o.d -o CMakeFiles/game.dir/game/src/camera.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/camera.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/camera.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/castle.cpp.o -MF CMakeFiles/game.dir/game/src/castle.cpp.o.d -o CMakeFiles/game.dir/game/src/castle.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/castle.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/castle.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/chance_list.cpp.o -MF CMakeFiles/game.dir/game/src/chance_list.cpp.o.d -o CMakeFiles/game.dir/game/src/chance_list.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/chance_list.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/chance_list.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/cine_experience.cpp.o -MF CMakeFiles/game.dir/game/src/cine_experience.cpp.o.d -o CMakeFiles/game.dir/game/src/cine_experience.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/cine_experience.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/cine_experience.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/cinematographer.cpp.o -MF CMakeFiles/game.dir/game/src/cinematographer.cpp.o.d -o CMakeFiles/game.dir/game/src/cinematographer.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/cinematographer.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/cinematographer.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/collider_factory.cpp.o -MF CMakeFiles/game.dir/game/src/collider_factory.cpp.o.d -o CMakeFiles/game.dir/game/src/collider_factory.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/collider_factory.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/collider_factory.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/contact_listener.cpp.o -MF CMakeFiles/game.dir/game/src/contact_listener.cpp.o.d -o CMakeFiles/game.dir/game/src/contact_listener.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/contact_listener.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/contact_listener.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/container.cpp.o -MF CMakeFiles/game.dir/game/src/container.cpp.o.d -o CMakeFiles/game.dir/game/src/container.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/container.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/container.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/dead_body.cpp.o -MF CMakeFiles/game.dir/game/src/dead_body.cpp.o.d -o CMakeFiles/game.dir/game/src/dead_body.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/dead_body.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/dead_body.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/debug_draw.cpp.o -MF CMakeFiles/game.dir/game/src/debug_draw.cpp.o.d -o CMakeFiles/game.dir/game/src/debug_draw.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/debug_draw.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/debug_draw.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/defence_tower.cpp.o -MF CMakeFiles/game.dir/game/src/defence_tower.cpp.o.d -o CMakeFiles/game.dir/game/src/defence_tower.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/defence_tower.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/defence_tower.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/draft.cpp.o -MF CMakeFiles/game.dir/game/src/draft.cpp.o.d -o CMakeFiles/game.dir/game/src/draft.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/draft.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/draft.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/enemy.cpp.o -MF CMakeFiles/game.dir/game/src/enemy.cpp.o.d -o CMakeFiles/game.dir/game/src/enemy.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/enemy.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/enemy.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/enemy_horde.cpp.o -MF CMakeFiles/game.dir/game/src/enemy_horde.cpp.o.d -o CMakeFiles/game.dir/game/src/enemy_horde.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/enemy_horde.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/enemy_horde.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/enemy_shield_bearer.cpp.o -MF CMakeFiles/game.dir/game/src/enemy_shield_bearer.cpp.o.d -o CMakeFiles/game.dir/game/src/enemy_shield_bearer.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/enemy_shield_bearer.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/enemy_shield_bearer.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/enemy_types.cpp.o -MF CMakeFiles/game.dir/game/src/enemy_types.cpp.o.d -o CMakeFiles/game.dir/game/src/enemy_types.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/enemy_types.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/enemy_types.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/enemy_wave.cpp.o -MF CMakeFiles/game.dir/game/src/enemy_wave.cpp.o.d -o CMakeFiles/game.dir/game/src/enemy_wave.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/enemy_wave.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/enemy_wave.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/enemy_wave_config.cpp.o -MF CMakeFiles/game.dir/game/src/enemy_wave_config.cpp.o.d -o CMakeFiles/game.dir/game/src/enemy_wave_config.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/enemy_wave_config.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/enemy_wave_config.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/fire_ball.cpp.o -MF CMakeFiles/game.dir/game/src/fire_ball.cpp.o.d -o CMakeFiles/game.dir/game/src/fire_ball.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/fire_ball.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/fire_ball.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/formation.cpp.o -MF CMakeFiles/game.dir/game/src/formation.cpp.o.d -o CMakeFiles/game.dir/game/src/formation.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/formation.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/formation.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/game.cpp.o -MF CMakeFiles/game.dir/game/src/game.cpp.o.d -o CMakeFiles/game.dir/game/src/game.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/game.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/game.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/gameover.cpp.o -MF CMakeFiles/game.dir/game/src/gameover.cpp.o.d -o CMakeFiles/game.dir/game/src/gameover.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/gameover.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/gameover.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/gems.cpp.o -MF CMakeFiles/game.dir/game/src/gems.cpp.o.d -o CMakeFiles/game.dir/game/src/gems.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/gems.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/gems.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/giant.cpp.o -MF CMakeFiles/game.dir/game/src/giant.cpp.o.d -o CMakeFiles/game.dir/game/src/giant.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/giant.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/giant.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/horde_cine_exp.cpp.o -MF CMakeFiles/game.dir/game/src/horde_cine_exp.cpp.o.d -o CMakeFiles/game.dir/game/src/horde_cine_exp.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/horde_cine_exp.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/horde_cine_exp.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/horde_config.cpp.o -MF CMakeFiles/game.dir/game/src/horde_config.cpp.o.d -o CMakeFiles/game.dir/game/src/horde_config.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/horde_config.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/horde_config.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/horde_manager.cpp.o -MF CMakeFiles/game.dir/game/src/horde_manager.cpp.o.d -o CMakeFiles/game.dir/game/src/horde_manager.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/horde_manager.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/horde_manager.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/house_block.cpp.o -MF CMakeFiles/game.dir/game/src/house_block.cpp.o.d -o CMakeFiles/game.dir/game/src/house_block.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/house_block.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/house_block.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/infantry_summon.cpp.o -MF CMakeFiles/game.dir/game/src/infantry_summon.cpp.o.d -o CMakeFiles/game.dir/game/src/infantry_summon.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/infantry_summon.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/infantry_summon.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/joystick.cpp.o -MF CMakeFiles/game.dir/game/src/joystick.cpp.o.d -o CMakeFiles/game.dir/game/src/joystick.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/joystick.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/joystick.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/layout.cpp.o -MF CMakeFiles/game.dir/game/src/layout.cpp.o.d -o CMakeFiles/game.dir/game/src/layout.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/layout.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/layout.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/level_config.cpp.o -MF CMakeFiles/game.dir/game/src/level_config.cpp.o.d -o CMakeFiles/game.dir/game/src/level_config.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/level_config.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/level_config.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/lightning_line.cpp.o -MF CMakeFiles/game.dir/game/src/lightning_line.cpp.o.d -o CMakeFiles/game.dir/game/src/lightning_line.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/lightning_line.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/lightning_line.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/lightning_spell.cpp.o -MF CMakeFiles/game.dir/game/src/lightning_spell.cpp.o.d -o CMakeFiles/game.dir/game/src/lightning_spell.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/lightning_spell.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/lightning_spell.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/lightning_tower.cpp.o -MF CMakeFiles/game.dir/game/src/lightning_tower.cpp.o.d -o CMakeFiles/game.dir/game/src/lightning_tower.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/lightning_tower.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/lightning_tower.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/loading.cpp.o -MF CMakeFiles/game.dir/game/src/loading.cpp.o.d -o CMakeFiles/game.dir/game/src/loading.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/loading.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/loading.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/magic_types.cpp.o -MF CMakeFiles/game.dir/game/src/magic_types.cpp.o.d -o CMakeFiles/game.dir/game/src/magic_types.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/magic_types.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/magic_types.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/main.cpp.o -MF CMakeFiles/game.dir/game/src/main.cpp.o.d -o CMakeFiles/game.dir/game/src/main.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/main.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/main.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/mainmenu.cpp.o -MF CMakeFiles/game.dir/game/src/mainmenu.cpp.o.d -o CMakeFiles/game.dir/game/src/mainmenu.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/mainmenu.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/mainmenu.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/multiplier_dialog.cpp.o -MF CMakeFiles/game.dir/game/src/multiplier_dialog.cpp.o.d -o CMakeFiles/game.dir/game/src/multiplier_dialog.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/multiplier_dialog.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/multiplier_dialog.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/panel.cpp.o -MF CMakeFiles/game.dir/game/src/panel.cpp.o.d -o CMakeFiles/game.dir/game/src/panel.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/panel.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/panel.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/parameterized_enemy.cpp.o -MF CMakeFiles/game.dir/game/src/parameterized_enemy.cpp.o.d -o CMakeFiles/game.dir/game/src/parameterized_enemy.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/parameterized_enemy.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/parameterized_enemy.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/progress_bar.cpp.o -MF CMakeFiles/game.dir/game/src/progress_bar.cpp.o.d -o CMakeFiles/game.dir/game/src/progress_bar.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/progress_bar.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/progress_bar.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/property.cpp.o -MF CMakeFiles/game.dir/game/src/property.cpp.o.d -o CMakeFiles/game.dir/game/src/property.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/property.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/property.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/property_type.cpp.o -MF CMakeFiles/game.dir/game/src/property_type.cpp.o.d -o CMakeFiles/game.dir/game/src/property_type.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/property_type.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/property_type.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/region.cpp.o -MF CMakeFiles/game.dir/game/src/region.cpp.o.d -o CMakeFiles/game.dir/game/src/region.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/region.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/region.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/shake.cpp.o -MF CMakeFiles/game.dir/game/src/shake.cpp.o.d -o CMakeFiles/game.dir/game/src/shake.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/shake.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/shake.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/shield_bearer.cpp.o -MF CMakeFiles/game.dir/game/src/shield_bearer.cpp.o.d -o CMakeFiles/game.dir/game/src/shield_bearer.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/shield_bearer.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/shield_bearer.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/sound_player.cpp.o -MF CMakeFiles/game.dir/game/src/sound_player.cpp.o.d -o CMakeFiles/game.dir/game/src/sound_player.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/sound_player.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/sound_player.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/spearman.cpp.o -MF CMakeFiles/game.dir/game/src/spearman.cpp.o.d -o CMakeFiles/game.dir/game/src/spearman.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/spearman.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/spearman.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/sprite_holder.cpp.o -MF CMakeFiles/game.dir/game/src/sprite_holder.cpp.o.d -o CMakeFiles/game.dir/game/src/sprite_holder.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/sprite_holder.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/sprite_holder.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/stat.cpp.o -MF CMakeFiles/game.dir/game/src/stat.cpp.o.d -o CMakeFiles/game.dir/game/src/stat.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/stat.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/stat.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/state_machine.cpp.o -MF CMakeFiles/game.dir/game/src/state_machine.cpp.o.d -o CMakeFiles/game.dir/game/src/state_machine.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/state_machine.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/state_machine.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/state_stack.cpp.o -MF CMakeFiles/game.dir/game/src/state_stack.cpp.o.d -o CMakeFiles/game.dir/game/src/state_stack.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/state_stack.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/state_stack.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/states/archer/idle.cpp.o -MF CMakeFiles/game.dir/game/src/states/archer/idle.cpp.o.d -o CMakeFiles/game.dir/game/src/states/archer/idle.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/archer/idle.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/archer/idle.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/states/archer/play_animation.cpp.o -MF CMakeFiles/game.dir/game/src/states/archer/play_animation.cpp.o.d -o CMakeFiles/game.dir/game/src/states/archer/play_animation.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/archer/play_animation.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/archer/play_animation.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/states/enemy/attack.cpp.o -MF CMakeFiles/game.dir/game/src/states/enemy/attack.cpp.o.d -o CMakeFiles/game.dir/game/src/states/enemy/attack.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/enemy/attack.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/enemy/attack.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/states/enemy/cooldown.cpp.o -MF CMakeFiles/game.dir/game/src/states/enemy/cooldown.cpp.o.d -o CMakeFiles/game.dir/game/src/states/enemy/cooldown.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/enemy/cooldown.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/enemy/cooldown.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/states/enemy/run.cpp.o -MF CMakeFiles/game.dir/game/src/states/enemy/run.cpp.o.d -o CMakeFiles/game.dir/game/src/states/enemy/run.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/enemy/run.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/enemy/run.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/states/warrior/attack.cpp.o -MF CMakeFiles/game.dir/game/src/states/warrior/attack.cpp.o.d -o CMakeFiles/game.dir/game/src/states/warrior/attack.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/warrior/attack.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/warrior/attack.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/states/warrior/idle.cpp.o -MF CMakeFiles/game.dir/game/src/states/warrior/idle.cpp.o.d -o CMakeFiles/game.dir/game/src/states/warrior/idle.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/warrior/idle.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/warrior/idle.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/states/warrior/run.cpp.o -MF CMakeFiles/game.dir/game/src/states/warrior/run.cpp.o.d -o CMakeFiles/game.dir/game/src/states/warrior/run.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/warrior/run.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/warrior/run.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/states/warrior/seeking.cpp.o -MF CMakeFiles/game.dir/game/src/states/warrior/seeking.cpp.o.d -o CMakeFiles/game.dir/game/src/states/warrior/seeking.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/warrior/seeking.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/states/warrior/seeking.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/summon_dialog.cpp.o -MF CMakeFiles/game.dir/game/src/summon_dialog.cpp.o.d -o CMakeFiles/game.dir/game/src/summon_dialog.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/summon_dialog.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/summon_dialog.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/summon_gain.cpp.o -MF CMakeFiles/game.dir/game/src/summon_gain.cpp.o.d -o CMakeFiles/game.dir/game/src/summon_gain.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/summon_gain.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/summon_gain.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/summon_manager.cpp.o -MF CMakeFiles/game.dir/game/src/summon_manager.cpp.o.d -o CMakeFiles/game.dir/game/src/summon_manager.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/summon_manager.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/summon_manager.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/summon_slot.cpp.o -MF CMakeFiles/game.dir/game/src/summon_slot.cpp.o.d -o CMakeFiles/game.dir/game/src/summon_slot.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/summon_slot.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/summon_slot.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/swordsman.cpp.o -MF CMakeFiles/game.dir/game/src/swordsman.cpp.o.d -o CMakeFiles/game.dir/game/src/swordsman.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/swordsman.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/swordsman.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/textbox.cpp.o -MF CMakeFiles/game.dir/game/src/textbox.cpp.o.d -o CMakeFiles/game.dir/game/src/textbox.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/textbox.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/textbox.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/timer.cpp.o -MF CMakeFiles/game.dir/game/src/timer.cpp.o.d -o CMakeFiles/game.dir/game/src/timer.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/timer.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/timer.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/tower_spawn.cpp.o -MF CMakeFiles/game.dir/game/src/tower_spawn.cpp.o.d -o CMakeFiles/game.dir/game/src/tower_spawn.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/tower_spawn.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/tower_spawn.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/transformation_stack.cpp.o -MF CMakeFiles/game.dir/game/src/transformation_stack.cpp.o.d -o CMakeFiles/game.dir/game/src/transformation_stack.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/transformation_stack.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/transformation_stack.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/tree_patch.cpp.o -MF CMakeFiles/game.dir/game/src/tree_patch.cpp.o.d -o CMakeFiles/game.dir/game/src/tree_patch.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/tree_patch.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/tree_patch.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/upgrade_content.cpp.o -MF CMakeFiles/game.dir/game/src/upgrade_content.cpp.o.d -o CMakeFiles/game.dir/game/src/upgrade_content.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/upgrade_content.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/upgrade_content.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/upgrade_dialog.cpp.o -MF CMakeFiles/game.dir/game/src/upgrade_dialog.cpp.o.d -o CMakeFiles/game.dir/game/src/upgrade_dialog.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/upgrade_dialog.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/upgrade_dialog.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/upgrade_info.cpp.o -MF CMakeFiles/game.dir/game/src/upgrade_info.cpp.o.d -o CMakeFiles/game.dir/game/src/upgrade_info.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/upgrade_info.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/upgrade_info.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/upgrade_manager.cpp.o -MF CMakeFiles/game.dir/game/src/upgrade_manager.cpp.o.d -o CMakeFiles/game.dir/game/src/upgrade_manager.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/upgrade_manager.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/upgrade_manager.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/utils.cpp.o -MF CMakeFiles/game.dir/game/src/utils.cpp.o.d -o CMakeFiles/game.dir/game/src/utils.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/utils.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/utils.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/victory.cpp.o -MF CMakeFiles/game.dir/game/src/victory.cpp.o.d -o CMakeFiles/game.dir/game/src/victory.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/victory.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/victory.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/warrior.cpp.o -MF CMakeFiles/game.dir/game/src/warrior.cpp.o.d -o CMakeFiles/game.dir/game/src/warrior.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/warrior.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/warrior.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/warrior_dummy.cpp.o -MF CMakeFiles/game.dir/game/src/warrior_dummy.cpp.o.d -o CMakeFiles/game.dir/game/src/warrior_dummy.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/warrior_dummy.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/warrior_dummy.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/warrior_factory.cpp.o -MF CMakeFiles/game.dir/game/src/warrior_factory.cpp.o.d -o CMakeFiles/game.dir/game/src/warrior_factory.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/warrior_factory.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/warrior_factory.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/warrior_para.cpp.o -MF CMakeFiles/game.dir/game/src/warrior_para.cpp.o.d -o CMakeFiles/game.dir/game/src/warrior_para.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/warrior_para.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/warrior_para.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/warrior_types.cpp.o -MF CMakeFiles/game.dir/game/src/warrior_types.cpp.o.d -o CMakeFiles/game.dir/game/src/warrior_types.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/warrior_types.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/warrior_types.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/wizardry.cpp.o -MF CMakeFiles/game.dir/game/src/wizardry.cpp.o.d -o CMakeFiles/game.dir/game/src/wizardry.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/wizardry.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/wizardry.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/wizardry_summon.cpp.o -MF CMakeFiles/game.dir/game/src/wizardry_summon.cpp.o.d -o CMakeFiles/game.dir/game/src/wizardry_summon.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/wizardry_summon.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/wizardry_summon.cpp"
+  },
+  {
+    "directory": "/Users/amrosebirani/game-code/raylib-boilerplate/build",
+    "command": "/usr/bin/c++ -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -I/Users/amrosebirani/game-code/raylib-boilerplate/game -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src -I/Users/amrosebirani/game-code/raylib-boilerplate/game/include -I/Users/amrosebirani/game-code/raylib-boilerplate/game/src/include -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external -I/Users/amrosebirani/game-code/raylib-boilerplate/raylib-master/src/external/glfw/include -I/Users/amrosebirani/game-code/raylib-boilerplate/box2d/src/../include -DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations -std=gnu++17 -arch arm64 -MD -MT CMakeFiles/game.dir/game/src/world_state.cpp.o -MF CMakeFiles/game.dir/game/src/world_state.cpp.o.d -o CMakeFiles/game.dir/game/src/world_state.cpp.o -c /Users/amrosebirani/game-code/raylib-boilerplate/game/src/world_state.cpp",
+    "file": "/Users/amrosebirani/game-code/raylib-boilerplate/game/src/world_state.cpp"
   }
 ]

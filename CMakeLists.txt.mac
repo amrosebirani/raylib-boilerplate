@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
-project (GameProject)
+project ("main")
 
-set(PROJECT_NAME GameProject)
+set(PROJECT_NAME main)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
@@ -56,6 +57,7 @@ elseif (BUILD_ANDROID)
 
 
 else()
+    message(STATUS "going to desktop build")
     # Desktop-specific configuration
     set(CMAKE_CXX_COMPILER /usr/local/opt/llvm/bin/clang++)
     set(CMAKE_C_COMPILER /usr/local/opt/llvm/bin/clang)
@@ -85,10 +87,12 @@ include_directories(
 file(GLOB_RECURSE SOURCES game/src/*.cpp)
 
 if (ANDROID)
-    add_library(game SHARED ${SOURCES})
+    add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES})
 endif()
 # Add the executable
-add_executable(game ${SOURCES})
+if (NOT ANDROID)
+    add_executable(game ${SOURCES})
+endif()
 
 # Link libraries
 target_link_libraries(game
@@ -107,7 +111,7 @@ if (APPLE)
 endif()
 
 if (ANDROID)
-    target_link_libraries(game log android)
+    target_link_libraries(game log android raylib box2d)
 endif()
 
 # Set output directories
@@ -120,6 +124,7 @@ if (BUILD_WEB)
     add_custom_command(TARGET game POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/resources ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/resources)
+elseif(BUILD_ANDROID)
 else()
     add_custom_command(TARGET game POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
