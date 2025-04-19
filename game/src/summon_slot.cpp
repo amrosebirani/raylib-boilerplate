@@ -1,15 +1,19 @@
 #include "summon_slot.hpp"
 #include "constants.h"
+#include "firebase.hpp"
 #include "globals.h"
+#include "magic_types.hpp"
 #include "raylib.h"
 #include "summon_card.hpp"
 #include "utils.h"
 #include "warrior_types.h"
+#include "platform.hpp"
 
 SummonSlot::SummonSlot(int index, int level, PropertyType type,
                        SummonCardType stype)
     : level(level), type(type), summon_type(stype), index(index) {
     warriorTypes = getSummonChoices(type, level);
+    magicTypes = getMagicChoices(level);
     setProduceCost();
 }
 
@@ -28,7 +32,10 @@ void SummonSlot::setProduceCost() {
     }
 
     produceCost =
-        get_warrior_summon_card_cost(warriorTypes[selectedIndex], level) * mm;
+        summon_type == SummonCardType::WIZARDRY
+            ? get_spell_cost(magicTypes[selectedIndex], level)
+            : get_warrior_summon_card_cost(warriorTypes[selectedIndex], level) *
+                  mm;
 }
 
 SummonSlot::~SummonSlot() {
@@ -53,12 +60,14 @@ void SummonSlot::drawSlotAvailableMaster(std::shared_ptr<Panel> panel,
         textColor = DARKBLUE;
     }
     float ww = panel->width * .22f;
-    Rectangle rect = {panel->left + panel->width * .33f - ww, y, ww, 60};
+    Rectangle rect = {panel->left + panel->width * .05f, y, ww, 60};
     masterRect = rect;
     DrawRectangleRec(rect, bgColor);
-    std::string tt = TextFormat("Arena %d", index);
-    float ttm = MeasureText(tt.c_str(), 20);
-    DrawText(tt.c_str(), rect.x + rect.width / 2 - ttm / 2, y + 20, 20,
+    std::string tt = summon_type == SummonCardType::WIZARDRY
+                         ? TextFormat("Sanctum %d", index)
+                         : TextFormat("Arena %d", index);
+    float ttm = MeasureText(tt.c_str(), 40);
+    DrawText(tt.c_str(), rect.x + rect.width / 2 - ttm / 2, y + 10, 40,
              textColor);
 }
 
@@ -143,16 +152,18 @@ void SummonSlot::drawSlotProducingMaster(std::shared_ptr<Panel> panel,
 
     float ww = panel->width * .22f;
     progressBar =
-        std::make_shared<ProgressBar>(panel->left + panel->width * .33f - ww, y,
-                                      ww, 60, produceTime, produceTimeCounter);
+        std::make_shared<ProgressBar>(panel->left + panel->width * .05f, y, ww,
+                                      60, produceTime, produceTimeCounter);
     progressBar->draw();
 
-    Rectangle rect = {panel->left + panel->width * .33f - ww, y, ww, 60};
+    Rectangle rect = {panel->left + panel->width * .05f, y, ww, 60};
     masterRect = rect;
     DrawRectangleRec(rect, bgColor);
-    std::string tt = TextFormat("Arena %d", index);
-    float ttm = MeasureText(tt.c_str(), 20);
-    DrawText(tt.c_str(), rect.x + rect.width / 2 - ttm / 2, y + 20, 20,
+    std::string tt = summon_type == SummonCardType::WIZARDRY
+                         ? TextFormat("Sanctum %d", index)
+                         : TextFormat("Arena %d", index);
+    float ttm = MeasureText(tt.c_str(), 40);
+    DrawText(tt.c_str(), rect.x + rect.width / 2 - ttm / 2, y + 10, 40,
              textColor);
 }
 
@@ -160,19 +171,42 @@ void SummonSlot::update(float dt) {
     if (isProducing) {
         produceTimeCounter += dt;
         if (produceTimeCounter > produceTime) {
-            getWorldState()->summon_manager->addSummonCard(
-                std::make_shared<SummonCard>(level, warriorType, summon_type));
+            std::shared_ptr<SummonCard> card =
+                std::make_shared<SummonCard>(level, warriorType, summon_type);
+            std::string card_type;
+            switch (card->summon_type) {
+            case SummonCardType::ARCHERY:
+                card_type = "archery";
+                break;
+            case SummonCardType::INFANTRY:
+                card_type = "infantry";
+                break;
+            case SummonCardType::WIZARDRY:
+                card_type = "wizardry";
+                break;
+            };
+            sendFirebaseEvent("SummonCardCreated",
+                              {{"card_type", card_type},
+                               {"level", TextFormat("%d", card->level)},
+                               {"wtype", getWarriorText(card->type)},
+                               {"magic_type", getMagicText(card->magic_type)}});
+            getWorldState()->summon_manager->addSummonCard(card);
             isProducing = false;
             selectedIndex = 0;
         }
     }
 }
 
-void SummonSlot::startProducing(WarriorType wtype) {
+void SummonSlot::startProducing() {
     isProducing = true;
     produceTime = getBuildingProduceTime(type, level);
     produceTimeCounter = 0;
-    warriorType = wtype;
+    if (summon_type == SummonCardType::WIZARDRY) {
+        magicType = magicTypes[selectedIndex];
+    } else {
+        warriorType = warriorTypes[selectedIndex];
+    }
+    // warriorType = wtype;
     getWorldState()->removeCoins(produceCost);
 }
 
@@ -183,6 +217,7 @@ float SummonSlot::getProgress() {
 void SummonSlot::setLevel(int level) {
     this->level = level;
     warriorTypes = getSummonChoices(type, level);
+    magicTypes = getMagicChoices(level);
 }
 
 void SummonSlot::drawSlotAvailable(std::shared_ptr<Panel> panel, float y) {
@@ -292,7 +327,7 @@ void SummonSlot::handleLandscapeClick(std::function<void()> unSelectAll) {
         Vector2 mp = GetMousePosition();
         if (getWorldState()->getCoins() >= produceCost &&
             CheckCollisionPointRec(mp, startPRect)) {
-            startProducing(warriorTypes[selectedIndex]);
+            startProducing();
         }
         spressed = false;
     }
@@ -332,7 +367,7 @@ void SummonSlot::handleClick() {
             if (getWorldState()->getCoins() < produceCost) {
                 return;
             }
-            startProducing(warriorTypes[selectedIndex]);
+            startProducing();
         }
     }
 }

@@ -23,4 +23,6 @@ class Loading : public Room {
         bool soundsLoaded = false;
         Texture2D loadingL;
         Texture2D loadingP;
+        float bsh = 0.0f;
+        float fs = 0.0f;
 };

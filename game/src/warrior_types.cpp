@@ -1,6 +1,8 @@
 #include "warrior_types.h"
 #include "constants.h"
 #include "globals.h"
+#include "magic_types.hpp"
+#include "utils.h"
 #include <unordered_map>
 
 std::unordered_map<WarriorType, int> warrior_sizes;
@@ -90,7 +92,7 @@ float get_warrior_hp(WarriorType type, bool inFormation) {
             mm = getContainer()->getUpgradeContent()->get_stat(HERO_UNIT_HP_M);
         }
     } else {
-        if (is_infanty_unit(type)) {
+        if (is_infantry_unit(type)) {
             mm = getContainer()->getUpgradeContent()->get_stat(INFANTRY_HP_M);
         }
         if (is_ranged_unit(type)) {
@@ -132,7 +134,7 @@ float get_warrior_damage(WarriorType type, bool inFormation) {
                 HERO_UNIT_DAMAGE_M);
         }
     } else {
-        if (is_infanty_unit(type)) {
+        if (is_infantry_unit(type)) {
             mm = getContainer()->getUpgradeContent()->get_stat(
                 INFANTRY_DAMAGE_M);
         }
@@ -155,7 +157,7 @@ float get_warrior_attack_time(WarriorType type, bool inFormation) {
                 HERO_UNIT_ATTACK_SPEED_M);
         }
     } else {
-        if (is_infanty_unit(type)) {
+        if (is_infantry_unit(type)) {
             mm = getContainer()->getUpgradeContent()->get_stat(
                 INFANTRY_ATTACK_SPEED_M);
         }
@@ -316,4 +318,22 @@ void draw_warrior_icon(WarriorType type, Rectangle rect) {
         break;
     }
     getSpriteHolder()->drawSprite(WARRIOR_ICONS, sprite_no, rect);
+}
+
+WarriorType get_random_infantry_type() {
+    std::vector<WarriorType> all_inf = {
+        WarriorType::WARRIOR_TYPE_AXEMAN, WarriorType::WARRIOR_TYPE_SPEARMAN,
+        WarriorType::WARRIOR_TYPE_BERSERKER,
+        WarriorType::WARRIOR_TYPE_SWORDSMAN,
+        WarriorType::WARRIOR_TYPE_SHIELD_BEARER};
+    int ind = getRandomIntInRange(0, 4);
+    return all_inf[ind];
+}
+
+WarriorType get_random_ranged_type() {
+    std::vector<WarriorType> all_ran = {WarriorType::WARRIOR_TYPE_JAVELINER,
+                                        WarriorType::WARRIOR_TYPE_ARCHER,
+                                        WarriorType::WARRIOR_TYPE_CROSSBOWMAN};
+    int ind = getRandomIntInRange(0, 2);
+    return all_ran[ind];
 }

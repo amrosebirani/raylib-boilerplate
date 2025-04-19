@@ -37,6 +37,7 @@ class Building : public GameObject {
         void setColliders();
         void awakenColliders(float dt);
         bool inContact = false;
+        int inContactCount = 0;
         bool snContact = false;
         float inContactTimer;
         float snContactTimer;

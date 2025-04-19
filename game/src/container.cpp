@@ -2,13 +2,14 @@
 // #include "cinematographer.hpp"
 #include "collider_user_data.h"
 #include "constants.h"
-#include "game.h"
+#include "firebase.hpp"
 #include "game_object.h"
 #include "box2d/b2_draw.h"
 #include "debug_draw.hpp"
 #include "globals.h"
 #include "horde_manager.hpp"
 #include "raylib.h"
+#include "scoreboard.hpp"
 #include "utils.h"
 #include "add_warriors.hpp"
 #include "raymath.h"
@@ -108,7 +109,7 @@ void Container::init() {
     // 0, []() {}, "");
     // rp1 = region->getRegionPoints();
     // rp2 = region->getRegionPoints();
-    hmm = std::make_shared<HordeManager>();
+    hmm = std::make_shared<HordeManager>(-1);
     getViewCamera()->follow(getFollowObject());
 }
 
@@ -132,6 +133,9 @@ std::shared_ptr<GameObject> Container::getClosestAttackUnit(Vector2 pos) {
         if (distance < minDistance) {
             closest = go;
         }
+    }
+    if (closest == nullptr) {
+        return region->castle;
     }
     return closest;
 }
@@ -248,6 +252,10 @@ void Container::draw() {
     for (auto &go : gameObjectsRaised) {
         go->draw();
     }
+
+    for (auto &go : flashObjects) {
+        go->draw();
+    }
     // for (std::shared_ptr<TreePatch> tp : tree_patches) {
     //     tp->draw();
     // }
@@ -296,13 +304,15 @@ void Container::setMiniMapDetails() {
         miniMapH = sh / 4;
         miniMapW = sw / 5;
         miniMapS = (miniMapH / 2) / distToCover;
-        miniMap = {5.0f / 6 * sw - miniMapW / 2, 140, miniMapW, miniMapH};
+        miniMap = {5.0f / 6 * sw - miniMapW / 2, getWorldState()->getMiniMapH(),
+                   miniMapW, miniMapH};
         miniMapO = {miniMap.x + miniMapW / 2, miniMap.y + miniMapH / 2};
     } else {
         miniMapH = sh / 6;
         miniMapW = sw / 3;
         miniMapS = (miniMapH / 2) / distToCover;
-        miniMap = {1.0f / 2 * sw - miniMapW / 2, 140, miniMapW, miniMapH};
+        miniMap = {1.0f / 2 * sw - miniMapW / 2, getWorldState()->getMiniMapH(),
+                   miniMapW, miniMapH};
         miniMapO = {miniMap.x + miniMapW / 2, miniMap.y + miniMapH / 2};
     }
     center = region->getCenterCoordinates();
@@ -355,6 +365,18 @@ bool Container::update(float dt) {
         size_t index = scumIndicesToRemove[i - 1];
         scumObjects.erase(scumObjects.begin() + index);
     }
+    std::vector<size_t> flashIndicesToRemove;
+    for (size_t i = 0; i < flashObjects.size(); i++) {
+        std::shared_ptr<GameObject> go = flashObjects[i];
+        go->update(dt);
+        if (!go->isAlive()) {
+            flashIndicesToRemove.push_back(i);
+        }
+    }
+    for (size_t i = flashIndicesToRemove.size(); i > 0; --i) {
+        size_t index = flashIndicesToRemove[i - 1];
+        flashObjects.erase(flashObjects.begin() + index);
+    }
     std::vector<size_t> indices_to_remove;
     for (size_t i = 0; i < gameObjects.size(); i++) {
         std::shared_ptr<GameObject> go = gameObjects[i];
@@ -403,17 +425,28 @@ bool Container::update(float dt) {
 void Container::gameOverSet() {
     getAudioManager()->switchBGM("sad");
     gameover = true;
+    setScoreBoard(getScoreBoard());
     getWorldState()->finalize();
     getGameOver()->reset();
     getStateStack()->push(getGameOver());
+    sendFirebaseEvent("GameOver", {});
+}
+
+std::shared_ptr<ScoreBoard> Container::getScoreBoard() {
+    return std::make_shared<ScoreBoard>(
+        getWorldState()->getScore(), getWorldState()->getTotalKills(),
+        getWorldState()->getTimeSurvived(), hmm->getCurrentWave());
 }
 
 void Container::victorySet() {
     getAudioManager()->switchBGM("victory");
     victory = true;
+    // initialize scoreboard here
+    setScoreBoard(getScoreBoard());
     getWorldState()->finalize();
     getVictory()->reset();
     getStateStack()->push(getVictory());
+    sendFirebaseEvent("Victory", {});
 }
 
 void Container::endGame() {
@@ -435,12 +468,17 @@ void Container::cleanup() {
         go->die();
     }
     scumObjects.clear();
+    flashObjects.clear();
     region = nullptr;
     form = nullptr;
 }
 
 void Container::addGameObject(std::shared_ptr<GameObject> obj) {
     gameObjects.push_back(obj);
+}
+
+void Container::addFlashObject(std::shared_ptr<GameObject> obj) {
+    flashObjects.push_back(obj);
 }
 
 void Container::addScumObject(std::shared_ptr<GameObject> obj) {

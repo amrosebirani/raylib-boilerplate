@@ -1,6 +1,7 @@
 #include "sprite_holder.hpp"
 #include "building_data.hpp"
 #include "constants.h"
+#include "raylib.h"
 #include <cmath>
 
 SpriteHolder::SpriteHolder() {
@@ -17,6 +18,7 @@ void SpriteHolder::initSprites(std::vector<SpriteConfig *> spriteConfigs) {
     for (auto &spriteConfig : spriteConfigs) {
         std::string spath = spriteConfig->path;
         Texture2D texture = LoadTexture(spath.c_str());
+        SetTextureFilter(texture, TEXTURE_FILTER_POINT);
         spriteConfig->texture = texture;
         sprites.emplace(spriteConfig->sprite_id, spriteConfig);
         // sprites[spriteConfig->sprite_id] = spriteConfig;

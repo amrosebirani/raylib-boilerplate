@@ -5,6 +5,7 @@
 #include "raylib.h"
 #include "globals.h"
 #include "raymath.h"
+#include "platform.hpp"
 
 using std::string;
 float lastDistance = 0.0f;
@@ -22,25 +23,34 @@ WorldState::WorldState() {
         gems_for_next_upgrade.push_back(gems_for_next_upgrade[i + 1] * 1.3);
         gems_for_next_upgrade.push_back(gems_for_next_upgrade[i + 2]);
     }
+    topHeight = GetScreenHeight() * topPercentCover / 100;
     gem_progress_bar =
-        new ProgressBar(0, 60, GetScreenWidth(), 60, 1, 0, {54, 137, 179, 255});
+        new ProgressBar(0, topHeight / 2, GetScreenWidth(), topHeight / 2, 1, 0,
+                        {54, 137, 179, 255});
     summon_manager = std::make_shared<SummonManager>();
+    fs = topHeight / 2 * .7f;
+    topMargin = topHeight / 2 * .15f;
+}
+
+float WorldState::getMiniMapH() {
+    return topHeight + fs;
 }
 
 void WorldState::draw() {
-    DrawRectangle(0, 0, GetScreenWidth(), 120, {0, 0, 0, 125});
+    DrawRectangle(0, 0, GetScreenWidth(), topHeight / 2, {0, 0, 0, 125});
     const char *tg = TextFormat("%d", gems_for_next_upgrade[gem_round] - gems);
-    int tgm = MeasureText(tg, 30);
-    DrawText(tg, 45 - tgm, 15, 30, WHITE);
-    getSpriteHolder()->drawSprite(COINS_AND_GEMS, 5, {50, 15, 30, 30});
+    int tgm = MeasureText(tg, fs);
+    DrawText(tg, 20, topMargin, fs, WHITE);
+    getSpriteHolder()->drawSprite(COINS_AND_GEMS, 5,
+                                  {20.0f + tgm + 5, topMargin, fs, fs});
 
-    DrawText("to next upgrade", 85, 15, 30, WHITE);
+    DrawText("to next upgrade", 30 + tgm + fs, topMargin, fs, WHITE);
 
-    getSpriteHolder()->drawSprite(COINS_AND_GEMS, 1,
-                                  {GetScreenWidth() - 60.0f, 15, 30, 30});
+    getSpriteHolder()->drawSprite(
+        COINS_AND_GEMS, 1, {GetScreenWidth() - 40.0f - fs, topMargin, fs, fs});
     const char *tt = TextFormat("%d", coins);
-    int ttm = MeasureText(tt, 30);
-    DrawText(tt, GetScreenWidth() - 60.0f - ttm - 5, 15, 30, WHITE);
+    int ttm = MeasureText(tt, fs);
+    DrawText(tt, GetScreenWidth() - ttm - 40 - 1.5f * fs, topMargin, fs, WHITE);
     gem_progress_bar->draw();
     summon_manager->draw();
     if (isPlatformAndroid()) {
@@ -49,8 +59,10 @@ void WorldState::draw() {
     // DrawRectangle(0, GetScreenHeight() - 60, GetScreenWidth(), 60,
     // {0, 0, 0, 125});
     std::string waveText = getContainer()->hmm->getWaveText();
-    float waveTextWidth = MeasureText(waveText.c_str(), 30);
-    DrawText(waveText.c_str(), 20, 140, 30, BLACK);
+    float waveTextWidth = MeasureText(waveText.c_str(), fs);
+    DrawRectangleRec({20, topHeight + fs, waveTextWidth + 2 * fs, 3 * fs},
+                     {RED.r, RED.g, RED.b, 200});
+    DrawText(waveText.c_str(), 20 + fs, topHeight + 2 * fs, fs, WHITE);
     if (is_formation_respawning) {
         // need text in format "Respawn in 3.00"
         std::string formText = "Respawn in ";
@@ -195,8 +207,29 @@ void dragAndMoveAround() {
     }
 }
 
+void WorldState::addKill() {
+    totalKills++;
+}
+
+void WorldState::addScore(int score) {
+    this->score += score;
+}
+
+int64 WorldState::getScore() {
+    return score;
+}
+
+int WorldState::getTotalKills() {
+    return totalKills;
+}
+
+float WorldState::getTimeSurvived() {
+    return timeSurvived;
+}
+
 bool WorldState::update(float dt) {
     summon_manager->update(dt);
+    timeSurvived += dt;
     if (isPlatformAndroid()) {
         getJoystick()->update(dt);
         setPinchZoom();

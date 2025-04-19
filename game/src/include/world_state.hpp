@@ -1,5 +1,6 @@
 #pragma once
 #include "gem_type.hpp"
+#include "int.h"
 #include "progress_bar.hpp"
 #include "temp_chance_list.hpp"
 #include "room.hpp"
@@ -28,6 +29,12 @@ class WorldState : public Room {
         void setSummonEnabled(bool enabled);
         void setPopupActive(bool active);
         bool isPopupActive();
+        float getMiniMapH();
+        void addKill();
+        void addScore(int score);
+        int64 getScore();
+        int getTotalKills();
+        float getTimeSurvived();
 
     private:
         int coins = 100;
@@ -41,4 +48,11 @@ class WorldState : public Room {
         bool is_formation_respawning = false;
         float startX;
         bool popup_active = false;
+        float topPercentCover = 10;
+        float topMargin = 0.0f;
+        float topHeight = 0.0f;
+        float fs = 0.0f;
+        int totalKills = 0;
+        int64 score = 0;
+        float timeSurvived = 0;
 };

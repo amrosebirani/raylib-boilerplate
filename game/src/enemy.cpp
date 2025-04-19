@@ -1,4 +1,5 @@
 #include "enemy.hpp"
+#include "score_flash.hpp"
 #include "states/enemy/run.hpp"
 #include "states/enemy/attack.hpp"
 #include "states/enemy/cooldown.hpp"
@@ -46,6 +47,10 @@ void Enemy::afterDie(EnemyType type) {
         x, y, false, type, WarriorType::WARRIOR_TYPE_SPEARMAN);
     getContainer()->addScumObject(db);
     getContainer()->hmm->decreaseCount();
+    getWorldState()->addKill();
+    getWorldState()->addScore(100);
+    // create the flashing game object here later
+    getContainer()->addFlashObject(std::make_shared<ScoreFlash>(x, y, 100));
     contactAttackUnits.clear();
     timer->clearAll();
     mvspd = 0;

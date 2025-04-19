@@ -81,7 +81,7 @@ void MultiplierDialog::drawUpgrade(Rectangle rect,
     float mm = MeasureText(ht.c_str(), fs);
     float tw = fs * 1.6 + mm;
     float start_x = rect.x + rect.width / 2 - tw / 2;
-    float y = rect.y + 70;
+    float y = rect.y + rect.height * .2f;
     std::string icon_sprite = roe > 0 ? UPG_ICON : ARROW_BOTTOM;
 
     getSpriteHolder()->drawSpriteWithColor(

@@ -6,6 +6,7 @@
 #include "gameover.hpp"
 #include "joystick.hpp"
 #include "mainmenu.hpp"
+#include "scoreboard.hpp"
 #include "sprite_holder.hpp"
 #include "victory.hpp"
 #include "world_state.hpp"
@@ -24,16 +25,14 @@ std::shared_ptr<Joystick> getJoystick();
 std::shared_ptr<GameOver> getGameOver();
 std::shared_ptr<MainMenu> getMainMenu();
 std::shared_ptr<Victory> getVictory();
+std::shared_ptr<ScoreBoard> getScoreBoard();
+void setScoreBoard(std::shared_ptr<ScoreBoard> sb);
 bool isShakeDetected();
 void resetShakeDetected();
 void reinitializeGame();
 void resetGame();
 void startGame();
 Rectangle getJoystickRect();
-bool isPlatformAndroid();
-bool isPlatformDesktop();
-bool isPlatformWeb();
-void setPlatform(std::string platform);
 const char *getAssetPath(const char *path);
 bool isPaused();
 void initEnemySprites();

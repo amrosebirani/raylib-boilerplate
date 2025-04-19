@@ -1,0 +1,3211 @@
+    1  vi ~/.zshrc
+    2  ls
+    3  cd raylib-playground/bytepath-survivor
+    4  cd emsdk
+    5  emsdk activate latest
+    6  ./emsdk activate latest
+    7  cat ~/.zshrc
+    8  q
+    9  source ./emsdk_env.sh
+   10  which emcmake
+   11  which emmake
+   12  which cmake
+   13  which emmake
+   14  ls
+   15  mkdir build_web
+   16  cd build_web
+   17  emcmake -DBUILD_WEB ..
+   18  emcmake cmake .. -DBUILD_WEB=ON
+   19  gcm emcc
+   20  emcmake cmake .. -DBUILD_WEB=ON
+   21  emmake make
+   22  cd ..
+   23  vi .gitignore
+   24  git status
+   25  emrun web/Debug/game.html
+   26  cd web/Debug
+   27  ls
+   28  python -m http.server 8080
+   29  apt-get install python
+   30  sudo apt-get install python
+   31  sudo apt install python3 python3-pip ipython3
+   32  cat bear.sh
+   33  cd build
+   34  sudo apt-get install bear
+   35  which python
+   36  which python3
+   37  cd build_web/web/Debug
+   38  python -m http.server 8080
+   39  python3 -m http.server 8080
+   40  sudo apt-get install bear
+   41  cd ../..
+   42  cd ../build
+   43  bear make
+   44  cat ../bear.sh
+   45  bear -- make
+   46  cat compile_commands.json
+   47  make clean
+   48  bear -- make
+   49  git status
+   50  vi .gitignore
+   51  git status
+   52  cat .clang-format
+   53  git checkout -b windowschange
+   54  git commit -a
+   55  cat compile_commands.json
+   56  cp compile_commands.json ../
+   57  git config --global user.email "amrose.birani5@gmail.com"
+   58  git config --global user.name "amrosebirani"
+   59  git commit -a
+   60  git status
+   61  git add CMakeLists.txt.win
+   62  git add CMakeLists.txt.mac
+   63  git commit -a
+   64  git push origin -u windowschange
+   65  wsl
+   66  which nvim
+   67  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   68  brew install neovim
+   69  which brew
+   70  brew install neovim
+   71  ls ~/.config/nvim
+   72  vi ~/.config/nvim/init.lua
+   73  nvim
+   74  sudo nvim
+   75  sudo su
+   76  which nvim
+   77  sudo su
+   78  nvim
+   79  cd ~/.config/nvim
+   80  nvim
+   81  ls
+   82  cd ..
+   83  ls
+   84  cd nvim
+   85  nvim
+   86  cd ~/.local/share
+   87  ls
+   88  cd nvim
+   89  ls
+   90  cd lazy
+   91  ls
+   92  rm -rf nvim-dap-ui
+   93  ls
+   94  cd ~/.config/nvim
+   95  nvim
+   96  unzip
+   97  apt install zip
+   98  sudo apt install zip
+   99  nvim
+  100  sudo apt install python3.10-venv
+  101  cd raylib-playground/bytepath-survivor
+  102  nvim
+  103  brew install ripgrep
+  104  cd raylib-playground/bytepath-survivor
+  105  nvim
+  106  cd ~/.config/nvim
+  107  nvim
+  108  which lldb
+  109  brew install llvm
+  110  which lldb
+  111  which clang
+  112  which clang++
+  113  /usr/bin/clang -v
+  114  clang -v
+  115  clang++ -v
+  116  which lldb-vscode
+  117  which lldb
+  118  cd raylib-playground/bytepath-survivor
+  119  nvim
+  120  ls
+  121  ls build
+  122  ls build/bin
+  123  ls build/bin/Debug
+  124  ./build/bin/Debug/game
+  125  which clang
+  126  cp CMakeLists.txt.win CMakeLists.txt
+  127  cd buile
+  128  cd build
+  129  cmake ..
+  130  rm -rf CMakeFiles
+  131  rm -rf CMakeCache.txt
+  132  cmake ..
+  133  ls
+  134  rm -rf CMakeCache.txt
+  135  rm -rf CMakeFiles
+  136  ls
+  137  rm -rf box2d
+  138  rm -rf cmake_install.cmake
+  139  rm -rf CPackConfig.cmake
+  140  rm -rf C*
+  141  ls
+  142  rm -rf raylib-master
+  143  ls
+  144  rm -rf Makefile
+  145  rm -rf bin
+  146  cmake ..
+  147  cd build
+  148  cmake ..
+  149  which clang
+  150  cmake ..
+  151  rm -rf CMakeCache.txt
+  152  rm -rf CMakeFiles
+  153  cmake ..
+  154  make
+  155  cd ~/.config/nvim
+  156  nvim
+  157  ls /home/linuxbrew/.linuxbrew/bin
+  158  cd ~/.local
+  159  cd share
+  160  ls
+  161  cd n
+  162  cd nvim
+  163  ls
+  164  ./bin/Debug/game
+  165  cd ..
+  166  mkdir build_release
+  167  cd build_release
+  168  cmake -DCMAKE_BUILD_TYPE=Release ..
+  169  make
+  170  ls
+  171  ./bin/Debug/game
+  172  cmake -DCMAKE_BUILD_TYPE=Release ..
+  173  make
+  174  ./bin/Release/game
+  175  cd ..
+  176  mkdir build_web_release
+  177  emcmake cmake .. -DBUILD_WEB=ON -DCMAKE_BUILD_TYPE=Release
+  178  cd build_web_release
+  179  emcmake cmake .. -DBUILD_WEB=ON -DCMAKE_BUILD_TYPE=Release
+  180  emmake make
+  181  cd raylib-playground/bytepath-survivor
+  182  nvim
+  183  cd ~/.local/share/nvim
+  184  ls
+  185  ls shada
+  186  ls lazy
+  187  ls lazy/nvim-dap
+  188  lldb-server
+  189  lldb
+  190  cd ~
+  191  ls
+  192  cd raylib-playground/bytepath-survivor
+  193  nvim
+  194  cd web/Release
+  195  ls
+  196  python3 -m http.server 8080
+  197  cd raylib-playground/bytepath-survivor
+  198  nvim
+  199  cd raylib-playground/bytepath-survivor
+  200  nvim
+  201  cd raylib-playground/bytepath-survivor
+  202  nvim
+  203  ls
+  204  cd raylib-playground
+  205  ls
+  206  git clone git@github.com:amrosebirani/raylib-boilerplate.git
+  207  ls
+  208  cp -R raylib-boilerplate maharathi
+  209  ls
+  210  ls maharathi
+  211  cd maharathi
+  212  ls
+  213  history | grep raylib
+  214  nvim
+  215  ./setup.sh
+  216  ls
+  217  ls box2d
+  218  ls raylib-master
+  219  ls
+  220  cd game
+  221  cd include
+  222  ls
+  223  touch ParticleSystem.h
+  224  touch Quad.h
+  225  brew install raylib
+  226  pwd
+  227  cd .
+  228  cd ..
+  229  ls src
+  230  cd src
+  231  touch Quad.cpp
+  232  mkdir build
+  233  rm -rf build
+  234  ls
+  235  cd ..
+  236  mkdir build
+  237  cd build
+  238  nvim
+  239  cp CMakeLists.txt.win CMakeLists.txt
+  240  cd build
+  241  cmake ..
+  242  cd ..
+  243  ls
+  244  ls .gitignore
+  245  cat .gitignore
+  246  ls
+  247  mkdir test
+  248  mkdir build_web
+  249  ls
+  250  cat .gitignore
+  251  which nvim
+  252  ls
+  253  cd ~
+  254  ls
+  255  ls -alh
+  256  cd .config
+  257  ls
+  258  cd nvim
+  259  nvim
+  260  cd build
+  261  cmake ..
+  262  ls
+  263  rm -rf ./*
+  264  ls
+  265  cmake ..
+  266  ls
+  267  bear -- make
+  268  cd game/src
+  269  mkdir include
+  270  cp ../bytepath-survivor/game/src/include/game_object.h ./game/src/include
+  271  bear -- make
+  272  ls
+  273  cat compile_commands.json
+  274  cp compile_commands.json ../
+  275  cd ..
+  276  cd game
+  277  cd src
+  278  cd ../include
+  279  ls
+  280  pwd
+  281  cd ~
+  282  pwd
+  283  ls
+  284  exit
+  285  cd ~
+  286  ls
+  287  mkdir love2d
+  288  cd love2d
+  289  git clone https://github.com/love2d/love.git
+  290  ls
+  291  cd love
+  292  nvim
+  293  cmake -B build -S. --install-prefix $PWD/prefix
+  294  apt install sdl2main
+  295  sudo apt install sdl2main
+  296  sudo apt install libsdl2-dev
+  297  cmake -B build -S. --install-prefix $PWD/prefix
+  298  sudo apt install libfreetype
+  299  sudo apt install freetype
+  300  sudo apt install freetype*
+  301  sudo apt install freetype2
+  302  sudo apt-get install freetype**
+  303  sudo apt-get install freetype*
+  304  sudo apt-get install freetype
+  305  sudo apt-get install freetype23
+  306  sudo apt-get install freetype2
+  307  sudo apt-get install libfreetype-dev
+  308  cmake -B build -S. --install-prefix $PWD/prefix
+  309  sudo apt-get install libharfbuzz
+  310  sudo apt-get install libharfbuzz-dev
+  311  cmake -B build -S. --install-prefix $PWD/prefix
+  312  sudo apt-get install libopenal-dev
+  313  cmake -B build -S. --install-prefix $PWD/prefix
+  314  sudo apt-get install libmodplug-dev
+  315  cmake -B build -S. --install-prefix $PWD/prefix
+  316  sudo apt-get install libtheora-dev
+  317  sudo apt-get install libvorbis-dev
+  318  sudo apt-get install libogg-dev
+  319  cmake -B build -S. --install-prefix $PWD/prefix
+  320  sudo apt-get install libzlib-dev
+  321  sudo apt-get install zlib
+  322  sudo apt-get install zlib1g
+  323  cmake -B build -S. --install-prefix $PWD/prefix
+  324  sudo apt-get install luajit
+  325  cmake -B build -S. --install-prefix $PWD/prefix
+  326  brew install luajit
+  327  cmake -B build -S. --install-prefix $PWD/prefix
+  328  ls /usr/lib/x86_64-linux-gnu/libluajit-5.1.so.2
+  329  cmake -B build -S. --install-prefix $PWD/prefix -DLUAJIT_LIBRARY=/usr/lib/x86_64-linux-gnu/libluajit-5.1.so.2
+  330  cmake -B build -S. --install-prefix $PWD/prefix -DLUAJIT_LIBRARY=/usr/lib/x86_64-linux-gnu/libluajit-5.1.so.2 -DLUAJIT_INCLUDE_DIR=/home/linuxbrew/.linuxbrew/include/luajit-2.1
+  331  cd build
+  332  ls
+  333  cd ..
+  334  cmake --build build --target install -j$(nproc)
+  335  ls
+  336  cd build
+  337  ls
+  338  bear -- make
+  339  make clean
+  340  bear -- make
+  341  ls
+  342  cp compile_commands.json ../
+  343  touch int.h
+  344  pwd
+  345  cd game
+  346  cd include
+  347  touch vertex.h
+  348  touch StringMap.h
+  349  nvim
+  350  sudo apt get fd-find
+  351  sudo apt install fd-fing
+  352  sudo apt install fd-find
+  353  mv .gitignore .gitignore.bk
+  354  ls
+  355  ls -alh
+  356  nvim
+  357  brew install fd
+  358  brew install ripgrep
+  359  pwd
+  360  cd game/src
+  361  ls
+  362  touch ParticleSystem.cpp
+  363  cd ..
+  364  cd include
+  365  touch RandomGenerator.h
+  366  lw
+  367  ls
+  368  touch config.h
+  369  cd ../src
+  370  ls
+  371  touch RandomGenerator.cpp
+  372  nvim
+  373  cd ..
+  374  ls
+  375  git clone https://github.com/spensbot/Particle-System-Designer.git
+  376  cd Particle-System-Designer
+  377  ls
+  378  which lua
+  379  sudo apt install lua
+  380  sudo apt install lua5.4
+  381  which lua
+  382  lua
+  383  lua main.lua
+  384  sudo apt install love
+  385  love --version
+  386  love .
+  387  ls
+  388  cd game/src
+  389  touch main.cpp
+  390  cd ../..
+  391  ls
+  392  mkdir resources
+  393  cd resources
+  394  mkdir textures
+  395  cp ../../Particle-System-Designer/texture/* ./textures
+  396  cp ../../../Particle-System-Designer/texture/* ./textures
+  397  cp ../../Particle-System-Designer/textures/shockwave.png ./textures
+  398  ls textures
+  399  cp ../../../Particle-System-Designer/texture/*.png ./textures
+  400  cd ..
+  401  cd build
+  402  cmake ..
+  403  make
+  404  ls
+  405  cd ..
+  406  cat CMakeLists.txt
+  407  ls
+  408  rm -rf build/*
+  409  cd build
+  410  ls
+  411  cmake ..
+  412  make
+  413  nvim
+  414  ls
+  415  cd build
+  416  make
+  417  cd ..
+  418  rm -rf build/*
+  419  cd build
+  420  cmake ..
+  421  make
+  422  ./bin/Debug/game
+  423  cd ..
+  424  ls resources/textures/shockwave.png
+  425  pwd
+  426  cd build
+  427  make
+  428  ./bin/Debug/game
+  429  make
+  430  ./bin/Debug/game
+  431  pwd
+  432  ls
+  433  cd build
+  434  ls
+  435  cd bin
+  436  ls
+  437  ls resources
+  438  ls
+  439  cd bin
+  440  ls
+  441  ls resources
+  442  ls resources/textures
+  443  nvim
+  444  cd resources
+  445  ls -alh
+  446  cd textures
+  447  ls -alh
+  448  cd ../
+  449  cd ../build
+  450  cd bin
+  451  ls
+  452  cd resources
+  453  ls -alh
+  454  cd textures
+  455  ls -alh
+  456  cd ..
+  457  cd ../..
+  458  make
+  459  ./bin/Debug/game
+  460  make
+  461  ./bin/Debug/game
+  462  make
+  463  ./bin/Debug/game
+  464  cd raylib-playground
+  465  cd maharathi
+  466  nvim
+  467  cd build
+  468  make
+  469  ./bin/Debug/game
+  470  cd ~
+  471  ls
+  472  cd love2d
+  473  nvim
+  474  make
+  475  ./bin/Debug/game
+  476  make
+  477  ./bin/Debug/game
+  478  make
+  479  ./bin/Debug/game
+  480  make
+  481  ./bin/Debug/game
+  482  make
+  483  ./bin/Debug/game
+  484  make
+  485  ./bin/Debug/game
+  486  make
+  487  ./bin/Debug/game
+  488  make
+  489  ./bin/Debug/game
+  490  make
+  491  ./bin/Debug/game
+  492  make
+  493  ./bin/Debug/game
+  494  ls
+  495  love .
+  496  make
+  497  ./bin/Debug/game
+  498  cd build
+  499  make
+  500  ./bin/Debug/game
+  501  make
+  502  ./bin/Debug/game
+  503  make
+  504  ./bin/Debug/game
+  505  make
+  506  ./bin/Debug/game
+  507  make
+  508  ./bin/Debug/game
+  509  make
+  510  ./bin/Debug/game
+  511  make
+  512  ./bin/Debug/game
+  513  make
+  514  ./bin/Debug/game
+  515  make
+  516  ./bin/Debug/game
+  517  make
+  518  ./bin/Debug/game
+  519  cd ..
+  520  cd resources
+  521  cd textures
+  522  ls
+  523  cp ../../../Particle-System-Designer/textures/single_pixel.png ./
+  524  cp ../../../Particle-System-Designer/textures/*.png ./
+  525  ls
+  526  cd ..
+  527  ls
+  528  cd build
+  529  make
+  530  ls bin/resources/textures
+  531  ./bin/Debug/game
+  532  love .
+  533  ls
+  534  cd raylib-playground
+  535  ls
+  536  cd raylib-boilerplate
+  537  git pull origin main
+  538  nvim
+  539  cd ..
+  540  nvim
+  541  cp maharathi/game/include/ParticleSystem.h raylib-boilerplate/game/include
+  542  cp maharathi/game/include/Quad.h raylib-boilerplate/game/include
+  543  cp maharathi/game/include/RandomGenerator.h raylib-boilerplate/game/include/
+  544  cp maharathi/game/include/config.h raylib-boilerplate/game/include/
+  545  cp maharathi/game/include/int.h raylib-boilerplate/game/include/
+  546  cp maharathi/game/include/vertex.h raylib-boilerplate/game/include/
+  547  cd raylib-boilerplate
+  548  git status
+  549  git add game/
+  550  git status
+  551  cd game
+  552  git status
+  553  cd include/box2d
+  554  git status
+  555  cd ..
+  556  cd .
+  557  cd ..
+  558  git push origin main
+  559  git status
+  560  git commit -a
+  561  cd raylib-playground
+  562  cd raylib-boilerplate
+  563  git status
+  564  git commit -a
+  565  rm -rf /mnt/c/Users/amros/raylib-playground/raylib-boilerplate/.git/index.lock
+  566  git commit -a
+  567  git push origin main
+  568  cd ..
+  569  ls
+  570  mkdir avalon
+  571  cd avalon
+  572  cd ..
+  573  cp -R raylib-boilerplate avalon
+  574  cd avalon
+  575  ls
+  576  cd ..
+  577  rm -rf avalon
+  578  ls
+  579  cp -R raylib-boilerplate avalon
+  580  ls avalon
+  581  cd avalon
+  582  nvim
+  583  ./setup.sh
+  584  cat setup.sh
+  585  cp -R ../maharathi/raylib-master .
+  586  cp CMakeLists.txt.win CMakeLists.txt
+  587  ls
+  588  cd build
+  589  cmake ..
+  590  bear -- make
+  591  cp -R ../../maharathi/resources ../
+  592  bear -- make
+  593  make clean
+  594  bear -- make
+  595  cp compile_commands.json ../
+  596  cd raylib-playground
+  597  ls
+  598  cd avalon
+  599  nvim
+  600  ls
+  601  cd raylib-playground
+  602  cd avalon
+  603  nvim
+  604  cd raylib-playground/avalon
+  605  z
+  606  sudo apt install zoxide
+  607  z raylib-playground
+  608  which z
+  609  zoxide
+  610  zoxide raylib-playground
+  611  ls
+  612  pwd
+  613  zoxide raylib-playground
+  614  cd raylib-playground
+  615  cd avalon
+  616  nvim
+  617  ls
+  618  pwd
+  619  cd build
+  620  cmake ..
+  621  bear -- make
+  622  cd build
+  623  pwd
+  624  cmake ..
+  625  bear -- make
+  626  cp compile_commands.json ../
+  627  make
+  628  ./bin/Debug/game
+  629  cd build
+  630  make
+  631  ./bin/Debug/game
+  632  make\\n
+  633  make
+  634  ./bin/Debug/game
+  635  make
+  636  ./bin/Debug/game
+  637  make
+  638  ./bin/Debug/game
+  639  make
+  640  ./bin/Debug/game
+  641  cmake ..
+  642  make
+  643  ./bin/Debug/game
+  644  make
+  645  ./bin/Debug/game
+  646  make
+  647  ./bin/Debug/game
+  648  make
+  649  ./bin/Debug/game
+  650  make
+  651  cmake ..
+  652  make
+  653  ./bin/Debug/game
+  654  make
+  655  ./bin/Debug/game
+  656  make
+  657  ./bin/Debug/game
+  658  cd raylib-playground
+  659  ls
+  660  cd bytepath-survivor
+  661  nvim
+  662  cd build
+  663  cmake ..
+  664  make
+  665  ./bin/Debug/game
+  666  cd build
+  667  cmake ..
+  668  make
+  669  ./bin/Debug/game
+  670  make
+  671  ./bin/Debug/game
+  672  cd build
+  673  cmake ..
+  674  make
+  675  ./bin/Debug/game
+  676  make
+  677  mak
+  678  make
+  679  ./bin/Debug/game
+  680  make
+  681  cmake ..
+  682  make
+  683  ./bin/Debug/game
+  684  make
+  685  ./bin/Debug/game
+  686  make
+  687  ./bin/Debug/game
+  688  cd build
+  689  make
+  690  ./bin/Debug/game
+  691  make
+  692  ./bin/Debug/game
+  693  make
+  694  ./bin/Debug/game
+  695  make
+  696  ./bin/Debug/game
+  697  make
+  698  ./bin/Debug/game
+  699  make
+  700  ./bin/Debug/game
+  701  make
+  702  ./bin/Debug/game
+  703  make
+  704  ./bin/Debug/game
+  705  make
+  706  ./bin/Debug/game
+  707  make
+  708  ./bin/Debug/game
+  709  make
+  710  ./bin/Debug/game
+  711  make
+  712  ./bin/Debug/game
+  713  cmake ..
+  714  make
+  715  ./bin/Debug/game
+  716  make
+  717  ./bin/Debug/game
+  718  make
+  719  ./bin/Debug/game
+  720  make
+  721  cd build
+  722  make
+  723  cd build
+  724  make
+  725  ./bin/Debug/game
+  726  make
+  727  ./bin/Debug/game
+  728  ls
+  729  cd raylib-playground
+  730  ls
+  731  cd avalon
+  732  ls
+  733  nvim
+  734  cd build
+  735  cmake ..
+  736  make
+  737  ./bin/Debug/game
+  738  make
+  739  ./bin/Debug/game
+  740  cmake ..
+  741  make
+  742  ./bin/Debug/game
+  743  cd raylib-playground
+  744  cd avalon
+  745  nvim
+  746  ./bin/Debug/game
+  747  make
+  748  ./bin/Debug/game
+  749  cd build
+  750  make
+  751  ./bin/Debug/game
+  752  make
+  753  ./bin/Debug/game
+  754  make
+  755  ./bin/Debug/game
+  756  make
+  757  ./bin/Debug/game
+  758  make
+  759  ./bin/Debug/game
+  760  make
+  761  ./bin/Debug/game
+  762  make
+  763  ./bin/Debug/game
+  764  make
+  765  ./bin/Debug/game
+  766  make
+  767  ./bin/Debug/game
+  768  make
+  769  ./bin/Debug/game
+  770  git status
+  771  git add .
+  772  git status
+  773  git commit -a
+  774  cd build
+  775  cmake ..
+  776  make
+  777  ./bin/Debug/game
+  778  cd raylib-playground
+  779  cd bytepath-survivor
+  780  nvim
+  781  ls
+  782  cp ./game/src/chance_list.cpp ../avalon/game/src
+  783  cp ./game/src/include/chance_list.hpp ../avalon/game/src/include
+  784  cmake ..
+  785  make
+  786  ./bin/Debug/game
+  787  make
+  788  ./bin/Debug/game
+  789  cd raylib-playground
+  790  cd avalon
+  791  ls
+  792  git status
+  793  nvim
+  794  cd raylib-playground
+  795  cd bytepath-survivor
+  796  nvim
+  797  cd ../avalon
+  798  cd build
+  799  cmake ..
+  800  make
+  801  cd ..
+  802  ls resources
+  803  ls resources/textures
+  804  cp /mnt/c/PVG/Medieval_Warfare_Templar/Medieval\ Warfare/Medieval_Warfare_Humans/Medieval_Warfare_Male/Medieval_Warfare_Male_Clothing/Medieval_Warfare_Male_Weapon_Main_Bow/Medieval_Warfare_Male_Weapon_Bow_default.png ./resources/textures/bow.png
+  805  ls resources/textures
+  806  cd build
+  807  ./bin/Debug/game
+  808  make
+  809  ./bin/Debug/game
+  810  make
+  811  ./bin/Debug/game
+  812  make
+  813  ./bin/Debug/game
+  814  make
+  815  ./bin/Debug/game
+  816  cp /mnt/c/PVG/Medieval_TCInteriorsBundle/Medieval\ T\&C/Medieval_T\&C_Tiles/Castle\ Pieces\ Type\ 1/Turret.png ../resources/textures/tower.png
+  817  cmake ..
+  818  mak
+  819  make
+  820  ./bin/Debug/game
+  821  make
+  822  ./bin/Debug/game
+  823  cd ..
+  824  cd resources
+  825  cd textures
+  826  ls
+  827  cd ../..
+  828  cd build
+  829  cmake ..
+  830  make
+  831  ./bin/Debug/game
+  832  ls
+  833  ls bin
+  834  ls bin/resources/textures
+  835  make
+  836  ./bin/Debug/game
+  837  make
+  838  ./bin/Debug/game
+  839  make
+  840  ./bin/Debug/game
+  841  make
+  842  ./bin/Debug/game
+  843  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/archer_all_ROE/* ../resources/textures
+  844  cd ..
+  845  cd resources
+  846  cd textures
+  847  ls
+  848  mv archer_all_ROE_Attack\ Bow.png archer_all_roe_attack.png
+  849  mv archer_all_ROE_Bust\ 19.png archer_all_roe_bust.png
+  850  mv archer_all_ROE_Idle\ Bow.png archer_all_roe_idle_bow.png
+  851  ls
+  852  mv archer_all_ROE_Idle2.png archer_all_roe_idle2.png
+  853  ls
+  854  cd Downloads
+  855  ls
+  856  cd example_3_quest
+  857  nvim
+  858  cd ../..
+  859  cd build
+  860  cmake ..
+  861  make
+  862  ./bin/Debug/game
+  863  make
+  864  ./bin/Debug/game
+  865  cd ..
+  866  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/archer_all_ROE/bow.png ../resources/textures/
+  867  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/archer_all_ROE/bow.png ./resources/textures/
+  868  ls resources/textures
+  869  cd build
+  870  cmake ..
+  871  make
+  872  ./bin/Debug/game
+  873  make
+  874  ./bin/Debug/game
+  875  make
+  876  ./bin/Debug/game
+  877  make
+  878  ./bin/Debug/game
+  879  make
+  880  ./bin/Debug/game
+  881  cp /mnt/c/PVG/Medieval_Warfare_Templar/Medieval\ Warfare/Medieval_Warfare_Humans/Medieval_Warfare_Male/Medieval_Warfare_Male_Clothing/Medieval_Warfare_Male_Weapon_Main_Bow/Medieval_Warfare_Male_Weapon_Bow_default.png ../resources/textures/bow.png
+  882  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/archer_all_ROE/bow.png ./resources/textures/arrow.png
+  883  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/archer_all_ROE/bow.png ../resources/textures/arrow.png
+  884  make
+  885  cmake ..
+  886  make
+  887  ./bin/Debug/game
+  888  make
+  889  ./bin/Debug/game
+  890  make
+  891  ./bin/Debug/game
+  892  ./bin/Debug/game\\n
+  893  make
+  894  ./bin/Debug/game\n
+  895  make
+  896  ./bin/Debug/game\n
+  897  make
+  898  ./bin/Debug/game\n
+  899  which gdb
+  900  z
+  901  cd ../avalon
+  902  cd build
+  903  cmake ..
+  904  make
+  905  ./bin/Debug/game\n
+  906  make
+  907  ./bin/Debug/game\n
+  908  sudo apt-get install gdb
+  909  gdb ./bin/Debug/game
+  910  make
+  911  gdb ./bin/Debug/game
+  912  ./bin/Debug/game\n
+  913  make
+  914  gdb ./bin/Debug/game
+  915  cd ../avalon/build
+  916  ls
+  917  gdb ./bin/Debug/game
+  918  make
+  919  gdb ./bin/Debug/game
+  920  make
+  921  gdb ./bin/Debug/game
+  922  make
+  923  gdb ./bin/Debug/game
+  924  make
+  925  gdb ./bin/Debug/game
+  926  make
+  927  gdb ./bin/Debug/game
+  928  make
+  929  gdb ./bin/Debug/game
+  930  make
+  931  gdb ./bin/Debug/game
+  932  make
+  933  gdb ./bin/Debug/game
+  934  nvim
+  935  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/archer_all_ROE/arrow.png ../resources/textures/arrow.png
+  936  make
+  937  gdb ./bin/Debug/game
+  938  make
+  939  gdb ./bin/Debug/game
+  940  make
+  941  gdb ./bin/Debug/game
+  942  make
+  943  gdb ./bin/Debug/game
+  944  make
+  945  gdb ./bin/Debug/game
+  946  make
+  947  gdb ./bin/Debug/game
+  948  make
+  949  gdb ./bin/Debug/game
+  950  cp /mnt/c/Users/amros/OneDrive/Documents/Isometric_Realm_Medieval_SAMPLE/Isometric_Realm_Medieval_SAMPLE/castlekeep_14.png ../resources/textures
+  951  cmake ..
+  952  make
+  953  gdb ./bin/Debug/game
+  954  make
+  955  gdb ./bin/Debug/game
+  956  make
+  957  ./bin/Debug/game\n
+  958  q
+  959  make
+  960  gdb ./bin/Debug/game
+  961  make
+  962  gdb ./bin/Debug/game
+  963  make
+  964  gdb ./bin/Debug/game
+  965  make
+  966  gdb ./bin/Debug/game
+  967  make
+  968  gdb ./bin/Debug/game
+  969  make
+  970  gdb ./bin/Debug/game
+  971  make
+  972  gdb ./bin/Debug/game
+  973  make
+  974  gdb ./bin/Debug/game
+  975  make
+  976  gdb ./bin/Debug/game
+  977  cd /mnt/c
+  978  ls
+  979  cd Users
+  980  ls
+  981  cd amros
+  982  ls
+  983  cd Downloads
+  984  ls
+  985  cd rpg-tools-win64
+  986  ls
+  987  cd RpgTools
+  988  ls
+  989  cd knight_all
+  990  ls
+  991  mv knight_all_Bust\ 14.png knight_bust.png
+  992  ls
+  993  mv knight_all_One\ Hand\ Idle\ With\ Shield.png knight_idle.png
+  994  mv knight_all_Attack\ One\ Handed\ Overhead.png knight_attack.png
+  995  ls
+  996  mv knight_all_Paperdoll\ 1.png knight_paperdoll.png
+  997  ls
+  998  mv knight_all_Run.png knight_run.png
+  999  mv knight_all_Dead5.png knight_dead.png
+ 1000  ls
+ 1001  cd ..
+ 1002  cd footman_all
+ 1003  ls
+ 1004  mv footman_all_Dead5.png footman_dead.png
+ 1005  mv footman_all_One\ Hand\ Idle\ With\ Shield.png footman_idle.png
+ 1006  mv footman_all_Paperdoll\ 1.png footman_paperdoll.png
+ 1007  mv footman_all_Run.png footman_run.png
+ 1008  ls
+ 1009  mv footman_all_Bust\ 10.png footman_bust.png
+ 1010  mv footman_all_Attack\ One\ Handed\ Side\ Slash.png footman_attack.png
+ 1011  ls
+ 1012  cd ../spearman_all
+ 1013  ls
+ 1014  mv spearman_all_attack2.png spearman_attack.png
+ 1015  mv spearman_all_bust_1.png spearman_bust.png
+ 1016  mv spearman_all_dead1.png spearman_dead.png
+ 1017  mv spearman_all_idle1.png spearman_idle.png
+ 1018  mv spearman_all_ko.png spearman_ko.png
+ 1019  mv spearman_all_paperdoll.png spearman_paperdoll.png
+ 1020  mv spearman_all_running.png spearman_run.png
+ 1021  cd ..
+ 1022  ls
+ 1023  cd mage_all
+ 1024  ls
+ 1025  mv mage_all_Attack\ Polearm.png mage_attack.png
+ 1026  mv mage_all_Bust\ 14.png mage_bust.png
+ 1027  mv mage_all_Dead5.png mage_dead.png
+ 1028  mv mage_all_Idle3.png mage_idle.png
+ 1029  mv mage_all_Paperdoll\ 1.png mage_paperdoll.png
+ 1030  mv mage_all_Run.png mage_run.png
+ 1031  ls
+ 1032  cd build
+ 1033  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/footman_all/ls ../resources/textures/
+ 1034  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/footman_all/* ../resources/textures/footman
+ 1035  cd ../resources
+ 1036  cd textures
+ 1037  mkdir footman
+ 1038  mkdir mage
+ 1039  mkdir knight
+ 1040  mkdir spearman
+ 1041  cd ../..
+ 1042  cd build
+ 1043  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/footman_all/* ../resources/textures/footman
+ 1044  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/spearman_all/* ../resources/textures/spearman
+ 1045  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/knight_all/* ../resources/textures/knight/
+ 1046  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/mage_all/* ../resources/textures/mage/
+ 1047  pwd
+ 1048  ls
+ 1049  cd raylib-playground
+ 1050  cd avalon
+ 1051  nvim
+ 1052  pwd
+ 1053  cd build
+ 1054  cmake ..
+ 1055  make
+ 1056  gdb ./bin/Debug/game
+ 1057  make
+ 1058  gdb ./bin/Debug/game
+ 1059  make
+ 1060  gdb ./bin/Debug/game
+ 1061  make
+ 1062  gdb ./bin/Debug/game
+ 1063  make
+ 1064  gdb ./bin/Debug/game
+ 1065  make
+ 1066  gdb ./bin/Debug/game
+ 1067  make
+ 1068  gdb ./bin/Debug/game
+ 1069  make
+ 1070  gdb ./bin/Debug/game
+ 1071  make
+ 1072  gdb ./bin/Debug/game
+ 1073  make
+ 1074  gdb ./bin/Debug/game
+ 1075  make
+ 1076  gdb ./bin/Debug/game
+ 1077  make
+ 1078  gdb ./bin/Debug/game
+ 1079  make
+ 1080  gdb ./bin/Debug/game
+ 1081  make
+ 1082  gdb ./bin/Debug/game
+ 1083  make
+ 1084  gdb ./bin/Debug/game
+ 1085  make
+ 1086  gdb ./bin/Debug/game
+ 1087  make
+ 1088  gdb ./bin/Debug/game
+ 1089  make
+ 1090  gdb ./bin/Debug/game
+ 1091  make
+ 1092  gdb ./bin/Debug/game
+ 1093  make
+ 1094  gdb ./bin/Debug/game
+ 1095  make
+ 1096  gdb ./bin/Debug/game
+ 1097  make
+ 1098  gdb ./bin/Debug/game
+ 1099  make
+ 1100  gdb ./bin/Debug/game
+ 1101  make
+ 1102  gdb ./bin/Debug/game
+ 1103  cd /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools
+ 1104  ls
+ 1105  cd enemy1_all
+ 1106  ls
+ 1107  mv enemy1_all_running.png enemy_run.png
+ 1108  mv enemy_run.png enemy1_run.png
+ 1109  mv enemy1_all_paperdoll.png enemy1_paperdoll.png
+ 1110  mv enemy1_all_MvSv\ Swinging.png enemy1_attack.png
+ 1111  mv enemy1_all_bust_3.png enemy1_bust.png
+ 1112  ls
+ 1113  mv enemy1_all_dead3.png enemy1_dead.png
+ 1114  mv enemy1_all_ko.png enemy1_ko.png
+ 1115  ls
+ 1116  cp ./* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures
+ 1117  cp ./* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy1
+ 1118  cd build
+ 1119  cmake ..
+ 1120  make
+ 1121  gdb ./bin/Debug/game
+ 1122  make
+ 1123  gdb ./bin/Debug/game
+ 1124  make
+ 1125  gdb ./bin/Debug/game
+ 1126  make
+ 1127  gdb ./bin/Debug/game
+ 1128  make
+ 1129  gdb ./bin/Debug/game
+ 1130  make
+ 1131  gdb ./bin/Debug/game
+ 1132  make
+ 1133  gdb ./bin/Debug/game
+ 1134  make
+ 1135  gdb ./bin/Debug/game
+ 1136  cmake ..
+ 1137  make
+ 1138  gdb ./bin/Debug/game
+ 1139  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/projects/ExampleProject/data/effekseer/sprites/shape_sphere_soft_01.png ../resources/textures/soft_sphere.png
+ 1140  cd ..
+ 1141  ls
+ 1142  cd Particle-System-Designer
+ 1143  ls
+ 1144  lua main.lua
+ 1145  love .
+ 1146  cd raylib-playground
+ 1147  ls
+ 1148  cd Particle-System-Designer
+ 1149  ls
+ 1150  nvim
+ 1151  make
+ 1152  gdb ./bin/Debug/game
+ 1153  make
+ 1154  gdb ./bin/Debug/game
+ 1155  make
+ 1156  gdb ./bin/Debug/game
+ 1157  make
+ 1158  gdb ./bin/Debug/game
+ 1159  make
+ 1160  gdb ./bin/Debug/game
+ 1161  make
+ 1162  gdb ./bin/Debug/game
+ 1163  make
+ 1164  gdb ./bin/Debug/game
+ 1165  cd raylib-playground/avalon
+ 1166  nvim
+ 1167  cd raylib-playground
+ 1168  cd avalon
+ 1169  nvim
+ 1170  cd build
+ 1171  cmake ..
+ 1172  make
+ 1173  gdb ./bin/Debug/game
+ 1174  make
+ 1175  gdb ./bin/Debug/game
+ 1176  make
+ 1177  gdb ./bin/Debug/game
+ 1178  make
+ 1179  gdb ./bin/Debug/game
+ 1180  make
+ 1181  gdb ./bin/Debug/game
+ 1182  make
+ 1183  gdb ./bin/Debug/game
+ 1184  ls
+ 1185  mkdir game-ai
+ 1186  cd game
+ 1187  cd game-ai
+ 1188  git clone https://github.com/HEP85/game-ai.git
+ 1189  ls
+ 1190  cd game-ai
+ 1191  nvim
+ 1192  which clang++
+ 1193  cd Buckland_Chapter3-Steering\ Behaviors
+ 1194  ls
+ 1195  clang++ -I../Common/ main.cpp
+ 1196  cd raylib-playground
+ 1197  cd avalon
+ 1198  nvim
+ 1199  cd build
+ 1200  cmake ..
+ 1201  make
+ 1202  gdb ./bin/Debug/game
+ 1203  make
+ 1204  gdb ./bin/Debug/game
+ 1205  make
+ 1206  gdb ./bin/Debug/game
+ 1207  cmake ..
+ 1208  make
+ 1209  gdb ./bin/Debug/game
+ 1210  make
+ 1211  gdb ./bin/Debug/game
+ 1212  make
+ 1213  gdb ./bin/Debug/game
+ 1214  make
+ 1215  gdb ./bin/Debug/game
+ 1216  make
+ 1217  gdb ./bin/Debug/game
+ 1218  make
+ 1219  gdb ./bin/Debug/game
+ 1220  make
+ 1221  gdb ./bin/Debug/game
+ 1222  cd build
+ 1223  cmake ..
+ 1224  make
+ 1225  gdb ./bin/Debug/game
+ 1226  make
+ 1227  gdb ./bin/Debug/game
+ 1228  make
+ 1229  gdb ./bin/Debug/game
+ 1230  cd ..
+ 1231  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Terrain/ground_02.png resources/textures
+ 1232  git status
+ 1233  git add resources/
+ 1234  git add game/
+ 1235  git status
+ 1236  git add game/
+ 1237  rm /mnt/c/Users/amros/raylib-playground/avalon/.git/index.lock
+ 1238  git add game/
+ 1239  git status
+ 1240  git add resources/
+ 1241  cd raylib-playground
+ 1242  cd avalon
+ 1243  git status
+ 1244  git commit -a
+ 1245  git push origin main
+ 1246  git checkout -b tiles
+ 1247  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Terrain/ground_02_edit.png resources/textures
+ 1248  cd build
+ 1249  cmake ..
+ 1250  make
+ 1251  gdb ./bin/Debug/game
+ 1252  make
+ 1253  gdb ./bin/Debug/game
+ 1254  make
+ 1255  gdb ./bin/Debug/game
+ 1256  make
+ 1257  gdb ./bin/Debug/game
+ 1258  make
+ 1259  gdb ./bin/Debug/game
+ 1260  make
+ 1261  gdb ./bin/Debug/game
+ 1262  make
+ 1263  gdb ./bin/Debug/game
+ 1264  make
+ 1265  gdb ./bin/Debug/game
+ 1266  make
+ 1267  gdb ./bin/Debug/game
+ 1268  make
+ 1269  cd build
+ 1270  gdb ./bin/Debug/game
+ 1271  cd ..
+ 1272  cd ../bytepath-survivor
+ 1273  ls
+ 1274  cd build
+ 1275  ./bin/Debug/game\n
+ 1276  cd build
+ 1277  ./bin/Debug/game\n
+ 1278  cd raylib-playground/avalon
+ 1279  nvim
+ 1280  ls
+ 1281  cd resources
+ 1282  ls
+ 1283  ls images
+ 1284  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Trees/tree_02.png ./textures
+ 1285  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Trees/tree_03.png ./textures
+ 1286  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Trees/tree_04.png ./textures
+ 1287  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Trees/tree_05.png ./textures
+ 1288  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Trees/tree_06.png ./textures
+ 1289  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Trees/tree_08.png ./textures
+ 1290  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Trees/tree_09.png ./textures
+ 1291  cd build
+ 1292  cmake ..
+ 1293  make
+ 1294  ./bin/Debug/game\n
+ 1295  ls
+ 1296  cd ..
+ 1297  ls resources/textures
+ 1298  make
+ 1299  pwd
+ 1300  cd build
+ 1301  ls
+ 1302  ls bin/resources/textures
+ 1303  make
+ 1304  ./bin/Debug/game\n
+ 1305  make
+ 1306  ./bin/Debug/game\n
+ 1307  make
+ 1308  ./bin/Debug/game\n
+ 1309  make
+ 1310  ./bin/Debug/game\n
+ 1311  make
+ 1312  ./bin/Debug/game\n
+ 1313  make
+ 1314  ./bin/Debug/game\n
+ 1315  make
+ 1316  ./bin/Debug/game\n
+ 1317  make
+ 1318  ./bin/Debug/game\n
+ 1319  make
+ 1320  ./bin/Debug/game\n
+ 1321  make
+ 1322  ./bin/Debug/game\n
+ 1323  make
+ 1324  ./bin/Debug/game\n
+ 1325  make
+ 1326  ./bin/Debug/game\n
+ 1327  cd ../bytepath-survivor
+ 1328  nvim
+ 1329  cd build
+ 1330  cmake ..
+ 1331  make
+ 1332  ./bin/Debug/game\n
+ 1333  make
+ 1334  ./bin/Debug/game\n
+ 1335  make
+ 1336  ./bin/Debug/game\n
+ 1337  make
+ 1338  ./bin/Debug/game\n
+ 1339  pwd
+ 1340  cd resources
+ 1341  ls
+ 1342  cd textures
+ 1343  ls
+ 1344  cd knight
+ 1345  ls
+ 1346  cd ..
+ 1347  cd resources
+ 1348  cd tex
+ 1349  cd textures
+ 1350  ;s
+ 1351  ls
+ 1352  mkdir enemy
+ 1353  cd enemy
+ 1354  mkdir ghoul
+ 1355  mkdir necormancer
+ 1356  mkdir rat
+ 1357  mkdir spider
+ 1358  mkdir buck
+ 1359  mkdir wolf
+ 1360  mkdir skeleton
+ 1361  mkdir skeleton_prince
+ 1362  mkdir zombie1
+ 1363  mkdir zombie2
+ 1364  mkdir zombie3
+ 1365  mkdir zombie4
+ 1366  mkdir zombie5
+ 1367  mkdir zombie6
+ 1368  mkdir zombie_giant
+ 1369  cd /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/
+ 1370  cp ./ghoul/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/ghoul
+ 1371  cp ./necromancer/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/necormancer
+ 1372  cp ./rat/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/rat
+ 1373  cp ./spider/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/spider
+ 1374  cp ./skeleton/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/skeleton/
+ 1375  cp ./skeleton_prince/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/skeleton_prince/
+ 1376  cp ./buck/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/buck/
+ 1377  cp ./wolf/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/wolf/
+ 1378  cp ./zombie1/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/zombie1/
+ 1379  cp ./zombie2/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/zombie2/
+ 1380  cp ./zombie3/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/zombie3/
+ 1381  cp ./zombie4/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/zombie4/
+ 1382  cp ./zombie5/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/zombie5/
+ 1383  cp ./zombie6/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/zombie6/
+ 1384  cp ./zombie_giant/* /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/zombie_giant
+ 1385  cd /mnt/c/Users/amros/raylib-playground/avalon
+ 1386  ls
+ 1387  cd resources
+ 1388  cd textures
+ 1389  ls -R
+ 1390  cd enemy
+ 1391  ls -R
+ 1392  mv zombie_giant/zombie_giant_MvSv\ Shooting.png zombie_giant/zombie_giant_attack.png
+ 1393  nvim
+ 1394  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/wolf/wolf_MvSv\ Dead.png /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/wolf/dead.png
+ 1395  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/rat/rat_MvSv\ Dead.png /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/rat/dead.png
+ 1396  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/spider/spider_MvSv\ Dead.png /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/spider/dead.png
+ 1397  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/buck/buck_MvSv\ Dead.png /mnt/c/Users/amros/raylib-playground/avalon/resources/textures/enemy/buck/dead.png
+ 1398  cd raylib-playground
+ 1399  cd avalon
+ 1400  nvim
+ 1401  cd raylib-playground/avalon
+ 1402  nvim
+ 1403  cd buil
+ 1404  cd build
+ 1405  cmake ..
+ 1406  make
+ 1407  cd ..
+ 1408  mv game/src/temp_chance_list.tpp game/src/include
+ 1409  cd build
+ 1410  cmake ..
+ 1411  make
+ 1412  ./bin/Debug/game\n
+ 1413  make
+ 1414  ./bin/Debug/game\n
+ 1415  cd ../resources
+ 1416  cd textures
+ 1417  ls
+ 1418  mkdir buildings
+ 1419  cd buildings
+ 1420  mkdir barracks
+ 1421  mkdir archery
+ 1422  mkdir houses
+ 1423  mkdir wizardry
+ 1424  mkdir towers
+ 1425  mkdir castle
+ 1426  mkdir defence_blocks
+ 1427  cd ..
+ 1428  cp /mnt/c/Users/amros/Downloads/Coin_Gems/combined_gems.png ./
+ 1429  ls
+ 1430  cd buildings
+ 1431  cd houses
+ 1432  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Houses/house_01a.png ./
+ 1433  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Houses/house_02a.png ./
+ 1434  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Houses/house_02c.png ./
+ 1435  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Houses/house_03a.png ./
+ 1436  ls
+ 1437  mv house_01a.png house1.png
+ 1438  mv house_02a.png house2.png
+ 1439  mv house_02c.png house3.png
+ 1440  mv house_03a.png house4.png
+ 1441  ls
+ 1442  cd ../towers
+ 1443  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Towers/tower_09a.png ./
+ 1444  ls
+ 1445  mv tower_09a.png lightning_tower.png
+ 1446  ls
+ 1447  cd ..
+ 1448  cd castle
+ 1449  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Castles/castlekeep_14.png ./
+ 1450  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Castles/castlekeep_11.png ./
+ 1451  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Castles/castlekeep_12.png ./
+ 1452  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Castles/castlekeep_07.png ./
+ 1453  mv castlekeep_14.png castle1.png
+ 1454  mv castlekeep_11.png castle2.png
+ 1455  mv castlekeep_12.png castle3.png
+ 1456  mv castlekeep_07.png castle4.png
+ 1457  ls
+ 1458  cd ..
+ 1459  ls
+ 1460  cd wizardry
+ 1461  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Halls\ Manors/manor_07.png ./
+ 1462  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Halls\ Manors/manor_06b.png ./
+ 1463  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Halls\ Manors/manor_03.png ./
+ 1464  mv manor_03.png wizardry1.png
+ 1465  mv manor_06b.png wizardry2.png
+ 1466  mv manor_07.png wizardry3.png
+ 1467  ls
+ 1468  cd ..
+ 1469  cd archery
+ 1470  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Barracks/camp_02.png ./
+ 1471  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Barracks/Barracks_03.png ./
+ 1472  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Barracks/Barracks_02.png ./
+ 1473  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Barracks/Barracks_04.png ./
+ 1474  mv camp_02.png archery1.png
+ 1475  mv Barracks_03.png archery2.png
+ 1476  mv Barracks_02.png archery3.png
+ 1477  mv Barracks_04.png archery4.png
+ 1478  ls
+ 1479  cd ../barracks
+ 1480  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Barracks/Barracks_05a.png ./
+ 1481  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Barracks/Barracks_01.png ./
+ 1482  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Barracks/Barracks_06.png ./
+ 1483  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Barracks/camp_01.png ./
+ 1484  mv camp_01.png barrack1.png
+ 1485  mv Barracks_05a.png barrack2.png
+ 1486  mv Barracks_01.png barrack3.png
+ 1487  mv Barracks_06.png barrack4.png
+ 1488  ls
+ 1489  cd ../defence_blocks
+ 1490  ls
+ 1491  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Architecture/block_04a.png ./
+ 1492  cp /mnt/c/Users/amros/Downloads/Isometric_Realm_Medieval/Isometric_Realm_Medieval/Architecture/block_06a.png ./
+ 1493  ls
+ 1494  cd ../..
+ 1495  ls
+ 1496  cd raylib-playground/bytepath-survivor
+ 1497  nvim
+ 1498  q
+ 1499  cd ..
+ 1500  cd ../build
+ 1501  cmake ..
+ 1502  make
+ 1503  ./bin/Debug/game\n
+ 1504  gdb ./bin/Debug/game
+ 1505  make
+ 1506  gdb ./bin/Debug/game
+ 1507  cd build
+ 1508  cmake ..
+ 1509  make
+ 1510  gdb ./bin/Debug/game
+ 1511  make
+ 1512  gdb ./bin/Debug/game
+ 1513  make
+ 1514  gdb ./bin/Debug/game
+ 1515  make
+ 1516  gdb ./bin/Debug/game
+ 1517  make
+ 1518  cd raylib-playground/avalon
+ 1519  nvim
+ 1520  cd build
+ 1521  make
+ 1522  gdb ./bin/Debug/game
+ 1523  make
+ 1524  ./bin/Debug/game\n
+ 1525  rm ./bin/Debug/game
+ 1526  ./bin/Debug/game\n
+ 1527  make
+ 1528  ./bin/Debug/game\n
+ 1529  make
+ 1530  ./bin/Debug/game\n
+ 1531  apt install exif
+ 1532  sudo apt install exif
+ 1533  exif
+ 1534  cd raylib-playground
+ 1535  cd avalon
+ 1536  cd resources/textures/buildings
+ 1537  ls
+ 1538  cd castle
+ 1539  ls
+ 1540  exif castle1.png
+ 1541  cd ..
+ 1542  cd resources/textures/buildings
+ 1543  ls
+ 1544  mkdir all_buildings_lines
+ 1545  cp archery/* all_buildings_lines
+ 1546  cp barracks/* all_buildings_lines
+ 1547  cp castle/* all_buildings_lines
+ 1548  cp defence_blocks/* all_buildings_lines
+ 1549  cp houses/* all_buildings_lines
+ 1550  cp towers/* all_buildings_lines
+ 1551  cp wizardry/* all_buildings_lines
+ 1552  ls all_buildings_lines
+ 1553  cd raylib-playground
+ 1554  cd avalon
+ 1555  nvim
+ 1556  which nvim
+ 1557  cd /home/linuxbrew
+ 1558  ls
+ 1559  cd .linuxbrew
+ 1560  cd ni
+ 1561  cd nvim
+ 1562  cd bin
+ 1563  cd nvim
+ 1564  ls
+ 1565  cd nvim
+ 1566  cd ~
+ 1567  pwd
+ 1568  ls
+ 1569  history
+ 1570  cd ~/.config/nvim
+ 1571  ls
+ 1572  nvim
+ 1573  cd raylib-playground/avalon
+ 1574  nvim
+ 1575  cd build
+ 1576  cmake ..
+ 1577  make
+ 1578  ./bin/Debug/game\n
+ 1579  make
+ 1580  ./bin/Debug/game\n
+ 1581  make
+ 1582  ./bin/Debug/game\n
+ 1583  make
+ 1584  ./bin/Debug/game\n
+ 1585  makwe
+ 1586  make
+ 1587  ./bin/Debug/game\n
+ 1588  make
+ 1589  ./bin/Debug/game\n
+ 1590  make
+ 1591  ./bin/Debug/game\n
+ 1592  make
+ 1593  ./bin/Debug/game\n
+ 1594  make
+ 1595  ./bin/Debug/game\n
+ 1596  cd raylib-playground/avalon
+ 1597  nvim
+ 1598  cd build
+ 1599  cmake ..
+ 1600  make
+ 1601  ./bin/Debug/game\n
+ 1602  make
+ 1603  ./bin/Debug/game\n
+ 1604  make
+ 1605  ./bin/Debug/game\n
+ 1606  make
+ 1607  cmake ..
+ 1608  make
+ 1609  ./bin/Debug/game\n
+ 1610  make
+ 1611  ./bin/Debug/game\n
+ 1612  make
+ 1613  ./bin/Debug/game\n
+ 1614  gdb ./bin/Debug/game
+ 1615  make
+ 1616  ./bin/Debug/game\n
+ 1617  make
+ 1618  ./bin/Debug/game\n
+ 1619  make
+ 1620  ./bin/Debug/game\n
+ 1621  make
+ 1622  ./bin/Debug/game\n
+ 1623  make
+ 1624  ./bin/Debug/game\n
+ 1625  gdb ./bin/Debug/game
+ 1626  make
+ 1627  gdb ./bin/Debug/game
+ 1628  make
+ 1629  gdb ./bin/Debug/game
+ 1630  mak
+ 1631  make
+ 1632  ./bin/Debug/game\n
+ 1633  cmake ..
+ 1634  make
+ 1635  ./bin/Debug/game\n
+ 1636  gdb ./bin/Debug/game
+ 1637  make
+ 1638  gdb ./bin/Debug/game
+ 1639  make
+ 1640  gdb ./bin/Debug/game
+ 1641  make
+ 1642  gdb ./bin/Debug/game
+ 1643  make
+ 1644  ./bin/Debug/game\n
+ 1645  make
+ 1646  ./bin/Debug/game\n
+ 1647  make
+ 1648  ./bin/Debug/game\n
+ 1649  gdb ./bin/Debug/game
+ 1650  make
+ 1651  gdb ./bin/Debug/game
+ 1652  make
+ 1653  gdb ./bin/Debug/game
+ 1654  make
+ 1655  gdb ./bin/Debug/game
+ 1656  make
+ 1657  gdb ./bin/Debug/game
+ 1658  cmake ..
+ 1659  make
+ 1660  gdb ./bin/Debug/game
+ 1661  make
+ 1662  gdb ./bin/Debug/game
+ 1663  make
+ 1664  gdb ./bin/Debug/game
+ 1665  cmake ..
+ 1666  make
+ 1667  gdb ./bin/Debug/game
+ 1668  cd raylib-playground
+ 1669  cd bytepath-survivor
+ 1670  nvim
+ 1671  make
+ 1672  gdb ./bin/Debug/game
+ 1673  make
+ 1674  gdb ./bin/Debug/game
+ 1675  make
+ 1676  gdb ./bin/Debug/game
+ 1677  make
+ 1678  gdb ./bin/Debug/game
+ 1679  make
+ 1680  gdb ./bin/Debug/game
+ 1681  cd build
+ 1682  cmake ..
+ 1683  make
+ 1684  gdb ./bin/Debug/game
+ 1685  make
+ 1686  gdb ./bin/Debug/game
+ 1687  make
+ 1688  gdb ./bin/Debug/game
+ 1689  make
+ 1690  gdb ./bin/Debug/game
+ 1691  make
+ 1692  gdb ./bin/Debug/game
+ 1693  make
+ 1694  gdb ./bin/Debug/game
+ 1695  make
+ 1696  gdb ./bin/Debug/game
+ 1697  make
+ 1698  gdb ./bin/Debug/game
+ 1699  make
+ 1700  gdb ./bin/Debug/game
+ 1701  make
+ 1702  gdb ./bin/Debug/game
+ 1703  make
+ 1704  gdb ./bin/Debug/game
+ 1705  make
+ 1706  gdb ./bin/Debug/game
+ 1707  make
+ 1708  gdb ./bin/Debug/game
+ 1709  make
+ 1710  gdb ./bin/Debug/game
+ 1711  make
+ 1712  gdb ./bin/Debug/game
+ 1713  make
+ 1714  gdb ./bin/Debug/game
+ 1715  make
+ 1716  gdb ./bin/Debug/game
+ 1717  make
+ 1718  gdb ./bin/Debug/game
+ 1719  which fd
+ 1720  apt install fd-find
+ 1721  sudo apt install fd-find
+ 1722  brew remove fd
+ 1723  which fd
+ 1724  sudo apt remove fd-find
+ 1725  sudo apt install fd-find
+ 1726  which fd
+ 1727  ls ~/.local/
+ 1728  which fdfind
+ 1729  ln -s $(which fdfind) ~/.local/bin/fd
+ 1730  mkdir ~/.local/bin
+ 1731  ln -s $(which fdfind) ~/.local/bin/fd
+ 1732  pwd
+ 1733  vi ~/.zshrc
+ 1734  which fd
+ 1735  which fdfind
+ 1736  ln -s $(which fdfind) /usr/bin/fd
+ 1737  sudo ln -s $(which fdfind) /usr/bin/fd
+ 1738  which fd
+ 1739  fd
+ 1740  fd enemy
+ 1741  fd enemy_wave
+ 1742  fd b2_w
+ 1743  pwd
+ 1744  ls -alh
+ 1745  vi .gitignore
+ 1746  fd b2_w
+ 1747  cd build
+ 1748  make
+ 1749  gdb ./bin/Debug/game
+ 1750  which fd
+ 1751  nvim
+ 1752  cd build
+ 1753  make
+ 1754  gdb ./bin/Debug/game
+ 1755  make
+ 1756  gdb ./bin/Debug/game
+ 1757  make
+ 1758  gdb ./bin/Debug/game
+ 1759  make
+ 1760  gdb ./bin/Debug/game
+ 1761  cd build
+ 1762  cmake ..
+ 1763  make
+ 1764  cmake ..
+ 1765  make
+ 1766  gdb ./bin/Debug/game
+ 1767  make
+ 1768  gdb ./bin/Debug/game
+ 1769  make
+ 1770  gdb ./bin/Debug/game
+ 1771  make
+ 1772  gdb ./bin/Debug/game
+ 1773  cd build
+ 1774  ls
+ 1775  make
+ 1776  gdb ./bin/Debug/game
+ 1777  make
+ 1778  gdb ./bin/Debug/game
+ 1779  make
+ 1780  gdb ./bin/Debug/game
+ 1781  make
+ 1782  gdb ./bin/Debug/game
+ 1783  make
+ 1784  gdb ./bin/Debug/game
+ 1785  make
+ 1786  gdb ./bin/Debug/game
+ 1787  make
+ 1788  gdb ./bin/Debug/game
+ 1789  maike
+ 1790  make
+ 1791  gdb ./bin/Debug/game
+ 1792  make
+ 1793  gdb ./bin/Debug/game
+ 1794  make
+ 1795  gdb ./bin/Debug/game
+ 1796  make
+ 1797  gdb ./bin/Debug/game
+ 1798  make
+ 1799  gdb ./bin/Debug/game
+ 1800  make
+ 1801  gdb ./bin/Debug/game
+ 1802  make
+ 1803  gdb ./bin/Debug/game
+ 1804  make
+ 1805  gdb ./bin/Debug/game
+ 1806  make
+ 1807  gdb ./bin/Debug/game
+ 1808  make
+ 1809  gdb ./bin/Debug/game
+ 1810  make
+ 1811  gdb ./bin/Debug/game
+ 1812  make
+ 1813  gdb ./bin/Debug/game
+ 1814  make
+ 1815  cmake ..
+ 1816  make
+ 1817  pwd
+ 1818  cmake ..
+ 1819  make
+ 1820  gdb ./bin/Debug/game
+ 1821  make
+ 1822  gdb ./bin/Debug/game
+ 1823  make
+ 1824  gdb ./bin/Debug/game
+ 1825  cmake ..
+ 1826  make
+ 1827  gdb ./bin/Debug/game
+ 1828  make
+ 1829  gdb ./bin/Debug/game
+ 1830  make
+ 1831  gdb ./bin/Debug/game
+ 1832  cd raylib-playground
+ 1833  cd avalon
+ 1834  nvim
+ 1835  cd raylib-playground/avalon
+ 1836  nvim
+ 1837  cmake ..
+ 1838  cd buil
+ 1839  cd build
+ 1840  cmake ..
+ 1841  make
+ 1842  git status
+ 1843  git add .
+ 1844  git status
+ 1845  git add
+ 1846  git addd .
+ 1847  git add .
+ 1848  cd ..
+ 1849  git add .
+ 1850  git rm --cached box2d
+ 1851  git status
+ 1852  git rm --cached box2d -f
+ 1853  git commit -a
+ 1854  cd raylib-playground
+ 1855  cd avalon
+ 1856  git status
+ 1857  git commit -a
+ 1858  rm /mnt/c/Users/amros/raylib-playground/avalon/.git/index.lock
+ 1859  git commit -a
+ 1860  git status
+ 1861  ls
+ 1862  git push origin tiles
+ 1863  cd build
+ 1864  gdb ./bin/Debug/game
+ 1865  make
+ 1866  gdb ./bin/Debug/game
+ 1867  cmake ..
+ 1868  make
+ 1869  gdb ./bin/Debug/game
+ 1870  a
+ 1871  gdb ./bin/Debug/game
+ 1872  nvim
+ 1873  cd raylib-playground
+ 1874  ls
+ 1875  cd bytepath-survivor
+ 1876  nvim
+ 1877  cmake ..
+ 1878  make
+ 1879  gdb ./bin/Debug/game
+ 1880  cd ..
+ 1881  cd raylib-playground
+ 1882  cd avalon
+ 1883  cd resources
+ 1884  ls
+ 1885  cd textures
+ 1886  ls
+ 1887  mkdir icons
+ 1888  cd icons
+ 1889  cp /mnt/c/Users/amros/Downloads/icons8-a* ./
+ 1890  ls
+ 1891  mv icons8-ancient-51.png magic.png
+ 1892  mv icons8-archer-51.png archers.png
+ 1893  mv icons8-army-51.png infantry.png
+ 1894  ls
+ 1895  cd build
+ 1896  cmake ..
+ 1897  make
+ 1898  gdb ./bin/Debug/game
+ 1899  make
+ 1900  gdb ./bin/Debug/game
+ 1901  cp /mnt/c/Users/amros/Downloads/icons8-a* ./
+ 1902  ls
+ 1903  rm icons8-ancient-51.png
+ 1904  rm icons8-archer-51.png
+ 1905  rm icons8-army-51.png
+ 1906  ls
+ 1907  mv icons8-army-51\ \(1\).png infantry.png
+ 1908  mv icons8-archer-51\ \(1\).png archers.png
+ 1909  mv icons8-ancient-51\ \(1\).png magic.png
+ 1910  ls
+ 1911  make
+ 1912  cmake ..
+ 1913  make
+ 1914  gdb ./bin/Debug/game
+ 1915  make
+ 1916  gdb ./bin/Debug/game
+ 1917  cmake ..
+ 1918  make
+ 1919  gdb ./bin/Debug/game
+ 1920  make
+ 1921  gdb ./bin/Debug/game
+ 1922  nvim
+ 1923  make
+ 1924  run
+ 1925  gdb ./bin/Debug/game
+ 1926  make
+ 1927  cd ../resources
+ 1928  cd textures
+ 1929  cp /mnt/c/Users/amros/Downloads/modernuserinterface-win/48x48/Modern_UI_Style_1_48x48.png ./ui-icons.png
+ 1930  ls
+ 1931  cd ../../build
+ 1932  cmake ..
+ 1933  make
+ 1934  gdb ./bin/Debug/game
+ 1935  make
+ 1936  gdb ./bin/Debug/game
+ 1937  cmake ..
+ 1938  cd ..
+ 1939  git status
+ 1940  git add .
+ 1941  git rm --cached box2d -f
+ 1942  git commit -a
+ 1943  cd ..
+ 1944  git status
+ 1945  git commit -a
+ 1946  rm /mnt/c/Users/amros/raylib-playground/avalon/.git/index.lock
+ 1947  git commit -a
+ 1948  git push origin tiles
+ 1949  cd build
+ 1950  cmake ..
+ 1951  make
+ 1952  gdb ./bin/Debug/game
+ 1953  make
+ 1954  gdb ./bin/Debug/game
+ 1955  make
+ 1956  gdb ./bin/Debug/game
+ 1957  make
+ 1958  gdb ./bin/Debug/game
+ 1959  make
+ 1960  gdb ./bin/Debug/game
+ 1961  nvim
+ 1962  cmake ..
+ 1963  make
+ 1964  gdb ./bin/Debug/game
+ 1965  make
+ 1966  gdb ./bin/Debug/game
+ 1967  make
+ 1968  gdb ./bin/Debug/game
+ 1969  make
+ 1970  gdb ./bin/Debug/game
+ 1971  ls
+ 1972  cd ..
+ 1973  cd build_web
+ 1974  ls
+ 1975  emcmake cmake .. -DBUILD_WEB=ON
+ 1976  emmake make
+ 1977  make
+ 1978  emmake make
+ 1979  ls
+ 1980  emrun web/Debug/game.html
+ 1981  emrun web/Debug/game.html --browser=chrome
+ 1982  emrun web/Debug/game.html --browser=Chrome
+ 1983  emrun --list-browsers
+ 1984  emrun --list_browsers
+ 1985  emrun --browser C:\Program Files\Google\Chrome\Application\chrome web/Debug/game.html
+ 1986  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 1987  cd ../build
+ 1988  cmake ..
+ 1989  make
+ 1990  cd ~
+ 1991  pwd
+ 1992  sudo apt-get install chrome
+ 1993  sudo apt-get install firefox
+ 1994  wget
+ 1995  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+ 1996  sudo dpkg -i google-chrome-stable_current_amd64.deb
+ 1997  ps ax | grep 239027
+ 1998  sudo dpkg -i google-chrome-stable_current_amd64.deb
+ 1999  firefox
+ 2000  sudo apt-get install google-chrome
+ 2001  sudo apt-get install xdg-utils
+ 2002  sudo apt --fix-broken install
+ 2003  sudo dpkg -i google-chrome-stable_current_amd64.deb
+ 2004  google-chrome
+ 2005  cd ~
+ 2006  ls
+ 2007  cd Downloads
+ 2008  ls
+ 2009  tar -xzvf android-studio-2024.2.1.11-linux.tar.gz
+ 2010  cd android-studio/bin
+ 2011  ./studio.sh
+ 2012  ls /opt
+ 2013  ls /opt/google
+ 2014  ./studio
+ 2015  cd raylib-playground
+ 2016  cd avalon
+ 2017  pwd
+ 2018  cd app/src/main/assets
+ 2019  ln -s ../../../../../resources resources
+ 2020  ls
+ 2021  ls resources
+ 2022  ls -alh
+ 2023  ./studio
+ 2024  sudo apt-get install ninja-build
+ 2025  cd ~
+ 2026  ls
+ 2027  ls Android/Sdk/ndk/27.0.12077973/build/cmake/
+ 2028  cd Android/Sdk/ndk/27.0.12077973/build/cmake/
+ 2029  pwd
+ 2030  ./studio
+ 2031  cd /mnt/c/Users/amros/raylib-playground/avalon/androidx
+ 2032  ls
+ 2033  lsls
+ 2034  ./gradlew tasks
+ 2035  which java
+ 2036  ./studio
+ 2037  cd 
+ 2038  ls
+ 2039  cd Downloads
+ 2040  cd android-studio
+ 2041  ls
+ 2042  ./bin/studio
+ 2043  cmake ..
+ 2044  make
+ 2045  gdb ./bin/Debug/game
+ 2046  make
+ 2047  gdb ./bin/Debug/game
+ 2048  nvim
+ 2049  cd raylib-playground/bytepath-survivor
+ 2050  nvim
+ 2051  ls
+ 2052  cd resources
+ 2053  ls
+ 2054  mkdir musisic
+ 2055  ls
+ 2056  rm musisic
+ 2057  r
+ 2058  rm musisic
+ 2059  cd resources
+ 2060  ls
+ 2061  rm -rf musisic
+ 2062  ls
+ 2063  mkdir music
+ 2064  cp /mnt/c/Users/amros/Downloads/music/* ./music
+ 2065  ls
+ 2066  ls music
+ 2067  cd ..
+ 2068  cd build
+ 2069  cmake ..
+ 2070  make
+ 2071  cmake ..
+ 2072  make
+ 2073  gdb ./bin/Debug/game
+ 2074  make
+ 2075  gdb ./bin/Debug/game
+ 2076  make
+ 2077  gdb ./bin/Debug/game
+ 2078  make
+ 2079  gdb ./bin/Debug/game
+ 2080  cmake ..
+ 2081  make
+ 2082  gdb ./bin/Debug/game
+ 2083  make
+ 2084  gdb ./bin/Debug/game
+ 2085  make
+ 2086  gdb ./bin/Debug/game
+ 2087  make
+ 2088  gdb ./bin/Debug/game
+ 2089  make
+ 2090  gdb ./bin/Debug/game
+ 2091  make
+ 2092  gdb ./bin/Debug/game
+ 2093  make
+ 2094  gdb ./bin/Debug/game
+ 2095  make
+ 2096  gdb ./bin/Debug/game
+ 2097  ls ../resources/music
+ 2098  cd ../resources/music
+ 2099  mv coins_dropped.mp3 coin_dropped.mp3
+ 2100  cd ../../build
+ 2101  make
+ 2102  gdb ./bin/Debug/game
+ 2103  make
+ 2104  gdb ./bin/Debug/game
+ 2105  make
+ 2106  gdb ./bin/Debug/game
+ 2107  make
+ 2108  gdb ./bin/Debug/game
+ 2109  make
+ 2110  gdb ./bin/Debug/game
+ 2111  make
+ 2112  gdb ./bin/Debug/game
+ 2113  cd avalon
+ 2114  nvim
+ 2115  cd build
+ 2116  make
+ 2117  gdb ./bin/Debug/game
+ 2118  make
+ 2119  gdb ./bin/Debug/game
+ 2120  make
+ 2121  gdb ./bin/Debug/game
+ 2122  make
+ 2123  gdb ./bin/Debug/game
+ 2124  make
+ 2125  gdb ./bin/Debug/game
+ 2126  cd build
+ 2127  make
+ 2128  cmake ..
+ 2129  make
+ 2130  gdb ./bin/Debug/game
+ 2131  make
+ 2132  gdb ./bin/Debug/game
+ 2133  make
+ 2134  gdb ./bin/Debug/game
+ 2135  make
+ 2136  gdb ./bin/Debug/game
+ 2137  make
+ 2138  gdb ./bin/Debug/game
+ 2139  cd resources/textures/backgrounds
+ 2140  cp /mnt/c/Users/amros/Downloads/loading_l.webp ./
+ 2141  cp /mnt/c/Users/amros/Downloads/loading_p.webp ./
+ 2142  cp /mnt/c/Users/amros/Downloads/gameover_p.webp ./
+ 2143  cp /mnt/c/Users/amros/Downloads/gameover_l.webp ./
+ 2144  cp /mnt/c/Users/amros/Downloads/victory_l.webp ./
+ 2145  cp /mnt/c/Users/amros/Downloads/victory_p.webp ./
+ 2146  ls
+ 2147  cd ../..
+ 2148  cd ../build
+ 2149  cmake ..
+ 2150  make
+ 2151  gdb ./bin/Debug/game
+ 2152  cd ../resources/textures/backgrounds
+ 2153  cp /mnt/c/Users/amros/Downloads/loading_p.png ./
+ 2154  cp /mnt/c/Users/amros/Downloads/loading_l.png ./
+ 2155  cd ../../
+ 2156  cd ../build
+ 2157  cmake ..
+ 2158  make
+ 2159  gdb ./bin/Debug/game
+ 2160  cd resources
+ 2161  cd textures/backgrounds
+ 2162  ls
+ 2163  rm *.webp
+ 2164  cp /mnt/c/Users/amros/Downloads/victory_l.png ./
+ 2165  cp /mnt/c/Users/amros/Downloads/victory_r.png ./
+ 2166  cp /mnt/c/Users/amros/Downloads/victory_p.png ./
+ 2167  cp /mnt/c/Users/amros/Downloads/gameover_p.png ./
+ 2168  cp /mnt/c/Users/amros/Downloads/gameover_l.png ./
+ 2169  ls
+ 2170  cd build
+ 2171  cmake ..
+ 2172  make
+ 2173  gdb ./bin/Debug/game
+ 2174  make
+ 2175  gdb ./bin/Debug/game
+ 2176  make
+ 2177  gdb ./bin/Debug/game
+ 2178  make
+ 2179  gdb ./bin/Debug/game
+ 2180  make
+ 2181  gdb ./bin/Debug/game
+ 2182  make
+ 2183  cmake ..
+ 2184  make
+ 2185  gdb ./bin/Debug/game
+ 2186  make
+ 2187  gdb ./bin/Debug/game
+ 2188  make
+ 2189  gdb ./bin/Debug/game
+ 2190  make
+ 2191  gdb ./bin/Debug/game
+ 2192  make
+ 2193  gdb ./bin/Debug/game
+ 2194  make
+ 2195  gdb ./bin/Debug/game
+ 2196  cd build
+ 2197  make
+ 2198  gdb ./bin/Debug/game
+ 2199  make
+ 2200  gdb ./bin/Debug/game
+ 2201  make
+ 2202  gdb ./bin/Debug/game
+ 2203  make
+ 2204  gdb ./bin/Debug/game
+ 2205  make
+ 2206  gdb ./bin/Debug/game
+ 2207  make
+ 2208  gdb ./bin/Debug/game
+ 2209  make
+ 2210  gdb ./bin/Debug/game
+ 2211  make
+ 2212  gdb ./bin/Debug/game
+ 2213  make
+ 2214  gdb ./bin/Debug/game
+ 2215  make
+ 2216  gdb ./bin/Debug/game
+ 2217  make
+ 2218  gdb ./bin/Debug/game
+ 2219  make
+ 2220  gdb ./bin/Debug/game
+ 2221  make
+ 2222  gdb ./bin/Debug/game
+ 2223  make
+ 2224  gdb ./bin/Debug/game
+ 2225  make
+ 2226  gdb ./bin/Debug/game
+ 2227  make
+ 2228  gdb ./bin/Debug/game
+ 2229  make
+ 2230  gdb ./bin/Debug/game
+ 2231  make
+ 2232  gdb ./bin/Debug/game
+ 2233  make
+ 2234  gdb ./bin/Debug/game
+ 2235  make
+ 2236  gdb ./bin/Debug/game
+ 2237  ps ax | grep nvim
+ 2238  kill 157578
+ 2239  ps ax | grep nvim
+ 2240  kill -9 157578
+ 2241  ps ax | grep nvim
+ 2242  nvim
+ 2243  cd build
+ 2244  make
+ 2245  gdb ./bin/Debug/game
+ 2246  ps ax | grep nvim
+ 2247  kill -9 237977
+ 2248  ps ax | grep nvim 
+ 2249  ps ax | grep game
+ 2250  kill -9 238209
+ 2251  ps ax | grep game
+ 2252  nvim
+ 2253  cd build
+ 2254  make
+ 2255  gdb ./bin/Debug/game
+ 2256  ps ax | grep game
+ 2257  kill -9 238811
+ 2258  ps ax | grep nvim 
+ 2259  kill -9 238294
+ 2260  ps ax | grep nvim 
+ 2261  nvim
+ 2262  make
+ 2263  cd build
+ 2264  make
+ 2265  gdb ./bin/Debug/game
+ 2266  make
+ 2267  gdb ./bin/Debug/game
+ 2268  make
+ 2269  cd ..
+ 2270  git status
+ 2271  git add game/
+ 2272  git status
+ 2273  git add android/
+ 2274  git add resources/
+ 2275  git status
+ 2276  git add CMakeLists.txt
+ 2277  git commit -a
+ 2278  cd raylib-playground
+ 2279  cd avalon
+ 2280  ps ax | grep git
+ 2281  kill -9 243048
+ 2282  git commit -a
+ 2283  rm /mnt/c/Users/amros/raylib-playground/avalon/.git/index.lock
+ 2284  git commit -a
+ 2285  git push origin tiles
+ 2286  git status
+ 2287  cd build
+ 2288  make
+ 2289  gdb ./bin/Debug/game
+ 2290  make
+ 2291  cd build
+ 2292  cmake ..
+ 2293  make
+ 2294  gdb ./bin/Debug/game
+ 2295  make
+ 2296  gdb ./bin/Debug/game
+ 2297  make
+ 2298  gdb ./bin/Debug/game
+ 2299  make
+ 2300  gdb ./bin/Debug/game
+ 2301  make
+ 2302  git status
+ 2303  git add game/
+ 2304  git commit -a
+ 2305  git push origin tiles
+ 2306  cd ..
+ 2307  ls
+ 2308  cp -R ../Downloads/example_3_quest ./
+ 2309  ls
+ 2310  cd avalon
+ 2311  cd game/src
+ 2312  cp ../../../bytepath-survivor/game/src/layout.cpp ./
+ 2313  cp ../../../bytepath-survivor/game/src/include/layout.hpp ./include
+ 2314  cp ../../../bytepath-survivor/game/src/panel.cpp ./
+ 2315  cp ../../../bytepath-survivor/game/src/include/panel.hpp ./include
+ 2316  nvim
+ 2317  ls
+ 2318  cd examples_quest
+ 2319  ls
+ 2320  cd quests-17-solution
+ 2321  nvim
+ 2322  ls
+ 2323  cp ../example_3_quest/examples_quest/quests-17-solution/art/gradient_panel.png ./resources/textures
+ 2324  cd ..
+ 2325  git status
+ 2326  git add game/
+ 2327  git add resources/textures/
+ 2328  git status
+ 2329  git commit -a
+ 2330  git push origin tiles
+ 2331  git checkout -b ui-changes
+ 2332  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/07_Play/play_character_frame.png ./resources/textures
+ 2333  cd build
+ 2334  cmake ..
+ 2335  make
+ 2336  gdb ./bin/Debug/game
+ 2337  make
+ 2338  gdb ./bin/Debug/game
+ 2339  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/19_PowerSave/powersave_bg.png ./resources/textures
+ 2340  cp ../../../Downloads/gui-pro-fantasy-rpg/_PNG/19_PowerSave/powersave_bg.png ../resources/textures
+ 2341  cmake ..
+ 2342  make
+ 2343  gdb ./bin/Debug/game
+ 2344  make
+ 2345  gdb ./bin/Debug/game
+ 2346  make
+ 2347  gdb ./bin/Debug/game
+ 2348  make
+ 2349  gdb ./bin/Debug/game
+ 2350  make
+ 2351  gdb ./bin/Debug/game
+ 2352  make
+ 2353  gdb ./bin/Debug/game
+ 2354  make
+ 2355  gdb ./bin/Debug/game
+ 2356  make
+ 2357  gdb ./bin/Debug/game
+ 2358  cd ..
+ 2359  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_Common/top_status_icon_gold.png ./resources/textures/icon_gold.png
+ 2360  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_quiver.png ./resources/textures/icon_tower.png
+ 2361  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_helmet_2 ./resources/textures/icon_barracks.png
+ 2362  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_helmet_2.png ./resources/textures/icon_barracks.png
+ 2363  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_thunder.png ./resources/textures/icon_ltower.png
+ 2364  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_magic.png ./resources/textures/icon_wizardry.png
+ 2365  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_castle.png ./resources/textures/icon_castle.png
+ 2366  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_home.png ./resources/textures/icon_house.png
+ 2367  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_home_3.png ./resources/textures/icon_house.png
+ 2368  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_archer.png  ./resources/textures/icon_archery.png
+ 2369  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_arrow_top.png  ./resources/textures/icon_arrow_up.png
+ 2370  cd build
+ 2371  cmake ..
+ 2372  make
+ 2373  gdb ./bin/Debug/game
+ 2374  make
+ 2375  gdb ./bin/Debug/game
+ 2376  make
+ 2377  gdb ./bin/Debug/game
+ 2378  make
+ 2379  gdb ./bin/Debug/game
+ 2380  make
+ 2381  gdb ./bin/Debug/game
+ 2382  make
+ 2383  gdb ./bin/Debug/game
+ 2384  make
+ 2385  gdb ./bin/Debug/game
+ 2386  make
+ 2387  gdb ./bin/Debug/game
+ 2388  make
+ 2389  gdb ./bin/Debug/game
+ 2390  make
+ 2391  gdb ./bin/Debug/game
+ 2392  cd build
+ 2393  cmake ..
+ 2394  make
+ 2395  gdb ./bin/Debug/game
+ 2396  cd ..
+ 2397  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_arrow_go.png  ./resources/textures/icon_arrow_go.png
+ 2398  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_Common/common_btn_gray.png  ./resources/textures/icon_button.png
+ 2399  cp ../../Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_clear.png  ./resources/textures/icon_clear.png
+ 2400  make
+ 2401  cd build
+ 2402  make
+ 2403  gdb ./bin/Debug/game
+ 2404  make
+ 2405  gdb ./bin/Debug/game
+ 2406  make
+ 2407  gdb ./bin/Debug/game
+ 2408  cd ..
+ 2409  cp ../../Downloads/super-pixel-fantasy-fx-pack-2-pixel-art-effect-animations/Super\ Pixel\ Fantasy\ FX\ Pack\ 2/spritesheet/fanfx2_fire_spell_large_yellow/spritesheet.png ./resources/textures/fire_burn_sprites.png
+ 2410  cd build
+ 2411  cmake ..
+ 2412  make
+ 2413  gdb ./bin/Debug/game
+ 2414  make
+ 2415  gdb ./bin/Debug/game
+ 2416  make
+ 2417  gdb ./bin/Debug/game
+ 2418  make
+ 2419  gdb ./bin/Debug/game
+ 2420  make
+ 2421  gdb ./bin/Debug/game\n: 1733489604:0;gdb ./bin/Debug/game
+ 2422  make
+ 2423  gdb ./bin/Debug/game
+ 2424  git remote -v
+ 2425  cd ..
+ 2426  git remote -v
+ 2427  cd build
+ 2428  make
+ 2429  gdb ./bin/Debug/game
+ 2430  make
+ 2431  gdb ./bin/Debug/game
+ 2432  cd build
+ 2433  make
+ 2434  gdb ./bin/Debug/game
+ 2435  make
+ 2436  gdb ./bin/Debug/game
+ 2437  make
+ 2438  gdb ./bin/Debug/game
+ 2439  make
+ 2440  gdb ./bin/Debug/game
+ 2441  make
+ 2442  gdb ./bin/Debug/game
+ 2443  make
+ 2444  gdb ./bin/Debug/game
+ 2445  make
+ 2446  gdb ./bin/Debug/game
+ 2447  make
+ 2448  gdb ./bin/Debug/game
+ 2449  make
+ 2450  gdb ./bin/Debug/game
+ 2451  make
+ 2452  gdb ./bin/Debug/game
+ 2453  make
+ 2454  gdb ./bin/Debug/game
+ 2455  make
+ 2456  gdb ./bin/Debug/game
+ 2457  make
+ 2458  gdb ./bin/Debug/game
+ 2459  make
+ 2460  gdb ./bin/Debug/game
+ 2461  make
+ 2462  gdb ./bin/Debug/game
+ 2463  make
+ 2464  gdb ./bin/Debug/game
+ 2465  cd ../bytepath-survivor
+ 2466  nvim
+ 2467  make
+ 2468  nvim
+ 2469  gdb ./bin/Debug/game
+ 2470  make
+ 2471  gdb ./bin/Debug/game
+ 2472  make
+ 2473  gdb ./bin/Debug/game
+ 2474  cd build
+ 2475  cmake ..
+ 2476  make
+ 2477  nvim
+ 2478  make
+ 2479  gdb ./bin/Debug/game
+ 2480  make
+ 2481  gdb ./bin/Debug/game
+ 2482  cd build
+ 2483  make
+ 2484  cd build
+ 2485  make
+ 2486  gdb ./bin/Debug/game
+ 2487  make
+ 2488  gdb ./bin/Debug/game
+ 2489  make
+ 2490  gdb ./bin/Debug/game
+ 2491  make
+ 2492  gdb ./bin/Debug/game
+ 2493  make
+ 2494  gdb ./bin/Debug/game
+ 2495  make
+ 2496  gdb ./bin/Debug/game
+ 2497  make
+ 2498  gdb ./bin/Debug/game
+ 2499  ls
+ 2500  cp /mnt/c/Users/amros/Downloads/warrior_icons.png resources/textures
+ 2501  ls
+ 2502  cd resources
+ 2503  ls
+ 2504  cd textures
+ 2505  ls
+ 2506  mkdir crossbowman
+ 2507  mkdir worker
+ 2508  mkdir javeliner
+ 2509  mkdir berserker
+ 2510  mkdir axeman
+ 2511  mkdir swordsman
+ 2512  ls footman
+ 2513  ls knight
+ 2514  ls spearman
+ 2515  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/worker/* ./worker
+ 2516  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/axeman/* ./axeman
+ 2517  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/javeliner/* ./javeliner
+ 2518  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/crossbowmen/* ./crossbowman
+ 2519  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/berserker/* ./berserker
+ 2520  cp /mnt/c/Users/amros/Downloads/rpg-tools-win64/RpgTools/swordsman/* ./swordsman
+ 2521  cd worker
+ 2522  ls
+ 2523  mv worker_dead3.png worker_dead.png
+ 2524  mv worker_idle2.png worker_idle.png
+ 2525  mv worker_walking.png worker_run.png
+ 2526  mv worker_MvSv\ Swinging.png worker_attack.png
+ 2527  ls
+ 2528  cd ../crossbowman
+ 2529  ls
+ 2530  mv crossbowmen_bust.png crossbowman_bust.png
+ 2531  mv crossbowmen_idle2.png crossbowman_idle.png
+ 2532  mv crossbowmen_shooting.png crossbowman_attack.png
+ 2533  mv crossbowmen_dead3.png crossbowman_dead.png
+ 2534  mv crossbowmen_paperdoll.png crossbowman_paperdoll.png
+ 2535  mv crossbowmen_walking.png crossbowman_run.png
+ 2536  cd ../javeliner
+ 2537  ls
+ 2538  mv javeliner_dead3.png javeliner_dead.png
+ 2539  mv javeliner_idle1.png javeliner_idle.png
+ 2540  mv javeliner_walking.png javeliner_run.png
+ 2541  mv javeliner_MvSv\ Swinging.png javeliner_attack.png
+ 2542  ls
+ 2543  cd ../axeman
+ 2544  ls
+ 2545  mv axeman_Dead4.png axeman_dead.png
+ 2546  mv axeman_Paperdoll\ 1.png axeman_paperdoll.png
+ 2547  mv axeman_One\ Hand\ Idle\ With\ Shield.png axeman_idle.png
+ 2548  mv axeman_Run.png axeman_run.png
+ 2549  mv axeman_Attack\ One\ Handed\ Overhead.png axeman_attack.png
+ 2550  mv axeman_Bust\ 10.png axeman_bust.png
+ 2551  ls
+ 2552  cd ../swordsman
+ 2553  ls
+ 2554  mv swordsman_Dead4.png swordsman_dead.png
+ 2555  mv swordsman_Paperdoll\ 6.png swordsman_paperdoll.png
+ 2556  mv swordsman_Two\ Hand\ Idle\ General\ 1.png swordsman_idle.png
+ 2557  mv swordsman_Bust\ 1.png swordsman_bust.png
+ 2558  mv swordsman_Attack\ Two\ Handed\ Slash.png swordsman_attack.png
+ 2559  ls
+ 2560  mv swordsman_Run.png swordsman_run.png
+ 2561  ls
+ 2562  cd ..
+ 2563  cd berserker
+ 2564  ls
+ 2565  cp berserker_Idle6.png berserker_idle.png
+ 2566  cp berserker_Dead6.png berserker_dead.png
+ 2567  cp berserker_Paperdoll\ 1.png berserker_paperdoll.png
+ 2568  cp berserker_Attack\ One\ Handed\ Side\ Slash.png berserker_attack.png
+ 2569  cp berserker_Bust\ 10.png berserker_bust.png
+ 2570  ls
+ 2571  rm berserker_Attack\ One\ Handed\ Side\ Slash.png
+ 2572  ls
+ 2573  rm berserker_Bust\ 10.png
+ 2574  rm berserker_Paperdoll\ 1.png
+ 2575  ls
+ 2576  rm berserker_Dead6.png
+ 2577  rm berserker_Idle6.png
+ 2578  ls
+ 2579  cd ..
+ 2580  ls berserker
+ 2581  ls swordsman
+ 2582  ls axeman
+ 2583  ls crossbowman
+ 2584  ls javeliner
+ 2585  cd axeman
+ 2586  mv axeman_Run.png axeman_run1.png
+ 2587  mv axeman_run1.png axeman_run.png
+ 2588  ls
+ 2589  cd ../swordsman
+ 2590  mv swordsman_Run.png swordsman_run1.png
+ 2591  mv swordsman_run1.png swordsman_run.pn
+ 2592  mv swordsman_run.pn swordsman_run.png
+ 2593  cd ../berserker
+ 2594  mv berserker_Run.png berserker_run1.png
+ 2595  mv berserker_run1.png berserker_run.png
+ 2596  ls
+ 2597  cd .
+ 2598  cd ..
+ 2599  ls crossbowman
+ 2600  nvim
+ 2601  cd build
+ 2602  cmake ..
+ 2603  make
+ 2604  gdb ./bin/Debug/game
+ 2605  make
+ 2606  gdb ./bin/Debug/game
+ 2607  make
+ 2608  gdb ./bin/Debug/game
+ 2609  make
+ 2610  =make clean\n: 1733752185:0;make clean
+ 2611  ls
+ 2612  ls bin
+ 2613  make
+ 2614  gdb ./bin/Debug/game
+ 2615  make
+ 2616  gdb ./bin/Debug/game
+ 2617  make
+ 2618  gdb ./bin/Debug/game
+ 2619  make
+ 2620  gdb ./bin/Debug/game\n: 1733810203:0;gdb ./bin/Debug/game
+ 2621  cd .
+ 2622  cd ..
+ 2623  ls resources/textures | grep summon
+ 2624  cd build
+ 2625  make
+ 2626  gdb ./bin/Debug/game
+ 2627  make
+ 2628  gdb ./bin/Debug/game\n: 1733817335:0;gdb ./bin/Debug/game
+ 2629  make
+ 2630  gdb ./bin/Debug/game
+ 2631  make
+ 2632  gdb ./bin/Debug/game
+ 2633  make
+ 2634  gdb ./bin/Debug/game
+ 2635  make
+ 2636  gdb ./bin/Debug/game
+ 2637  make
+ 2638  gdb ./bin/Debug/game
+ 2639  make
+ 2640  gdb ./bin/Debug/game
+ 2641  make
+ 2642  gdb ./bin/Debug/game
+ 2643  make
+ 2644  cd build
+ 2645  make
+ 2646  gdb ./bin/Debug/game
+ 2647  make
+ 2648  gdb ./bin/Debug/game
+ 2649  cd build
+ 2650  make
+ 2651  gdb ./bin/Debug/game
+ 2652  make
+ 2653  gdb ./bin/Debug/game
+ 2654  make
+ 2655  gdb ./bin/Debug/game
+ 2656  make
+ 2657  gdb ./bin/Debug/game
+ 2658  make
+ 2659  gdb ./bin/Debug/game
+ 2660  cd build
+ 2661  make
+ 2662  gdb ./bin/Debug/game
+ 2663  cd build
+ 2664  cmake ..
+ 2665  make
+ 2666  gdb ./bin/Debug/game
+ 2667  make
+ 2668  gdb ./bin/Debug/game
+ 2669  make
+ 2670  gdb ./bin/Debug/game
+ 2671  make
+ 2672  gdb ./bin/Debug/game
+ 2673  cd raylib-playground
+ 2674  cd avalon
+ 2675  nvim
+ 2676  cd build
+ 2677  make
+ 2678  gdb ./bin/Debug/game
+ 2679  cd ../resources
+ 2680  ls 
+ 2681  ls music
+ 2682  cd ../build
+ 2683  make
+ 2684  gdb ./bin/Debug/game
+ 2685  make
+ 2686  gdb ./bin/Debug/game
+ 2687  make
+ 2688  gdb ./bin/Debug/game
+ 2689  nvim
+ 2690  cd build
+ 2691  make
+ 2692  gdb ./bin/Debug/game
+ 2693  make
+ 2694  gdb ./bin/Debug/game
+ 2695  make
+ 2696  gdb ./bin/Debug/game\n: 1734076317:0;gdb ./bin/Debug/game
+ 2697  make
+ 2698  gdb ./bin/Debug/game
+ 2699  make
+ 2700  gdb ./bin/Debug/game
+ 2701  make
+ 2702  gdb ./bin/Debug/game
+ 2703  make
+ 2704  gdb ./bin/Debug/game
+ 2705  git status
+ 2706  git add game/
+ 2707  git add resources
+ 2708  git status
+ 2709  git commit -a
+ 2710  git push
+ 2711  git push origin ui-changes
+ 2712  git status
+ 2713  cp game/src/stat.cpp ../avalon/game/src/
+ 2714  cp game/src/include/stat.hpp ../avalon/game/src/include
+ 2715  cp game/src/include/multipliers.hpp ../avalon/game/src/include/upgrade_content.hpp
+ 2716  ls
+ 2717  cd resources/textures
+ 2718  ls
+ 2719  cp /mnt/c/Users/amros/Downloads/gui-pro-fantasy-rpg/_PNG/06_Stage/stage_frame_current.png upgrade_card.png
+ 2720  cp /mnt/c/Users/amros/Downloads/gui-pro-fantasy-rpg/_PNG/00_PictoIcons/64x64/btn_icon_arrow_bottom.png icon_arrow_bottom.png
+ 2721  ls
+ 2722  cd ..\\n
+ 2723  cd ..
+ 2724  cd build
+ 2725  cmake ..
+ 2726  make
+ 2727  gdb ./bin/Debug/game
+ 2728  make
+ 2729  gdb ./bin/Debug/game
+ 2730  make
+ 2731  gdb ./bin/Debug/game
+ 2732  make
+ 2733  gdb ./bin/Debug/game
+ 2734  make
+ 2735  gdb ./bin/Debug/game
+ 2736  make
+ 2737  gdb ./bin/Debug/game
+ 2738  make
+ 2739  gdb ./bin/Debug/game
+ 2740  cd raylib-playground/avalon
+ 2741  git status
+ 2742  git add game/
+ 2743  git add resources/
+ 2744  git commit -a
+ 2745  git push origin ui-changes
+ 2746  cd build
+ 2747  cmake ..
+ 2748  make
+ 2749  gdb ./bin/Debug/game
+ 2750  make
+ 2751  gdb ./bin/Debug/game
+ 2752  make
+ 2753  gdb ./bin/Debug/game
+ 2754  make
+ 2755  gdb ./bin/Debug/game
+ 2756  make
+ 2757  gdb ./bin/Debug/game
+ 2758  cmake ..
+ 2759  make
+ 2760  gdb ./bin/Debug/game
+ 2761  cd ../build_web
+ 2762  ls
+ 2763  emcmake cmake .. -DBUILD_WEB=ON
+ 2764  emmake make
+ 2765  ls
+ 2766  ls web
+ 2767  ls web/Debug
+ 2768  ls
+ 2769  cd build_web
+ 2770  ls
+ 2771  ls web
+ 2772  ls web/Debug
+ 2773  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2774  emmake make
+ 2775  emcmake cmake .. -DBUILD_WEB=ON
+ 2776  emmake make
+ 2777  emcmake cmake .. -DBUILD_WEB=ON
+ 2778  emmake make clean
+ 2779  emmake make
+ 2780  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2781  history | grep release
+ 2782  cd ../bytepath-survivor
+ 2783  cd build_web
+ 2784  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2785  emmake make
+ 2786  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2787  cd ..
+ 2788  mkdir build_web_release
+ 2789  cd build_web_release
+ 2790  emcmake cmake .. -DBUILD_WEB=ON -DCMAKE_BUILD_TYPE=Release
+ 2791  emmake make
+ 2792  ls
+ 2793  mkdir root_itch
+ 2794  cp raylib-playground/avalon/build_web_release/web/Release/* root_itch
+ 2795  cd root_itch
+ 2796  ls
+ 2797  mv game.html index.html
+ 2798  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome index.html
+ 2799  cd raylib-playground/avalon
+ 2800  nvim
+ 2801  cd raylib-playground
+ 2802  cd avalon
+ 2803  nvim
+ 2804  cd raylib-playground/avalon
+ 2805  git status
+ 2806  git commit -a
+ 2807  git status
+ 2808  git add game/
+ 2809  git add resources/
+ 2810  git commit -a
+ 2811  git push origin ui-changes
+ 2812  cd bu
+ 2813  cd build
+ 2814  cmake ..
+ 2815  make
+ 2816  cd build
+ 2817  make
+ 2818  gdb ./bin/Debug/game
+ 2819  make
+ 2820  gdb ./bin/Debug/game
+ 2821  make
+ 2822  gdb ./bin/Debug/game
+ 2823  make
+ 2824  gdb ./bin/Debug/game
+ 2825  make
+ 2826  gdb ./bin/Debug/game
+ 2827  nvim
+ 2828  git status
+ 2829  cd build
+ 2830  make
+ 2831  gdb ./bin/Debug/game
+ 2832  cd ../build_web
+ 2833  emcmake cmake .. -DBUILD_WEB=ON
+ 2834  emmake make
+ 2835  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2836  emmake make
+ 2837  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2838  cd ../build
+ 2839  make
+ 2840  gdb ./bin/Debug/game
+ 2841  cd ../build_web
+ 2842  emmake make
+ 2843  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2844  cd ../build
+ 2845  cd build
+ 2846  make
+ 2847  gdb ./bin/Debug/game
+ 2848  make
+ 2849  gdb ./bin/Debug/game
+ 2850  cd ../build_web
+ 2851  emmake make
+ 2852  emcmake cmake .. -DBUILD_WEB=ON
+ 2853  emmake make
+ 2854  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2855  cd build_web
+ 2856  emmake make
+ 2857  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2858  emmake make
+ 2859  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2860  emmake make
+ 2861  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2862  cd ../build
+ 2863  make
+ 2864  gdb ./bin/Debug/game
+ 2865  cd ../build_web
+ 2866  emmake make
+ 2867  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2868  emmake make
+ 2869  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2870  emmake make
+ 2871  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2872  emmake make
+ 2873  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2874  emmake make
+ 2875  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2876  emmake make
+ 2877  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2878  emmake make
+ 2879  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2880  emmake make
+ 2881  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2882  emmake clean
+ 2883  emmake make clean
+ 2884  emmake make
+ 2885  emcmake cmake .. -DBUILD_WEB=ON
+ 2886  emcmake cmake .. -G Ninja -DBUILD_WEB=ON
+ 2887  cd ..
+ 2888  mkdir build_web_ninja
+ 2889  emcmake cmake .. -G Ninja -DBUILD_WEB=ON
+ 2890  cd build_web_ninja
+ 2891  emcmake cmake .. -G Ninja -DBUILD_WEB=ON
+ 2892  ninja -j$(nproc)
+ 2893  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2894  ninja -j$(nproc)
+ 2895  nproc
+ 2896  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2897  ninja -j$(nproc)
+ 2898  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2899  ninja -j$(nproc)
+ 2900  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2901  cd ../build
+ 2902  make
+ 2903  gdb ./bin/Debug/game
+ 2904  make
+ 2905  gdb ./bin/Debug/game
+ 2906  mkdir build_web_release_ninja
+ 2907  cd build_web_release_ninja
+ 2908  emcmake cmake .. -G Ninja -DBUILD_WEB=ON -DCMAKE_BUILD_TYPE=Release
+ 2909  cd ../..
+ 2910  mkdir build_web_release_ninja
+ 2911  cd build_web_release_ninja
+ 2912  emcmake cmake .. -G Ninja -DBUILD_WEB=ON -DCMAKE_BUILD_TYPE=Release
+ 2913  ninja -j$(nproc)
+ 2914  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Release/game.html
+ 2915  ninja -j$(nproc)
+ 2916  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Release/game.html
+ 2917  ninja -j$(nproc)
+ 2918  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Release/game.html
+ 2919  ninja -j$(nproc)
+ 2920  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Release/game.html
+ 2921  nvim
+ 2922  ls
+ 2923  cd ../bytepath-survivor
+ 2924  ls
+ 2925  cd emsdk
+ 2926  ls
+ 2927  ls downloads
+ 2928  ls scripts
+ 2929  ls node
+ 2930  ls node/18.20.3_64bit/include/
+ 2931  find emscripten.h
+ 2932  ls node/18.20.3_64bit/include/
+ 2933  ls node/18.20.3_64bit/include/node/
+ 2934  ls node/18.20.3_64bit/include/node/cppgc
+ 2935  ls node/18.20.3_64bit/include/node/libplatform
+ 2936  cd ../..
+ 2937  cd avalon
+ 2938  cd build_web_ninja
+ 2939  emcmake cmake .. -G Ninja -DBUILD_WEB=ON
+ 2940  ninja -j$(nproc)
+ 2941  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2942  ninja -j$(nproc)
+ 2943  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 2944  apt install libcurl
+ 2945  sudo apt-get install libcurl
+ 2946  sudo apt-get install libcurl4-openssl-dev
+ 2947  history | grep box2d
+ 2948  cd ..
+ 2949  cd build
+ 2950  cmake
+ 2951  cmake ..
+ 2952  history
+ 2953  whoami
+ 2954  cmake .. -G Ninja
+ 2955  cd ..
+ 2956  mkdir build_ninja
+ 2957  cd build_ninja
+ 2958  cmake .. -G Ninja
+ 2959  ninja -j$(nproc)
+ 2960  cmake .. -G Ninja
+ 2961  ninja -j$(nproc)
+ 2962  cmake .. -G Ninja
+ 2963  ninja -j$(nproc)
+ 2964  uname
+ 2965  uname -r
+ 2966  lsb_release
+ 2967  cat /etc/os-release
+ 2968  ls
+ 2969  cd build_ninja
+ 2970  cmake .. -G Ninja
+ 2971  ninja -j$(nproc)
+ 2972  apt install libcurl
+ 2973  sudo apt-get install libcurl4-openssl-dev
+ 2974  sudo apt install libcurl4-openssl-dev libssl-dev zlib1g-dev libbrotli-dev libnghttp2-dev
+ 2975  cmake .. -G Ninja
+ 2976  ninja -j$(nproc)
+ 2977  ls
+ 2978  cd ..
+ 2979  ls
+ 2980  cd build
+ 2981  ls
+ 2982  cd ..
+ 2983  cd build_old
+ 2984  ls
+ 2985  cd cdcd
+ 2986  cd ..
+ 2987  ls
+ 2988  ls build_old
+ 2989  ls build_ninja
+ 2990  ls build
+ 2991  mkdir build
+ 2992  rm build
+ 2993  rm -rf build
+ 2994  ls build
+ 2995  cd ..
+ 2996  ls
+ 2997  mkdir build_ninja
+ 2998  cd build_ninja
+ 2999  cmake .. -G Ninja
+ 3000  ninja -j$(nproc)
+ 3001  gdb ./bin/Debug/game
+ 3002  cd ../build_web_ninja
+ 3003  emcmake cmake .. -G Ninja -DBUILD_WEB=ON
+ 3004  emmake make
+ 3005  ninja -j$(nproc)
+ 3006  emcmake cmake .. -G Ninja -DBUILD_WEB=ON
+ 3007  ninja -j$(nproc)
+ 3008  cd ../build_web_release_ninja
+ 3009  emcmake cmake .. -G Ninja -DBUILD_WEB=ON -DCMAKE_BUILD_TYPE=Release
+ 3010  ninja -j$(nproc)
+ 3011  cd ../build_ninja
+ 3012  cmake .. -G Ninja
+ 3013  ninja
+ 3014  gdb ./bin/Debug/game
+ 3015  cd raylib-playground
+ 3016  cd avalon/build_web_ninja
+ 3017  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3018  cd ../build_web_release_ninja
+ 3019  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Release/game.html
+ 3020  cd ..
+ 3021  nvim
+ 3022  cd build_web
+ 3023  emcmake cmake .. -DBUILD_WEB=ON
+ 3024  emmake make
+ 3025  emcmake cmake .. -DBUILD_WEB=ON
+ 3026  make
+ 3027  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3028  git status
+ 3029  cd build_win
+ 3030  cd ..
+ 3031  cd build_ninja
+ 3032  ls
+ 3033  cmake .. -G Ninja
+ 3034  ninja -j$(nproc)
+ 3035  ./bin/Debug/game\n
+ 3036  cd ..
+ 3037  cd ../build_web_ninja
+ 3038  emcmake cmake .. -G Ninja -DBUILD_WEB=ON
+ 3039  ninja
+ 3040  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3041  ninja
+ 3042  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3043  ninja
+ 3044  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3045  ninja
+ 3046  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3047  cd build_web_ninja
+ 3048  emcmake cmake .. -G Ninja -DBUILD_WEB=ON
+ 3049  ninja -j$(nproc)
+ 3050  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3051  emcmake cmake .. -G Ninja -DBUILD_WEB=ON
+ 3052  ninja -j$(nproc)
+ 3053  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3054  ninja -j$(nproc)
+ 3055  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3056  ninja -j$(nproc)
+ 3057  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3058  ninja clean
+ 3059  ninja -j$(nproc)
+ 3060  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3061  ninja -j$(nproc)
+ 3062  git status
+ 3063  git add game/
+ 3064  git status
+ 3065  git add android/app/
+ 3066  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3067  git status
+ 3068  git commit -a
+ 3069  git status
+ 3070  git push origin ui-changes
+ 3071  ninja -j$(nproc)
+ 3072  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3073  ninja -j$(nproc)
+ 3074  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3075  ninja -j$(nproc)
+ 3076  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3077  ninja -j$(nproc)
+ 3078  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Debug/game.html
+ 3079  cd ../build_web_release_ninja
+ 3080  emcmake cmake .. -G Ninja -DBUILD_WEB=ON -DCMAKE_BUILD_TYPE=Release
+ 3081  ninja -j$(nproc)
+ 3082  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Release/game.html
+ 3083  ninja -j$(nproc)
+ 3084  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Release/game.html
+ 3085  ninja -j$(nproc)
+ 3086  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Release/game.html
+ 3087  ninja -j$(nproc)
+ 3088  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Release/game.html
+ 3089  ninja -j$(nproc)
+ 3090  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Release/game.html
+ 3091  ninja -j$(nproc)
+ 3092  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Release/game.html
+ 3093  ninja -j$(nproc)
+ 3094  emrun --browser /mnt/c/Program\ Files/Google/Chrome/Application/chrome web/Release/game.html
+ 3095  cd raylib-playground/avalon
+ 3096  nvim
+ 3097  ls
+ 3098  cd build_ninja
+ 3099  cmake .. -G Ninja
+ 3100  ninja -j$(nproc)
+ 3101  gdb ./bin/Debug/game
+ 3102  nvim
+ 3103  git clone https://github.com/glip-gg/btx-game.git
+ 3104  git clone git@github.com:glip-gg/btx-game.git
+ 3105  ls
+ 3106  cd btx-game
+ 3107  lslsllsllslslsls
+ 3108  s
+ 3109  ls
+ 3110  ls Packages
+ 3111  ls ProjectSettings
+ 3112  ls FMOD
+ 3113  ls FMOD/BTX\ FMOD
+ 3114  ls FMOD/BTX\ FMOD/Build
+ 3115  ls | grep Kedar_1
+ 3116  sudo apt install code dotnet-sdk mono mono-tools mono-msbuild mono-msbuild-sdkresolver mono-addins
+ 3117  pacman
+ 3118  cd `
+ 3119  cd ~
+ 3120  ls -alh
+ 3121  cd .config/nvim
+ 3122  ls
+ 3123  cd lua
+ 3124  ls
+ 3125  ls plugins
+ 3126  ls configs
+ 3127  lsb_release -a
+ 3128  sudo apt install ca-certificates gnupg\nsudo gpg --homedir /tmp --no-default-keyring --keyring /usr/share/keyrings/mono-official-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF\necho "deb [signed-by=/usr/share/keyrings/mono-official-archive-keyring.gpg] https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list\nsudo apt update
+ 3129  sudo apt install code dotnet-sdk mono mono-tools mono-msbuild mono-msbuild-sdkresolver mono-addins
+ 3130  sudo apt install mono-devel
+ 3131  pwd
+ 3132  cd ~
+ 3133  ls
+ 3134  cp /mnt/c/Users/amros/Downloads/omnisharp-linux-x86.tar.gz ./Downloads
+ 3135  cd Downloads
+ 3136  ls
+ 3137  tar -zzvf omnisharp-linux-x86.tar.gz
+ 3138  tar -xvf omnisharp-linux-x86.tar.gz
+ 3139  ls
+ 3140  ls omnisharp
+ 3141  ls run
+ 3142  cd ~
+ 3143  cd .config/nvim
+ 3144  ls
+ 3145  nvim
+ 3146  cd ~/Downloads/omnisharp
+ 3147  pwd
+ 3148  ls | grep omni
+ 3149  ls | grep Omni
+ 3150  cd btx/btx-game
+ 3151  ls
+ 3152  ls | grep sln
+ 3153  nvim
+ 3154  /usr/bin/mono
+ 3155  pwd
+ 3156  nvim
+ 3157  mono
+ 3158  which mono
+ 3159  mono --version
+ 3160  mono --assembly-loader-strict
+ 3161  mono --assembly-loader=strict
+ 3162  nvim
+ 3163  ls
+ 3164  cd ~
+ 3165  lsb_release -a
+ 3166  sudo apt-get install dotnet-sdk
+ 3167  sudo add-apt-repository ppa:dotnet/backports
+ 3168  sudo apt-get update && \\n  sudo apt-get install -y dotnet-sdk-9.0
+ 3169  sudo apt-get install mono-tools
+ 3170  nvim
+ 3171  cd btx/btx-game
+ 3172  nvim
+ 3173  sudo apt update\nsudo apt install gnupg ca-certificates\nsudo apt-key adv --homedir /tmp --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF\necho "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list\nsudo apt update\nsudo apt install mono-complete
+ 3174  mono --version
+ 3175  nvim
+ 3176  dotnet-sdk --version
+ 3177  sudo apt-get update && \\n  sudo apt-get install -y dotnet-sdk-6.0
+ 3178  jja
+ 3179  a\n
+ 3180  cd raylib-playground/avalon
+ 3181  nvim
+ 3182  cd btx/btx-game
+ 3183  git status
+ 3184  nvim
+ 3185  vi ProjectSettings/ProjectSettings.asset
+ 3186  git status
+ 3187  exit
+ 3188  cd raylib-playground/avalon
+ 3189  nvim
+ 3190  cd raylib-playground/avalon
+ 3191  ls
+ 3192  nvim
+ 3193  ls
+ 3194  cd btx
+ 3195  ls
+ 3196  cd ..
+ 3197  rm -rf btx
+ 3198  cd raylib-playground
+ 3199  nvim
+ 3200  cd avalon
+ 3201  nvim
+ 3202  cd ~/.config/nvim
+ 3203  nvim
+ 3204  cd raylib-playground/avalon
+ 3205  git status
+ 3206  git add game/
+ 3207  git status
+ 3208  git commit -a
+ 3209  git push origin ui-changes
+ 3210  history
+ 3211  history | grep box

@@ -1,7 +1,10 @@
 #include "upgrade_manager.hpp"
 #include "constants.h"
 #include "globals.h"
+#include "magic_types.hpp"
+#include "summon_card.hpp"
 #include "utils.h"
+#include "warrior_types.h"
 
 UpgradeManager::UpgradeManager() {
 
@@ -120,30 +123,85 @@ std::vector<std::shared_ptr<UpgradeAction>> UpgradeManager::getUpgrades() {
     if (activated_upgrades.size() >= 3) {
         upgrades.push_back(getUpgrade(activated_upgrades[0]));
         upgrades.push_back(getUpgrade(activated_upgrades[1]));
-        int final_ind = getRandomIntInRange(2, activated_upgrades.size() - 1);
-        upgrades.push_back(getUpgrade(activated_upgrades[final_ind]));
+        float cc = randomFloatInRange(0, 1);
+        if (cc < .2) {
+            upgrades.push_back(getRandomSummonCardUpgrade(1));
+        } else {
+
+            int final_ind =
+                getRandomIntInRange(2, activated_upgrades.size() - 1);
+            upgrades.push_back(getUpgrade(activated_upgrades[final_ind]));
+        }
     }
     if (activated_upgrades.size() == 2) {
         upgrades.push_back(getUpgrade(activated_upgrades[0]));
         upgrades.push_back(getUpgrade(activated_upgrades[1]));
         update();
-        upgrades.push_back(getUpgrade(activated_upgrades[0]));
+        upgrades.push_back(getRandomSummonCardUpgrade(1));
     }
     if (activated_upgrades.size() == 1) {
         upgrades.push_back(getUpgrade(activated_upgrades[0]));
         update();
         if (activated_upgrades.size() == 0) {
+            upgrades.push_back(getRandomSummonCardUpgrade(1));
+            upgrades.push_back(getRandomSummonCardUpgrade(2));
             return upgrades;
         }
         upgrades.push_back(getUpgrade(activated_upgrades[0]));
         update();
         if (activated_upgrades.size() == 0) {
+            upgrades.push_back(getRandomSummonCardUpgrade(2));
             return upgrades;
         }
         upgrades.push_back(getUpgrade(activated_upgrades[0]));
     }
 
     return upgrades;
+}
+
+std::shared_ptr<UpgradeAction>
+UpgradeManager::getRandomSummonCardUpgrade(int cards) {
+
+    float cc1 = randomFloatInRange(0, 1);
+    std::string card_type = INFANTRY_SUMMON_CARD_U;
+    if (cc1 < .33) {
+        card_type = INFANTRY_SUMMON_CARD_U;
+    } else if (cc1 < .66) {
+        card_type = ARCHERY_SUMMON_CARD_U;
+    } else {
+        card_type = MAGIC_SUMMON_CARD_U;
+    }
+    return getSummonCardUpgrade(cards, card_type);
+}
+
+std::shared_ptr<UpgradeAction>
+UpgradeManager::getSummonCardUpgrade(int cards, std::string card_type) {
+    std::shared_ptr<Upgrade> upg =
+        std::make_shared<Upgrade>(true, cards, card_type);
+    std::shared_ptr<UpgradeAction> uact = std::make_shared<UpgradeAction>();
+    uact->upgrade = upg;
+    uact->action = [this, upg]() {
+        int cards_to_add = upg->rate_of_change;
+        for (int i = 0; i < cards_to_add; i++) {
+
+            if (upg->multiplier_id == INFANTRY_SUMMON_CARD_U) {
+                getWorldState()->summon_manager->addSummonCard(
+                    std::make_shared<SummonCard>(1, get_random_infantry_type(),
+                                                 SummonCardType::INFANTRY));
+            }
+            if (upg->multiplier_id == ARCHERY_SUMMON_CARD_U) {
+                getWorldState()->summon_manager->addSummonCard(
+                    std::make_shared<SummonCard>(1, get_random_ranged_type(),
+                                                 SummonCardType::ARCHERY));
+            }
+            if (upg->multiplier_id == MAGIC_SUMMON_CARD_U) {
+                getWorldState()->summon_manager->addSummonCard(
+                    std::make_shared<SummonCard>(1,
+                                                 MagicType::LIGHTNING_SPELL));
+            }
+        }
+    };
+    return uact;
 }
 
 std::shared_ptr<UpgradeAction>

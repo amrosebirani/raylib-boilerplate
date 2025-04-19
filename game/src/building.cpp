@@ -2,6 +2,7 @@
 #include "box2d/b2_body.h"
 #include "building_data.hpp"
 #include "constants.h"
+#include "firebase.hpp"
 #include "globals.h"
 #include "property_type.hpp"
 #include "raylib.h"
@@ -224,6 +225,8 @@ void Building::setColliders() {
         data, upgradeCenter.x, upgradeCenter.y, points, b2_staticBody,
         CATEGORY_BUILDING_SENSOR, CATEGORY_FORMATION,
         getContainer()->getWorld());
+    inContact = false;
+    inContactCount = 0;
     collider = ColliderFactory::newPolygonCollider(
         cdata, x, y, cpoints, b2_staticBody, CATEGORY_BUILDING,
         CATEGORY_ENEMY | CATEGORY_ENEMY_PROJECTILE | CATEGORY_FORMATION |
@@ -415,6 +418,9 @@ void Building::awakenColliders(float dt) {
 }
 
 void Building::doUpgrade() {
+    sendFirebaseEvent("BuildingUpgrade",
+                      {{"building_type", buildingData->building_text},
+                       {"level", TextFormat("%d", level + 1)}});
     getWorldState()->removeCoins(coinsToUpgrade);
     inContactTimer = 0;
     fire_size = 0;
@@ -457,6 +463,8 @@ void Building::doUpgrade() {
 void Building::downgrade() {
 
     level = 0;
+    sendFirebaseEvent("BuildingDestroyed",
+                      {{"building_type", buildingData->building_text}});
     onUpgrade(level);
     setBasics();
     // initAuraPoints();
@@ -466,16 +474,24 @@ void Building::downgrade() {
 }
 
 void Building::startContact() {
-    inContact = true;
-    timer->tween(1, this->params, {{"as", 1}}, "linear", []() {}, "aura_tween",
-                 {});
+    inContactCount++;
+    if (!inContact) {
+
+        inContact = true;
+        timer->tween(1, this->params, {{"as", 1}}, "linear", []() {},
+                     "aura_tween", {});
+    }
 }
 
 void Building::endContact() {
-    inContact = false;
-    timer->cancel("aura_tween");
-    (*params)["as"] = 0;
-    upgradeDialogShown = false;
+    inContactCount -= 1;
+    if (inContactCount <= 0) {
+        inContactCount = 0;
+        inContact = false;
+        timer->cancel("aura_tween");
+        (*params)["as"] = 0;
+        upgradeDialogShown = false;
+    }
 }
 
 void Building::startSummonContact() {

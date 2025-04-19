@@ -72,6 +72,7 @@ HouseBlock::~HouseBlock() {
 }
 
 void HouseBlock::onUpgrade(int level) {
+    getWorldState()->addScore(400);
     tributeRate = getHouseTributeRate(level) *
                   getContainer()->getUpgradeContent()->get_stat(TRIBUTE_RATE_M);
 }

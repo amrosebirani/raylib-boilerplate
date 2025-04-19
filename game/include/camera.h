@@ -56,7 +56,7 @@ class CameraEnhanced {
         void attach(float vw, float vh);
         void detach();
         void drawWorldLine(float x1, float y1, float x2, float y2, Color color);
-        bool adjustScreenScale = false;
+        bool adjustScreenScale = true;
         float x, y; // camera target or camera position
 
     private:

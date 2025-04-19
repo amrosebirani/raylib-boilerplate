@@ -6,3 +6,4 @@ build_web_release/
 .DS_Store
 .cache/
 emsdk/
+android/

@@ -9,6 +9,7 @@
 #include "utils.h"
 #include "warrior_factory.h"
 #include "raymath.h"
+#include "platform.hpp"
 
 Formation::Formation(int level, float x, float y, float starter_radius,
                      float orbit_margin)

@@ -29,9 +29,9 @@ if (BUILD_WEB)
     add_definitions(-DPLATFORM_WEB)
 
     # Web-specific compiler and linker flags
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_GLFW=3 -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s ASSERTIONS=1 -s TOTAL_MEMORY=16777216 -s GL_ENABLE_GET_PROC_ADDRESS=1")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_GLFW=3 -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s ASSERTIONS=1 -s TOTAL_MEMORY=16777216 -s GL_ENABLE_GET_PROC_ADDRESS=1")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s USE_GLFW=3 -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s ASSERTIONS=1 -s TOTAL_MEMORY=16777216 -s GL_ENABLE_GET_PROC_ADDRESS=1 --shell-file ${CMAKE_SOURCE_DIR}/raylib-master/src/minshell.html --preload-file ${CMAKE_SOURCE_DIR}/resources@/resources")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_GLFW=3 -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s ASSERTIONS=1 -s TOTAL_MEMORY=16777216 -s GL_ENABLE_GET_PROC_ADDRESS=1 -s STACK_SIZE=131072")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_GLFW=3 -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s ASSERTIONS=1 -s TOTAL_MEMORY=16777216 -s GL_ENABLE_GET_PROC_ADDRESS=1 -s STACK_SIZE=131072")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s USE_GLFW=3 -s ALLOW_MEMORY_GROWTH=1 -s WASM=1 -s ASSERTIONS=1 -s TOTAL_MEMORY=33554432 -s GL_ENABLE_GET_PROC_ADDRESS=1 -s STACK_SIZE=131072 --shell-file ${CMAKE_SOURCE_DIR}/raylib-master/src/minshell.html --preload-file ${CMAKE_SOURCE_DIR}/resources@/resources")
 
     # Set output directory
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/web)
@@ -67,9 +67,21 @@ else()
     set(CMAKE_C_FLAGS_DEBUG "-DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations")
     set(CMAKE_CXX_FLAGS_DEBUG "-DDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -g -Wno-deprecated-declarations")
     set(CMAKE_C_FLAGS_RELEASE "-DNDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -O2 -Wno-deprecated-declarations")
-    set(CMAKE_CXX_FLAGS_RELEASE "-DNDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -m64 -O2 -Wno-deprecated-declarations")
+    set(CMAKE_CXX_FLAGS_RELEASE "-DNDEBUG -DPLATFORM_DESKTOP -DGRAPHICS_API_OPENGL_33 -std=c++17 -m64 -O2 -Wno-deprecated-declarations")
+    # if win32 and release build, link statically
+    if (WIN32 AND CMAKE_BUILD_TYPE STREQUAL "Release")
+        set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
+    endif()
+    # find_package(CURL REQUIRED)
+
 endif()
 
+if (WIN32 AND NOT BUILD_WEB AND NOT BUILD_ANDROID)
+
+    message(STATUS "setting curl stuff")
+    include_directories(curl_win/include)
+    link_directories(curl_win/lib)
+endif()
 add_subdirectory(raylib-master)
 add_subdirectory(box2d)
 
@@ -114,7 +126,45 @@ if (ANDROID)
     target_link_libraries(game log android raylib box2d)
 endif()
 
-# Set output directories
+if (WIN32 AND NOT BUILD_WEB AND NOT BUILD_ANDROID)
+    add_definitions(-DCURL_STATICLIB)
+    target_link_libraries(game 
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libcurl.a"
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libssl.a"
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libssh2.a"
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libcrypto.a"
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libpsl.a"
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libngtcp2_crypto_quictls.a"
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libz.a"
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libzstd.a"
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libbrotlidec.a"
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libbrotlicommon.a"
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libnghttp2.a"
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libnghttp3.a"
+    "${CMAKE_SOURCE_DIR}/curl_win/lib/libngtcp2.a"
+    ws2_32
+    secur32
+    crypt32
+    wldap32
+    bcrypt
+    )
+endif()
+if (UNIX AND NOT APPLE AND NOT BUILD_WEB AND NOT BUILD_ANDROID)  # Check if building on Linux
+    message(STATUS "Setting up libcurl and dependencies for Linux")
+
+    # Link libcurl and required libraries
+    target_link_libraries(game
+        curl                # Links the system-installed libcurl
+        ssl                 # Links OpenSSL's libssl
+        crypto              # Links OpenSSL's libcrypto
+        z                   # Links zlib
+        brotlidec           # Links Brotli decompression
+        brotlienc           # Links Brotli compression (optional)
+        brotlicommon        # Links Brotli common library
+        nghttp2             # Links HTTP/2 library
+    )
+endif()
+
 set_target_properties(game PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Debug
     RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Release

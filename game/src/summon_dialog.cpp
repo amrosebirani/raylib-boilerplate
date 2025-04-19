@@ -1,5 +1,6 @@
 #include "summon_dialog.hpp"
 #include "globals.h"
+#include "property_type.hpp"
 #include "raylib.h"
 #include "summon_slot.hpp"
 
@@ -18,8 +19,8 @@ SummonDialog::SummonDialog(
         panel = std::make_shared<Panel>(sw / 2, sh / 2, width, height);
         isPortrait = false;
     } else {
-        float width = sw * 4.0f / 5;
-        float height = 5 * sh / 6;
+        float width = sw;
+        float height = sh;
         panel = std::make_shared<Panel>(sw / 2, sh / 2, width, height);
         isPortrait = true;
     }
@@ -64,14 +65,15 @@ void SummonDialog::drawLandscape() {
     float detail_y = y;
     float m_end = panel->left + panel->width * .33f;
 
-    DrawText("Training Grounds", panel->left + panel->width * .11f, y, 20,
-             WHITE);
+    std::string tt =
+        type == PropertyType::WIZARDRY ? "Spell Sanctums" : "Training Arenas";
+    DrawText(tt.c_str(), panel->left + panel->width * .05f, y, 40, WHITE);
 
-    y += 30;
+    y += 50;
 
     if (availableSlots.size() > 0) {
-        DrawText("Available", panel->left + panel->width * .11f, y, 15, WHITE);
-        y += 30;
+        DrawText("Available", panel->left + panel->width * .05f, y, 25, WHITE);
+        y += 50;
 
         for (auto &slot : availableSlots) {
             slot->drawSlotAvailableMaster(panel, y);
@@ -82,8 +84,8 @@ void SummonDialog::drawLandscape() {
         }
     }
     if (producingSlots.size() > 0) {
-        DrawText("In Use", panel->left + panel->width * .11f, y, 15, WHITE);
-        y += 30;
+        DrawText("In Use", panel->left + panel->width * .05f, y, 25, WHITE);
+        y += 50;
         for (auto &slot : producingSlots) {
             slot->drawSlotProducingMaster(panel, y);
             y += 75;
@@ -178,7 +180,7 @@ bool SummonDialog::update(float dt) {
             buttonPressed = true;
         }
         if (CheckCollisionPointRec(mouse, {panel->left + panel->width - 100,
-                                           panel->top + 20, 80, 80})) {
+                                           panel->top, 200, 200})) {
             buttonPressed = true;
         }
     }
@@ -193,7 +195,7 @@ bool SummonDialog::update(float dt) {
             getWorldState()->setPopupActive(false);
         }
         if (CheckCollisionPointRec(mouse, {panel->left + panel->width - 100,
-                                           panel->top + 20, 80, 80}) &&
+                                           panel->top, 200, 200}) &&
             buttonPressed) {
             finished = true;
             getWorldState()->setPopupActive(false);

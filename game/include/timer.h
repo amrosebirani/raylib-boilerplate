@@ -42,6 +42,7 @@ class Timer {
         void cancel(const std::string &tag);
         void update(float dt);
         void clearAll();
+        static std::string generateUUID();
 
     private:
         struct TimerTask {
@@ -65,7 +66,6 @@ class Timer {
 
         std::unordered_map<std::string, std::shared_ptr<TimerTask>> timers;
 
-        std::string generateUUID();
         float tweenValue(std::string method, float s,
                          std::unordered_map<std::string, float> args);
 

@@ -1,7 +1,7 @@
 #include "game.h"
-#if defined(PLATFORM_DESKTOP)
-#include <execinfo.h>
-#endif
+// #if defined(PLATFORM_DESKTOP)
+// #include <execinfo.h>
+// #endif
 
 int main() {
 

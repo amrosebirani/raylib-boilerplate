@@ -1,4 +1,5 @@
 #include "camera.h"
+#include "platform.hpp"
 #include "raylib.h"
 #include "game_object.h"
 #include <cmath>
@@ -36,7 +37,7 @@ void CameraEnhanced::editScale(float change) {
 }
 
 void CameraEnhanced::attach(float vw, float vh) {
-    if (adjustScreenScale) {
+    if (adjustScreenScale && isPlatformWeb()) {
         w = GetScreenWidth();
         h = GetScreenHeight();
         float scaleX = (float)GetScreenWidth() / vw;

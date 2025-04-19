@@ -10,7 +10,13 @@ class HordeManager {
         void spawnHorde();
         void decreaseCount();
         bool isWaveActive();
+        int getCurrentWave() {
+            return currentWave;
+        }
         std::string getWaveText() {
+            if (totalWaves == -1) {
+                return "Wave: " + std::to_string(currentWave);
+            }
             return "Wave: " + std::to_string(currentWave) + "/" +
                    std::to_string(totalWaves);
         }

@@ -396,3 +396,7 @@ const std::string RANGED_UNIT_RANGE_M = "ranged_unit_range";           // done
 const std::string HERO_DODGE_CHANCE_M = "hero_dodge_chance";           // done
 const std::string HERO_UNIT_DODGE_CHANCE_M = "hero_unit_dodge_chance"; // done
 const std::string INFANTRY_DODGE_CHANCE_M = "infantry_dodge_chance";   // done
+
+const std::string INFANTRY_SUMMON_CARD_U = "infantry_summon_card_u";
+const std::string ARCHERY_SUMMON_CARD_U = "archery_summon_card_u";
+const std::string MAGIC_SUMMON_CARD_U = "magic_summon_card_u";

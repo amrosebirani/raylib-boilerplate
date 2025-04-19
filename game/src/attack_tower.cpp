@@ -157,6 +157,7 @@ void AttackTower::addEnemy(std::shared_ptr<GameObject> enemy) {
 }
 
 void AttackTower::onUpgrade(int level) {
+    getWorldState()->addScore(500);
     if (level == 0) {
         enemies.clear();
     }

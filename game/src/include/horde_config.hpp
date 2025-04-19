@@ -34,5 +34,7 @@ struct HordeConfig {
 void initHordeConfigs();
 HordeConfig *getHordeConfig(HordeType type);
 Vector2 getHordeSizeBasedOnLevel(int level);
+HordeType getHordeTypeForLevel(int level);
+int getHordeCountForLevel(int level);
 std::vector<HordeType> getHordeTypesForLevel(int level);
 std::vector<HordeConfig *> getHordeConfigsForLevel(int level);

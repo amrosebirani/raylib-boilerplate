@@ -1,6 +1,8 @@
 #pragma once
 
 #include "building.hpp"
+#include "magic_types.hpp"
+#include "summon_slot.hpp"
 
 class Wizardry : public Building {
     public:
@@ -15,4 +17,10 @@ class Wizardry : public Building {
         void die() override;
         void init() override;
         void cleanupData() override;
+        bool hasSummonCards();
+        std::shared_ptr<SummonCard> getCard();
+
+    private:
+        std::vector<MagicType> summonTypes;
+        std::shared_ptr<std::vector<std::shared_ptr<SummonSlot>>> summonSlots;
 };

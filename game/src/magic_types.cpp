@@ -34,13 +34,13 @@ int get_max_enemy_count(MagicType type, int level) {
 int get_spell_cost(MagicType type, int level) {
     switch (type) {
     case MagicType::LIGHTNING_SPELL:
-        return 20;
+        return 10;
     case MagicType::FIRE_SPELL:
-        return 25;
+        return 15;
     case MagicType::ICE_SPELL:
-        return 25;
+        return 15;
     case MagicType::METEOR_SPELL:
-        return 30;
+        return 20;
     }
     return 0;
 }
@@ -69,6 +69,8 @@ std::string getMagicText(MagicType type) {
         return "Ice Spell";
     case MagicType::METEOR_SPELL:
         return "Meteor Spell";
+    default:
+        return "Unknown";
     };
 }
 

@@ -1,10 +1,10 @@
 #include "loading.h"
 #include "constants.h"
+#include "firebase.hpp"
 #include "game.h"
 #include "globals.h"
 #include "raylib.h"
 #include "sprite_holder.hpp"
-#include "textbox.hpp"
 #include "utils.h"
 
 void initBuildingSprites() {
@@ -416,9 +416,12 @@ void initSprites() {
 }
 
 Loading::Loading() {
+    sendFirebaseEvent("onLoadingScreen", {});
     loadingText = "Loading Resources";
     loadingL = LoadTexture(getAssetPath("textures/backgrounds/loading_l.png"));
     loadingP = LoadTexture(getAssetPath("textures/backgrounds/loading_p.png"));
+    bsh = GetScreenHeight() * 5.0 / 6;
+    fs = GetScreenHeight() / 30.0f;
 }
 
 bool Loading::update(float dt) {
@@ -485,6 +488,7 @@ bool Loading::update(float dt) {
         //     "Hello", ARCHER_BUST_SPRITE_ID, false, 20, 2));
         getMainMenu()->reset();
         getStateStack()->push(getMainMenu());
+        sendFirebaseEvent("onMainMenu", {});
         finished = true;
     }
     return false;
@@ -503,12 +507,13 @@ void Loading::draw() {
         drawFullScreenTextureWithAspect(loadingP);
     }
     DrawRectangleGradientV(0, sh * .67, sw, sh * .4, {0, 0, 0, 20}, BLACK);
+    // DrawRectangle(0, sh * .67, sw, sh * .4, BLACK);
     std::string lt = "Loading!";
-    float width = MeasureText(lt.c_str(), 20);
-    DrawText(lt.c_str(), sw * 1.0f / 2 - width / 2, sh * 5.0f / 6, 20, WHITE);
-    float mm = MeasureText(loadingText.c_str(), 20);
-    DrawText(loadingText.c_str(), sw * 1.0f / 2 - mm / 2, sh * 5.0f / 6 + 60,
-             20, WHITE);
+    float width = MeasureText(lt.c_str(), fs);
+    DrawText(lt.c_str(), sw * 1.0f / 2 - width / 2, bsh, fs, WHITE);
+    float mm = MeasureText(loadingText.c_str(), fs);
+    DrawText(loadingText.c_str(), sw * 1.0f / 2 - mm / 2, bsh + 3 * fs, fs,
+             WHITE);
 }
 
 bool Loading::isFinished() {

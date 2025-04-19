@@ -14,6 +14,7 @@ class Archer : public GameObject {
                bool operational = false);
         Archer(float rx, float ry, WarriorType type);
         ~Archer();
+        Archer(std::ifstream &in);
 
         void draw() override;
 
@@ -27,6 +28,12 @@ class Archer : public GameObject {
         void die() override;
         void init() override;
         void cleanupData() override;
+        void Save(std::ofstream &out) const override;
+        void Load(std::ifstream &in) override;
+        GameObjectType getObjectType() override {
+            return GameObjectType::ARCHER;
+        };
+
         void attack();
         void tryAttack(std::shared_ptr<GameObject> enemy);
         void takeAttack(float damage);

@@ -1,5 +1,6 @@
 #include "archery_summon.hpp"
 #include "archer.hpp"
+#include "firebase.hpp"
 #include "globals.h"
 #include "raymath.h"
 #include "utils.h"
@@ -8,6 +9,9 @@
 ArcherySummon::ArcherySummon(Vector2 position,
                              std::shared_ptr<SummonCard> card) {
 
+    sendFirebaseEvent("ArcherySummon",
+                      {{"level", TextFormat("%d", card->level)},
+                       {"warrior_type", getWarriorText(card->type)}});
     getAudioManager()->playSound("summon_infantry");
     Vector2 cc = getContainer()->region->getCenterCoordinates();
     Vector2 dirDepth = Vector2Subtract(position, cc);

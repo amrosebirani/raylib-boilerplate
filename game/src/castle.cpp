@@ -218,6 +218,7 @@ void Castle::addEnemy(std::shared_ptr<GameObject> enemy) {
 }
 
 void Castle::onUpgrade(int level) {
+    getWorldState()->addScore(1000);
     if (level > 0) {
         if (getContainer()->hmm->isWaveActive()) {
             getAudioManager()->switchBGM("under_attack_in_control");
