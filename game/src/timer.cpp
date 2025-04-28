@@ -147,6 +147,17 @@ void Timer::cancel(const std::string &tag) {
     timers.erase(tag);
 }
 
+float Timer::getAfterTaskRemainingTime(const std::string &tag) const {
+    auto it = timers.find(tag);
+    if (it != timers.end()) {
+        std::shared_ptr<TimerTask> task = it->second;
+        if (task->type == TimerTaskType::AFTER) {
+            return task->delay - task->time;
+        }
+    }
+    return -1;
+}
+
 void Timer::update(float dt) {
     for (auto it = timers.begin(); it != timers.end();) {
         auto &pair = *it;

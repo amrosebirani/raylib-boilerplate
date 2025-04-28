@@ -13,17 +13,47 @@
 #include "warrior_types.h"
 #include "wizardry_summon.hpp"
 #include <algorithm>
+#include <fstream>
 #include <iostream>
 
 using std::string;
 
-SummonManager::SummonManager() {
+void SummonManager::setBasics() {
+
     float sh = GetScreenHeight();
     summonCircleY = sh - sh / 5;
     summonBoxY = sh;
     tweenVals = std::make_shared<std::unordered_map<string, float>>();
     (*tweenVals)["scy"] = 0;
     (*tweenVals)["sby"] = 0;
+}
+
+void SummonManager::save(std::ofstream &out) const {
+    out.write(reinterpret_cast<const char *>(&enabled), sizeof(enabled));
+    int summonCardsSize = summonCards.size();
+    out.write(reinterpret_cast<const char *>(&summonCardsSize),
+              sizeof(summonCardsSize));
+    for (auto &card : summonCards) {
+        card->save(out);
+    }
+}
+
+SummonManager::SummonManager(std::ifstream &in) {
+    setBasics();
+    in.read(reinterpret_cast<char *>(&enabled), sizeof(enabled));
+    int summonCardsSize;
+    in.read(reinterpret_cast<char *>(&summonCardsSize),
+            sizeof(summonCardsSize));
+    for (int i = 0; i < summonCardsSize; i++) {
+        std::shared_ptr<SummonCard> card = std::make_shared<SummonCard>(in);
+        summonCards.push_back(card);
+    }
+    setEndX();
+    setCircleRects();
+}
+
+SummonManager::SummonManager() {
+    setBasics();
     summonCards.push_back(std::make_shared<SummonCard>(
         1, WarriorType::WARRIOR_TYPE_SPEARMAN, SummonCardType::INFANTRY));
     summonCards.push_back(std::make_shared<SummonCard>(

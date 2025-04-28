@@ -11,6 +11,12 @@ class ScoreFlash : public GameObject {
         void die() override;
         void init() override;
         void cleanupData() override;
+        GameObjectType getObjectType() override {
+            return GameObjectType::NON_TYPE;
+        };
+        void Save(std::ofstream &out) const override {
+            // No need to save score flash
+        };
 
     private:
         int score;

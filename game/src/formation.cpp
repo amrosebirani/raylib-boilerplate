@@ -8,6 +8,7 @@
 #include "warrior_types.h"
 #include "utils.h"
 #include "warrior_factory.h"
+#include "warrior_para.hpp"
 #include "raymath.h"
 #include "platform.hpp"
 
@@ -15,6 +16,13 @@ Formation::Formation(int level, float x, float y, float starter_radius,
                      float orbit_margin)
     : level(level), x(x), y(y), starter_radius(starter_radius),
       orbit_margin(orbit_margin) {
+    // create the collider here
+    // collider will need to be updated every time a warrior is dead or a new
+    // warrior is added
+    setColliders();
+}
+
+void Formation::setColliders() {
     LevelConfig *config = get_level_config(level);
     collider_data = new ColliderUserData();
     collider_data->type = ColliderUserData::Type::Formation;
@@ -24,9 +32,6 @@ Formation::Formation(int level, float x, float y, float starter_radius,
         getContainer()->getWorld());
     collider->SetFixedRotation(true);
     collider->SetBullet(true);
-    // create the collider here
-    // collider will need to be updated every time a warrior is dead or a new
-    // warrior is added
 }
 
 void Formation::initOrbits() {
@@ -358,10 +363,43 @@ void Formation::FormationOrbit::update(float dt, Vector2 origin, bool isIdle,
     }
 }
 
+void Formation::FormationOrbit::save(std::ofstream &out) const {
+    out.write(reinterpret_cast<const char *>(&starter_radius),
+              sizeof(starter_radius));
+    out.write(reinterpret_cast<const char *>(&starter_angle),
+              sizeof(starter_angle));
+    out.write(reinterpret_cast<const char *>(&type), sizeof(type));
+    out.write(reinterpret_cast<const char *>(&totalSlots), sizeof(totalSlots));
+    for (const WarriorSlot &slot : slots) {
+        slot.save(out);
+    }
+}
+
+Formation::FormationOrbit::FormationOrbit(std::ifstream &in) {
+    in.read(reinterpret_cast<char *>(&starter_radius), sizeof(starter_radius));
+    in.read(reinterpret_cast<char *>(&starter_angle), sizeof(starter_angle));
+    in.read(reinterpret_cast<char *>(&type), sizeof(type));
+    in.read(reinterpret_cast<char *>(&totalSlots), sizeof(totalSlots));
+    for (int i = 0; i < totalSlots; i++) {
+        WarriorSlot slot(in);
+        slots.push_back(slot);
+    }
+}
+
 void Formation::FormationOrbit::draw() {
     for (WarriorSlot &slot : slots) {
         slot.draw();
     }
+}
+
+void Formation::setLoadRespawning() {
+
+    getViewCamera()->follow(dummyWarrior);
+    clearOtherUnits();
+    getWorldState()->setRespawning(true);
+    getWorldState()->setFormationRespawnTime(respawnCT);
+    getWorldState()->setStartX(respawnCT);
+    getWorldState()->setSummonEnabled(false);
 }
 
 void Formation::setRespawning() {
@@ -375,6 +413,35 @@ void Formation::setRespawning() {
     getWorldState()->setFormationRespawnTime(respawnCT);
     getWorldState()->setStartX(respawnCT);
     getWorldState()->setSummonEnabled(false);
+}
+
+Formation::FormationOrbit::WarriorSlot::WarriorSlot(std::ifstream &in) {
+    in.read(reinterpret_cast<char *>(&x), sizeof(x));
+    in.read(reinterpret_cast<char *>(&y), sizeof(y));
+    in.read(reinterpret_cast<char *>(&respawn), sizeof(respawn));
+    in.read(reinterpret_cast<char *>(&respawnTime), sizeof(respawnTime));
+    in.read(reinterpret_cast<char *>(&respawnTracker), sizeof(respawnTracker));
+    bool hasWarrior = false;
+    in.read(reinterpret_cast<char *>(&hasWarrior), sizeof(hasWarrior));
+    if (hasWarrior) {
+        warrior = std::make_shared<WarriorPara>(in);
+        warrior->init();
+    }
+}
+
+void Formation::FormationOrbit::WarriorSlot::save(std::ofstream &out) const {
+    out.write(reinterpret_cast<const char *>(&x), sizeof(x));
+    out.write(reinterpret_cast<const char *>(&y), sizeof(y));
+    out.write(reinterpret_cast<const char *>(&respawn), sizeof(respawn));
+    out.write(reinterpret_cast<const char *>(&respawnTime),
+              sizeof(respawnTime));
+    out.write(reinterpret_cast<const char *>(&respawnTracker),
+              sizeof(respawnTracker));
+    bool hasWarrior = warrior != nullptr;
+    out.write(reinterpret_cast<const char *>(&hasWarrior), sizeof(hasWarrior));
+    if (hasWarrior) {
+        warrior->save(out);
+    }
 }
 
 void Formation::FormationOrbit::WarriorSlot::eliminate() {
@@ -432,4 +499,75 @@ std::shared_ptr<Warrior> Formation::getKeyWarrior() {
 
 bool Formation::isKeyWarriorAlive() {
     return keyWarrior->isAlive();
+}
+
+void Formation::save(std::ofstream &out) const {
+    out.write(reinterpret_cast<const char *>(&level), sizeof(level));
+    out.write(reinterpret_cast<const char *>(&x), sizeof(x));
+    out.write(reinterpret_cast<const char *>(&y), sizeof(y));
+    out.write(reinterpret_cast<const char *>(&starter_radius),
+              sizeof(starter_radius));
+    out.write(reinterpret_cast<const char *>(&orbit_margin),
+              sizeof(orbit_margin));
+    out.write(reinterpret_cast<const char *>(&mvspd), sizeof(mvspd));
+    // do for respawning, respawnCT, respawnTracker
+    out.write(reinterpret_cast<const char *>(&respawning), sizeof(respawning));
+    out.write(reinterpret_cast<const char *>(&respawnCT), sizeof(respawnCT));
+    out.write(reinterpret_cast<const char *>(&respawnTracker),
+              sizeof(respawnTracker));
+
+    // Save orbits
+    size_t orbitsSize = orbits.size();
+    out.write(reinterpret_cast<const char *>(&orbitsSize), sizeof(orbitsSize));
+    for (const auto &orbit : orbits) {
+        // Save orbit data
+        orbit->save(out);
+    }
+
+    // Save key warrior
+    bool hasKeyWarrior = keyWarrior != nullptr;
+    out.write(reinterpret_cast<const char *>(&hasKeyWarrior),
+              sizeof(hasKeyWarrior));
+    if (hasKeyWarrior) {
+        keyWarrior->save(out);
+    }
+}
+
+Formation::Formation(std::ifstream &in) {
+    in.read(reinterpret_cast<char *>(&level), sizeof(level));
+    in.read(reinterpret_cast<char *>(&x), sizeof(x));
+    in.read(reinterpret_cast<char *>(&y), sizeof(y));
+    in.read(reinterpret_cast<char *>(&starter_radius), sizeof(starter_radius));
+    in.read(reinterpret_cast<char *>(&orbit_margin), sizeof(orbit_margin));
+    in.read(reinterpret_cast<char *>(&mvspd), sizeof(mvspd));
+    in.read(reinterpret_cast<char *>(&respawning), sizeof(respawning));
+    in.read(reinterpret_cast<char *>(&respawnCT), sizeof(respawnCT));
+    in.read(reinterpret_cast<char *>(&respawnTracker), sizeof(respawnTracker));
+
+    if (respawning) {
+        setLoadRespawning();
+    }
+
+    // Initialize collider
+    setColliders();
+
+    // Load orbits
+    size_t orbitsSize;
+    in.read(reinterpret_cast<char *>(&orbitsSize), sizeof(orbitsSize));
+    for (size_t i = 0; i < orbitsSize; i++) {
+        FormationOrbit *orbit = new FormationOrbit(in);
+        orbits.push_back(orbit);
+    }
+
+    // Load key warrior
+    bool hasKeyWarrior;
+    in.read(reinterpret_cast<char *>(&hasKeyWarrior), sizeof(hasKeyWarrior));
+    if (hasKeyWarrior) {
+        keyWarrior = std::make_shared<WarriorPara>(in);
+        collider_data->obj = keyWarrior->get_shared_ptr();
+    }
+    LevelConfig *config = get_level_config(level);
+    dummyWarrior = std::make_shared<WarriorDummy>(
+        get_warrior_size(config->key_warrior), 0, 0, config->key_warrior);
+    dummyWarrior->init();
 }

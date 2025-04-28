@@ -67,7 +67,4 @@ class UpgradeManager {
         std::vector<std::shared_ptr<Upgrade>> wizardry_u;
 
         std::vector<std::vector<std::shared_ptr<Upgrade>>> activated_upgrades;
-
-        bool barrack_built = false;
-        bool archery_built = false;
 };

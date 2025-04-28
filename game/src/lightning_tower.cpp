@@ -6,11 +6,15 @@
 #include "collider_factory.hpp"
 #include "utils.h"
 #include <memory>
+#include <fstream>
 
 LightningTower::LightningTower(float x, float y, int level)
     : Building(x, y, PropertyType::LIGHTNING_TOWER, level) {
     maxHealth = getMaxHealthByLevel(level, PropertyType::LIGHTNING_TOWER);
     health = maxHealth;
+}
+
+LightningTower::LightningTower(std::ifstream &in) : Building(in) {
 }
 
 void LightningTower::init() {
@@ -120,4 +124,8 @@ void LightningTower::hitLightningBolt(std::shared_ptr<Enemy> enemy) {
 }
 
 void LightningTower::onUpgrade(int level) {
+}
+
+void LightningTower::buildingObjectSave(std::ofstream &out) const {
+    baseBuildingObjectSave(out);
 }

@@ -103,7 +103,7 @@ float get_warrior_hp(WarriorType type, bool inFormation) {
     return warrior_hp[type] * mm;
 }
 
-bool is_infanty_unit(WarriorType type) {
+bool is_infantry_unit(WarriorType type) {
     if (type == WarriorType::WARRIOR_TYPE_SWORDSMAN ||
         type == WarriorType::WARRIOR_TYPE_SPEARMAN ||
         type == WarriorType::WARRIOR_TYPE_SHIELD_BEARER ||

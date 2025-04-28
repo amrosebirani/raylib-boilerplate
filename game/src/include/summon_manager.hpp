@@ -20,7 +20,10 @@ struct ClickSlot {
 class SummonManager {
     public:
         SummonManager();
+        SummonManager(std::ifstream &in);
+        void save(std::ofstream &out) const;
         ~SummonManager();
+        void setBasics();
         void update(float dt);
         void draw();
         void addSummonCard(std::shared_ptr<SummonCard> card);

@@ -30,6 +30,12 @@ class WarriorDummy : public GameObject {
         void die() override;
         void init() override;
         void cleanupData() override;
+        GameObjectType getObjectType() override {
+            return GameObjectType::WARRIOR_DUMMY;
+        }
+        void Save(std::ofstream &out) const override {
+            // No need to save warrior dummy
+        };
 
     private:
         float radius;

@@ -8,7 +8,6 @@
 #include "raylib.h"
 #include "temp_chance_list.hpp"
 #include "utils.h"
-#include <cmath>
 #include <vector>
 #include "globals.h"
 #include "wizardry.hpp"
@@ -127,6 +126,48 @@ PropertySlot::PropertySlot(float x, float y, float width, float height,
     }
 }
 
+void PropertySlot::propertySlotObjectSave(std::ofstream &out) const {
+    out.write(reinterpret_cast<const char *>(&x), sizeof(x));
+    out.write(reinterpret_cast<const char *>(&y), sizeof(y));
+    out.write(reinterpret_cast<const char *>(&width), sizeof(width));
+    out.write(reinterpret_cast<const char *>(&height), sizeof(height));
+    out.write(reinterpret_cast<const char *>(&type), sizeof(type));
+    building->buildingObjectSave(out);
+}
+
+PropertySlot::PropertySlot(std::ifstream &in, PropertyRing *ring) : ring(ring) {
+    in.read(reinterpret_cast<char *>(&x), sizeof(x));
+    in.read(reinterpret_cast<char *>(&y), sizeof(y));
+    in.read(reinterpret_cast<char *>(&width), sizeof(width));
+    in.read(reinterpret_cast<char *>(&height), sizeof(height));
+    in.read(reinterpret_cast<char *>(&type), sizeof(type));
+    if (type == PropertyType::HOUSE) {
+        building = std::make_shared<HouseBlock>(in);
+        building->init();
+        getContainer()->addGameObject(building);
+    } else if (type == PropertyType::BARRACKS) {
+        building = std::make_shared<Barrack>(in);
+        building->init();
+        getContainer()->addGameObject(building);
+    } else if (type == PropertyType::ARCHERY) {
+        building = std::make_shared<Archery>(in);
+        building->init();
+        getContainer()->addGameObject(building);
+    } else if (type == PropertyType::DEFENSE_TOWER) {
+        building = std::make_shared<AttackTower>(in);
+        building->init();
+        getContainer()->addGameObject(building);
+    } else if (type == PropertyType::WIZARDRY) {
+        building = std::make_shared<Wizardry>(in);
+        building->init();
+        getContainer()->addGameObject(building);
+    } else if (type == PropertyType::LIGHTNING_TOWER) {
+        building = std::make_shared<LightningTower>(in);
+        building->init();
+        getContainer()->addGameObject(building);
+    }
+}
+
 void PropertySlot::draw() {
     // this is purely for debug purposes as of now
     // need to draw the isometric polygon over here
@@ -174,4 +215,30 @@ PropertyRing::~PropertyRing() {
 PropertyRing::PropertyRing(int ring_no, Vector2 center, GameObject *region)
     : ring_no(ring_no), region(region) {
     properties = getPropertiesForRing(ring_no, center.x, center.y, this);
+}
+
+void PropertyRing::propertyRingObjectSave(std::ofstream &out) const {
+    out.write(reinterpret_cast<const char *>(&ring_no), sizeof(ring_no));
+    out.write(reinterpret_cast<const char *>(&operational),
+              sizeof(operational));
+    int property_size = properties.size();
+    out.write(reinterpret_cast<const char *>(&property_size),
+              sizeof(property_size));
+    for (auto &property : properties) {
+        property->propertySlotObjectSave(out);
+    }
+}
+
+PropertyRing::PropertyRing(std::ifstream &in, GameObject *region)
+    : region(region) {
+    in.read(reinterpret_cast<char *>(&ring_no), sizeof(ring_no));
+    in.read(reinterpret_cast<char *>(&operational), sizeof(operational));
+}
+
+void PropertyRing::initRing(std::ifstream &in) {
+    int property_size;
+    in.read(reinterpret_cast<char *>(&property_size), sizeof(property_size));
+    for (int i = 0; i < property_size; i++) {
+        properties.push_back(new PropertySlot(in, this));
+    }
 }

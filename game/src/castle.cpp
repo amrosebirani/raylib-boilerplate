@@ -7,7 +7,6 @@
 #include "utils.h"
 #include "raylib.h"
 #include "collider_factory.hpp"
-#include "warrior_types.h"
 #include <iostream>
 
 Castle::Castle(float x, float y, float health, int level)
@@ -226,4 +225,13 @@ void Castle::onUpgrade(int level) {
             getAudioManager()->switchBGM("normal");
         }
     }
+}
+
+void Castle::buildingObjectSave(std::ofstream &out) const {
+    baseBuildingObjectSave(out);
+    out.write(reinterpret_cast<const char *>(&state), sizeof(state));
+}
+
+Castle::Castle(std::ifstream &in) : Building(in) {
+    in.read(reinterpret_cast<char *>(&state), sizeof(state));
 }

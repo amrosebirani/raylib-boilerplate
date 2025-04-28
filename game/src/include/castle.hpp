@@ -7,6 +7,7 @@
 class Castle : public Building {
     public:
         Castle(float x, float y, float health, int level);
+        Castle(std::ifstream &in);
         ~Castle();
 
         void repair(float repairAmount) override;
@@ -34,6 +35,13 @@ class Castle : public Building {
         void bowAttack();
         void fireBallAttack();
         void setEnemySensor();
+        void buildingObjectSave(std::ofstream &out) const override;
+        GameObjectType getObjectType() override {
+            return GameObjectType::CASTLE;
+        }
+        void Save(std::ofstream &out) const override {
+            buildingObjectSave(out);
+        };
 
     private:
         float height = CASTLE_HEIGHT;

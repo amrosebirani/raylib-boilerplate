@@ -3,10 +3,12 @@
 #include "constants.h"
 #include "container.h"
 #include "game_object.h"
+#include "game_object_types.h"
 #include "globals.h"
 #include "collider_factory.hpp"
 #include "raymath.h"
 #include <cmath>
+#include <fstream>
 #include <iostream>
 
 FireBall::FireBall(float x, float y, Vector2 direction)
@@ -83,4 +85,11 @@ void FireBall::draw() {
 float FireBall::getDamage() {
     return damage *
            getContainer()->getUpgradeContent()->get_stat(CASTLE_DAMAGE_M);
+}
+
+void FireBall::Save(std::ofstream &out) const {
+}
+
+GameObjectType FireBall::getObjectType() {
+    return GameObjectType::FIREBALL;
 }

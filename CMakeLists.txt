@@ -165,6 +165,37 @@ if (UNIX AND NOT APPLE AND NOT BUILD_WEB AND NOT BUILD_ANDROID)  # Check if buil
     )
 endif()
 
+if(APPLE AND CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64" AND NOT BUILD_WEB AND NOT BUILD_ANDROID)
+    message(STATUS "Setting up libcurl and dependencies for macOS ARM64")
+
+    find_package(CURL REQUIRED)
+    find_package(OpenSSL REQUIRED)
+    find_package(ZLIB REQUIRED)
+
+    target_include_directories(game PRIVATE
+        ${CURL_INCLUDE_DIRS}
+        ${OPENSSL_INCLUDE_DIR}
+        ${ZLIB_INCLUDE_DIRS}
+    )
+
+    target_link_libraries(game
+        ${CURL_LIBRARIES}
+        ${OPENSSL_LIBRARIES}
+        ${ZLIB_LIBRARIES}
+    )
+
+    # If you use Brotli and nghttp2:
+    find_library(BROTLI_DEC_LIBRARY brotlidec)
+    find_library(BROTLI_COMMON_LIBRARY brotlicommon)
+    find_library(NGHTTP2_LIBRARY nghttp2)
+
+    target_link_libraries(game
+        ${BROTLI_DEC_LIBRARY}
+        ${BROTLI_COMMON_LIBRARY}
+        ${NGHTTP2_LIBRARY}
+    )
+endif()
+
 set_target_properties(game PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Debug
     RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Release

@@ -1,4 +1,3 @@
-
 #pragma once
 #include "game_object.h"
 #include <memory>
@@ -14,6 +13,28 @@ class Warrior : public GameObject {
         Warrior(float radius, float rel_x, float rel_y, bool inFormation = true)
             : radius(radius), GameObject(0, 0), rel_x(rel_x), rel_y(rel_y),
               inFormation(inFormation) {};
+        Warrior(std::ifstream &in) : GameObject(in) {
+            in.read(reinterpret_cast<char *>(&rel_x), sizeof(rel_x));
+            in.read(reinterpret_cast<char *>(&rel_y), sizeof(rel_y));
+            in.read(reinterpret_cast<char *>(&radius), sizeof(radius));
+            in.read(reinterpret_cast<char *>(&inFormation),
+                    sizeof(inFormation));
+            in.read(reinterpret_cast<char *>(&damage), sizeof(damage));
+            in.read(reinterpret_cast<char *>(&in_damage_mult),
+                    sizeof(in_damage_mult));
+        };
+        virtual void save(std::ofstream &out) const = 0;
+        void baseWarriorObjectSave(std::ofstream &out) const {
+            gameObjectSave(out);
+            out.write(reinterpret_cast<const char *>(&rel_x), sizeof(rel_x));
+            out.write(reinterpret_cast<const char *>(&rel_y), sizeof(rel_y));
+            out.write(reinterpret_cast<const char *>(&radius), sizeof(radius));
+            out.write(reinterpret_cast<const char *>(&inFormation),
+                      sizeof(inFormation));
+            out.write(reinterpret_cast<const char *>(&damage), sizeof(damage));
+            out.write(reinterpret_cast<const char *>(&in_damage_mult),
+                      sizeof(in_damage_mult));
+        };
         Warrior(float radius, float x, float y, int i = 0);
         virtual void attack() = 0;
         void tryAttack(std::shared_ptr<GameObject> enemy);
@@ -59,9 +80,15 @@ class Warrior : public GameObject {
         void setMovement(Vector2 dir);
         Vector2 dirToMove;
         float mvspd = 0;
+        GameObjectType getObjectType() override {
+            return GameObjectType::WARRIOR;
+        }
         virtual WarriorType getType() {
             return WarriorType::WARRIOR_TYPE_KNIGHT;
         }
+        void Save(std::ofstream &out) const override {
+            save(out);
+        };
 
     private:
         float radius;

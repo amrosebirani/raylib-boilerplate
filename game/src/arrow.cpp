@@ -2,9 +2,9 @@
 #include "collider_factory.hpp"
 #include "constants.h"
 #include "container.h"
+#include "game_object_types.h"
 #include "globals.h"
 #include "raymath.h"
-#include "warrior_types.h"
 
 Arrow::Arrow(float x, float y, Vector2 direction, float damage)
     : GameObject(x, y), direction(direction), damage(damage) {
@@ -74,4 +74,11 @@ void Arrow::draw() {
 
 float Arrow::getDamage() {
     return damage;
+}
+
+void Arrow::Save(std::ofstream &out) const {
+}
+
+GameObjectType Arrow::getObjectType() {
+    return GameObjectType::ARROW;
 }

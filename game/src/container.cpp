@@ -1,27 +1,36 @@
 #include "container.h"
-// #include "cinematographer.hpp"
 #include "collider_user_data.h"
 #include "constants.h"
 #include "firebase.hpp"
 #include "game_object.h"
 #include "box2d/b2_draw.h"
 #include "debug_draw.hpp"
+#include "game_object_types.h"
+#include "gems.hpp"
 #include "globals.h"
 #include "horde_manager.hpp"
+#include "parameterized_enemy.hpp"
 #include "raylib.h"
 #include "scoreboard.hpp"
-#include "utils.h"
-#include "add_warriors.hpp"
 #include "raymath.h"
+#include "warrior_para.hpp"
 #include <algorithm>
 #include <memory>
+#include <set>
 
 Container::Container() {
+    setBasics();
+}
+
+Container::Container(std::ifstream &in) {
+    setBasics();
+    in.read(reinterpret_cast<char *>(&gameover), sizeof(gameover));
+    in.read(reinterpret_cast<char *>(&victory), sizeof(victory));
+}
+
+void Container::setBasics() {
     b2Vec2 gravity(0.0f, 0.0f);
     world = std::make_shared<b2World>(gravity);
-    // b2BodyDef groundBodyDef;
-    // groundBodyDef.position.Set(0.0f, 0.0f);
-    // groundBody = world->CreateBody(&groundBodyDef);
     contactListener = new MyContactListener();
     world->SetContactListener(contactListener);
     RaylibDebugDraw *debugDraw = new RaylibDebugDraw();
@@ -29,7 +38,15 @@ Container::Container() {
     world->SetDebugDraw(debugDraw);
     fireAnimation =
         new Animation({2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, true, 0.2);
-    // initTimers();
+}
+
+void Container::Save(std::ofstream &out) const {
+    out.write(reinterpret_cast<const char *>(&gameover), sizeof(gameover));
+    out.write(reinterpret_cast<const char *>(&victory), sizeof(victory));
+    region->Save(out);
+    form->save(out);
+    hmm->Save(out);
+    saveGameObjects(out);
 }
 
 float Container::getCastleHealth() {
@@ -60,55 +77,36 @@ std::shared_ptr<UpgradeManager> Container::getUpgradeManager() {
     return upgradeManager;
 }
 
-void Container::init() {
-    float region_dimension = CASTLE_WIDTH + CASTLE_WIDTH * 2;
+void Container::baseInit() {
+
     upgradeContent = std::make_shared<UpgradeContent>();
     upgradeManager = std::make_shared<UpgradeManager>();
-    region = std::make_shared<Region>(VIRTUAL_WIDTH / 2.0f,
-                                      VIRTUAL_HEIGHT / 2.0f, region_dimension,
-                                      region_dimension, 9999, 0, 0, 0);
+}
+
+void Container::loadInit(std::ifstream &in) {
+    baseInit();
+    region = std::make_shared<Region>(in);
     region->init();
+    setMiniMapDetails();
+    gameObjects.push_back(region->castle);
+    attackUnits.push_back(region->castle);
+    form = std::make_shared<Formation>(in);
+    form->initOrbits();
+    hmm = std::make_shared<HordeManager>(in);
+    getViewCamera()->follow(getFollowObject());
+}
+
+void Container::init() {
+    baseInit();
+    float region_dimension = CASTLE_WIDTH + CASTLE_WIDTH * 2;
+    region =
+        std::make_shared<Region>(VIRTUAL_WIDTH / 2.0f, VIRTUAL_HEIGHT / 2.0f,
+                                 region_dimension, region_dimension);
+    region->init();
+    setMiniMapDetails();
     gameObjects.push_back(region->castle);
     attackUnits.push_back(region->castle);
     initFormation();
-    // std::shared_ptr<EnemyWaveConfig> waveConfig =
-    // getEnemyWaveConfig(wave_count);
-    // wave = std::make_shared<EnemyWave>(waveConfig->time, waveConfig->count,
-    // region->castle);
-    // towerSpawn = std::make_shared<TowerSpawn>();
-    std::shared_ptr<TreePatch> tp1 = std::make_shared<TreePatch>(
-        VIRTUAL_WIDTH / 2.0f,
-        VIRTUAL_HEIGHT / 2.0f - region->castle->getDimensions().y / 2 - 200,
-        500, 300);
-    tp1->initialize(120);
-    tree_patches.push_back(tp1);
-    std::shared_ptr<TreePatch> tp2 = std::make_shared<TreePatch>(
-        VIRTUAL_WIDTH / 2.0f + region->castle->getDimensions().x / 2 + 240,
-        VIRTUAL_HEIGHT / 2.0f, 300, 500);
-    tp2->initialize(100);
-    tree_patches.push_back(tp2);
-    // cinematographer = std::make_shared<Cinematographer>();
-    setMiniMapDetails();
-    // timer.after(
-    //     5,
-    //     [](float dt) {
-    //         HordeConfig *hc = new HordeConfig(5, 8, EnemyType::ZOMBIE1,
-    //                                           EnemyType::ZOMBIE_GIANT, 1);
-    //         EnemyHorde *eh = new EnemyHorde(hc);
-    //         delete eh;
-    //     },
-    //     "");
-    // timer.every(
-    //     45,
-    //     [](float dt) {
-    //         HordeConfig *hc = new HordeConfig(5, 8, EnemyType::ZOMBIE1,
-    //                                           EnemyType::ZOMBIE_GIANT, 1);
-    //         EnemyHorde *eh = new EnemyHorde(hc);
-    //         delete eh;
-    //     },
-    // 0, []() {}, "");
-    // rp1 = region->getRegionPoints();
-    // rp2 = region->getRegionPoints();
     hmm = std::make_shared<HordeManager>(-1);
     getViewCamera()->follow(getFollowObject());
 }
@@ -119,6 +117,57 @@ void Container::initFormation() {
         VIRTUAL_HEIGHT / 2.0f, 10, 2);
     form->initOrbits();
     // attackUnits.push_back(form->getKeyWarrior());
+}
+
+void Container::saveGameObjects(std::ofstream &out) const {
+    std::set<GameObjectType> saved_types = {
+        GameObjectType::ARCHER,
+        GameObjectType::ENEMY,
+        GameObjectType::GEM,
+        GameObjectType::WARRIOR,
+    };
+    for (auto &go : gameObjects) {
+        // check set membership
+        if (saved_types.find(go->getObjectType()) != saved_types.end()) {
+            if (go->getObjectType() == GameObjectType::ARCHER) {
+                if (go->raised) {
+                    continue;
+                }
+            }
+            out.write(reinterpret_cast<const char *>(go->getObjectType()),
+                      sizeof(go->getObjectType()));
+            go->Save(out);
+        }
+    }
+}
+
+void Container::readGameObjects(std::ifstream &in) {
+    // read till the end of the file
+    while (in.peek() != EOF) {
+        GameObjectType type;
+        in.read(reinterpret_cast<char *>(&type), sizeof(type));
+        std::shared_ptr<GameObject> go = nullptr;
+        if (type == GameObjectType::ARCHER) {
+            go = std::make_shared<Archer>(in);
+            go->init();
+        } else if (type == GameObjectType::ENEMY) {
+            std::shared_ptr<ParameterizedEnemy> pe =
+                std::make_shared<ParameterizedEnemy>(in);
+            pe->baseInit();
+            go = pe;
+        } else if (type == GameObjectType::GEM) {
+            go = std::make_shared<Gem>(in);
+            go->init();
+        } else if (type == GameObjectType::WARRIOR) {
+            std::shared_ptr<WarriorPara> wp = std::make_shared<WarriorPara>(in);
+            wp->baseInit();
+            go = wp;
+        }
+
+        if (go != nullptr) {
+            gameObjects.push_back(go);
+        }
+    }
 }
 
 void Container::appendToFormation(int count) {
@@ -140,17 +189,6 @@ std::shared_ptr<GameObject> Container::getClosestAttackUnit(Vector2 pos) {
     return closest;
 }
 
-void Container::initAppend(int count) {
-    toAppend = true;
-    appendCount = count;
-}
-
-// void Container::initTower(float x, float y, int archers,
-//                           TowerSpawnLocation *location) {
-//     towerRequests.push(new DefenseTowerRequests(x, y, archers, location));
-//     // addGameObject(std::make_shared<DefenseTower>(x, y, archers));
-// }
-
 Container::~Container() {
     world = nullptr;
     delete contactListener;
@@ -159,54 +197,6 @@ Container::~Container() {
 
 std::shared_ptr<b2World> Container::getWorld() {
     return world;
-}
-
-void Container::initTimers() {
-    timer.every(
-        randomFloatInRange(5.0f, 8.0f),
-        [this](float dt) {
-            Vector2 dd = this->region->castle->getDimensions();
-            int xr = getRandomValue(0, 1);
-            int yr = getRandomValue(0, 1);
-            float xd;
-            if (xr == 0)
-                xd = randomFloatInRange(-VIRTUAL_WIDTH / 3.0f, -dd.x / 2.0f);
-            else
-                xd = randomFloatInRange(dd.x / 2.0f, VIRTUAL_WIDTH / 3.0f);
-            float yd;
-            if (yr == 0)
-                yd = randomFloatInRange(-VIRTUAL_HEIGHT / 3.0f, -dd.y / 2.0f);
-            else
-                yd = randomFloatInRange(dd.y / 2.0f, VIRTUAL_HEIGHT / 3.0f);
-            std::shared_ptr<AddWarriors> aw = std::make_shared<AddWarriors>(
-                this->region->castle->x + xd, this->region->castle->y + yd);
-            aw->init();
-            this->addGameObject(aw);
-        },
-        0, []() {}, "addWarriors");
-    // timer.every(
-    //     randomFloatInRange(2.0f, 3.0f),
-    //     [this](float dt) {
-    //         Vector2 dd = this->castle->getDimensions();
-    //         int xr = getRandomValue(0, 1);
-    //         int yr = getRandomValue(0, 1);
-    //         float xd;
-    //         if (xr == 0)
-    //             xd = randomFloatInRange(-VIRTUAL_WIDTH / 3.0f, -dd.x / 2.0f);
-    //         else
-    //             xd = randomFloatInRange(dd.x / 2.0f, VIRTUAL_WIDTH / 3.0f);
-    //         float yd;
-    //         if (yr == 0)
-    //             yd = randomFloatInRange(-VIRTUAL_HEIGHT / 3.0f, -dd.y
-    //             / 2.0f);
-    //         else
-    //             yd = randomFloatInRange(dd.y / 2.0f, VIRTUAL_HEIGHT / 3.0f);
-    //         std::shared_ptr<AddTower> at = std::make_shared<AddTower>(
-    //             this->castle->x + xd, this->castle->y + yd);
-    //         at->init();
-    //         this->addGameObject(at);
-    //     },
-    //     0, []() {}, "addTowers");
 }
 
 void Container::draw() {
@@ -391,11 +381,6 @@ bool Container::update(float dt) {
     for (size_t i = indices_to_remove.size(); i > 0; --i) {
         size_t index = indices_to_remove[i - 1];
         gameObjects.erase(gameObjects.begin() + index);
-    }
-    if (toAppend) {
-        appendToFormation(appendCount);
-        toAppend = false;
-        appendCount = 0;
     }
     form->update(dt);
     getBloodSplatter()->update(dt);

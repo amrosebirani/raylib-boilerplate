@@ -7,40 +7,32 @@
 
 #include "castle.hpp"
 #include "game_object.h"
+#include "game_object_types.h"
 #include "property.hpp"
 #include "property_type.hpp"
+#include <fstream>
 
-class Region : public GameObject {
+class Region : GameObject {
     public:
-        Region(float x, float y, float width, float height, float gold,
-               float wood, float stone, float food);
+        Region(float x, float y, float width, float height);
+        Region(std::ifstream &in);
         ~Region();
         void draw() override;
         void update(float dt) override;
         bool isAlive() override;
         void die() override;
+
+        void regionObjectSave(std::ofstream &out) const;
         Vector2 getCenterCoordinates();
 
         void init() override;
+        void initLoad(std::ifstream &in);
         void cleanupData() override;
-        float getGold();
-        float getWood();
-        float getStone();
-        float getFood();
-
-        void setGold(float gold);
-        void setWood(float wood);
-        void setStone(float stone);
-        void setFood(float food);
-
-        void addGold(float gold);
-        void addWood(float wood);
-        void addStone(float stone);
-        void addFood(float food);
+        GameObjectType getObjectType() override;
+        void Save(std::ofstream &out) const override;
 
         float getWidth();
         float getHeight();
-        void setCurrentHeightAndWidth(float percentHealth);
         void addPropertyRing(int ring_no);
         std::shared_ptr<Castle> castle;
         std::vector<Vector2> getRegionPoints();
@@ -54,16 +46,8 @@ class Region : public GameObject {
         bool castleUpgraded = false;
 
     private:
-        float width;
-        float height;
-        float gold;
-        float wood;
-        float stone;
-        float food;
-        bool alive = true;
         float current_width;
         float current_height;
         std::vector<PropertyRing *> propertyRings;
         int level = 1;
-        float health = 0;
 };

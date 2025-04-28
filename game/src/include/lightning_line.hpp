@@ -15,6 +15,12 @@ class LightningLine : public GameObject {
         void generateLightning();
         void init() override;
         void cleanupData() override;
+        GameObjectType getObjectType() override {
+            return GameObjectType::NON_TYPE;
+        };
+        void Save(std::ofstream &out) const override {
+            // No need to save lightning line
+        };
 
     private:
         bool alive = true;

@@ -11,6 +11,10 @@ HouseBlock::HouseBlock(float x, float y, int level)
     health = maxHealth;
 }
 
+HouseBlock::HouseBlock(std::ifstream &in) : Building(in) {
+    in.read(reinterpret_cast<char *>(&tributeRate), sizeof(tributeRate));
+}
+
 void HouseBlock::init() {
     initiate();
     alive = false;
@@ -75,4 +79,10 @@ void HouseBlock::onUpgrade(int level) {
     getWorldState()->addScore(400);
     tributeRate = getHouseTributeRate(level) *
                   getContainer()->getUpgradeContent()->get_stat(TRIBUTE_RATE_M);
+}
+
+void HouseBlock::buildingObjectSave(std::ofstream &out) const {
+    baseBuildingObjectSave(out);
+    out.write(reinterpret_cast<const char *>(&tributeRate),
+              sizeof(tributeRate));
 }

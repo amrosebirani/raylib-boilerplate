@@ -6,6 +6,7 @@
 class HordeManager {
     public:
         HordeManager(int totalWaves = 11);
+        HordeManager(std::ifstream &in);
         void update(float dt);
         void spawnHorde();
         void decreaseCount();
@@ -24,6 +25,7 @@ class HordeManager {
         void launchTutBoxes();
         void launchTutorial(PropertyType type, std::string text,
                             std::string sprite_id);
+        void Save(std::ofstream &out) const;
 
     private:
         int countToCheck = -1;

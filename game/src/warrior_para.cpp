@@ -77,7 +77,19 @@ WarriorPara::WarriorPara(float x, float y, WarriorType type)
     : Warrior(get_warrior_size(type), x, y, 1), type(type) {
 }
 
-void WarriorPara::init() {
+void WarriorPara::save(std::ofstream &out) const {
+    baseWarriorObjectSave(out);
+    out.write(reinterpret_cast<const char *>(&type), sizeof(type));
+    out.write(reinterpret_cast<const char *>(&hp), sizeof(hp));
+}
+
+WarriorPara::WarriorPara(std::ifstream &in) : Warrior(in) {
+    in.read(reinterpret_cast<char *>(&type), sizeof(type));
+    in.read(reinterpret_cast<char *>(&hp), sizeof(hp));
+}
+
+void WarriorPara::baseInit() {
+
     collider_data = new ColliderUserData();
     collider_data->obj = get_shared_ptr();
     if (!inFormation) {
@@ -93,9 +105,13 @@ void WarriorPara::init() {
     }
     initStates(type);
     stateMachine->changeState("Idle", new WarriorStateParams(this, type));
+    attackCooldown = get_warrior_attack_time(type);
+}
+
+void WarriorPara::init() {
+    baseInit();
     damage = get_warrior_damage(type, inFormation);
     hp = get_warrior_hp(type, inFormation);
-    attackCooldown = get_warrior_attack_time(type);
     in_damage_mult = get_in_damage_multiplier(type);
 }
 

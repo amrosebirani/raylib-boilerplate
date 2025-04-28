@@ -29,7 +29,6 @@ class GameObject : public std::enable_shared_from_this<GameObject> {
         virtual void init() = 0;
         virtual void cleanupData() = 0;
         virtual void Save(std::ofstream &out) const = 0;
-        virtual void Load(std::ifstream &in) = 0;
         virtual GameObjectType getObjectType() = 0;
         virtual Color getColor() {
             return {0, 0, 0, 0};
@@ -39,7 +38,6 @@ class GameObject : public std::enable_shared_from_this<GameObject> {
 
         float x;
         float y;
-
         GameObject(float x, float y);
         GameObject(float x, float y, UUID id);
         GameObject(std::ifstream &in);

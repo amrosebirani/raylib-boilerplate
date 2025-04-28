@@ -16,6 +16,7 @@ class Enemy : public GameObject {
     public:
         Enemy(float radius, float x, float y)
             : radius(radius), GameObject(x, y) {};
+        Enemy(std::ifstream &in);
         virtual void attack() = 0;
         virtual void tryAttack(std::shared_ptr<GameObject> warrior) = 0;
         std::shared_ptr<b2Body> collider;
@@ -45,6 +46,10 @@ class Enemy : public GameObject {
         std::vector<std::shared_ptr<GameObject>> contactAttackUnits;
         void manageContactAttackUnits();
         float mvspd = ENEMY_BASE_MVSPD;
+        GameObjectType getObjectType() override {
+            return GameObjectType::ENEMY;
+        }
+        void enemyObjectSave(std::ofstream &out) const;
 
     private:
         float radius;

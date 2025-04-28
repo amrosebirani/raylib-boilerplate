@@ -14,6 +14,10 @@ class DeadBody : public GameObject {
         void die() override;
         void init() override;
         void cleanupData() override;
+        GameObjectType getObjectType() override {
+            return GameObjectType::DEAD_BODY;
+        }
+        void Save(std::ofstream &out) const override;
 
     private:
         bool alive = true;

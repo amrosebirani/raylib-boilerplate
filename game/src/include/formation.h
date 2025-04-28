@@ -8,6 +8,7 @@
 #include "raylib.h"
 #include "box2d/b2_body.h"
 #include "direction.hpp"
+#include <fstream>
 
 class Formation {
     public:
@@ -16,6 +17,7 @@ class Formation {
         ~Formation();
         class FormationOrbit {
             public:
+                FormationOrbit(std::ifstream &in);
                 FormationOrbit(float starter_radius, WarriorType type,
                                int totalSlots = 5);
                 FormationOrbit(float starter_radius, WarriorType type,
@@ -23,12 +25,14 @@ class Formation {
                 void update(float dt, Vector2 origin, bool isIdle,
                             Direction directionFacing);
                 void draw();
+                void save(std::ofstream &out) const;
 
                 class WarriorSlot {
                     public:
                         WarriorSlot(float x, float y,
                                     std::shared_ptr<Warrior> warrior)
                             : x(x), y(y), warrior(warrior) {};
+                        WarriorSlot(std::ifstream &in);
                         void update(float dt, Vector2 origin, bool isIdle,
                                     Direction directionFacing);
                         void draw();
@@ -40,6 +44,7 @@ class Formation {
                         float x;
                         float y;
                         void respawnWarrior(WarriorType type);
+                        void save(std::ofstream &out) const;
 
                     private:
                         bool respawn = false;
@@ -73,6 +78,12 @@ class Formation {
         Direction directionFacing = Direction::SOUTH;
         bool isIdle = true;
         std::shared_ptr<WarriorDummy> dummyWarrior;
+        void clearOtherUnits();
+        void respawnFormation();
+        void save(std::ofstream &out) const;
+        Formation(std::ifstream &in);
+        void setLoadRespawning();
+        void setColliders();
 
     private:
         std::vector<FormationOrbit *> orbits;
@@ -90,6 +101,4 @@ class Formation {
         void joyStickMove();
         void setRespawning();
         Vector2 dir_to_move;
-        void clearOtherUnits();
-        void respawnFormation();
 };

@@ -102,3 +102,29 @@ void Enemy::throwBlood() {
     bs->setPosition(x, y);
     bs->justEmit(10);
 }
+
+void Enemy::enemyObjectSave(std::ofstream &out) const {
+    // save isMarching, breakOffPoint, dirToMarch, radius
+    gameObjectSave(out);
+    out.write(reinterpret_cast<const char *>(&isMarching), sizeof(isMarching));
+    out.write(reinterpret_cast<const char *>(&breakoffPoint.x),
+              sizeof(breakoffPoint.x));
+    out.write(reinterpret_cast<const char *>(&breakoffPoint.y),
+              sizeof(breakoffPoint.y));
+    out.write(reinterpret_cast<const char *>(&dirToMarch.x),
+              sizeof(dirToMarch.x));
+    out.write(reinterpret_cast<const char *>(&dirToMarch.y),
+              sizeof(dirToMarch.y));
+    out.write(reinterpret_cast<const char *>(&radius), sizeof(radius));
+}
+
+Enemy::Enemy(std::ifstream &in) : GameObject(in) {
+    in.read(reinterpret_cast<char *>(&isMarching), sizeof(isMarching));
+    in.read(reinterpret_cast<char *>(&breakoffPoint.x),
+            sizeof(breakoffPoint.x));
+    in.read(reinterpret_cast<char *>(&breakoffPoint.y),
+            sizeof(breakoffPoint.y));
+    in.read(reinterpret_cast<char *>(&dirToMarch.x), sizeof(dirToMarch.x));
+    in.read(reinterpret_cast<char *>(&dirToMarch.y), sizeof(dirToMarch.y));
+    in.read(reinterpret_cast<char *>(&radius), sizeof(radius));
+}

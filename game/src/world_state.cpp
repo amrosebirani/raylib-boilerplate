@@ -13,6 +13,15 @@ bool isDragging = false;
 Vector2 previousDragPosition;
 
 WorldState::WorldState() {
+    setBasics();
+    gem_progress_bar =
+        new ProgressBar(0, topHeight / 2, GetScreenWidth(), topHeight / 2, 1, 0,
+                        {54, 137, 179, 255});
+    summon_manager = std::make_shared<SummonManager>();
+}
+
+void WorldState::setBasics() {
+
     gem_chance_list = new TempChanceList<GemType>(
         {{GemType::Coin, 7}, {GemType::Diamond, 3}});
 
@@ -24,10 +33,6 @@ WorldState::WorldState() {
         gems_for_next_upgrade.push_back(gems_for_next_upgrade[i + 2]);
     }
     topHeight = GetScreenHeight() * topPercentCover / 100;
-    gem_progress_bar =
-        new ProgressBar(0, topHeight / 2, GetScreenWidth(), topHeight / 2, 1, 0,
-                        {54, 137, 179, 255});
-    summon_manager = std::make_shared<SummonManager>();
     fs = topHeight / 2 * .7f;
     topMargin = topHeight / 2 * .15f;
 }
@@ -244,4 +249,38 @@ bool WorldState::isFinished() {
 
 void WorldState::finalize() {
     finished = true;
+}
+
+void WorldState::save(std::ofstream &out) const {
+    out.write(reinterpret_cast<const char *>(&coins), sizeof(coins));
+    out.write(reinterpret_cast<const char *>(&gems), sizeof(gems));
+    out.write(reinterpret_cast<const char *>(&gem_round), sizeof(gem_round));
+    out.write(reinterpret_cast<const char *>(&formation_respawn_time),
+              sizeof(formation_respawn_time));
+    out.write(reinterpret_cast<const char *>(&is_formation_respawning),
+              sizeof(is_formation_respawning));
+    out.write(reinterpret_cast<const char *>(&totalKills), sizeof(totalKills));
+    out.write(reinterpret_cast<const char *>(&score), sizeof(score));
+    out.write(reinterpret_cast<const char *>(&timeSurvived),
+              sizeof(timeSurvived));
+    summon_manager->save(out);
+}
+
+WorldState::WorldState(std::ifstream &in) {
+    setBasics();
+    in.read(reinterpret_cast<char *>(&coins), sizeof(coins));
+    in.read(reinterpret_cast<char *>(&gems), sizeof(gems));
+    in.read(reinterpret_cast<char *>(&gem_round), sizeof(gem_round));
+    in.read(reinterpret_cast<char *>(&formation_respawn_time),
+            sizeof(formation_respawn_time));
+    in.read(reinterpret_cast<char *>(&is_formation_respawning),
+            sizeof(is_formation_respawning));
+    in.read(reinterpret_cast<char *>(&totalKills), sizeof(totalKills));
+    in.read(reinterpret_cast<char *>(&score), sizeof(score));
+    in.read(reinterpret_cast<char *>(&timeSurvived), sizeof(timeSurvived));
+    gem_progress_bar =
+        new ProgressBar(0, topHeight / 2, GetScreenWidth(), topHeight / 2, 1, 0,
+                        {54, 137, 179, 255});
+    gem_progress_bar->setCurrent(getCurrentGemPercent());
+    summon_manager = std::make_shared<SummonManager>(in);
 }

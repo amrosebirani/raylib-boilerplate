@@ -7,6 +7,7 @@
 class Archery : public Building {
     public:
         Archery(float x, float y, int level);
+        Archery(std::ifstream &in);
         ~Archery();
         void repair(float repairAmount) override;
         void onUpgrade(int level) override;
@@ -19,6 +20,13 @@ class Archery : public Building {
         void die() override;
         bool hasSummonCards();
         std::shared_ptr<SummonCard> getCard();
+        void buildingObjectSave(std::ofstream &out) const override;
+        GameObjectType getObjectType() override {
+            return GameObjectType::ARCHERY;
+        }
+        void Save(std::ofstream &out) const override {
+            buildingObjectSave(out);
+        };
 
     private:
         // float summonTime;

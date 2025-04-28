@@ -1,9 +1,20 @@
 #include "region.hpp"
 #include "constants.h"
+#include "game_object_types.h"
 #include "property_type.hpp"
 #include "raylib.h"
 
 #include "utils.h"
+#include <fstream>
+
+GameObjectType Region::getObjectType() {
+    return GameObjectType::NON_TYPE;
+}
+
+void Region::Save(std::ofstream &out) const {
+    regionObjectSave(out);
+}
+
 void Region::draw() {
     // draw the Region
     for (auto &propertyRing : propertyRings) {
@@ -29,15 +40,14 @@ Region::~Region() {
 }
 
 bool Region::isAlive() {
-    return alive;
+    return true;
 }
 
 void Region::die() {
-    alive = false;
 }
 
 void Region::init() {
-    health = getMaxHealthByLevel(level, PropertyType::CASTLE);
+    float health = getMaxHealthByLevel(level, PropertyType::CASTLE);
 
     Vector2 ss = getWorldIsometricCoordinated(Vector2{x, y});
     castle = std::make_shared<Castle>(ss.x, ss.y, health, level);
@@ -114,54 +124,6 @@ Vector2 Region::getCenterCoordinates() {
 void Region::cleanupData() {
 }
 
-float Region::getGold() {
-    return gold;
-}
-
-float Region::getWood() {
-    return wood;
-}
-
-float Region::getStone() {
-    return stone;
-}
-
-float Region::getFood() {
-    return food;
-}
-
-void Region::setGold(float gold) {
-    this->gold = gold;
-}
-
-void Region::setWood(float wood) {
-    this->wood = wood;
-}
-
-void Region::setStone(float stone) {
-    this->stone = stone;
-}
-
-void Region::setFood(float food) {
-    this->food = food;
-}
-
-void Region::addGold(float gold) {
-    this->gold += gold;
-}
-
-void Region::addWood(float wood) {
-    this->wood += wood;
-}
-
-void Region::addStone(float stone) {
-    this->stone += stone;
-}
-
-void Region::addFood(float food) {
-    this->food += food;
-}
-
 float Region::getWidth() {
     return current_width;
 }
@@ -170,12 +132,8 @@ float Region::getHeight() {
     return current_height;
 }
 
-Region::Region(float x, float y, float width, float height, float gold,
-               float wood, float stone, float food)
-    : GameObject(x, y), width(width), height(height), gold(gold), wood(wood),
-      stone(stone), food(food) {
-    current_width = width;
-    current_height = height;
+Region::Region(float x, float y, float width, float height)
+    : GameObject(x, y), current_width(width), current_height(height) {
     // to start with create just 2 property rings, that's the base castle
     // post that on upgrade more rings can be added
     propertyRings.push_back(new PropertyRing(0, {x, y}, this));
@@ -187,8 +145,52 @@ void Region::addPropertyRing(int ring_no) {
     castleUpgraded = true;
 }
 
-void Region::setCurrentHeightAndWidth(float percentHealth) {
-    current_width = width * percentHealth;
-    current_height = height * percentHealth;
-    // set operational information for the property rings here
+void Region::regionObjectSave(std::ofstream &out) const {
+    gameObjectSave(out);
+    out.write(reinterpret_cast<const char *>(&current_height),
+              sizeof(current_height));
+    out.write(reinterpret_cast<const char *>(&current_width),
+              sizeof(current_width));
+    out.write(reinterpret_cast<const char *>(&level), sizeof(level));
+    out.write(reinterpret_cast<const char *>(&towerRaised),
+              sizeof(towerRaised));
+    out.write(reinterpret_cast<const char *>(&barracksRaised),
+              sizeof(barracksRaised));
+    out.write(reinterpret_cast<const char *>(&archeryRaised),
+              sizeof(archeryRaised));
+    out.write(reinterpret_cast<const char *>(&houseRaised),
+              sizeof(houseRaised));
+    out.write(reinterpret_cast<const char *>(&castleUpgraded),
+              sizeof(castleUpgraded));
+    castle->buildingObjectSave(out);
+    int prop_ring_size = propertyRings.size();
+    out.write(reinterpret_cast<const char *>(&prop_ring_size),
+              sizeof(prop_ring_size));
+    for (auto &propertyRing : propertyRings) {
+        propertyRing->propertyRingObjectSave(out);
+    }
+}
+
+Region::Region(std::ifstream &in) : GameObject(in) {
+    in.read(reinterpret_cast<char *>(&current_height), sizeof(current_height));
+    in.read(reinterpret_cast<char *>(&current_width), sizeof(current_width));
+    in.read(reinterpret_cast<char *>(&level), sizeof(level));
+    in.read(reinterpret_cast<char *>(&towerRaised), sizeof(towerRaised));
+    in.read(reinterpret_cast<char *>(&barracksRaised), sizeof(barracksRaised));
+    in.read(reinterpret_cast<char *>(&archeryRaised), sizeof(archeryRaised));
+    in.read(reinterpret_cast<char *>(&houseRaised), sizeof(houseRaised));
+    in.read(reinterpret_cast<char *>(&castleUpgraded), sizeof(castleUpgraded));
+}
+
+void Region::initLoad(std::ifstream &in) {
+
+    castle = std::make_shared<Castle>(in);
+    castle->init();
+    int prop_ring_size;
+    in.read(reinterpret_cast<char *>(&prop_ring_size), sizeof(prop_ring_size));
+    for (int i = 0; i < prop_ring_size; i++) {
+        PropertyRing *propertyRing = new PropertyRing(in, this);
+        propertyRing->initRing(in);
+        propertyRings.push_back(propertyRing);
+    }
 }

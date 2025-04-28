@@ -32,11 +32,12 @@
 class Container : public Room {
     public:
         Container();
+        Container(std::ifstream &in);
+        void Save(std::ofstream &out) const;
         ~Container();
         std::shared_ptr<b2World> getWorld();
         void initFormation();
         void init();
-        void initAppend(int count);
         void appendToFormation(int count);
         // void initTower(float x, float y, int archers,
         // TowerSpawnLocation *location = nullptr);
@@ -64,6 +65,11 @@ class Container : public Room {
         void gameOverSet();
         void victorySet();
         int getCurrentFireFrame();
+        void setBasics();
+        void baseInit();
+        void loadInit(std::ifstream &in);
+        void saveGameObjects(std::ofstream &out) const;
+        void readGameObjects(std::ifstream &in);
         std::shared_ptr<UpgradeManager> getUpgradeManager();
         std::shared_ptr<UpgradeContent> getUpgradeContent();
 
@@ -82,9 +88,6 @@ class Container : public Room {
         std::shared_ptr<UpgradeManager> upgradeManager;
         bool colliderDebugDraw = false;
         Timer timer;
-        void initTimers();
-        bool toAppend = false;
-        int appendCount = 0;
         bool gameover = false;
         bool victory = false;
         // std::stack<DefenseTowerRequests *> towerRequests;

@@ -1,4 +1,3 @@
-
 #include "archery.hpp"
 #include "globals.h"
 #include "property_type.hpp"
@@ -11,6 +10,9 @@ Archery::Archery(float x, float y, int level)
     : Building(x, y, PropertyType::ARCHERY, level) {
     maxHealth = getMaxHealthByLevel(level, PropertyType::ARCHERY);
     health = maxHealth;
+}
+
+Archery::Archery(std::ifstream &in) : Building(in) {
 }
 
 bool Archery::hasSummonCards() {
@@ -169,4 +171,8 @@ void Archery::pushSummonDialog() {
     getStateStack()->push(std::make_shared<SummonDialog>(
         PropertyType::ARCHERY, level, summonSlots,
         getBuildingData(getBuildingId(PropertyType::ARCHERY, level))));
+}
+
+void Archery::buildingObjectSave(std::ofstream &out) const {
+    baseBuildingObjectSave(out);
 }

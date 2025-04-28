@@ -4,7 +4,6 @@
 #include "enemy_types.h"
 #include "constants.h"
 #include "globals.h"
-#include "horde_cine_exp.hpp"
 #include "raylib.h"
 #include "utils.h"
 #include "raymath.h"
@@ -14,6 +13,29 @@
 void ParameterizedEnemy::setMarching(Vector2 breakoffPoint) {
     isMarching = true;
     this->breakoffPoint = breakoffPoint;
+}
+
+ParameterizedEnemy::ParameterizedEnemy(std::ifstream &in) : Enemy(in) {
+    in.read(reinterpret_cast<char *>(&type), sizeof(type));
+    in.read(reinterpret_cast<char *>(&hp), sizeof(hp));
+    // read cameraTriggerPoint
+    in.read(reinterpret_cast<char *>(&cameraTriggerPoint.x),
+            sizeof(cameraTriggerPoint.x));
+    in.read(reinterpret_cast<char *>(&cameraTriggerPoint.y),
+            sizeof(cameraTriggerPoint.y));
+    in.read(reinterpret_cast<char *>(&isLead), sizeof(isLead));
+}
+
+void ParameterizedEnemy::Save(std::ofstream &out) const {
+    enemyObjectSave(out);
+    out.write(reinterpret_cast<const char *>(&type), sizeof(type));
+    out.write(reinterpret_cast<const char *>(&hp), sizeof(hp));
+    // write cameraTriggerPoint
+    out.write(reinterpret_cast<const char *>(&cameraTriggerPoint.x),
+              sizeof(cameraTriggerPoint.x));
+    out.write(reinterpret_cast<const char *>(&cameraTriggerPoint.y),
+              sizeof(cameraTriggerPoint.y));
+    out.write(reinterpret_cast<const char *>(&isLead), sizeof(isLead));
 }
 
 void ParameterizedEnemy::draw() {
@@ -83,7 +105,8 @@ void ParameterizedEnemy::setDirectionOfMovement() {
     directionFacing = get_direction(dirToMove);
 }
 
-void ParameterizedEnemy::init() {
+void ParameterizedEnemy::baseInit() {
+
     center = getContainer()->region->getCenterCoordinates();
     dirToMarch = {center.x - breakoffPoint.x, center.y - breakoffPoint.y};
     dirToMarch = Vector2Normalize(dirToMarch);
@@ -101,13 +124,17 @@ void ParameterizedEnemy::init() {
     b2Vec2 linearVelocity = {dirToMove.x * mvspd / PIXEL_TO_METER_SCALE,
                              dirToMove.y * mvspd / PIXEL_TO_METER_SCALE};
     collider->SetLinearVelocity(linearVelocity);
-    damage = get_enemy_damage(type);
-    hp = get_enemy_hp(type);
     attackCooldown = get_enemy_attack_time(type);
     if (type == EnemyType::ZOMBIE_GIANT) {
         damage = 200;
         hp = 3000;
     }
+    damage = get_enemy_damage(type);
+}
+
+void ParameterizedEnemy::init() {
+    baseInit();
+    hp = get_enemy_hp(type);
 }
 
 ParameterizedEnemy::~ParameterizedEnemy() {

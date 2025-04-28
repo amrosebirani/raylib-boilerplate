@@ -2,10 +2,10 @@
 #include "constants.h"
 #include "game_object.h"
 #include "raylib.h"
+#include <fstream>
 #include <memory>
 #include "box2d/b2_body.h"
 #include "collider_user_data.h"
-#include "warrior_types.h"
 
 class Arrow : public GameObject {
     public:
@@ -18,6 +18,8 @@ class Arrow : public GameObject {
         void die() override;
         void init() override;
         void cleanupData() override;
+        void Save(std::ofstream &out) const override;
+        GameObjectType getObjectType() override;
         float getDamage();
 
     private:

@@ -9,6 +9,7 @@
 class Barrack : public Building {
     public:
         Barrack(float x, float y, int level);
+        Barrack(std::ifstream &in);
         ~Barrack();
         void repair(float repairAmount) override;
         void draw() override;
@@ -21,6 +22,13 @@ class Barrack : public Building {
         void pushSummonDialog() override;
         bool hasSummonCards();
         std::shared_ptr<SummonCard> getCard();
+        void buildingObjectSave(std::ofstream &out) const override;
+        GameObjectType getObjectType() override {
+            return GameObjectType::BARRACK;
+        }
+        void Save(std::ofstream &out) const override {
+            buildingObjectSave(out);
+        };
 
     private:
         // float summonTime;

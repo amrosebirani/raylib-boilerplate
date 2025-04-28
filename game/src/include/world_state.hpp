@@ -9,7 +9,9 @@
 class WorldState : public Room {
     public:
         WorldState();
+        WorldState(std::ifstream &in);
         ~WorldState();
+        void setBasics();
         void addCoins(int coins);
         void addGems(int gems);
         void removeCoins(int coins);
@@ -35,6 +37,7 @@ class WorldState : public Room {
         int64 getScore();
         int getTotalKills();
         float getTimeSurvived();
+        void save(std::ofstream &out) const;
 
     private:
         int coins = 100;

@@ -4,6 +4,8 @@
 #include "collider_user_data.h"
 #include "constants.h"
 #include "game_object.h"
+#include "game_object_types.h"
+#include <fstream>
 
 class FireBall : public GameObject {
     public:
@@ -17,6 +19,8 @@ class FireBall : public GameObject {
         void init() override;
         void cleanupData() override;
         float getDamage();
+        void Save(std::ofstream &out) const override;
+        GameObjectType getObjectType() override;
 
     private:
         std::shared_ptr<b2Body> collider;

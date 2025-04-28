@@ -20,6 +20,10 @@ class LightningSpell : public Spell {
         void die() override;
         void cleanupData() override;
         void init() override;
+        void Save(std::ofstream &os) const override {};
+        GameObjectType getObjectType() override {
+            return GameObjectType::SPELL;
+        };
 
     private:
         std::shared_ptr<b2Body> enemySensor;

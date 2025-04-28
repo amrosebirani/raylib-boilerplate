@@ -12,11 +12,14 @@ class Building : public GameObject {
         Building(float x, float y, PropertyType type, int level,
                  float health = 0)
             : GameObject(x, y), type(type), level(level), health(health) {};
+        Building(std::ifstream &in);
         virtual ~Building();
         void takeDamage(float damage);
         virtual void repair(float repairAmount) = 0;
         virtual void onUpgrade(int level) = 0;
         virtual void pushSummonDialog();
+        virtual void buildingObjectSave(std::ofstream &out) const = 0;
+        void baseBuildingObjectSave(std::ofstream &out) const;
         int maxHealth;
         int health;
         int level = 0;

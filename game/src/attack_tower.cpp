@@ -1,4 +1,3 @@
-
 #include "attack_tower.hpp"
 #include "archer.hpp"
 #include "collider_factory.hpp"
@@ -12,6 +11,12 @@ AttackTower::AttackTower(float x, float y, int level)
     : Building(x, y, PropertyType::DEFENSE_TOWER, level) {
     maxHealth = getMaxHealthByLevel(level, PropertyType::DEFENSE_TOWER);
     health = maxHealth;
+}
+
+AttackTower::AttackTower(std::ifstream &in) : Building(in) {
+    in.read(reinterpret_cast<char *>(&previous_level), sizeof(previous_level));
+    in.read(reinterpret_cast<char *>(&previousAlpha), sizeof(previousAlpha));
+    in.read(reinterpret_cast<char *>(&previousRangeM), sizeof(previousRangeM));
 }
 
 void AttackTower::init() {
@@ -161,4 +166,11 @@ void AttackTower::onUpgrade(int level) {
     if (level == 0) {
         enemies.clear();
     }
+}
+
+void AttackTower::buildingObjectSave(std::ofstream &out) const {
+    baseBuildingObjectSave(out);
+    out.write(reinterpret_cast<const char *>(&previous_level), sizeof(previous_level));
+    out.write(reinterpret_cast<const char *>(&previousAlpha), sizeof(previousAlpha));
+    out.write(reinterpret_cast<const char *>(&previousRangeM), sizeof(previousRangeM));
 }

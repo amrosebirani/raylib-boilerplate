@@ -10,7 +10,6 @@
 #include "utils.h"
 #include "draft.h"
 #include "collider_factory.hpp"
-#include <cmath>
 #include <vector>
 
 void Building::initAuraPoints() {
@@ -564,4 +563,30 @@ void Building::takeDamage(float damage) {
 }
 
 void Building::pushSummonDialog() {
+}
+
+void Building::baseBuildingObjectSave(std::ofstream &out) const {
+    gameObjectSave(out);
+    out.write(reinterpret_cast<const char *>(&type), sizeof(type));
+    out.write(reinterpret_cast<const char *>(&level), sizeof(level));
+    out.write(reinterpret_cast<const char *>(&health), sizeof(health));
+    out.write(reinterpret_cast<const char *>(&maxHealth), sizeof(maxHealth));
+    out.write(reinterpret_cast<const char *>(&coinsToUpgrade),
+              sizeof(coinsToUpgrade));
+    out.write(reinterpret_cast<const char *>(&coinsObtained),
+              sizeof(coinsObtained));
+    out.write(reinterpret_cast<const char *>(&tributeGenerated),
+              sizeof(tributeGenerated));
+}
+
+Building::Building(std::ifstream &in) : GameObject(in) {
+    in.read(reinterpret_cast<char *>(&type), sizeof(type));
+    in.read(reinterpret_cast<char *>(&level), sizeof(level));
+    in.read(reinterpret_cast<char *>(&health), sizeof(health));
+    in.read(reinterpret_cast<char *>(&maxHealth), sizeof(maxHealth));
+    in.read(reinterpret_cast<char *>(&coinsToUpgrade), sizeof(coinsToUpgrade));
+    in.read(reinterpret_cast<char *>(&coinsObtained), sizeof(coinsObtained));
+    in.read(reinterpret_cast<char *>(&tributeGenerated),
+            sizeof(tributeGenerated));
+    maxHealth = getMaxHealthByLevel(level, type);
 }

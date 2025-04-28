@@ -11,6 +11,9 @@ Barrack::Barrack(float x, float y, int level)
     health = maxHealth;
 }
 
+Barrack::Barrack(std::ifstream &in) : Building(in) {
+}
+
 bool Barrack::hasSummonCards() {
     // return producedSummonCards.size() > 0;
     return false;
@@ -172,4 +175,8 @@ void Barrack::pushSummonDialog() {
     getStateStack()->push(std::make_shared<SummonDialog>(
         PropertyType::BARRACKS, level, summonSlots,
         getBuildingData(getBuildingId(PropertyType::BARRACKS, level))));
+}
+
+void Barrack::buildingObjectSave(std::ofstream &out) const {
+    baseBuildingObjectSave(out);
 }

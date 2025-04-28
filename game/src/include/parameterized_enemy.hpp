@@ -8,9 +8,11 @@
 class ParameterizedEnemy : public Enemy {
     public:
         ParameterizedEnemy(float x, float y, EnemyType type);
+        ParameterizedEnemy(std::ifstream &in);
         ~ParameterizedEnemy();
 
         void draw() override;
+        void Save(std::ofstream &out) const override;
 
         void update(float dt) override;
 
@@ -18,6 +20,7 @@ class ParameterizedEnemy : public Enemy {
 
         void die() override;
         void init() override;
+        void baseInit();
         void cleanupData() override;
 
         void attack() override;

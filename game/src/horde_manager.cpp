@@ -11,7 +11,32 @@
 
 HordeManager::HordeManager(int totalWaves) : totalWaves(totalWaves) {
     timer = Timer();
-    timer.after(10, [this](float dt) { this->spawnHorde(); }, "");
+    timer.after(
+        10, [this](float dt) { this->spawnHorde(); }, "spawn_first_horde");
+}
+
+HordeManager::HordeManager(std::ifstream &in) {
+    in.read(reinterpret_cast<char *>(&currentWave), sizeof(currentWave));
+    in.read(reinterpret_cast<char *>(&totalWaves), sizeof(totalWaves));
+    in.read(reinterpret_cast<char *>(&countToCheck), sizeof(countToCheck));
+    in.read(reinterpret_cast<char *>(&victory), sizeof(victory));
+    float first_horde_timer;
+    in.read(reinterpret_cast<char *>(&first_horde_timer),
+            sizeof(first_horde_timer));
+    float next_horde_timer;
+    in.read(reinterpret_cast<char *>(&next_horde_timer),
+            sizeof(next_horde_timer));
+    if (first_horde_timer > 0) {
+        timer.after(
+            first_horde_timer, [this](float dt) { this->spawnHorde(); },
+            "spawn_first_horde");
+    } else {
+        if (next_horde_timer > 0) {
+            timer.after(
+                next_horde_timer, [this](float dt) { this->spawnHorde(); },
+                "spawn_next_horde");
+        }
+    }
 }
 
 void HordeManager::launchTutorial(PropertyType type, std::string text,
@@ -29,6 +54,23 @@ void HordeManager::launchTutorial(PropertyType type, std::string text,
         getStateStack()->push(std::make_shared<TextBox>(
             text, sprite_id, true, 40, 2, true, -GetScreenWidth() / 4, 8));
     }
+}
+
+void HordeManager::Save(std::ofstream &out) const {
+    out.write(reinterpret_cast<const char *>(&currentWave),
+              sizeof(currentWave));
+    out.write(reinterpret_cast<const char *>(&totalWaves), sizeof(totalWaves));
+    out.write(reinterpret_cast<const char *>(&countToCheck),
+              sizeof(countToCheck));
+    out.write(reinterpret_cast<const char *>(&victory), sizeof(victory));
+    float first_horde_timer =
+        timer.getAfterTaskRemainingTime("spawn_first_horde");
+    out.write(reinterpret_cast<const char *>(&first_horde_timer),
+              sizeof(first_horde_timer));
+    float next_horde_timer =
+        timer.getAfterTaskRemainingTime("spawn_next_horde");
+    out.write(reinterpret_cast<const char *>(&next_horde_timer),
+              sizeof(next_horde_timer));
 }
 
 void HordeManager::launchTutBoxes() {
@@ -109,7 +151,8 @@ void HordeManager::update(float dt) {
             return;
         }
         getAudioManager()->switchBGM("normal");
-        timer.after(59, [this](float dt) { this->spawnHorde(); }, "");
+        timer.after(
+            59, [this](float dt) { this->spawnHorde(); }, "spawn_next_horde");
     }
 }
 

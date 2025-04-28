@@ -12,9 +12,11 @@ class PropertySlot {
     public:
         PropertySlot(float x, float y, float width, float height,
                      PropertyType type, PropertyRing *ring);
+        PropertySlot(std::ifstream &in, PropertyRing *ring);
         PropertyType type;
         void update(float dt);
         void draw();
+        void propertySlotObjectSave(std::ofstream &out) const;
         std::shared_ptr<Building> getBuilding();
 
     private:
@@ -30,12 +32,15 @@ class PropertySlot {
 class PropertyRing {
     public:
         PropertyRing(int ring_no, Vector2 center, GameObject *region);
+        PropertyRing(std::ifstream &in, GameObject *region);
         ~PropertyRing();
         int getRingNo();
         void update(float dt);
         void draw();
+        void initRing(std::ifstream &in);
         GameObject *region;
         std::vector<PropertySlot *> properties;
+        void propertyRingObjectSave(std::ofstream &out) const;
 
     private:
         int ring_no;

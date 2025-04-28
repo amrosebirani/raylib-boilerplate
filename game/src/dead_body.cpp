@@ -3,6 +3,10 @@
 #include "globals.h"
 #include "utils.h"
 #include "warrior_types.h"
+#include <fstream>
+
+void DeadBody::Save(std::ofstream &out) const {
+}
 
 DeadBody::DeadBody(float x, float y, bool isWarrior, EnemyType enemyType,
                    WarriorType warriorType)

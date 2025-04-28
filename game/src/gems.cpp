@@ -6,9 +6,18 @@
 Gem::Gem(float x, float y, GemType type) : Collectible(x, y), type(type) {
 }
 
+Gem::Gem(std::ifstream &in) : Collectible(in) {
+    in.read(reinterpret_cast<char *>(&type), sizeof(type));
+}
+
 Gem::~Gem() {
     collider = nullptr;
     delete data;
+}
+
+void Gem::Save(std::ofstream &os) const {
+    gameObjectSave(os);
+    os.write(reinterpret_cast<const char *>(&type), sizeof(type));
 }
 
 void Gem::init() {

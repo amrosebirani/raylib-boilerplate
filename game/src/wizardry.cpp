@@ -9,6 +9,9 @@ Wizardry::Wizardry(float x, float y, int level)
     health = maxHealth;
 }
 
+Wizardry::Wizardry(std::ifstream &in) : Building(in) {
+}
+
 bool Wizardry::hasSummonCards() {
     return false;
 }
@@ -89,4 +92,8 @@ void Wizardry::pushSummonDialog() {
     //     x, y, PropertyType::WIZARDRY, level);
     // sd->init();
     // getDialogHolder()->pushDialog(sd);
+}
+
+void Wizardry::buildingObjectSave(std::ofstream &out) const {
+    baseBuildingObjectSave(out);
 }

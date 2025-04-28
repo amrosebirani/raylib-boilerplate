@@ -43,6 +43,7 @@ class Timer {
         void update(float dt);
         void clearAll();
         static std::string generateUUID();
+        float getAfterTaskRemainingTime(const std::string &tag) const;
 
     private:
         struct TimerTask {
@@ -62,6 +63,8 @@ class Timer {
                 std::vector<std::pair<std::string, float>> payload;
 
                 TimerTask();
+                void save(std::ofstream &out) const {
+                }
         };
 
         std::unordered_map<std::string, std::shared_ptr<TimerTask>> timers;

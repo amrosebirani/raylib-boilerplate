@@ -29,7 +29,6 @@ class Archer : public GameObject {
         void init() override;
         void cleanupData() override;
         void Save(std::ofstream &out) const override;
-        void Load(std::ifstream &in) override;
         GameObjectType getObjectType() override {
             return GameObjectType::ARCHER;
         };
